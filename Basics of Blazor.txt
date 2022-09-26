@@ -62,5 +62,5 @@ How to build a Blazor App?
   - Begin: Rendered e.g. user opens page
   - End: Destroyed e.g user moves to new page
   - Lifecycle Methods: Control the changes in component during its life time
-    
-  
+    Parent Renders --> SetParametersAsync --> OnInitialized/Async --> OnParametersSet/Async --> State Has Changed --> ShouldRender --> OnAfterRender/Async
+    Parent Remove from Render Tree --> IDisposable.Dispose --> Dispose Child Child Components
