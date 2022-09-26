@@ -79,4 +79,21 @@ How to build a Blazor App?
     - When parent rerenders and supplies the new changes in the parameters to the child component
     
     State Has Changed 
-    - Notifies the component that its state has changed
+    - Notifies the component that its state has changed usually after user interaction
+    - This method looks at the value returned from ShouldRender to decide if a UI re-render should happen
+    - Called automatically for event call back methods and cause components to be re-rendered when nessary
+
+    ShouldRender (After state has changed)
+    - Returns a boolean value to refresh the UI if true, the app UI is refreshed
+    - If returns false the next task is executed and the component tree is not recalculated
+    - It is not executed for the first time the component is rendered
+    - It does the initial rendering despite its return value
+    
+    OnAfterRender / OnAfterRenderAsync
+    - Last method executed when the component tree is calculated
+    - Executed after a component tree has been recalculated
+    - Executed after each render of the component
+    - Useful for impementing JS Interop
+    - Can be used to perform an action such as attaching a event listener and requires the elements of the component to be rendered in the DOM and JS Interop
+    
+    
