@@ -3,7 +3,6 @@ Basics of Blazor
 - Blazor is a templating engine to build dynamic content that's combining C# and Html
 - Blazor is a framework for building interactive client-side web user interfaces with .NET. 
 - Blazor shares server and client-side app logic written in C# .NET and applications are rendered in mainstream browsers without having to know JavaScript
-- Blazor uses SingalR to dynamically render web pages
 
 Razor Definition
 - Is a markup template that allows you to combine C# code and HTML. It helps with creating logic inside HTML / UI without Javascript. 
@@ -74,3 +73,10 @@ How to build a Blazor App?
     - Used to load all data necessary before loading UIs, each control in the UI is loaded AFTER this method
     - Executed when component is recieves values from the parent in the render tree
     - Excuted only once when the component is first created and if at a later time the component parameters change, this method will be skipped
+
+    OnParametersSet / OnParametersSetAsync
+    - Executed when the component receives parameters from its parent when rendered for the first time
+    - When parent rerenders and supplies the new changes in the parameters to the child component
+    
+    State Has Changed 
+    - Notifies the component that its state has changed
