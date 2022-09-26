@@ -56,4 +56,11 @@ How to build a Blazor App?
     downloads the app into their browser. (Pro)
   - Faster than Server App (Pro)
  
+  *Note: Once you learn either WebAssembly or Server you can do the other with minor tweeks. 
+
+  Lifecycle of a Blazor Component
+  - Begin: Rendered e.g. user opens page
+  - End: Destroyed e.g user moves to new page
+  - Lifecycle Methods: Control the changes in component during its life time
+    
   
