@@ -62,5 +62,16 @@ How to build a Blazor App?
   - Begin: Rendered e.g. user opens page
   - End: Destroyed e.g user moves to new page
   - Lifecycle Methods: Control the changes in component during its life time
-    Parent Renders --> SetParametersAsync --> OnInitialized/Async --> OnParametersSet/Async --> State Has Changed --> ShouldRender --> OnAfterRender/Async
+    Methods Flow:
+    Parent Renders --> SetParametersAsync --> OnInitialized/OnInitializedAsync --> OnParametersSet/OnParametersSetAsync --> State Has Changed --> ShouldRender -->                                                                                                                                            OnAfterRender/OnAfterRenderAsync   
     Parent Remove from Render Tree --> IDisposable.Dispose --> Dispose Child Child Components
+    
+    SetParametersAsync: Executed whenever the parent renders
+    - Used to set paramenters supplied by the parent to the child component in the components render tree
+    - Holds any default parameter values that need to be declared to the child
+    
+    OnInitialized / OnInitializedAsync
+    - Executed when a component is initialized
+    - Used to load all data necessary before loading UIs, each control in the UI is loaded AFTER this method
+    - Executed when component is recieves values from the parent in the render tree
+    - Excuted only once when the component is first created and if at a later time the component parameters change, this method will be skipped
