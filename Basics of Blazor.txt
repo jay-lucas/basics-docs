@@ -4,6 +4,7 @@ Blazor is a hybrid of two workds: Razor and Browser
 Blazor is a templating engine to build dynamic content that's combining C# and Html
 Blazor is a framework for building interactive client-side web user interfaces with .NET. 
 Blazor shares server and client-side app logic written in C# .NET and applications are rendered in mainstream browsers without having to know JavaScript
+Blazor uses SingalR to dynamically render web pages
 
 Razor Definition
 - Is a markup template that allows you to combine C# code and HTML. It helps with creating logic inside HTML / UI without Javascript. 
@@ -28,3 +29,31 @@ How to build a Blazor App?
   @code {
     private int currentCount = 5;
   }
+
+  Different Blazor Templates
+  - WebAssembly 
+  - Server
+  
+  Blazor Server App
+  - Server side hosting model
+  - Blazor executed on the Server within and ASP.NET app and the UI updates
+  - Events, handling, and JavaScript calls are handled over a SingnalR connection
+  - The Blazor app is not downloaded in the browser but executed on the Server
+  - The user interacts with the Blazor app remotely via SingnalR connection
+  - Cannot work off line
+  
+  Blazor WebAssembly App
+  - Client Side hosting model
+  - It's dependances and the .NET runtime are downloaded to the browser
+  - The blazor app is executed on the browser via WebAssembly
+  - All UI updates and Event handling happens in the same process
+  
+  When to choose:
+  Blazor WebAssembly                            VS                     Blazor Server
+  - WebAssembly can be used in offline mode                            - Server app requires a contstant connection to the internet and would
+    a Progressive web app and can be easily                              be costly to scale as it always requires a server (Con)
+    scaled to multiple users as each user                              - Supported by search engines (Pro)
+    downloads the app into their browser. (Pro)
+  - Faster than Server App (Pro)
+ 
+  
