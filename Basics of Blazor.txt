@@ -20,7 +20,11 @@ Why Use Blazor?
 How to build a Blazor App?
 - Blazor apps are based on reuseable components
   * Components is a basic UI element like a page, dialog, or form written in form of a Razor page with the .razor file extension
-- Blazor code syntax
+  
+- Blazor component syntax
+  * The Razor html code
+  <div> Count: @currentCount </div>
+  * The C# code 
   @code {
-    // Add code here
+    private int currentCount = 5;
   }
