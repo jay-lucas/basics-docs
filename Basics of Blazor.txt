@@ -96,4 +96,6 @@ How to build a Blazor App?
     - Useful for impementing JS Interop
     - Can be used to perform an action such as attaching a event listener and requires the elements of the component to be rendered in the DOM and JS Interop
     
-    
+    Dispose
+    - Executed once a component is removed from the parent's render tree
+    - Implemented when a component implements the IDisposable interface
