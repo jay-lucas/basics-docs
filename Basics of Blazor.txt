@@ -27,7 +27,14 @@ How to build a Blazor App?
     @code {
       private int currentCount = 5;
     }
-
+    
+- Blazor component are inbuilt and self contained
+  - Common Components:
+    * Form Components: InputSelect, InputNumber
+    * NavLink
+    * NavMenu
+    * PageTitle
+  
   Different Blazor Templates
   - WebAssembly 
   - Server
@@ -101,3 +108,5 @@ How to build a Blazor App?
     Dispose
     - Executed once a component is removed from the parent's render tree
     - Implemented when a component implements the IDisposable interface
+    
+    
