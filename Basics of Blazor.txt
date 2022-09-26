@@ -22,11 +22,11 @@ How to build a Blazor App?
   
 - Blazor component syntax
   * The Razor html code
-  <div> Count: @currentCount </div>
+    <div> Count: @currentCount </div>
   * The C# code 
-  @code {
-    private int currentCount = 5;
-  }
+    @code {
+      private int currentCount = 5;
+    }
 
   Different Blazor Templates
   - WebAssembly 
