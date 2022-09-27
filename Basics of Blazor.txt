@@ -109,4 +109,6 @@ How to build a Blazor App?
     - Executed once a component is removed from the parent's render tree
     - Implemented when a component implements the IDisposable interface
     
+    ----- Additional Syntax for Blazor code --
     
+    @bind: Allows you to bind variables to html controls
