@@ -111,4 +111,23 @@ How to build a Blazor App?
     
     ----- Additional Syntax for Blazor code --
     
-    @bind: Allows you to bind variables to html controls
+    Data Binding in Blazor
+    - It is a technique use to connect UI elements and the application logic
+    - It is use to connect C# variables with HTML elements
+    - In Blazor, data binding is done using the @bind keyword
+
+    3 ways to bind data in Blazor
+    - One way Data Binding
+      * The variable name is passed with the @ sign
+      * The variables is bound to the HTML elements
+      * When variable value changes the HTML element automatically shows the change
+
+    - Two way Data Binding
+      * Uses the bind keyword to call a variable to the HTML element
+      * Doesn't support all data types, but does support the basics (int, string, datetime, enum, bool)
+	* When using the input fields don't change until the field loses focus, this is standard unless you specifically change the event 
+
+    - Event Binding
+      * This is done between and event and a method
+      * It is supported for the onclick, onchange, oninput events
+   	
