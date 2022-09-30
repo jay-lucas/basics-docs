@@ -147,5 +147,5 @@ How to build a Blazor App?
 	  * A parent component is notified when a child component changes by the child component exposing an event and the parent assiging a callback method to the child 
           component event.
 
-        - [Parameter] key words denotes the target memember as a component parameter
+        - [Parameter] key words denotes the target member as a component parameter. This parameter functions similar to a HTML tags attribute <NonRootableComponentName ParameterName />
 	  
