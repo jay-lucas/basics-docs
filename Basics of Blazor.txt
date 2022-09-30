@@ -34,7 +34,10 @@ How to build a Blazor App?
     * NavLink
     * NavMenu
     * PageTitle
-  
+
+  *Note adding @page "/index" to a component page, in this example Index, is rooting the component, meaning it can be accesses through the URL. 
+   Without this, this is a non rootable component. This component can now be used like a HTML <NonRootableComonentName /> throughout the system. 
+
   Different Blazor Templates
   - WebAssembly 
   - Server
@@ -130,4 +133,19 @@ How to build a Blazor App?
     - Event Binding
       * This is done between and event and a method
       * It is supported for the onclick, onchange, oninput events
-   	
+      
+      * Events that supported in blazor
+   	- Blazor supprts event handling asynchronosuly
+        Event Examples:
+		  - Event      - Argument           -Trigger
+		    Input        ChangeEventArgs     oninput
+                Mouse        MouseEventArgs      onclick
+                Keyboard     KeyboardEventArgs   onkeypress
+
+      - Event Callbacks
+	  * A way for the child and parent components to communicate
+	  * A parent component is notified when a child component changes by the child component exposing an event and the parent assiging a callback method to the child 
+          component event.
+
+        - [Parameter] key words denotes the target memember as a component parameter
+	  
