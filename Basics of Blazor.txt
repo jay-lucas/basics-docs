@@ -177,3 +177,25 @@ How to build a Blazor App?
          - A layout has two special aspects
           * Inhearts from LayoutComponentBase
           * Contains the @Body property
+          * A layout page is created the same as a regular blazor component. To make it a layout you must add the @inherits LayoutComponentBase 
+       * To add a layout to a page you use the @layout NameOfNewLayoutComponent
+
+	- CSS Isolation in Blazor
+        * Separate CSS sytles for individual components, pages, or app views
+	  * Improves the overall workflow of applying CSS to multiple components
+  	  * This is done for two major reasons:
+          - Avoid Styling conflicts among components
+          - To better manage dependencies in global styles
+        
+        - How to Isolate CSS
+          * Is enabled when a razor component of the same name is added to the same folder but with an .css at the end.
+            Example: MyComponent.razor -> MyComponent.razor.css 
+		- This is called a 'Scope' css file
+	      - The CSS will only apply to this razor page
+          
+        - CSS Isolation Bundling: Blazor rewrites CSS selectors to match markup rendered by the component.
+        - Child component reference
+          * CSS by default is applied to the parent components
+   	    * To further style the child components use the ::deep combinator before the HTML tag associated with the child element.
+          
+          
