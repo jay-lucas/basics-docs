@@ -19,8 +19,9 @@ Why Use Blazor?
 How to build a Blazor App?
 - Blazor apps are based on reuseable components
   * Components is a basic UI element like a page, dialog, or form written in form of a Razor page with the .razor file extension
-  
-- Blazor component syntax
+  * When creating a new component you get the boiler plate code with a <h3> tag and the @code {} block to start
+
+- Blazor component syntax 
   * The Razor html code
     <div> Count: @currentCount </div>
   * The C# code 
@@ -149,3 +150,30 @@ How to build a Blazor App?
 
         - [Parameter] key words denotes the target member as a component parameter. This parameter functions similar to a HTML tags attribute <NonRootableComponentName ParameterName />
 	  
+    - Forms & Validation
+      * A form is defined using the EditForm Component
+      * Among Blazor built in components are some form input components
+      * Blazor provides some inbuilt form elements
+        This include but not limited to:
+        - Input Component           - Render
+          InputText                   <input>
+          InputDate<TValue>           <input type="data">
+          InputCheckbox               <input type="checkbox">
+
+      - EditForm component
+       * Provides callbacks for handling form submission.
+       * OnValidSubmit assigns an event handler to run when a form with valid inputs is submitted
+	 * OnInvalidSubmit assigns an event handler to run when a form with invalid fields is submitted
+       * The form is validated by calling EditContext.Validate in the event handler method. 
+         If valid returns 'true', the form is valid
+       * OnSubmit assigns an event handler to run regardless of the form fields' validation status
+       
+       - All EditForm components need to be assigned a model and OnSubmit attribute equaling a method that does something
+       - You verify forms by using data annotations on the model
+       - In the EditForm you must enable data annotations validations by adding the <DataAnnotationsValidator /> and <ValidationSummary /> components
+
+     - Layouts
+       * Are components that can be reused across different pages in the app while only modifying their contents
+         - A layout has two special aspects
+          * Inhearts from LayoutComponentBase
+          * Contains the @Body property
