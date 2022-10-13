@@ -175,7 +175,7 @@ How to build a Blazor App?
      - Layouts
        * Are components that can be reused across different pages in the app while only modifying their contents
          - A layout has two special aspects
-          * Inhearts from LayoutComponentBase
+          * Inhearts from LayoutComponentBase                                                                                                                                                                          
           * Contains the @Body property
           * A layout page is created the same as a regular blazor component. To make it a layout you must add the @inherits LayoutComponentBase 
        * To add a layout to a page you use the @layout NameOfNewLayoutComponent
@@ -197,5 +197,11 @@ How to build a Blazor App?
         - Child component reference
           * CSS by default is applied to the parent components
    	    * To further style the child components use the ::deep combinator before the HTML tag associated with the child element.
+
+     - Calling a Web Api in Blazor
+       * To use http request add @inject HttpClient Http
+       * Any service to be injected to a component it has to be registered into the dependancy injection container located in the Startup file which is called Program.cs
           
-          
+     - Uploading Files in a Blazor Server App
+    
+             
