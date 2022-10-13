@@ -203,5 +203,43 @@ How to build a Blazor App?
        * Any service to be injected to a component it has to be registered into the dependancy injection container located in the Startup file which is called Program.cs
           
      - Uploading Files in a Blazor Server App
+       * IBrowser interface is used to select files uploaded from the browser
+       * Within the form you use the InputFileChangeEventArgs that is raised when an file is selected by the browser input control
+
+     - Adding JavaScript To Blazor (JavaScript Interop)
+       * Calling JS functions using .NET methods and interchangeably having JS functions call .NET methods
+
+       - Why JSInterop is necessary?
+         * JavaScript is the most commonly used programming langague.
+         * JavaScript runs everywhere
+         * Leverage existing JS libraries
+         * Require browser specific capabilities
+         
+       - How to execute
+         * Execute JavaScript function from blazor components you must add IJSRuntime
+           - This can be added in 2 ways
+             1) Use the annotation [Inject] in the C# code
+                Example:
+                [Inject]
+		    public IJSRuntime JSRuntime {get; set;}
+           
+   		 2) Use the @inject directive in the component at the time of the component (just like a @using Systems.IO)
+                Example:
+                @inject IJSRuntime JS
     
-             
+         - We can excute javascript functions using two methods:
+           * InvokeAsync<T>(name, args) : Invokes the "specified" JavaScript Funtion asynchronously   
+   
+	     * InvokeVoidAsync(name, args): Invokes the JabaScript function asynchronously, does not return a value
+
+          Break Down of this Function: 
+             T: specifies the return type the javascript function will return. It's generic
+		 name: name of the JavaScript Function to be invoked
+		 args: the arguments that will be passed to the JavaScript function that is invoked ie: name
+
+         - You can also invoke C# from JavaScript using the DotNet.invokeMethodAsync() method. It returns a JabaScript "Promise".
+           * What is a JavaScript Promise? A Promise is object that represents the eventual completion or failure of a async 
+		 operation and it's resulting value. A promise is a proxy for a value not necessarily known when the promise is created.
+             It allows you to associated handlers with async actions eventual success or failure value reasons. Lets async methods 
+             return values like sync methods instead of immediately returning the 'Final' value, the async method returns 
+             a 'Promise' to supply the value at some point in the future.
