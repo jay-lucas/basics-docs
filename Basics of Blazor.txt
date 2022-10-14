@@ -243,3 +243,6 @@ How to build a Blazor App?
              It allows you to associated handlers with async actions eventual success or failure value reasons. Lets async methods 
              return values like sync methods instead of immediately returning the 'Final' value, the async method returns 
              a 'Promise' to supply the value at some point in the future.
+	     
+	 - What is octet-stream: 
+	    *Url Link: https://isotropic.co/what-is-octet-stream/
