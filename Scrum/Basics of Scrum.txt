@@ -1,0 +1,5 @@
+What is Scrum?
+
+
+- Sprints
+  * All Sprints should have a one or more goals associated with it.

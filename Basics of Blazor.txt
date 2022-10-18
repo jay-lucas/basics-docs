@@ -1,0 +1,245 @@
+Basics of Blazor
+- Blazor is a hybrid of two workds: Razor and Browser
+- Blazor is a templating engine to build dynamic content that's combining C# and Html
+- Blazor is a framework for building interactive client-side web user interfaces with .NET. 
+- Blazor shares server and client-side app logic written in C# .NET and applications are rendered in mainstream browsers without having to know JavaScript
+
+Razor Definition
+- Is a markup template that allows you to combine C# code and HTML. It helps with creating logic inside HTML / UI without Javascript. 
+
+Blazor
+- Make use of the components built with razor to render dynamic thats used to develop single page applications (SPA)
+- Uses C# instead of JavaScript to create rich interactive web applications
+
+Why Use Blazor?
+- Blazor is a good replacement for SPA's frameworks like React, Angular.
+- If C# is your prefered language and you don't want to use all endless JavaScript frameworks (jQuery, React, etc)
+- Leverage all advantages of .NET and the .NET ecosystem (Security, Performance, Reliablity, etc)
+
+How to build a Blazor App?
+- Blazor apps are based on reuseable components
+  * Components is a basic UI element like a page, dialog, or form written in form of a Razor page with the .razor file extension
+  * When creating a new component you get the boiler plate code with a <h3> tag and the @code {} block to start
+
+- Blazor component syntax 
+  * The Razor html code
+    <div> Count: @currentCount </div>
+  * The C# code 
+    @code {
+      private int currentCount = 5;
+    }
+    
+- Blazor component are inbuilt and self contained
+  - Common Components:
+    * Form Components: InputSelect, InputNumber
+    * NavLink
+    * NavMenu
+    * PageTitle
+
+  *Note adding @page "/index" to a component page, in this example Index, is rooting the component, meaning it can be accesses through the URL. 
+   Without this, this is a non rootable component. This component can now be used like a HTML <NonRootableComonentName /> throughout the system. 
+
+  Different Blazor Templates
+  - WebAssembly 
+  - Server
+  
+  Blazor Server App
+  - Server side hosting model
+  - Blazor executed on the Server within and ASP.NET app and the UI updates
+  - Events, handling, and JavaScript calls are handled over a SingnalR connection
+  - The Blazor app is not downloaded in the browser but executed on the Server
+  - The user interacts with the Blazor app remotely via SingnalR connection
+  - Cannot work off line
+  
+  Blazor WebAssembly App
+  - Client Side hosting model
+  - It's dependances and the .NET runtime are downloaded to the browser
+  - The blazor app is executed on the browser via WebAssembly
+  - All UI updates and Event handling happens in the same process
+  
+  When to choose:
+  Blazor WebAssembly                            VS                     Blazor Server
+  - WebAssembly can be used in offline mode                            - Server app requires a contstant connection to the internet and would
+    a Progressive web app and can be easily                              be costly to scale as it always requires a server (Con)
+    scaled to multiple users as each user                              - Supported by search engines (Pro)
+    downloads the app into their browser. (Pro)
+  - Faster than Server App (Pro)
+ 
+  *Note: Once you learn either WebAssembly or Server you can do the other with minor tweeks. 
+
+  Lifecycle of a Blazor Component
+  - Begin: Rendered e.g. user opens page
+  - End: Destroyed e.g user moves to new page
+  - Lifecycle Methods: Control the changes in component during its life time
+    Methods Flow:
+    Parent Renders --> SetParametersAsync --> OnInitialized/OnInitializedAsync --> OnParametersSet/OnParametersSetAsync --> 
+                       State Has Changed --> ShouldRender --> OnAfterRender/OnAfterRenderAsync
+                       
+    Parent Remove from Render Tree --> IDisposable.Dispose --> Dispose Child Child Components
+    
+    SetParametersAsync: Executed whenever the parent renders
+    - Used to set paramenters supplied by the parent to the child component in the components render tree
+    - Holds any default parameter values that need to be declared to the child
+    
+    OnInitialized / OnInitializedAsync
+    - Executed when a component is initialized
+    - Used to load all data necessary before loading UIs, each control in the UI is loaded AFTER this method
+    - Executed when component is recieves values from the parent in the render tree
+    - Excuted only once when the component is first created and if at a later time the component parameters change, this method will be skipped
+
+    OnParametersSet / OnParametersSetAsync
+    - Executed when the component receives parameters from its parent when rendered for the first time
+    - When parent rerenders and supplies the new changes in the parameters to the child component
+    
+    State Has Changed 
+    - Notifies the component that its state has changed usually after user interaction
+    - This method looks at the value returned from ShouldRender to decide if a UI re-render should happen
+    - Called automatically for event call back methods and cause components to be re-rendered when nessary
+
+    ShouldRender (After state has changed)
+    - Returns a boolean value to refresh the UI if true, the app UI is refreshed
+    - If returns false the next task is executed and the component tree is not recalculated
+    - It is not executed for the first time the component is rendered
+    - It does the initial rendering despite its return value
+    
+    OnAfterRender / OnAfterRenderAsync
+    - Last method executed when the component tree is calculated
+    - Executed after a component tree has been recalculated
+    - Executed after each render of the component
+    - Useful for impementing JS Interop
+    - Can be used to perform an action such as attaching a event listener and requires the elements of the component to be rendered in the DOM and JS Interop
+    
+    Dispose
+    - Executed once a component is removed from the parent's render tree
+    - Implemented when a component implements the IDisposable interface
+    
+    ----- Additional Syntax for Blazor code --
+    
+    Data Binding in Blazor
+    - It is a technique use to connect UI elements and the application logic
+    - It is use to connect C# variables with HTML elements
+    - In Blazor, data binding is done using the @bind keyword
+
+    3 ways to bind data in Blazor
+    - One way Data Binding
+      * The variable name is passed with the @ sign
+      * The variables is bound to the HTML elements
+      * When variable value changes the HTML element automatically shows the change
+
+    - Two way Data Binding
+      * Uses the bind keyword to call a variable to the HTML element
+      * Doesn't support all data types, but does support the basics (int, string, datetime, enum, bool)
+	* When using the input fields don't change until the field loses focus, this is standard unless you specifically change the event 
+
+    - Event Binding
+      * This is done between and event and a method
+      * It is supported for the onclick, onchange, oninput events
+      
+      * Events that supported in blazor
+   	- Blazor supprts event handling asynchronosuly
+        Event Examples:
+		  - Event      - Argument           -Trigger
+		    Input        ChangeEventArgs     oninput
+                Mouse        MouseEventArgs      onclick
+                Keyboard     KeyboardEventArgs   onkeypress
+
+      - Event Callbacks
+	  * A way for the child and parent components to communicate
+	  * A parent component is notified when a child component changes by the child component exposing an event and the parent assiging a callback method to the child 
+          component event.
+
+        - [Parameter] key words denotes the target member as a component parameter. This parameter functions similar to a HTML tags attribute <NonRootableComponentName ParameterName />
+	  
+    - Forms & Validation
+      * A form is defined using the EditForm Component
+      * Among Blazor built in components are some form input components
+      * Blazor provides some inbuilt form elements
+        This include but not limited to:
+        - Input Component           - Render
+          InputText                   <input>
+          InputDate<TValue>           <input type="data">
+          InputCheckbox               <input type="checkbox">
+
+      - EditForm component
+       * Provides callbacks for handling form submission.
+       * OnValidSubmit assigns an event handler to run when a form with valid inputs is submitted
+	 * OnInvalidSubmit assigns an event handler to run when a form with invalid fields is submitted
+       * The form is validated by calling EditContext.Validate in the event handler method. 
+         If valid returns 'true', the form is valid
+       * OnSubmit assigns an event handler to run regardless of the form fields' validation status
+       
+       - All EditForm components need to be assigned a model and OnSubmit attribute equaling a method that does something
+       - You verify forms by using data annotations on the model
+       - In the EditForm you must enable data annotations validations by adding the <DataAnnotationsValidator /> and <ValidationSummary /> components
+
+     - Layouts
+       * Are components that can be reused across different pages in the app while only modifying their contents
+         - A layout has two special aspects
+          * Inhearts from LayoutComponentBase                                                                                                                                                                          
+          * Contains the @Body property
+          * A layout page is created the same as a regular blazor component. To make it a layout you must add the @inherits LayoutComponentBase 
+       * To add a layout to a page you use the @layout NameOfNewLayoutComponent
+
+	- CSS Isolation in Blazor
+        * Separate CSS sytles for individual components, pages, or app views
+	  * Improves the overall workflow of applying CSS to multiple components
+  	  * This is done for two major reasons:
+          - Avoid Styling conflicts among components
+          - To better manage dependencies in global styles
+        
+        - How to Isolate CSS
+          * Is enabled when a razor component of the same name is added to the same folder but with an .css at the end.
+            Example: MyComponent.razor -> MyComponent.razor.css 
+		- This is called a 'Scope' css file
+	      - The CSS will only apply to this razor page
+          
+        - CSS Isolation Bundling: Blazor rewrites CSS selectors to match markup rendered by the component.
+        - Child component reference
+          * CSS by default is applied to the parent components
+   	    * To further style the child components use the ::deep combinator before the HTML tag associated with the child element.
+
+     - Calling a Web Api in Blazor
+       * To use http request add @inject HttpClient Http
+       * Any service to be injected to a component it has to be registered into the dependancy injection container located in the Startup file which is called Program.cs
+          
+     - Uploading Files in a Blazor Server App
+       * IBrowser interface is used to select files uploaded from the browser
+       * Within the form you use the InputFileChangeEventArgs that is raised when an file is selected by the browser input control
+
+     - Adding JavaScript To Blazor (JavaScript Interop)
+       * Calling JS functions using .NET methods and interchangeably having JS functions call .NET methods
+
+       - Why JSInterop is necessary?
+         * JavaScript is the most commonly used programming langague.
+         * JavaScript runs everywhere
+         * Leverage existing JS libraries
+         * Require browser specific capabilities
+         
+       - How to execute
+         * Execute JavaScript function from blazor components you must add IJSRuntime
+           - This can be added in 2 ways
+             1) Use the annotation [Inject] in the C# code
+                Example:
+                [Inject]
+		    public IJSRuntime JSRuntime {get; set;}
+           
+   		 2) Use the @inject directive in the component at the time of the component (just like a @using Systems.IO)
+                Example:
+                @inject IJSRuntime JS
+    
+         - We can excute javascript functions using two methods:
+           * InvokeAsync<T>(name, args) : Invokes the "specified" JavaScript Funtion asynchronously   
+   
+	     * InvokeVoidAsync(name, args): Invokes the JabaScript function asynchronously, does not return a value
+
+          Break Down of this Function: 
+             T: specifies the return type the javascript function will return. It's generic
+		 name: name of the JavaScript Function to be invoked
+		 args: the arguments that will be passed to the JavaScript function that is invoked ie: name
+
+         - You can also invoke C# from JavaScript using the DotNet.invokeMethodAsync() method. It returns a JabaScript "Promise".
+           * What is a JavaScript Promise? A Promise is object that represents the eventual completion or failure of a async 
+		 operation and it's resulting value. A promise is a proxy for a value not necessarily known when the promise is created.
+             It allows you to associated handlers with async actions eventual success or failure value reasons. Lets async methods 
+             return values like sync methods instead of immediately returning the 'Final' value, the async method returns 
+             a 'Promise' to supply the value at some point in the future.
