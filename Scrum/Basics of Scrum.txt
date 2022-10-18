@@ -1,5 +1,6 @@
 What is Scrum?
-
+- Scrum is a framework within which people can address complex adaptive problems, while productively and creatively delivering 
+  products of the highest possible value.
 
 - Sprints
-  * All Sprints should have a one or more goals associated with it.
+  * All Sprints should have a one or more goals associated with it. This is to summarize the purpose of the sprint to management.

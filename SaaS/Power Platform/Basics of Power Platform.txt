@@ -1,0 +1,13 @@
+What is Power Platform?
+- The Microsoft Power Platform is a powerful set of applications that allow you to automate processes, 
+   build solutions, analyze data, and create virtual agents. This blog and video will introduce the various 
+   components of the Power Platform, discuss how you can harness the power of data and discover the impact 
+   these solutions have when integrated with other Microsoft solutions.
+
+Microsoft Power Platform consists of the following components:
+  -> Power BI
+  -> Power Apps
+  -> Power Automate
+  -> Power Virtual Agents.
+
+
