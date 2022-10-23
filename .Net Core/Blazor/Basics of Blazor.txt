@@ -20,6 +20,8 @@ How to build a Blazor App?
 - Blazor apps are based on reuseable components
   * Components is a basic UI element like a page, dialog, or form written in form of a Razor page with the .razor file extension
   * When creating a new component you get the boiler plate code with a <h3> tag and the @code {} block to start
+  * A Razor page and a Razor Component are two different files that both use the Razor syntax. Razor components have the extention .razor while Razor pages have
+    the extention .cshtml
 
 - Blazor component syntax 
   * The Razor html code
@@ -28,7 +30,9 @@ How to build a Blazor App?
     @code {
       private int currentCount = 5;
     }
-    
+  * The routing to a Blazor page
+    @page "/mypage"
+
 - Blazor component are inbuilt and self contained
   - Common Components:
     * Form Components: InputSelect, InputNumber
@@ -42,7 +46,9 @@ How to build a Blazor App?
   Different Blazor Templates
   - WebAssembly 
   - Server
-  
+    
+Blazor Hosting Models: 
+
   Blazor Server App
   - Server side hosting model
   - Blazor executed on the Server within and ASP.NET app and the UI updates
@@ -50,7 +56,7 @@ How to build a Blazor App?
   - The Blazor app is not downloaded in the browser but executed on the Server
   - The user interacts with the Blazor app remotely via SingnalR connection
   - Cannot work off line
-  
+
   Blazor WebAssembly App
   - Client Side hosting model
   - It's dependances and the .NET runtime are downloaded to the browser
@@ -118,9 +124,9 @@ How to build a Blazor App?
     Data Binding in Blazor
     - It is a technique use to connect UI elements and the application logic
     - It is use to connect C# variables with HTML elements
-    - In Blazor, data binding is done using the @bind keyword
+    - In Blazor, data binding is done using the @bind keyword. This is also used for two-way binding.
 
-    3 ways to bind data in Blazor
+    3 ways of binding data in Blazor
     - One way Data Binding
       * The variable name is passed with the @ sign
       * The variables is bound to the HTML elements
@@ -205,6 +211,14 @@ How to build a Blazor App?
      - Uploading Files in a Blazor Server App
        * IBrowser interface is used to select files uploaded from the browser
        * Within the form you use the InputFileChangeEventArgs that is raised when an file is selected by the browser input control
+	 
+	   -> What is "application/octet-stream" content type? : Sent with a header file, so if you attempt download file with a missiong extention or unknown format the 
+          									 your system will recognize as a octet-stream format by default. 
+										 Example: If you upload a file that doesn't have software on your system that can read it, it's content type
+											    is registured as a "application/octet-stream"   
+
+         -> What are Binary Files? : Binary files contain data in the form of bytes - not text. The headers in the binary files contain instructions on how to read the data. 
+						 Only a specific computer processor or program can interpret the file and run it properly.
 
      - Adding JavaScript To Blazor (JavaScript Interop)
        * Calling JS functions using .NET methods and interchangeably having JS functions call .NET methods
@@ -222,6 +236,7 @@ How to build a Blazor App?
                 Example:
                 [Inject]
 		    public IJSRuntime JSRuntime {get; set;}
+		    * Note: This is used for injecting services into a component class
            
    		 2) Use the @inject directive in the component at the time of the component (just like a @using Systems.IO)
                 Example:
@@ -230,7 +245,7 @@ How to build a Blazor App?
          - We can excute javascript functions using two methods:
            * InvokeAsync<T>(name, args) : Invokes the "specified" JavaScript Funtion asynchronously   
    
-	     * InvokeVoidAsync(name, args): Invokes the JabaScript function asynchronously, does not return a value
+	     * InvokeVoidAsync(name, args): Invokes the JavaScript function asynchronously, does not return a value
 
           Break Down of this Function: 
              T: specifies the return type the javascript function will return. It's generic
@@ -243,3 +258,61 @@ How to build a Blazor App?
              It allows you to associated handlers with async actions eventual success or failure value reasons. Lets async methods 
              return values like sync methods instead of immediately returning the 'Final' value, the async method returns 
              a 'Promise' to supply the value at some point in the future.
+
+
+   - Globalization & Localization
+
+     * Globalization: 
+	 - Creating an App that supports multiple languages across the world.
+	 - It adjusts its display by collecting translations from resource files and allowing the UI to work with the changes
+
+     * Localization:
+	 - Adjusting a globalized app to support a specific language.
+	 - Blazor uses the Resource system to render the localized elements and rendered at runtime
+
+     - Blazor Apps Globalized
+	 * Use the @bind:culture to refer to the corresponding translation in the System.Globalization.CultureInfo. The translation is 
+	   done to the user's first set preferred language
+
+	 * Blazor has inbuilt support for browser formatted fields like date however specifically formated fields require localization
+
+
+     -> Ways of Globalizing a Blazor App:
+
+        - Invariant 						- Static
+          * Used to configure the app to			  * The app's culture can be set in JabaScript
+		support the invariant culture.		  * Implemented when Blazor starts with the
+    	    * It is generally based on 			  applicationCulture Blazor start option.
+		United States English (en-US)
+  	    * Set the InvariantGlobalization 
+		property to true in the app's 
+		project file (.csproj)
+   
+
+	  - Dynamic							- Dynamically Set Culture by User Preference
+	    * Uses the Accept-Language header 		  * Commonly used method
+		set by the browser.				  * App culture is based on user selection
+	    * For more than one preferred 			    from the list of languages supported
+		language, order of preference 
+		is used.
+	    * The order of preference is used
+		by the browser to set quality 
+		values from 0-1 for each language
+		in the header.
+		
+	   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
