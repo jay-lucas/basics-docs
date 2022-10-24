@@ -42,3 +42,6 @@ What does the 'out' keyword do? : The out keyword causes arguments to be passed 
 						      Console.WriteLine("Num2: {0}", num2); 
 						    }
 						}
+
+
+Transient Error Handling with automatic Retries in C# Inspired by Transient Fault Handling we created a quick helper class to faciliate the automatic retry of various operation that may fail in today’s interconnected environments. Large parts of our Appclusive framework deal with fetching from and pushing information to various backend systems						
