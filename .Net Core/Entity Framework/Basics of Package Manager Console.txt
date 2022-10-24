@@ -1,0 +1,7 @@
+What is the Package Manager Console?
+-Is used to install nuget packages, automate your work & create migrations. The Package Manager Console is a Visual Studio PowerShell console. 
+
+How to get access to Package Manager Console in Visual Studio?
+ 1) View tab in Visual Studio -> Other Windows -> Package Manager Console
+ 2) Tools tab in Visual Studio -> Library Package Manager -> Package Manager Console
+ 
