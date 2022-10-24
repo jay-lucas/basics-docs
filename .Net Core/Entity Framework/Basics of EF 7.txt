@@ -1,7 +1,11 @@
-Ways to install Nuget Packages
-1) Right click project and select 'Manage NuGet Packages', then search for name of package in NuGet tab.
-2) Use the Package Manager Console. You get to the Package Manager Console by:
-   -> View tab in Visual Studio -> Other Windows -> Package Manager Console
-   -> Tools tab in Visual Studio -> Library Package Manager -> Package Manager Console
-   ** Note: Is used to install nuget packages, automate your work & create migrations. The Package Manager Console is a Visual Studio PowerShell console. 
+What is Entity Framework? 
+- Entity Framework (EF) is an object-relational mapper that enables .NET developers to work with relational data using domain-specific objects. 
+  It eliminates the need for most of the data-access code that developers usually need to write. Entity Framework is made up of the EF Tools for 
+  Visual Studio and the EF Runtime. Entity Framework is an object-relational mapper (O/RM) that enables .NET developers to work with a database 
+  using .NET objects.
 
+Entity Framework Tools for Visual Studio
+- The Entity Framework Tools for Visual Studio include the EF Designer and the EF Model Wizard and are required for the database first and model first workflows. EF Tools are included in all recent versions of Visual Studio. If you perform a custom install of Visual Studio you will need to ensure that the item "Entity Framework 6 Tools" is selected by either choosing a workload that includes it or by selecting it as an individual component.
+
+How do you add Entity Framework to a project?
+- 
