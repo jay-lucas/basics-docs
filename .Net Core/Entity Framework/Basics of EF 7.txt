@@ -7,5 +7,10 @@ What is Entity Framework?
 Entity Framework Tools for Visual Studio
 - The Entity Framework Tools for Visual Studio include the EF Designer and the EF Model Wizard and are required for the database first and model first workflows. EF Tools are included in all recent versions of Visual Studio. If you perform a custom install of Visual Studio you will need to ensure that the item "Entity Framework 6 Tools" is selected by either choosing a workload that includes it or by selecting it as an individual component.
 
-How do you add Entity Framework to a project?
-- 
+How do you add Entity Framework to a .NET project?
+- In Package Manager:
+  -> Install-Package Microsoft.EntityFrameworkCore.Design
+  -> Install-Package Microsoft.EntityFrameworkCore.SQLServer (or any other relational database)
+  ** Note: If you don't add the -Version x.x.x to the end of this command Package Manager will install the latest version.
+           Example: Install-Package Microsoft.EntityFrameworkCore.Design -Version 5.0.6
+
