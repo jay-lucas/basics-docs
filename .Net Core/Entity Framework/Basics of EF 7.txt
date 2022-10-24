@@ -1,0 +1,7 @@
+Ways to install Nuget Packages
+1) Right click project and select 'Manage NuGet Packages', then search for name of package in NuGet tab.
+2) Use the Package Manager Console. You get to the Package Manager Console by:
+   -> View tab in Visual Studio -> Other Windows -> Package Manager Console
+   -> Tools tab in Visual Studio -> Library Package Manager -> Package Manager Console
+   ** Note: Is used to install nuget packages, automate your work & create migrations. The Package Manager Console is a Visual Studio PowerShell console. 
+
