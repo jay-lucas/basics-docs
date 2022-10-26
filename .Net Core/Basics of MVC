@@ -114,4 +114,104 @@ Dependency Injection
    pre- and post-processing logic for action methods, and can be configured to run at certain points within the execution pipeline for a 
    given request. Filters can be applied to controllers or actions as attributes (or can be run globally). Several filters (such as Authorize) 
    are included in the framework. [Authorize] is the attribute that is used to create MVC authorization filters.
-   
+   Example:
+     [Authorize]
+     public class AccountController : Controller
+     ** Note: Filters can be added at the controller level as seen here or at the method level
+
+Areas
+- Areas provide a way to partition a large ASP.NET Core MVC Web app into smaller functional groupings. An area is an MVC structure inside an 
+  application. In an MVC project, logical components like Model, Controller, and View are kept in different folders, and MVC uses naming conventions 
+  to create the relationship between these components. For a large app, it may be advantageous to partition the app into separate high level areas 
+  of functionality. For instance, an e-commerce app with multiple business units, such as checkout, billing, and search etc. Each of these units have 
+  their own logical component views, controllers, and models.
+  
+Web APIs
+- In addition to being a great platform for building web sites, ASP.NET Core MVC has great support for building Web APIs. You can build services that 
+  reach a broad range of clients including browsers and mobile devices. The framework includes support for HTTP content-negotiation with built-in 
+  support to format data as JSON or XML. Write custom formatters to add support for your own formats. 
+  Use link generation to enable support for hypermedia. Easily enable support for cross-origin resource sharing (CORS) so that your Web APIs can be 
+  shared across multiple Web applications.
+  
+  * What is Cross-origin resource sharing (CORS)
+  - Cross-Origin Resource Sharing (CORS) is an HTTP -header based mechanism that allows a server to indicate any origins (domain, scheme, or port) 
+    other than its own from which a browser should permit loading resources.
+    
+Testability
+- The framework's use of interfaces and dependency injection make it well-suited to unit testing, and the framework includes  
+  features (like a TestHost and InMemory provider for Entity Framework) that make integration tests quick and easy as well.
+  
+Razor view engine
+ - ASP.NET Core MVC views use the Razor view engine to render views. Razor is a compact, expressive and fluid template markup language for defining 
+   views using embedded C# code. Razor is used to dynamically generate web content on the server. You can cleanly mix server code with client side 
+   content and code. Using the Razor view engine you can define layouts, partial views and replaceable sections
+   Example: 
+     <ul>
+        @for (int i = 0; i < 5; i++) {
+          <li>List item @i</li>
+        }
+     </ul>
+    ** Note: The razor view engine allows for the intergration of C# code and HTML into the .cshtml pages
+    
+Strongly typed views
+- Razor views in MVC can be strongly typed based on your model. Controllers can pass a strongly typed model to views enabling your views to have 
+  type checking and IntelliSense support. A Model is strongly typed to a View using the keyword @model followed by the name of the model.
+  Example: 
+      @model IEnumerable<Product>
+      <ul>
+          @foreach (Product p in Model)
+          {
+              <li>@p.Name</li>
+          }
+      </ul>
+      ** Note: Strongly typing is done in a .cshtml file
+      
+Tag Helpers
+- Tag Helpers enable server side code to participate in creating and rendering HTML elements in Razor files. You can use tag helpers to define 
+  custom tags (for example, <environment>) or to modify the behavior of existing tags (for example, <label>). Tag Helpers bind to specific elements 
+  based on the element name and its attributes. They provide the benefits of server-side rendering while still preserving an HTML editing experience.
+  There are many built-in Tag Helpers for common tasks - such as creating forms, links, loading assets and more - and even more available in public 
+  GitHub repositories and as NuGet packages. Tag Helpers are authored in C#, and they target HTML elements based on element name, attribute name, or 
+  parent tag. Tag Helpers are usually defined by adding an attribute, to HTML code inside the .cshtml file, 'asp-'. Tag Helpers provide an HTML-friendly 
+  development experience and a rich IntelliSense environment for creating HTML and Razor markup. Most of the built-in Tag Helpers target existing HTML 
+  elements and provide server-side attributes for the element.
+  Example:
+    <p>
+      Thank you for confirming your email.
+      Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
+    </p>
+    ** Note: There are framework defined tag helpers (ie. asp-controller, asp-action ...) and custom (ie. asp-route-*)
+    
+Partial views
+- A partial view is a.cshtml markup file without an @page directive maintained within the Views folder (MVC) or Pages folder (Razor Pages). In ASP.NET Core MVC, 
+  a controller's ViewResult is capable of returning either a view or a partial view. In Razor Pages, a PageModel can return a partial view represented as a 
+  PartialViewResult object.
+  
+View Components
+- View Components allow you to package rendering logic and reuse it throughout the application. They're similar to partial views, but with associated logic.
+  View components are similar to partial views, but they're much more powerful. View components don't use model binding, they depend on the data passed when 
+  calling the view component. This article was written using controllers and views, but view components work with Razor Pages.
+
+  * A view component:
+    - Renders a chunk rather than a whole response.
+    - Includes the same separation-of-concerns and testability benefits found between a controller and view.
+    - Can have parameters and business logic.
+    - Is typically invoked from a layout page.
+  
+    View components are intended anywhere reusable rendering logic that's too complex for a partial view, such as:
+    - Dynamic navigation menus
+    - Tag cloud, where it queries the database
+    - Sign in panel
+    - Shopping cart
+    - Recently published articles
+    - Sidebar content on a blog
+    - A sign in panel that would be rendered on every page and show either the links to sign out or sign in, depending on the sign in state of the user
+
+    A view component consists of two parts:
+    - The class, typically derivd from ViewComponent
+    - The result it returns, typically a view.
+    
+    Like controllers, a view component can be a POCO, but most developers take advantage of the methods and properties available by deriving from ViewComponent.
+    When considering if view components meet an app's specifications, consider using Razor components instead. Razor components also combine markup with C# code 
+    to produce reusable UI units. Razor components are designed for developer productivity when providing client-side UI logic and composition.
+
