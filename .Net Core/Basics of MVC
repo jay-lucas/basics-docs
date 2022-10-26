@@ -1,0 +1,117 @@
+What is MVC?
+- MVC is short for Model, View, and Controller. MVC is a popular way of organizing your code. The big idea behind MVC is that each section of your 
+  code has a purpose, and those purposes are different. Some of your code holds the data of your app, some of your code makes your app look nice, 
+  and some of your code controls how your app functions. MVC is a way to organize your code’s core functions into their own, neatly organized boxes. 
+  This makes thinking about your app, revisiting your app, and sharing your app with others much easier and cleaner.
+  
+Parts of MVC
+- Model : Model code typically reflects real-world things. This code can hold raw data, or it will define the essential components of your app. For instance, 
+          if you were building a To-do app, the model code would define what a “task” is and what a “list” is – since those are the main components of a todo app.
+
+- View : View code is made up of all the functions that directly interact with the user. This is the code that makes your app look nice, and otherwise defines how 
+         your user sees and interacts with it.
+
+- Controller : Controller code acts as a liaison between the Model and the View, receiving user input and deciding what to do with it. It’s the brains of the 
+               application, and ties together the model and the view.
+               ** Note: Controllers shouldn't be overly complicated by too many responsibilities. To keep controller logic from becoming overly complex, push 
+                        business logic out of the controller and into the domain model.
+               
+.NET MVC Application
+- The ASP.NET Core MVC framework is a lightweight, open source, highly testable presentation framework optimized for use with ASP.NET Core. ASP.NET Core MVC 
+  provides a patterns-based way to build dynamic websites that enables a clean separation of concerns. It gives you full control over markup, supports 
+  Test Driven Development (TDD) friendly development and uses the latest web standards.
+  
+Routing in MVC
+- ASP.NET Core MVC is built on top of ASP.NET Core's routing, a powerful URL-mapping component that lets you build applications that have comprehensible and 
+  searchable URLs. This enables you to define your application's URL naming patterns that work well for search engine optimization (SEO) and for link generation, 
+  without regard for how the files on your web server are organized. You can define your routes using a convenient route template syntax that supports route 
+  value constraints, defaults and optional values.
+  
+  * Two kind of Routing
+  - Convention-based routing: Enables you to globally define the URL formats that your application accepts and how each of those formats maps to a specific action 
+                              method on a given controller. When an incoming request is received, the routing engine parses the URL and matches it to one of the 
+                              defined URL formats, and then calls the associated controller's action method.
+                              Example: 
+                                routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");
+                                ** Note: This code is put into the Program.cs file in your MVC project
+                              
+  - Attribute routing: Enables you to specify routing information by decorating your controllers and actions with attributes that define your application's routes. 
+                       This means that your route definitions are placed next to the controller and action with which they're associated.    
+                       Example: 
+                         [Route("api/[controller]")]
+                          public class MyController : Controller
+                          {
+                              [HttpGet("{id}")]
+                              public IActionResult GetProduct(int id)
+                              {
+                                  ...
+                              }
+                          }
+                          ** Note: This code is put into a Controller class (MyController.cs) in the Controllers folder in your MVC project
+  
+  
+  Model Binding
+  - ASP.NET Core MVC model binding converts client request data (form values, route data, query string parameters, HTTP headers) into objects that the controller 
+    can handle. As a result, your controller logic doesn't have to do the work of figuring out the incoming request data; it simply has the data as parameters to 
+    its action methods.
+    Example: 
+      public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
+      ** Note: This code is a method that's put into a Controller class file
+      
+  Model Validation
+  - ASP.NET Core MVC supports validation by decorating your model object with data annotation validation attributes. The validation attributes are checked on the 
+    client side before values are posted to the server, as well as on the server before the controller action is called.
+    Example:
+      using System.ComponentModel.DataAnnotations;
+      public class MyViewModel
+      {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
+      }
+      ** Note: This code is the Model class (MyViewModel.cs) located in the Model Folder. You need models for the databinding.
+    
+      Use in the controller action:
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+        {
+            if (ModelState.IsValid)
+            {
+                // work with the model
+            }
+            // At this point, something failed, redisplay form
+            return View(model);
+        }      
+        ** Note: The framework handles validating request data both on the client and on the server. Validation logic specified 
+                 on model types is added to the rendered views as unobtrusive annotations and is enforced in the browser with jQuery Validation.
+                 
+Dependency Injection
+- ASP.NET Core has built-in support for dependency injection (DI). In ASP.NET Core MVC, controllers can request needed services through their 
+  constructors, allowing them to follow the Explicit Dependencies Principle. Your app can also use dependency injection in view files, 
+  using the @inject directive.
+  Example: 
+    @inject SomeService ServiceName
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>@ServiceName.GetTitle</title>
+    </head>
+    <body>
+        <h1>@ServiceName.GetTitle</h1>
+    </body>
+    </html>
+    ** Note: This code is HTML code, with the extention .cshtml, located in either the Views or Shared Folders in your projects directory
+    
+ Filters
+ - Filters help developers encapsulate cross-cutting concerns, like exception handling or authorization. Filters enable running custom 
+   pre- and post-processing logic for action methods, and can be configured to run at certain points within the execution pipeline for a 
+   given request. Filters can be applied to controllers or actions as attributes (or can be run globally). Several filters (such as Authorize) 
+   are included in the framework. [Authorize] is the attribute that is used to create MVC authorization filters.
+   
