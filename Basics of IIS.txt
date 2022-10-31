@@ -16,3 +16,8 @@ How IIS works
 
 - Additional supported protocols include the Simple Mail Transfer Protocol (SMTP), to send and receive email, and the Network News Transfer Protocol, to deliver 
   articles on USENET.
+
+How to set up IIS on Windows 10 and up environment
+- 1) Go to Control Panel -> Programs -> Programs and Features. On the left menu select 'Turn Windows features on or off'
+  2) In the Windows Features modal check the 'Web Management Tools' and select IIS Management Console
+  3) Select 'Internet Information Services' folder, Open the folder and select 'Application Development Features' and select the application features for ASP.NET
