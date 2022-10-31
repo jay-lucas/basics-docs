@@ -7,3 +7,12 @@ What is Information Services (IIS)?
   
 - A web server can deliver information to users in several forms, such as static webpages coded in HTML; through file exchanges as downloads and uploads; 
   and text documents, image files and more.
+
+How IIS works
+- IIS works through a variety of standard languages and protocols. HTML is used to create elements such as text, buttons, image placements, direct 
+  interactions/behaviors and hyperlinks. The Hypertext Transfer Protocol (HTTP) is the basic communication protocol used to exchange information between web servers 
+  and users. HTTPS -- HTTP over Secure Sockets Layer (SSL) -- uses Transport Layer Security or SSL to encrypt the communication for added data security. 
+  The File Transfer Protocol (FTP), or its secure variant, FTPS, can transfer files.
+
+- Additional supported protocols include the Simple Mail Transfer Protocol (SMTP), to send and receive email, and the Network News Transfer Protocol, to deliver 
+  articles on USENET.
