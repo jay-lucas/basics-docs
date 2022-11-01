@@ -1,0 +1,36 @@
+What is Information Services (IIS)?
+- Internet Information Services (IIS) is a flexible, general-purpose web server from Microsoft that runs on Windows systems to serve requested HTML pages or files.
+  An IIS web server accepts requests from remote client computers and returns the appropriate response. 
+  
+- This basic functionality allows web servers to share and deliver information across local area networks (LAN), such as corporate intranets, and 
+  wide area networks (WAN), such as the Internet.
+  
+- A web server can deliver information to users in several forms, such as static webpages coded in HTML; through file exchanges as downloads and uploads; 
+  and text documents, image files and more.
+
+How IIS works
+- IIS works through a variety of standard languages and protocols. HTML is used to create elements such as text, buttons, image placements, direct 
+  interactions/behaviors and hyperlinks. The Hypertext Transfer Protocol (HTTP) is the basic communication protocol used to exchange information between web servers 
+  and users. HTTPS -- HTTP over Secure Sockets Layer (SSL) -- uses Transport Layer Security or SSL to encrypt the communication for added data security. 
+  The File Transfer Protocol (FTP), or its secure variant, FTPS, can transfer files.
+
+- Additional supported protocols include the Simple Mail Transfer Protocol (SMTP), to send and receive email, and the Network News Transfer Protocol, to deliver 
+  articles on USENET.
+
+How to set up IIS on Windows 10 and up local environment
+  1) Go to Control Panel -> Programs -> Programs and Features. On the left menu select 'Turn Windows features on or off'
+  2) In the Windows Features modal check the 'Web Management Tools' and select 'IIS Management Console'
+  3) Select 'Internet Information Services' folder, Open the folder and select 'Application Development Features' and select the application features for ASP.NET
+  
+  ** Note: On a windows server you need to add two roles to your server: Application Server & Web Server
+  
+Adding a Website to IIS  
+  1) Search for Internet Information Services (IIS) Manager application
+  2) Right click 'Sites' folder and select 'Add Website'
+  3) In the 'Add Website' modal enter in the name you want to call the site in the 'Site name' textbox, then we need to pick the application pool. 
+     ** Note: The Application Pool is defaulted to the 'Site name' unless there is a application pool that already exist 
+     
+     - What is a Application Pool and what does it do?
+  
+ 
+
