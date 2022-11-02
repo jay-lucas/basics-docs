@@ -1,4 +1,3 @@
-
 What are Razor Pages?
 - Simplified and easier-to-use page-based web application programming model that focuses on a file based rooting approach eliminating much of the workload 
   that ASP.NET MVC introduced. Keep UI and business logic seperate but still within the same page.

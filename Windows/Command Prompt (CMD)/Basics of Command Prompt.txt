@@ -1,0 +1,32 @@
+Access Command Prompt
+- In the windows search bar, type 'cmd' 
+- Right-click on the software and select "Run as Administrator"
+
+
+
+Basic commands
+- List contents of the current Directory
+  dir
+
+- Change the current Directory
+  cd <directory path>
+  cd.. or cd/ ** Note: Moves directory back a folder
+ 
+- Clear screen
+  cls
+
+- Deleting files
+  del <fileName> for a single file
+  del *.* for all files in the directory
+
+What is Robocopy in Windows?
+- Microsoft Windows’s file replication command is known as “Robust file copy” or simply called Robocopy. 
+  It uses the concept of timestamp and datestamp for incomplete file transfers, that help in tolerating 
+  network interruptions. It knows where to start from using that recovery record having the date/time stamp 
+  information. Robocopy eliminates the chance of failure as it skips NTFS junction points as NTFS happens to 
+  cause infinite loops. Robocopy replaces all other copy commands with multiple exceptional features. 
+ 
+  The concept used in Robocopy to copy multiple files simultaneously is multithreading. The usage of 
+  multithreading makes it much faster than standard copy and also Xcopy.  
+  The basic syntax is: 
+  	robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
