@@ -5,9 +5,59 @@ What is Power Platform?
    these solutions have when integrated with other Microsoft solutions.
 
 Microsoft Power Platform consists of the following components:
-  -> Power BI
   -> Power Apps
   -> Power Automate
+  -> Power BI
   -> Power Virtual Agents.
 
 
+- Power App
+  Provides a a rapid low code development environment for building custom apps for business needs. It has
+  services, connectors, and a scalable data service and app platform, known as the "Microsoft Dataverse",
+  to allow simple intergration and interaction with existing data. Power Apps enables the creation of web 
+  and mobile applications that run on all devices.
+
+- Power Automate
+  Lets users create automated workflows between applications and services. It helps automate repetitive 
+  business processes such as communication, data collections, and decision approvals. 
+
+- Power BI (Business Intelligence)
+  A business analytics service that delivers insight for analyzing data. It can share those insights 
+  through data visualizations which make up reports and dashboards to enable fast, informed decisions.
+  Power BI scales across an organization, and it has built-in governance and security allowing businesses
+  to focus on using data more than managing it.
+  
+- Power Virtual Agents
+  Enagles anyone to create powerful chatbots using a guided, no-code graphical interface, without the need
+  for data scientists or developers. It minimizes the IT effort required to deploy and maintain a custom
+  solution by empowering subject matter experts (SME) to build and maintain their own conversational 
+  solutions. 
+
+Other Power Platform Features
+  - AI Builder
+    Lets users and developers add AI capabilities to the workflows and Power Apps they create and use. 
+    AI Builderis a turnkey solution that allows you to easily add intelligence to your workflows and apps 
+    and predict outcomes to help improve business performance without writing code.
+
+  - Microsoft Dataverse
+    A scalable data service and app platform which lets users securely store and manage data from multiple
+    sources and integrate that data in business applications using a common data model to ensure ease and
+    consistency to users. Microsoft Dataverse is the common currency that enables the components of 
+    Microsoft Power Platform to work together. It's the foundation that enables the consolidation, display, 
+    and manipulation of data.
+
+  - Connectors
+    Enables you to connect apps, data, and devices in the cloud. Consider connectors the bridge across which
+    information and commands travel. There are more than 600 connectors for Microsoft Power Platform, enabling
+    all of your data and actions to connect cohesively. Examples of popular connectors include Salesforce, O365,
+    Twitter, Dropbox, Google services, and more.
+
+The business value of Mocrosoft Power Platform
+
+ - Factors impacting businesses that Power Platform helps solve
+   -> Changing workforce expectations
+   -> Increased costs for custom application development
+   -> Need to become more agile
+   -> Need to scale development efficiently
+
+Data Connectors
