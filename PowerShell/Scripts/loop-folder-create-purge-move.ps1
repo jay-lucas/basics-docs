@@ -63,8 +63,10 @@ foreach($file in $batchFiles)
             Move-Item -Path $txtfile -Destination $batchDeleteResults"\"$folderName -ErrorAction Stop
         }
         catch { 
+            #Catch Error code to put into error.csv
             $errorCode = $Error[0].Exception.GetType().FullName
-            Add-Content -Path $removedReport -Value @("$path,No")
+
+            #Add to report
             Add-Content -Path $errorReport -Value @("$path,$errorCode") 
         } 
 
