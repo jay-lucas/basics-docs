@@ -22,10 +22,13 @@ foreach($file in $batchFiles)
     #Check to see if folder already exist, if not create it
     $IsValidPath = Test-Path -Path $batchDeleteResults"\"$folderName
     if ($IsValidPath -ne 'True') {
+
         #Create directory based off file name
         New-Item -Path $batchDeleteResults"\"$folderName -ItemType Directory 
+
         #Create directory for reports
         New-Item -Path $batchDeleteResults"\"$folderName"\Reports" -ItemType Directory 
+
         #Create directory for purge
         New-Item -Path $batchDeleteResults"\"$folderName"\Purge" -ItemType Directory   
         
