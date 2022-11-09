@@ -49,9 +49,9 @@ foreach($file in $batchFiles)
     {
         try { 
             #Copy and Update from empty directory to the target, suging the option /purge
-            #robocopy $emptyDir $path /purge
+            robocopy $emptyDir $path /purge
             #Delete all files from parent
-            #Remove-Item -LiteralPath $path -Force -Recurse    
+            Remove-Item -LiteralPath $path -Force -Recurse    
             
             #Add to report
             Add-Content -Path $removedReport -Value @("$path,Yes")
