@@ -53,6 +53,7 @@ foreach($file in $batchFiles)
         try { 
             #Copy and Update from empty directory to the target, suging the option /purge
             robocopy $emptyDir $path /purge
+
             #Delete all files from parent
             Remove-Item -LiteralPath $path -Force -Recurse    
             
@@ -69,7 +70,6 @@ foreach($file in $batchFiles)
             #Add to report
             Add-Content -Path $errorReport -Value @("$path,$errorCode") 
         } 
-
     }
 
     # Delete the empty purge directory
