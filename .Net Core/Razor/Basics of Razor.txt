@@ -2,4 +2,19 @@ What are Razor Pages?
 - Simplified and easier-to-use page-based web application programming model that focuses on a file based rooting approach eliminating much of the workload 
   that ASP.NET MVC introduced. Keep UI and business logic seperate but still within the same page.
   
-  
+Benifits of using Razor over MVC  
+- Quickly build and update the UI. Code for the page is kept with the page while keeping UI and business logic concerns separate.
+- Testable and scalable to large apps
+- Keep ASP.NET Core pages organized in a more straightforward way that ASP.NET MVC
+- View specific logic and view models can be kept together in their namespace and directory
+- Groups of related pages can be kept in their namespace and directory
+
+
+What is IActionResult?
+- IActionResult is a base type of ActionResult that specifies how a response will be given for a specific request. IActionResult return type is appropreate when multiple ActionResult return types are possible in an action. ActionResults can represent various HTTP status codes.
+  -> Status Codes:
+      - 1xx : Informational
+      - 2xx : Successful
+      - 3xx : Redirection
+      - 4xx : Client Error
+      - 5xx : Server Error
