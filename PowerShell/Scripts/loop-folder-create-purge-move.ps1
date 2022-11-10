@@ -32,12 +32,11 @@ foreach($file in $batchFiles)
         #Create directory for purge
         New-Item -Path $batchDeleteResults"\"$folderName"\Purge" -ItemType Directory   
         
-        #Create Reports
+        #Create Reports names
         $removedReport = "$batchDeleteResults\$folderName\Reports\$folderName-Removed.csv"
         $errorReport = "$batchDeleteResults\$folderName\Reports\$folderName-Errors.csv"  
 
-        #Adding the header columns (col*) to .csv file
-        Add-Content -Path $errorReport -Value '"Users Errored","Error"'
+        #Adding the header columns to report
         Add-Content -Path $removedReport -Value '"Users Removed","Deleted"'
     }
 
@@ -67,7 +66,13 @@ foreach($file in $batchFiles)
             #Catch Error code to put into error.csv
             $errorCode = $Error[0].Exception.GetType().FullName
 
-            #Add to report
+            #Check if Error report exist if not create it
+            $HasErrorReport = Test-Path -Path $errorReport
+            if ($HasErrorReport -ne 'True') {
+                Add-Content -Path $errorReport -Value '"Users Errored","Error"'
+            }
+
+            #Add to error report
             Add-Content -Path $errorReport -Value @("$path,$errorCode") 
         } 
     }
