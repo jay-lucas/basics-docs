@@ -1,14 +1,16 @@
+What is Blazor?
+- Blazor lets you build interactive web UIs using C# instead of JavaScript. Blazor apps are composed
+  of reusable web UI components implemented using C#, HTML, and CSS. Both client and server code is
+  written in C#, allowing you to share code and libraries.
+
 Basics of Blazor
 - Blazor is a hybrid of two workds: Razor and Browser
 - Blazor is a templating engine to build dynamic content that's combining C# and Html
 - Blazor is a framework for building interactive client-side web user interfaces with .NET. 
-- Blazor shares server and client-side app logic written in C# .NET and applications are rendered in mainstream browsers without having to know JavaScript
-
-Razor Definition
-- Is a markup template that allows you to combine C# code and HTML. It helps with creating logic inside HTML / UI without Javascript. 
-
-Blazor
-- Make use of the components built with razor to render dynamic thats used to develop single page applications (SPA)
+- Blazor shares server and client-side app logic written in C# .NET and applications are rendered 
+  in mainstream browsers without having to know JavaScript
+- Make use of the components built with razor to render dynamic thats used to develop single page 
+  applications (SPA)
 - Uses C# instead of JavaScript to create rich interactive web applications
 
 Why Use Blazor?

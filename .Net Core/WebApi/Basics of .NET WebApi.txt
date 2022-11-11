@@ -1,0 +1,51 @@
+Creating a WebApi Project
+1) Select ASP.NET Core Web API for C#
+2) Additional Information Settings
+   * Configure for HTTPS
+   * Use controllers
+   * Enable OpenAPI support
+
+What is Swagger?
+- Swagger is an open source set of rules, specifications and tools for developing and describing 
+  RESTful APIs. The Swagger framework allows developers to create interactive, machine and human-readable 
+  API documentation. It's an interactive user interface automatically Built into .NET 5 and .NET 6.
+
+About WebApi & MVC projects files
+- Solution : 
+  A registration directory for all the projection 
+
+- Project File (.csproj) : 
+  Configuration in XML format of the project
+
+- Connected Services : 
+  TBD
+
+- Dependencies
+  Library's that the project depend on to run.
+
+- Properties
+  Contains a file called launchSettings.json. This is a configuration file with details about how 
+  the app should behave.
+
+- Controllers 
+  These control the web traffic. 
+
+- appsettings.json
+  Specific configurations for the application that can be accessed anywhere within the application using
+  dependancy injection or the IOC container.
+
+- Program.cs
+  Configures the services and configure the application.
+
+Configure Logging using Serilog
+
+- What is Serilog?
+  Serilog is an easy-to-set-up logging library for .NET with a clear API. One of the most recommended libraries.
+  In the long list of the Serilog's features you can find:
+
+	* Support of structured logging, which allows logs to be treated as data sets rather than text.
+	* Compatibility with asynchronous applications and systems.
+	* Multiple logging targets, such as files, console, email, and many other outputs.
+	* Message templates, that helps you to serialize objects using the @ operator
+
+  
