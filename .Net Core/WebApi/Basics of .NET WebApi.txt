@@ -41,6 +41,8 @@ Configure Logging using Serilog
 
 - What is Serilog?
   Serilog is an easy-to-set-up logging library for .NET with a clear API. One of the most recommended libraries.
+  Serilog allow you to write same logs to more sources simultaneously and gives you more flexiblity of retrieving 
+  them afterwards.
   In the long list of the Serilog's features you can find:
 
 	* Support of structured logging, which allows logs to be treated as data sets rather than text.
@@ -48,4 +50,72 @@ Configure Logging using Serilog
 	* Multiple logging targets, such as files, console, email, and many other outputs.
 	* Message templates, that helps you to serialize objects using the @ operator
 
-  
+  -> To add Serilog to WebApi Application
+     1) In the Program.cs file, under the last configured 'Service' 
+        Example : After builder.Services.AddSwaggerGen()
+    
+     2) Type builder.Host.UseSeriLog()
+     3) Open Nuget package manager and search and install:
+        -> SeriLog.AspNetCore
+ 	  -> SeriLog.Expressions 
+           ** Note: This allows us to put the configurations for SeriLog in appsettings.json 
+
+     4) Go over to appsettings.json / appsettings.Development.json and remove the standard "Logging" sections
+
+     5) Add to the appsettings.json file a new object:
+        "SeriLog": {
+          "MinimumLevel": {
+             "Default": "Information",
+             "Override": {
+                "Microsoft": "Warning",
+                "Microsoft.Hosting.Lifetime":  "Information"
+              }
+           },
+    	     "WriteTo": [ --> Allows us to define all the destinations for the logs to go to (more than one by {})
+		 {  
+      	   "Name": "File",
+               "Args": {
+        	      "path": "./logs/log-.txt", --> '.' means root folder, and files should start off with 'log-'
+        	      "rollingInterval": "Day" --> Creates a unique file name for each day. 
+      	   }
+    		 }
+           ]
+         }
+
+	6) Go back to program.cs file and complete the setup of UseSerilog with adding a delegate function
+         .UseSerilog((ctx, lc) =>
+		lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration)
+         );
+
+ How to Use the SeriLog in your code
+ - When you make the Program.cs service changes to include SeriLog, you can now use the ILogger standard
+   and SeriLog will pick up the logs. The configuration for SeriLog in the appsettings.json file for the
+   "Args" -> "path" actually creates a folder in the main directory using the "rollingInterval" to format
+   the file name to the .txt file in the "path" parameter.
+
+ * Limitations:
+   - Can't access log file while program is running
+
+   -> Work Around for SeriLog limitations : 'Seq'
+
+      What is Seq?
+      - Seq is built for modern structured logging with message templates. Rather than waste time and effort 
+        trying to extract data from plain-text logs with fragile log parsing, the properties associated with 
+	  each log event are captured and sent to Seq in a clean JSON format. Message templates are supported 
+	  natively by ASP.NET Core, Serilog, NLog, and many other libraries, so your application can use the 
+	  best available diagnostic logging for your platform.
+
+        Seq accepts logs via HTTP, GELF, custom inputs, and the seqcli command-line client, with plug-ins or 
+	  integrations available for .NET Core, Java, Node.js, Python, Ruby, Go, Docker, message queues, and many 
+        other technologies.
+
+      How to use Seq.
+      - you must download it from datalust.co/seq website, free for download for very small scale use.
+        ** Note: This sets up a service to run in the background of your PC and gives you a default port.
+   
+      - In the appsettings.json file add another section to "WriteTo" for Seq
+      {
+        "Name": "Seq",
+        "Args": { "serverUrl":  "http://localhost:5341"} -> This is the default port Seq uses unless specified otherwise.
+      }
+
