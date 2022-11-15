@@ -1,1 +1,44 @@
-Basics of RUST
+- What is Rust?
+  Rust is a high-performance, statically-typed multi-paradigm programming language. With the main focus on safety and performance. This language helps 
+  developers create robust and secure applications. Rust is fast and memory-effcient. Using no runtime or garbage collector, the language can cnduct different             performance services, intergrate with other languages, and run on embedded devices. 
+  With a rich type system and ownership model, the Rust language allows getting rid of many bugs at comple time. It also has extensive and useful documentation: 
+  an itegrated package manager, multo-editor support with type inspections and auto-completion.
+  
+- Core Features
+  
+  * Data-Races-Free Threads 
+    When two or more threads access the exact memory location, it’s called a data race. Rust allows having threads without data races. Thus, two threads never 
+    own the same variable, which enforces their safe usage.
+
+  * Error Messages
+    The Rust language goes a step further and improves error messages. Compared to GCC (GNU Compiler Collection), this language displays error messages with 
+    formatting and colors and correct misspellings, thus enhancing clarity. 
+
+  * Move Semantics
+    One of Rust’s features is move semantics. It’s possible to replace a copy operation with the move operation easily. The language moves by default. 
+    It copies the bytes to the new location; then, the old object doesn’t exist anymore. 
+
+  * Zero-Cost Abstraction
+    There is no extra runtime overhead in Rust. Simply put, whether you use the “manual” implementation or the abstraction, the cost will be the same. 
+    Besides, adding abstractions will not affect the runtime performance of the code. On the contrary, it improves the quality and readability of the code. 
+
+  * Pattern Matching
+    Pattern matching is a specific technique that helps find certain characteristics in a tested “match” expression. The Rust language offers this feature 
+    and gives more control over the program’s flow. Among the combinations of patterns are literals, variables, placeholders, arrays, enums, or structs. 
+
+  * Memory Safety
+    By using the concept of ownership, Rust ensures memory safety. In short, ownership is something in the middle between the memory controller and the 
+    garbage collection. The language allows variables to borrow memory space in other variables. It guarantees memory safety without lying too much on 
+    the garbage collector. Rust allows saving up to 50 MiB. 
+
+  * Safe Memory Allocation
+    Contrary to the C language, Rust has manual memory management. A programmer controls where and when to allocate memory. With just a single operator, 
+    Rust uses smart pointers (abstract data type) to track the location of an object and clean it up. 
+
+  * Less Development Time
+    Rust has been created to minimize time spent on developing software. Since it doesn’t require a programmer to be buried with lots of details, which 
+    slow down the process, the language strives to be abstractions-free to make the development easier and faster. 
+
+  * Effective C Bindings
+    Bindings to C libraries mean that the Rust programming language can inter-operate with the C language. It allows the language to reach out to the C APIs, 
+    thus improving its ownership system and guaranteeing memory safety. 
