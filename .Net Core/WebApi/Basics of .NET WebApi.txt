@@ -137,3 +137,10 @@ Configure Logging using Serilog
     
     * In the application section of Program.cs
       app.UseCors("AllowAll"); ** Note: You add the name of the Cors Policy 
+      
+      
+   
+      
+      
+      
+      
