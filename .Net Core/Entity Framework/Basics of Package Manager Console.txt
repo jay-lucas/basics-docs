@@ -5,3 +5,10 @@ How to get access to Package Manager Console in Visual Studio?
  1) View tab in Visual Studio -> Other Windows -> Package Manager Console
  2) Tools tab in Visual Studio -> Library Package Manager -> Package Manager Console
  
+
+- To scaffold already existing database
+  1) Scaffold-DbContext '<Database Connection String>' -ContextDir <New Directory where Context will be> -OutputDir <New Directory where Models will be>
+     Example: 'localhost\sqlexpress' -ContextDir Contexts -OutputDir Models
+     
+  2) You will be promped for a provider
+     Provider: Microsoft.EntityFrameworkCore.<database> (ie. SqlServer)
