@@ -138,8 +138,31 @@ Configure Logging using Serilog
     * In the application section of Program.cs
       app.UseCors("AllowAll"); ** Note: You add the name of the Cors Policy 
       
+    ** Note: When you inject the context, or any other object, into the constructor of the controller. This is called inversion of control (IoC) 
+             container or   Dependancy Inversion, which is part of the SOLID principles.
+       
+      public class MyAppController : ControllerBase
+      {
+      	  private readonly ApplicationDbContext context;
+	  
+	  public MyAppController(ApplicationDbContext context)
+	  {
+	  	this.context = context
+	  }
+	  
       
-   
+- What are the SOLID Principles:
+  In software engineering, SOLID is a mnemonic acronym for five design principles intended to make object-oriented designs more understandable, flexible, 
+  and maintainable
+
+ -> The SOLID stands for:
+    * (S)ingle-responsibility principle: There should never be more than one reason for a class to change. In other words, every class should have 
+       only one responsibility. 
+    * (O)pen–closed principle: Software entities should be open for extension, but closed for modification. 
+    * (L)iskov substitution principle: Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it,
+                                       also known as design by contract.
+    * (I)nterface segregation principle: Clients should not be forced to depend upon interfaces that they do not use. 
+    * (D)ependency inversion principle: Depend upon abstractions, [not] concretions. 
       
       
       
