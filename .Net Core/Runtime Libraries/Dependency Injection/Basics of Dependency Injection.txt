@@ -4,7 +4,7 @@ What is Dependancy Injection? : Dependency Injection (DI) is a software design p
 					  DI is a great way to reduce tight coupling between software components. DI also enables us to better 
 					  manage future changes and other complexity in our software. The purpose of DI is to make code maintainable.
 
-	- Dependancy Injection is done in the Program.cs file.
+- Dependancy Injection is done in the Program.cs file.
 
 Features in the Program.cs
 What does AddScoped service do? : 
