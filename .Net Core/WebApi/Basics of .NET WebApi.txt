@@ -139,16 +139,16 @@ Configure Logging using Serilog
       app.UseCors("AllowAll"); ** Note: You add the name of the Cors Policy 
       
     ** Note: When you inject the context, or any other object, into the constructor of the controller. This is called inversion of control (IoC) 
-             container or   Dependancy Inversion, which is part of the SOLID principles.
+             container or Dependancy Inversion, which is part of the SOLID principles.
        
       public class MyAppController : ControllerBase
       {
-      	  private readonly ApplicationDbContext context;
+          private readonly ApplicationDbContext context;
 	  
-	  public MyAppController(ApplicationDbContext context)
-	  {
+	    public MyAppController(ApplicationDbContext context)
+	    {
 	  	this.context = context
-	  }
+	    }
 	  
       
 - What are the SOLID Principles:
@@ -164,6 +164,52 @@ Configure Logging using Serilog
     * (I)nterface segregation principle: Clients should not be forced to depend upon interfaces that they do not use. 
     * (D)ependency inversion principle: Depend upon abstractions, [not] concretions. 
       
+
+When Creating an WebApi Controller
       
-      
-      
+** Note: You don't want to have your entity class (Database Model) to be the class to transport aka 'taxi' data. Your entity class needs to be what the database 
+         interacts with NOT your endpoints. This is when you use Data Transfer Objects (DTO)
+
+What is a Data Transfer Object (DTO)?
+- DTO (Data Transfer objects) is a data container for moving data between layers. They are also termed as transfer objects. DTO is only used to pass data and 
+  does not contain any business logic. They only have simple setters and getters. 
+
+** Note: Use Automapper package to translate entity classes to dto classes. 
+     
+  How to use AutoMapper
+  1) Import Package: AutoMapper.Extensions.Microsoft.DependencyInjection
+  2) Create folder to hold mappings in project: Configurations
+  3) Create new class called MapperConfig and inherit Profile from the Automapper namespace
+     Example: public class MapperConfig : Profile
+
+  4) Add constructor to class and create the map between the entity class and the dto class
+     Example:
+	public class MapperConfig : Profile
+      {
+        public MapperConfig()
+        {
+            CreateMap<MyThingDTO, MyThing>().ReverseMap();
+        }
+      }
+
+  5) Registure the automapper class in the services section 
+     Example: builder.Services.AddAutoMapper(typeof(MapperConfig));
+
+  6) In the controller or file that will use the automapper for the Dto, inject the IMapper interface into the constructor
+     Example: 
+        private readonly IMapper mapper;
+        public AuthorsController(ApplicationDbContext context, IMapper mapper)
+        {
+            _context = context;
+            this.mapper = mapper;
+        }
+  
+  7) In the Method that recieves the DTO object add the mapping
+     Example: var myThing = mapper.Map<MyThing>(myThingDto);
+
+
+** Note: You can have one DTO to handle all the operations (Get, Post, Put, Delete) but the danger in that is you could be exposing properties 
+         that you don't want to expose for certain operations.
+
+
+

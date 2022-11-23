@@ -1,3 +1,19 @@
+What does public do?
+- 
+
+What does private do?
+- 
+
+What does abstract do?
+- An abstract class is an incomplete class or special class that can't be instantiated on it's own. 
+  The purpose of an abstract class is to provide a blueprint for derived classes and set some rules 
+  what the derived classes must implement when they inherit an abstract class. Only used for inheritance
+  purposes.
+
+What does override do?
+- 
+
+
 What does 'boxing' mean?
 
 What does the 'ref' mean?
