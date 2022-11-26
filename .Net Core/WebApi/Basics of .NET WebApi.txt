@@ -204,12 +204,77 @@ What is a Data Transfer Object (DTO)?
             this.mapper = mapper;
         }
   
-  7) In the Method that recieves the DTO object add the mapping
+  7) In the Method that recieves the DTO object add the mapping, this creates a MyThing object mapped from the MYThingDto
      Example: var myThing = mapper.Map<MyThing>(myThingDto);
+ 
 
 
 ** Note: You can have one DTO to handle all the operations (Get, Post, Put, Delete) but the danger in that is you could be exposing properties 
          that you don't want to expose for certain operations.
 
+- What is the .ProjectTo<> Method:
+  Allows Entity Framework becomes more effienct for mapping.
+  Example: await _context.Books
+                    .Include(x => x.Author)
+                    .ProjectTo<BookReadOnlyDTO>(mapper.ConfigurationProvider)
+                    .ToListAsync();
+     
+
+- JWT Authentication
+  Current industry standard with authenticating on APIs especially since it's is stateless. Meaning that there is no real application running to store
+  you session and so on.  
+
+-  Migrations Files
+   When adding a migrations file the EntityTables class has two methods, Up & Down
+   * Up : What changes I want to go up to the database
+   * Down: What i will undo the migration by dropping what it created, will delete all data
 
 
+ ** Note: When creating a ApplicationUser to append to the Identity tables, the PasswordHash. Identity has a way of hashing / encrypting and verifying passwords.
+
+Authentication Controller
+- When accepting data it's always good to use [HttpPost]
+
+** Note: The regular signin method in .net core web development uses the UserManager to sign in and creates cookies that retain state. API's are stateless so they do not create cookies. 
+
+- Setup JSON Web Tokens (JWT)
+  JWT creates an encoded token that has Header, Payload (Data), and a verify Signature with an expiration date.
+
+  1) In the appsettings.json file add another section:
+     "JwtSettings": {
+         "Issuer": "MyApplication.API", -> This is where the Token is being issued from
+         "Audience":  "MyApiClient", -> Which application is consuming this key
+         "Duration" 1, -> This is the time the token last before it expires (in minutes)
+     }
+
+  2) Right click project and select "Manage User Secrets" and extend the JwtSettings object in the secrets.json file
+     "JwtSettings": {
+         "Key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+      }
+     ** Note: This is so we add another level of security 
+ 
+  3) Add a app.UseAuthentication() to the Program.cs file above app.UseAuthorization();
+  4) Add Nuget Package : Microsoft.AspNetCore.Authentication.JwtBearer
+  5) Add a service, under .AddCors:
+     builder.Services.AddAuthentication(options =>
+     {
+         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+	   options.DefaultChallengeScheme= JwtBearerDefaults.AuthenticationScheme;
+     }).AddJwtBearer(options => {
+       options.TokenValidationParameters = new TokenValidationParameters    -> These are standard configurations for security
+       {
+           ValidateIssuerSigningKey = true, -> states that the key must be valid with our key in secrets.json
+           ValidateIssuer = true,
+           ValidateAudience = true,
+           ValidateLifetime = true, -> makes sure token hasn't expired
+           ClockSkew = TimeSpan.Zero, -> deals with difference in time on client and server computers
+           ValidIssuer = builder.Configuration["JwtSettings:Issuer"], -> From appsettings.json
+           ValidAudience = builder.Configuration["JwtSettings:Audience"],  -> From appsettings.json
+           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]))  -> From the secrets.json file
+       };
+   });
+
+   6) Add a method in Auth Controller and set up claims
+
+
+** Note: Claims are bits of information that lets the system know who you are and what you can do. Like name, role are claims. All claims are strings.

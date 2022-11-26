@@ -1,0 +1,74 @@
+- Introduction 
+  HTTP Status codes help categorize the response. Sometimes they are self-explanatory (e.g. 404) and sometimes 
+  they are backed by information (e.g. 201). A REST API MUST implement these status codes well to convey the 
+  right information to its clients. Correct status codes help client app developers handle responses better. 
+  Here will focus more on 4XX Status Codes for communicating errors with the REST clients.
+
+- 2XX Content 
+   Browsers generate a success indicator for the 2XX status code. So 2XX status codes should be used to specify 
+   a successful request.
+   -> 201 Created: Used for POST request to create resource.
+   -> 202 Accepted: Request accepted by server, but cannot respond immediately.
+   -> 203 Non-Authoritative Information: Retrieve information expected from 202 request.
+   -> 204 No Content: Response doesn't have a payload.
+
+   When the server has a long operation to be performed, it responds with 202. But since REST is stateless, it 
+   cannot respond to the request later. The client, therefore after a certain interval, requests again for the 
+   same resource and gets the data intended for request with 202 response. This follow-up request is replied 
+   with status 203 by the server.
+
+- 3XX Redirect 
+  The REST API developer should maintain old resources, in case he is migrating to new ones. 3XX series codes 
+  are displayed as errors in the browser console and should be used to indicate resource relocation.
+   -> 301 Moved Permanently: Server changed the URI and asking the client to use a new URI.
+   -> 302 Found: Server wants to retain old URI, providing an alternate URI. Since Cool URIs don't change
+   -> 303 See Other: Moving a request from PUT request to GET request.
+   -> 304 Not Modified: Server instructing the client to use its cached results.
+   -> 307 Temporary Redirect: This should be used instead of 302 for a temporary redirect. 
+          When compared with 303, this doesn't require a change in method.
+   -> 308 Permanent Redirect: This is similar to 307 but permanent. The HTTP method cannot be changed in the 
+          request like in 301.
+
+   Interestingly 304 is considered a redirect because the server is redirecting the client to its own cache for 
+   the response and not to another URI.
+
+- 4XX Status Codes (Client Errors) 
+  When the client makes a mistake, the server should notify the client of 4XX error. The most popular being 404. 
+  When the server cannot find the resource the client requested. Browsers show errors in their console for 4XX 
+  series, even when they necessarily are errors. For example, when the resource is deleted, the server SHOULD 
+  return 410 instead of 200 stating that the resource has been deleted.
+   -> 400 Bad Request: Request is missing some critical information. Some important Headers.
+   -> 401 Unauthorised: Client doesn't have valid credentials/token (Authentication).
+   -> 402 Payment Required: Paid Service
+   -> 403 Forbidden: Client has requested a forbidden resource. This error can be sent even when the client 
+          has the correct credentials. (Authorization).
+   -> 404 Not Found: Resource does not exist on the server.
+   -> 405 Method not Found: Request method (HTTP Verb) sent by the client is not supported.
+   -> 406: Accept Header sent by the client is not supported.
+   -> 408 request timeout: Server didn't receive a complete request from the client
+   -> 409 Conflict: Client attempting to create a duplicate record, which is not allowed.
+   -> 410 Gone: The requested resource has been deleted.
+   -> 411 Length Required: The server will not accept the request without the Content-Length Header.
+   -> 412 Precondition Failed: The server understands the request, but the format of the request is incorrect.
+   -> 415 unsupported media type: Server doesn't understand the payload format. e.g Server parses xml, 
+          json but payload contains yml. Content-Type or Content-Encoding may also mislead the server and it will send 415 error without checking payload.
+   -> 419 Too Many Requests: The server is unable to handle further requests temporarily.
+   -> 422 Unprocessable Entity: Request body cannot be parsed.
+   -> 429 Too Many Requests: Used for rate limiting.
+   -> 451 Unavailable For Legal Reasons: This status code can be used to adhere to compliance and regulatory 
+          requirements. For example, some APIs cannot be across in certain geographies.
+
+    The server throws 400 when the user is sending an invalid request. Something that's not even HTTP request. 
+    For example, the client is sending just plaintext, with no reference to method or protocol. It throws 422 
+    when Content-Type header says application/JSON, but XML is being sent.
+
+    There are several other 4XX status codes that can be used as well like 407 proxy authentication required, 
+    416 requested range not satisfiable, 417 expectation failed but they are less common.
+
+    These client codes are the most common and best used by REST APIs to convey client errors. There are other 
+    status codes in 4XX series and you can roll out your own for something specific.
+
+- 5XX Server Errors 
+  -> 500 Internal Server Error: is the generic server error which the server shouldn't send. Because it gives very 
+  little information to the REST client about the error on the server, we only use it when we don't know the 
+  cause of the error. But the server is taking the responsibility of the error.
