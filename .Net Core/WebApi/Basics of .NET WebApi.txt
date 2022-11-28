@@ -132,7 +132,7 @@ Configure Logging using Serilog
       builder.Services.AddCors(options => {
       	options.AddPolicy("AllowAll", b => b.AllowAnyMethod()
 					   b.AllowAnyHeader()
-					   b.AllowAnyOrgin());
+					   b.AllowAnyOrigin());
 	});
     
     * In the application section of Program.cs
