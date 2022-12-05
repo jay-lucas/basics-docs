@@ -58,12 +58,18 @@ Blazor Hosting Models:
   - The Blazor app is not downloaded in the browser but executed on the Server
   - The user interacts with the Blazor app remotely via SingnalR connection
   - Cannot work off line
+  - Uses SignalR for realtime connections between web app and server
+    ** Note: If you have thousand connections, SingalR running can be taxing on the server.
+  - Used like typical server application, program must be loaded on a server like IIS, ect..
 
   Blazor WebAssembly App
   - Client Side hosting model
-  - It's dependances and the .NET runtime are downloaded to the browser
+  - Initial load time is slower because program is getting loaded into the browser, but after it's running from 
+    the browser
+  - It's dependances and the .NET runtime are downloaded to the browser meaning entire app is stored in browser
   - The blazor app is executed on the browser via WebAssembly
   - All UI updates and Event handling happens in the same process
+  - Runs as a progressive web app which allows you to download it to your device (Mobile, Desktop, tablet)
   
   When to choose:
   Blazor WebAssembly                            VS                     Blazor Server
@@ -303,11 +309,22 @@ Blazor Hosting Models:
 		in the header.
 		
 	   
+- To generate HTTP client code user: NSwag
+  -> Why NSwag?
+     The NSwag project provides tools to generate OpenAPI specifications from existing ASP.NET Web API controllers and client code from these OpenAPI specifications. 
+     The project combines the functionality of Swashbuckle (OpenAPI/Swagger generation) and AutoRest (client generation) in one toolchain. You can use NSwag for 
+     Angular, Typsescript, or React as well.
 
 
-
-
-
+ - IDE for NSwag: NSwagStudio
+   1) Download and install: https://github.com/RicoSuter/NSwag/releases
+   2) Run Api Project
+       - When the Swagger page appears, copy the swagger link: https://localhost:44353/swagger/v1/swagger.json
+   3) Open up NSwagStudio and select the runtime that's being used (Net60 = .net 6, Net70 = .net 7, etc.)
+   4) Paste swagger.json link into the "Specification URL" section then hit the "Create Local Copy Button"
+   5) For "Outputs" section you check off "CSharp Client"
+      ** Note: 
+   
 
 
 

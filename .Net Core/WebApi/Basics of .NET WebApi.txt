@@ -132,7 +132,7 @@ Configure Logging using Serilog
       builder.Services.AddCors(options => {
       	options.AddPolicy("AllowAll", b => b.AllowAnyMethod()
 					   b.AllowAnyHeader()
-					   b.AllowAnyOrigin());
+					   b.AllowAnyOrgin());
 	});
     
     * In the application section of Program.cs
@@ -244,7 +244,7 @@ Authentication Controller
      "JwtSettings": {
          "Issuer": "MyApplication.API", -> This is where the Token is being issued from
          "Audience":  "MyApiClient", -> Which application is consuming this key
-         "Duration" 1, -> This is the time the token last before it expires (in minutes)
+         "Duration" 1, -> This is the time the token last before it expires (can be minutes, hours, days)
      }
 
   2) Right click project and select "Manage User Secrets" and extend the JwtSettings object in the secrets.json file
@@ -277,4 +277,5 @@ Authentication Controller
    6) Add a method in Auth Controller and set up claims
 
 
-** Note: Claims are bits of information that lets the system know who you are and what you can do. Like name, role are claims. All claims are strings.
+** Note: Claims are bits of information that lets the system know who you are and what you can do. Like name, role are claims. All claims are strings. You generate
+         claims to add to the jwt token. You can manuelly enter claims or read claims stored in the database. 
