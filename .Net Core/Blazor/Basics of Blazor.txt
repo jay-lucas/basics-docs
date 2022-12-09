@@ -322,9 +322,31 @@ Blazor Hosting Models:
        - When the Swagger page appears, copy the swagger link: https://localhost:44353/swagger/v1/swagger.json
    3) Open up NSwagStudio and select the runtime that's being used (Net60 = .net 6, Net70 = .net 7, etc.)
    4) Paste swagger.json link into the "Specification URL" section then hit the "Create Local Copy Button"
+
    5) For "Outputs" section you check off "CSharp Client"
-      ** Note: 
-   
+      ** Note: You can use this for typescript or react as well
+
+   6) Change out the Namespace to the Name of the app.
+      Example: 
+         Project Name: MyApp.Blazor.Server
+         NSwag Namespace: MyApp.Blazor.Server.Services.Base
+         ** Note: Namespaces are just folder structure
+
+   7) Check off options
+      -> Use the base URL for the request
+      -> Generate the BaseUrl property 
+      -> Inject HttpClient via constructor
+      -> Generate interfaces for client classes
+
+   8) Output Section: Set up target directory according to where your project is
+        Right click project go to "Copy full path" option and past into the "Output file path (empty: no file output) section
+        Example: C:\MyApp.Blazor\MyApp.Blazor.csproj : is where the project is located
+
+   9) Remove the .csproj after the last '\' and replace it to 'Services\Base' (to create those folders in your project) and add the name of the 
+      file you want to create at the end 'ServiceClient.cs'
+        Example: C:\MyApp.Blazor\Services\Base\ServiceClient.cs
+
+   10) Select Generate Files button.
 
 
 
