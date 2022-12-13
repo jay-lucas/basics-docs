@@ -347,7 +347,13 @@ Blazor Hosting Models:
         Example: C:\MyApp.Blazor\Services\Base\ServiceClient.cs
 
    10) Select Generate Files button.
+   11) NSwag uses Newtonsoft so you have to install the package Microsoft.AspNetCore.Mvc.NewtonsoftJson to use this feature and the ServiceClient.cs file
+       to work.
 
+   ** Note: If the projects Api changes you just have to get the updated version of the swagger.json doc URL in step 2. Once NSwagStudio closes you 
+            have to go though steps 1-11 again.
+            If you don't want to go through steps 1-11 each time save the configuration by hitting 'File' and 'Save As' in the NSwagStudio IDE. Add
+            extention .nswag at the end of the file name.
 
 
 
