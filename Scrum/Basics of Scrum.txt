@@ -1,6 +1,49 @@
-What is Scrum?
-- Scrum is a framework within which people can address complex adaptive problems, while productively and creatively delivering 
+- What is Scrum?
+  Scrum is a framework within which people can address complex adaptive problems, while productively and creatively delivering 
   products of the highest possible value.
+ 
+- Scrum rituals (2 weeks)
+  4 Scrum rituals that the Sprint encompasses:
+  * Daily Scrum every day (15 mins max)
+  * Sprint Review once per sprint (2 hours max)
+  * Sprint Retrospective once per sprint (2 hours max)
+  * Sprint Planning once per sprint (4 hours max)
+  * Backlog Refinement as a group (1 hour per week)
 
-- Sprints
-  * All Sprints should have a one or more goals associated with it. This is to summarize the purpose of the sprint to management.
+-> Week 1
+   Monday: Sprint Planning
+   Tuesday: Daily Scrum
+   Wednesday: Daily Scrum
+   Thursday: Daily Scrum, Backlog Refinement
+   Friday: Daily Scrum
+
+-> Week 2
+   Monday: Daily Scrum, Sprint Review, Sprint Retrospective, Sprint Planning
+   Tuesday: Daily Scrum
+   Wednesday: Daily Scrum
+   Thursday: Daily Scrum, Backlog Refinement
+   Friday: Daily Scrum
+
+   ** Note: Typically it's better to NOT have the sprint start on a Monday and Friday. These days are days that 
+            the team members usually have off or are a holiday. Also a team can decide there scrum cadence. For
+  	      example if the team doesn't want to be in meetings, the second Monday of the sprint all day, the can
+  		change the Sprint Review and Sprint Retrospective
+ 
+
+- Daily Scrum / Daily Standup: every day (15 mins max)
+
+- Sprint Review: once per sprint (2 hours max)
+
+- Sprint Retrospective: once per sprint (2 hours max)
+
+- Sprint Planning: once per sprint (2 hours max)
+  This is the planning for the next 4 sprints. 
+  Steps:
+    1) Check PTO of team
+    2) Review current sprint and seeing what items need to be in the next sprint that haven't been completed
+    3) Review selected for development and seeing what items should be moved to the next sprints
+    4) Review backlog and seeing what items should be moved to the next sprints
+    5) Ask team if they have any future items to populate backlog that's not on board
+    6) Ask if any 'go backs' or comments from the team before ending the meeting
+
+- Backlog Refinement / Backlog Grooming: once per week (1 hour)
