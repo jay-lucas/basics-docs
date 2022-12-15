@@ -10,6 +10,7 @@
   * Sprint Planning / PI Planning once per sprint (4 hours max)
   * Backlog Refinement as a group (1 hour per week)
 
+Sprint X:
 -> Week 1
    Monday: Sprint Planning / PI Planning
    Tuesday: Daily Scrum
