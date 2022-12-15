@@ -1,0 +1,23 @@
+- Agile Board
+  Categories:
+  Category	                Work item type	                        Controls backlogs/boards                              Notes
+  -> Epic	                  Epic	                                  Epic portfolio backlogs and boards                    Epics should be able to be completed. Can't 
+                                                                                                                          have epics continue on forever. Sometimes 
+                                                                                                                          epics and features are often interchangable.
+                                                                                                                          Epics are comprised of a group of features
+  
+  -> Feature	              Feature	                                Feature portfolio backlogs and boards                 Are functionality within a application assigned
+                                                                                                                          to a epic
+                                                                                                                          
+  -> Requirement	          User Story (Agile)                      Product backlogs and boards and Sprints backlog       Depending on the methodlogy the work item
+                            Issue (Basic)                                                                                 structure is different. Requirements are 
+                            Product Backlog Item - PBI (Scrum)                                                            assigned to features.
+                            Requirement (CMMI)	
+                            
+  -> Task	                  Task	                                  Sprints Taskboards                                    Are actionable items assigned to requirements
+  
+  -> Bug	                  Bug	                                    Dependent on how bugs are tracked                     Have their own unique lane and can have task 
+                                                                                                                          associated with it
+  
+  
+  
