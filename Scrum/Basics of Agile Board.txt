@@ -3,8 +3,8 @@
   -> Epic
      - Work item Type: Epic 
      - Controls backlog/boards: portfolio backlogs and boards                    
-     - Notes: Epics should be able to be completed. Can't have epics continue on forever. Sometimes epics and features are often interchangable. Epics are 
-              comprised of a group of features.
+     - Notes: Epics are a large body of work should be able to be completed. Can't have epics continue on forever. Sometimes epics and features 
+              are often interchangable. Epics are comprised of a group of features.
   
   -> Feature	              	                                                
      - Work item Type: Feature                                                                                                                     
@@ -31,4 +31,5 @@
      - Notes: Have their own unique lane and can have task associated with it
   
   
-  
+  ** Notes on story points
+     Story points shouldn't be any larger than 8. If they are they should be broken up in to smaller chuncks for better reporting and scalablity of work.
