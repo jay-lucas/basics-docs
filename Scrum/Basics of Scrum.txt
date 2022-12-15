@@ -11,7 +11,7 @@
   * Backlog Refinement as a group (1 hour per week)
 
 -> Week 1
-   Monday: Sprint Planning
+   Monday: Sprint Planning / PI Planning
    Tuesday: Daily Scrum
    Wednesday: Daily Scrum
    Thursday: Daily Scrum, Backlog Refinement
@@ -29,7 +29,13 @@
   	      example if the team doesn't want to be in meetings, the second Monday of the sprint all day, the can
   		change the Sprint Review and Sprint Retrospective
  
-
+- PI Planning (Backlog Grooming and Sprint Planning)
+  * This is the planning for the next 4 sprints.
+  * Look through backlog and prioritize items from most important to least
+  * Ask for any Personal Time Off (PTO) and establish capicity for each team member
+  * For each item perform a planning poker session with team
+  * Create report for team to report to management
+  
 - Daily Scrum / Daily Standup: every day (15 mins max)
 
 - Sprint Review: once per sprint (2 hours max)
@@ -37,7 +43,7 @@
 - Sprint Retrospective: once per sprint (2 hours max)
 
 - Sprint Planning: once per sprint (2 hours max)
-  This is the planning for the next 4 sprints. 
+ 
   Steps:
     1) Check PTO of team
     2) Review current sprint and seeing what items need to be in the next sprint that haven't been completed
