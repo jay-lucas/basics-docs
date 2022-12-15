@@ -19,11 +19,11 @@ Sprint X:
    Friday: Daily Scrum
 
 -> Week 2
-   Monday: Daily Scrum, Sprint Review, Sprint Retrospective, Sprint Planning
+   Monday: Daily Scrum, Sprint Planning
    Tuesday: Daily Scrum
    Wednesday: Daily Scrum
    Thursday: Daily Scrum, Backlog Refinement
-   Friday: Daily Scrum
+   Friday: Daily Scrum, Sprint Review, Sprint Retrospective
 
    ** Note: Typically it's better to NOT have the sprint start on a Monday and Friday. These days are days that 
             the team members usually have off or are a holiday. Also a team can decide there scrum cadence. For
