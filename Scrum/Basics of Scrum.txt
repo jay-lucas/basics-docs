@@ -26,10 +26,11 @@
 
    ** Note: Typically it's better to NOT have the sprint start on a Monday and Friday. These days are days that 
             the team members usually have off or are a holiday. Also a team can decide there scrum cadence. For
-  	      example if the team doesn't want to be in meetings, the second Monday of the sprint all day, the can
-  		change the Sprint Review and Sprint Retrospective
+  	        example if the team doesn't want to be in meetings, the second Monday of the sprint all day. They can
+  		      decide to change the Sprint Review and Sprint Retrospective days.
  
 - PI Planning (Backlog Grooming and Sprint Planning)
+  Steps:
   * This is the planning for the next 4 sprints.
   * Look through backlog and prioritize items from most important to least
   * Ask for any Personal Time Off (PTO) and establish capicity for each team member
@@ -37,19 +38,27 @@
   * Create report for team to report to management
   
 - Daily Scrum / Daily Standup: every day (15 mins max)
-
-- Sprint Review: once per sprint (2 hours max)
-
-- Sprint Retrospective: once per sprint (2 hours max)
-
-- Sprint Planning: once per sprint (2 hours max)
- 
   Steps:
-    1) Check PTO of team
-    2) Review current sprint and seeing what items need to be in the next sprint that haven't been completed
-    3) Review selected for development and seeing what items should be moved to the next sprints
-    4) Review backlog and seeing what items should be moved to the next sprints
-    5) Ask team if they have any future items to populate backlog that's not on board
-    6) Ask if any 'go backs' or comments from the team before ending the meeting
+  * 
+  
+- Sprint Review: once per sprint (2 hours max)
+  Steps:
+  * 
+  
+- Sprint Retrospective: once per sprint (2 hours max)
+  Steps:
+  * 
+  
+- Sprint Planning: once per sprint (2 hours max)
+  Steps:
+  * Check PTO of team
+  * Review current sprint and seeing what items need to be in the next sprint that haven't been completed
+  * Review selected for development and seeing what items should be moved to the next sprints
+  * Review backlog and seeing what items should be moved to the next sprints
+  * Ask team if they have any future items to populate backlog that's not on board
+  * Ask if any 'go backs' or comments from the team before ending the meeting
 
 - Backlog Refinement / Backlog Grooming: once per week (1 hour)
+  Steps:
+  * 
+  
