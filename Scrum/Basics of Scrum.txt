@@ -30,15 +30,14 @@ Sprint X:
   	        example if the team doesn't want to be in meetings, the second Monday of the sprint all day. They can
   		      decide to change the Sprint Review and Sprint Retrospective days.
  
-- Sprint Planning / PI Planning (Backlog Grooming and Sprint Planning) (2 hours max)
+- PI Planning (Backlog Grooming and Sprint Planning) (2 hours max)
   Steps:
   * This is the planning for the next 4 sprints.
   * Review current sprint and seeing what items need to be in the next sprint that haven't been completed
   * Review selected for development and seeing what items should be moved to the next sprints
   * Look through backlog and prioritize items from most important to least
   * Ask for any Personal Time Off (PTO) and establish capicity for each team member
-  * For each item perform a planning poker session with team and identify / verify definition of Done, Acceptance criteria, and assignments
-    ** Note: No team member should have more than 40 points per sprint.
+    ** Note: No team member should have more than 40 points per sprint each team should have atleast 4 developers.
     
   * Ask team if they have any future items to populate backlog that's not on board
   * Ask if any 'go backs' or comments from the team before ending the meeting
@@ -58,5 +57,6 @@ Sprint X:
 
 - Backlog Refinement / Backlog Grooming: once per week (1 hour)
   Steps:
+  * For each item perform a planning poker session with team and identify / verify definition of Done, Acceptance criteria, and assignments
   * 
   
