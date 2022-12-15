@@ -3,11 +3,11 @@
   products of the highest possible value.
  
 - Scrum rituals (2 weeks)
-  4 Scrum rituals that the Sprint encompasses:
+  5 Scrum rituals that the Sprint encompasses:
   * Daily Scrum every day (15 mins max)
   * Sprint Review once per sprint (2 hours max)
   * Sprint Retrospective once per sprint (2 hours max)
-  * Sprint Planning once per sprint (4 hours max)
+  * Sprint Planning / PI Planning once per sprint (4 hours max)
   * Backlog Refinement as a group (1 hour per week)
 
 -> Week 1
