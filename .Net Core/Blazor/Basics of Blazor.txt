@@ -387,7 +387,9 @@ Blazor Hosting Models:
   -> Within the <EditForm> component add the DataAnnotationsValidator and ValidationSummary components, and a button for submition.
 
   
-
+- Authentication
+  A common way of storing Tokens is through local storage (aka. browser)
+  * Add nuget package Blazored.LocalStorage
 
 
 
