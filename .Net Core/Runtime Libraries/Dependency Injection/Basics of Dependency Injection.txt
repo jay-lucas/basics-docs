@@ -1,12 +1,39 @@
-https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection
+- What is Dependancy Injection? 
+  Dependency Injection (DI) is a software design pattern that allows us to develop loosely coupled code. 
+  DI is a great way to reduce tight coupling between software components. DI also enables us to better manage 
+  future changes and other complexity in our software. The purpose of DI is to make code maintainable.
 
-What is Dependancy Injection? : Dependency Injection (DI) is a software design pattern that allows us to develop loosely coupled code. 
-					  DI is a great way to reduce tight coupling between software components. DI also enables us to better 
-					  manage future changes and other complexity in our software. The purpose of DI is to make code maintainable.
+  ** Note: Dependancy Injection is done in the Program.cs file.
 
-- Dependancy Injection is done in the Program.cs file.
+- Services available in the Program.cs
 
-Features in the Program.cs
-What does AddScoped service do? : 
+-> What does AddScoped service do? : 
+   Scoped objects are the same within a request, but different across different requests. Scoped lifetime services are developed only once 
+   per request. In scoped service, we receive a new object or instance with each single HTTP request. A similar instance is delivered for the 
+   whole scope of the same request. For example, if we have some parameters in the regulator, both object possesses the same instance for the 
+   request. This is definitely a better option when you wish to maintain a state within a request.
 
-What does AddTransient service do? : 
+-> What does AddTransient service do? 
+   Transient objects are always different; a new instance is provided to every controller and every service.
+   Transient lifetime services are automatically developed every time they receive an http request. This transient lifetime works adequately 
+   for stateless services that are lightweight.
+	* Against every single object or instance in the HTTP request, a new single service instance is generated.
+	* This is the right method for the multi-threading technique as both objects are independent of each other.
+	* The instance is generated every time they will get utilized more memory and resources and can get an adverse effect on performance.
+	* This is utilized for lightweight service that is little or has no state.
+
+-> What does AddSingleton service do? 
+   Singleton objects are the same for every object and every request. Singleton lifetime services are automatically developed the 1st time they 
+   are requested (or while ‘ConfigureServices' is run if you mention an object or instance there and then each successive request will utilize 
+   the same object or instance.
+	* Only one service object or instance was developed throughout the lifetime.
+	* Wherever the service is needed, the same object or instance is frequently utilized.
+	* Since its generation of a single lifetime service, memory gets leaked in these services will increase over time.
+	* Also, it possesses a memory efficiency as they are developed once reutilized everywhere.
+
+-> Which Service is used when?
+   In order to understand addtransient vs scoped vs singleton, following are the utility of 3 methods.
+	- AddSingleton method: This can be used for logging service, deployment feature flag (to on and off the module at the time of deployment), 
+	  email service, and many more.
+	- AddScoped method: This is a better choice if you wish to maintain a state within a request.
+	- AddTransient method: This method is used for lightweight as well as stateless service.
