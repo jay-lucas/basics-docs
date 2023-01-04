@@ -163,7 +163,18 @@ Blazor Hosting Models:
           component event.
 
         - [Parameter] key words denotes the target member as a component parameter. This parameter functions similar to a HTML tags attribute <NonRootableComponentName ParameterName />
-	  
+	    You can retrieve the values from the query string with this annotation. 
+	    Example:
+          @page "/authors/edit/{Id}"
+
+	    // UI/UX here....
+
+	    @code
+	    {
+    	    	[Parameter]
+          	public int Id { get; set; }
+	    }
+
     - Forms & Validation
       * A form is defined using the EditForm Component
       * Among Blazor built in components are some form input components
