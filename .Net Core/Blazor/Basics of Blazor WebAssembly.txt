@@ -1,0 +1,14 @@
+Setting Up Blazor WebAssembly App
+- Steps:
+  * Select Blazor WebAssembly from Visual Studios
+  * Additional Information:
+    Framework: .NET 6 or 7
+    Authentication Type: TBD
+    ASP.NET Core hosted: This template is deployed with it's own web API project, webAssembly project, and a 
+                         shared library. One deployment for all. Tightly coupled project.
+
+    Progressive Web Application: Supports librarys that allow for off-line use. Users actually download the 
+					   entire project in there device.
+
+   ** Note: WebAssembly project does not posses the capiblity to have a server connection. 
+		No ability to connect to entity framework
