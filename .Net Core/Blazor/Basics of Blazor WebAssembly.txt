@@ -12,3 +12,7 @@ Setting Up Blazor WebAssembly App
 
    ** Note: WebAssembly project does not posses the capiblity to have a server connection. 
 		No ability to connect to entity framework
+
+ - Progressive Web Applications
+   Allows for application to be downloaded to the browsers and gives an option to download. Not all browsers 
+   are compatible with this feature. Chrome is a compatible browser while Firefox and Edge is not. 
