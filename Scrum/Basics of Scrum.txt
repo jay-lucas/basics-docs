@@ -60,7 +60,7 @@ Sprint X:
   * For each item, that doesn't have story points, perform a planning poker session with team and 
     identify / verify definition of Done, Acceptance criteria, and assignments
   * Removing user stories that are no longer relevant
-  * reordering the priority of items
-  * adding and correcting estimates
+  * Reordering the priority of items
+  * Adding and correcting estimates
   * splitting user stories to fit the scope of the upcoming sprint
   
