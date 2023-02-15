@@ -1,0 +1,24 @@
+S.O.L.I.D Principles
+
+S : Single-responsibility Principles
+    A piece of code should only have one responsiblity. It should do one thing and do it well. 
+
+O : Open-closed Principle
+    Objects or Entities or Classes should be open for extentions but closed for modification. If
+    you create a class you should be able to extend it without needing to modify its original
+    implementation. 
+
+L : Liskov Subtitution Principle
+    Every Class or derived class should be substitutable for there base or parent class. Whatever
+    you derive from another class it should be similar enough to not cause conflicts
+
+I : Interface Segeration Principles
+    A client should never be forced to implement methods or functionality that it doesn't need.
+    Write your code in a modular way that if you need 5 method you can give 5 methods not any
+    methods that is not needed.
+
+D : Dependency Inversion Principles
+    Entities must depend on abstractions and not the implementation. The code should not necessary
+    have all the details of how it's done it just need to know something is done. Like a contract
+    to carry out a task but don't know the details of how you forfilled the contract.
+
