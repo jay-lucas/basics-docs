@@ -1,0 +1,53 @@
+For Visual Studio Community Edition 2022
+
+Downloading Portal Application into source control
+
+Step 1: Install Power Platform CLI for Visual Studio
+        https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction
+
+Step 0: Go to Azure DevOps, Under Repos select Files. Copy the https URL of your repository to clone it in Visual Studios
+
+Step 0: Open Visual Studio Community Edition 2022 > Select "Clone Repository" and paste in the URL from Azure DevOps 
+
+Step 2: Go to power platform admin center and get the Environment URL by clicking on the Environment link and seein gthe details
+
+Step 4: In the top menu select "View" tab and select "Terminal" option.
+
+Step 5: You need to connect to your Dataverse environment by executing following command. pac auth create -u https://[Environment_url]  
+        This will prompt you to login to your environment account
+
+Step 6: Get the list of available Portals by executing following command. pac paportal list
+
+Step 7: Get the copy the WebSiteId of the portal website you wish to put into source control
+
+Step 8: Now download the website components using following command. pac paportal download –p [PATH] -id [WebSiteId]
+        [Path] = Should be the directory on your PC where your cloned Repository is in Step 1.
+
+Step 9: In Visual Studio Community Edition 2022 select "File" from the top tab menu, select "Open", then select "Folder". Select
+        the top level folder that you used as your [Path]. Here you can see the portal Project downloaded from Power Platform.
+
+Step 10: In Visual Studio Community Edition 2022, select the "View" from the top menu, then select "Git Changes". Fill out the 
+         the comments section "Initial Commit" and then select the dropdown option "Commit All and Push"
+	   Note: this is the baseline code "master". No changes should be made to master directly. You can create a CI/CD pipeline
+               to publish master into the Power Apps environment once master has been updated. Would suggest adding the gated
+		   checkin options for the master branch and also assign atleast one reviewer. 
+
+-- Make changes
+Step 1: In Visual Studio Community Edition 2022, at the bottom right corner of your screen where it says "master", click on master
+        then select "Create New Branch". This branch should be named after a ticket for easier tracking [MyTaskNumber].
+     
+Step 2: In Visual Studio Community Edition 2022, open the "Solution Explorer", the "web-pages" folder, then go to "home" folder, then "content-pages", double click
+        "Home.en-US.webpage.copy.html" make a change then check in branch by selecting the "Git Changes" tab which should be already open from previously. 
+	  Write comment and then "Commit and Push" as before. A "Create a pull Request" link should be present which takes you to Azure Devops. Assign a 
+	  reviewer / work item link (this should be in sync with the branch number). Then hit the Create button and complete merge. 
+
+Step 3: Select approve to verify all is correct and then hit "Complete" to merge into "master" branch. 
+
+Step 4: In Visual Studio Community Edition 2022, at the bottom right corner of your screen where it says [MyTaskNumber] and select "master",
+        select the "Git Changes" tab and select the solid down arrow to pull the latest version from master branch into your local master branch.
+        After your local master has been uploaded with the latest version, delete the merged branch. 
+
+
+Step 5: Upload the modified website components using following command. pac paportal upload –path [Folder-location]
+        [Folder-location] = This should be the folder that matches the Power Apps you changed, with the code inside, not the parent folder
+        
