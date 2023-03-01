@@ -1,0 +1,125 @@
+- What is SSMS? 
+  SQL Server Management Studio (SSMS) is an integrated environment for managing any SQL infrastructure. Use SSMS to access, 
+  configure, manage, administer, and develop all components of SQL Server, Azure SQL Database , Azure SQL Managed Instance, 
+  SQL Server on Azure VM, and Azure Synapse Analytics. SSMS provides a single comprehensive utility that combines a broad 
+  group of graphical tools with many rich script editors to provide access to SQL Server for developers and database administrators 
+  of all skill levels.
+
+- SQL Server Management Studio components
+  * Use Object Explorer to view and manage all of the objects in one or more instances of SQL Server.	 
+  * Use Template Explorer to build and manage files of boilerplate text that you use to speed the 
+    development of queries and scripts.	 
+  * Use the deprecated Solution Explorer to build projects used to manage administration items such as 
+    scripts and queries. 
+  * Use the visual design tools included in Management Studio to build queries, tables, and diagram databases.	 
+  * Use the Management Studio language editors to interactively build and debug queries and scripts with Query and Text Editors
+
+- Logging on to Database (On-Primises)
+  You must provide the correct credentials to access your database
+  * Server Name: . 
+    -- Note: Which means 'on this pc'
+  * Authentication: Windows Authentication -> This means your authenticating from your computers login
+    -- Note: There are many kinds of authentication types. Depending on the database your connected to you may have to use the 
+	       one of the other types, but they will require a User Name & Password to access. 
+    
+ ******* EB After this section you'll fill this out. Use the structure i have in all these documents. Remember be detailed ******
+
+- Create a Database
+  What are the rules and naming conventions?
+  In creating a database we have to be precise in naming the whole database.
+  Being short and precise will make it easy for us to diffrentiate one databse from the other.
+  The name can contain letters a-z,all characters like underscore(_),brackets(),parenthesis{},etc...
+  The first letter of the database(DB) should in a upper case and the rest will be in lower case.
+  After naming the Data Base we shall end it with DB, with no space in between.
+ Example :- ReservationDB
+            AkluBakeryDB
+            CrewsDB  
+  What are the steps?
+  In creating a DB we follow the following steps
+
+STEP 1) Open our SQL SERVER MANAGEMENT STUDIO (SSMS)
+STEP 2) we connect to our server which is on premise.
+STEP 3) we go to our Object Explorer (which is on the left side of our screen) and right click the (+) button on the 
+	Databases folder to show existing databases if any.
+STEP 4) after right clicking the database folder we will get a dialogue box with options of New Database..., we click on that option.
+STEP 5) A new page will appear on the screen with the cursour on the Databse Name.
+STEP 6) After the database is given a name in the "Owner" textbox underneith you make the owner sa. This ensures full access to the database. 
+        "sa" stands for Server Administrator.
+STEP 7) After naming our database short and precisely we click on the OK button on the right bottom of our new opened up screen. 
+
+- Creating a Table
+
+ What are the rules and naming conventions? 
+
+ In naming tables we have to be extra carefull ,because when we quiery to find results the tables are the main source of data.
+ We can use alphabets A-Z,characters like (_),() and etc...
+ We can use both singular and plurar conventions. I prefer to use plurar names and nounes in naming my tables.
+ Example- Ratings, Expenses,Restaurants ,Products etc...
+ If there is a need to use more than 1 word to describe what is in the table, DO IT. 
+ Example  In the 'RestaurantCuisines' table we cant only use 'Restauant' because we already have a table named Restaurant in our 
+ DB, the same goes for cuisines. Naming it either of the two wouldnt clearly describe what is in the table.'RestasurantCuisines' 
+ is the right and correct way for naming this table.
+ 
+ What are the steps? 
+
+ In creating TABLES we use the following steps
+
+STEP 1) We first go to our explorer and click on our databse which was created as xxxxxDB and click on the plus(+) sign.
+STEP 2) After we clicked the plus sign there will be a drop down of Database Diagrams,Tables,views,External Resources etc..,we go 
+to the tables folder and Right Click on the plus (+) sign.
+STEP 3) After the right click we will get an options of New, Filter etc..., we go to New --then click on New Table... 
+STEP 4) After we wait for the loading to stop we get a new screen next to our explorer with Coloumn Name, Data Type AND Allow Nulls.
+STEP 5) NOW we fill our datas as we want with the apporpraite naming conventions and data types.
+  
+  What is a Primary Key (PK), How do you set it, And what is it used for.
+
+  Primary Keys uniquely identfies each record in a table. Primary Keys must contain unique values and cannot contain Null VALUES.
+  A table can have only 1 primary key.
+  A DB must have a primary key for options to INSERT,UPDATE,DELETE,JOIN etc..
+
+ SEETING UP PRIMARY KEY 
+
+ Setting up primary key is preety much easy what we have to do is we go to our coloumns in our already created table 
+ and choose the data we want to set as primary key and go to the right side of the field and RIGHT CLICK on it. we will then get option of 
+ SET PRIMARY KEY, we click on it and where done.
+ After seeting up our primary key we will find a key sign before the field selected as Primary key.
+ 
+  What are the primary data types and give examples of what data type is used for what type of data:
+    Example:
+    -> nvarchar(50) : This is used with data that is text. The parentheses denotes the maximum number of charaters this 
+                      column can have.
+
+    -> int :  This is used with data that is numbers. examples are XxxxID, Age, Weight etc...
+     
+    -> money : This is used with data that is price. Price of any product Example cars,bread,beer anything that has price uses this data type.
+     
+    -> text : This is used with letters. Anything Thats letters from a-z. Example Name, Last Name etc...
+
+    -> bit :  This is used with a YES OR NO answers. bit is only true or false. Examples are Is Active, Stock Availability.
+ 	      If you allow nulls, then that's three values. true (1), false (0), null. What does null indicate with a column being called InActive. 
+              They either are or not. Just like a order. Is it IsComplete? thats a yes or no. You can't have a null order
+
+
+Shortcut to local database
+** Note: if you add a '.' to server name when connecting to the server, ssms will instantly connect to your local database
+
+Importing & Exporting Data
+** Note: The newer version of SSMS Import Data wizard errors out with 64bit systems. You have to make sure you have installed the 64bit
+         version on your PC. This is usually by adding Visual Studio IDE and selecting the SQL Database options in the download options.
+
+Creating a custom shortcut to SSMS 
+- In this example we will create an shortcut to the 64bit version of the Import Data wizard.
+Step 1: In your Windows Operating systems search bar, search for "Import". This should show you the 
+        "SQL Server 20xx Import & Export Data (64bit)" Application.
+
+Step 2: Right click application and select "Open File location" option. This will take you to the shortcut "SQL Server 20xx Import and 
+        Export Data (64bit). Right click the short cut and select "Open File Location" again. This will take you to the Microsoft
+        SQL Server sub-folder (Binn) that has the Import Executible "DTSWizard.exe". Copy this folder path. You will need it to 
+        create the custom shortcut
+
+Step 3: Open up SQL Server Management Studios (SSMS), select "Tools" from top menu and select "External Tools" option. Give the link
+        a Title (ex: Import and Export Data) and in the Command section paste the folder path from Step 2 and hit the '...' button.
+        This will open up the folder and select the DTSWizard.exe, hit open. 
+
+Step 4: Hit Apply and OK. Go to "Tool" menu again and you will see the new link to the 64bit version of the Wizard that will work 
+        with SSMS.
