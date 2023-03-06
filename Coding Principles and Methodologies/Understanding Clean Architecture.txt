@@ -52,7 +52,28 @@
   insurance against the evolution of technology that can make products obsolete not long after they are developed. Onion Architecture
   builds on top of Layered Architecture.
 
-Pros:
+  Typical onion structure:
+  -> Application Core:
+     Everything connects to the application core. Application core contains the following items:
+     - Applicaton Services Interfaces which contains:
+       - Domain Service Interfaces which contains:
+         - Domain Entities
+ 
+  -> User Interface:
+     Connects to the application cores Application Service Interfaces. Can include projects like ASP.NET, WPF, Console, etc
+
+  -> API Services:
+     Connects to the application cores Application Service Interfaces. Can include projects like REST, WCF, etc
+
+  -> Test:
+     Connects to the application cores Application Service Interfaces. Can include projects for Unit Tests, 
+     Intergration Tests, etc
+
+  -> Infrastructure:
+     Connects to the application cores Application Service Interfaces. Can include projects for Data Access, SMTP Server (email),
+     Logging, Object Mappers (AutoMapper), etc.
+
+  Pros:
     * It provides better testability as unit tests can be created for seperate layers
     * Easier to make changes in code base without directly affecting other modules
     * Promotes loose coupling between layers
