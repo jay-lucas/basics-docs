@@ -57,7 +57,8 @@
      Everything connects to the application core. Application core contains the following items:
      - Applicaton Services Interfaces which contains:
        - Domain Service Interfaces which contains:
-         - Domain Entities
+         - Domain Entities 
+         
  
   -> User Interface:
      Connects to the application cores Application Service Interfaces. Can include projects like ASP.NET, WPF, Console, etc
@@ -71,8 +72,13 @@
 
   -> Infrastructure:
      Connects to the application cores Application Service Interfaces. Can include projects for Data Access, SMTP Server (email),
-     Logging, Object Mappers (AutoMapper), etc.
-
+     Logging, Object Mappers (AutoMapper), anything with the database (ie: Entity Framework, 3rd party software, or an ORM), etc.
+     ** Note: When it comes to database it should be written in a way that should be database agnostic.
+                    Database Agnotic: The method or format of data transmission is irrelevant to the device or program's function. 
+                                      This means that the device or program can receive data in multiple formats or from multiple 
+						  sources, and still process that data effectively (ex. Entity Framework core). Entity Framework
+						  Core has support for serveral database engines and we can write our data access layer in a way
+						  that we can change out the database without effecting the functionality of the application.
   Pros:
     * It provides better testability as unit tests can be created for seperate layers
     * Easier to make changes in code base without directly affecting other modules
@@ -82,6 +88,7 @@
     * Flexible infrastructure enabling free range use of data
     * Removes the need for common or shared documents/projects
     * Data Access and UI layers are reduced in size and complexity
+    * Better maintainability
 
   Cons:
     * Longer learning curve 
