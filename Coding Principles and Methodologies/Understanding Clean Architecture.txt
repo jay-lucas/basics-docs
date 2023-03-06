@@ -1,0 +1,41 @@
+- All-In-One Architecture (Monolith)
+  Monolithic software is designed to be self-contained, wherein the program's components or functions are tightly coupled rather 
+  than loosely coupled, like in modular software programs. In a monolithic architecture, each component and its associated components 
+  must all be present for code to be executed or compiled and for the software to run.
+
+  Monolithic applications are single-tiered, which means multiple components are combined into one large application. Consequently, 
+  they tend to have large codebases, which can be cumbersome to manage over time. 
+
+  Pros:
+    * Easier to deliver
+    * Can be stable and a long term solution
+
+  Cons:
+    * Hard to enforce S.O.L.I.D Principles
+    * Harder to maintain as a project grows
+    * Harder to Test
+
+- Layered Architecture
+  The layered architecture style is one of the most common architectural styles. The idea behind Layered Architecture is that 
+  modules or components with similar functionalities are organized into horizontal layers. As a result, each layer performs a 
+  specific role within the application.
+  
+  Typical layered structure:
+  -> Web Layer
+     * Controllers, exception handlers, filters, view templates, and what the users will interact with (UI/UX).
+
+  -> Service Layer
+     * Application services and infrastructure services which contains the 3rd party applications (Email services, logging services, ect)
+
+  -> Repository / Business Logic Layer
+     * Repository interfaces and their implementations which contains Data Access, conditional logic that make the application
+       unique. 
+
+  Pros:
+    * Better enforcing of S.O.L.I.D Principles
+    * Easier to maintain larger code base
+
+  Cons:
+    * Layers are dependent
+    * Still acts as one application (Monolith)
+    * Logic is sometimes scattered across layers
