@@ -105,7 +105,9 @@ Shortcut to local database
 
 Importing & Exporting Data
 ** Note: The newer version of SSMS Import Data wizard errors out with 64bit systems. You have to make sure you have installed the 64bit
-         version on your PC. This is usually by adding Visual Studio IDE and selecting the SQL Database options in the download options.
+         version on your PC. This is usually by adding Visual Studio IDE and selecting the SQL Database options in the download options. 
+         If you want to use the import wizard that's defaulted you have to uninstall Office 64bit version and install Office 32bit 
+         version. If not you'll have to use the following steps below to use the 64bit import wizard. 
 
 Creating a custom shortcut to SSMS 
 - In this example we will create an shortcut to the 64bit version of the Import Data wizard.
