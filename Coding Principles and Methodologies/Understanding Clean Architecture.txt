@@ -49,7 +49,8 @@
   Developing a system core which is both stable and efficient is essential when basing a system’s architecture to that of an onion. 
   By emphasizing the separation of concerns and dependencies in this layered fashion, this will increase the quantity of 
   maintainable applications running simultaneously. If onion based architecture is set up properly, it is intended to provide 
-  insurance against the evolution of technology that can make products obsolete not long after they are developed.
+  insurance against the evolution of technology that can make products obsolete not long after they are developed. Onion Architecture
+  builds on top of Layered Architecture.
 
 Pros:
     * It provides better testability as unit tests can be created for seperate layers
