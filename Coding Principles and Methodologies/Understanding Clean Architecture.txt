@@ -18,7 +18,7 @@
 - Layered Architecture
   The layered architecture style is one of the most common architectural styles. The idea behind Layered Architecture is that 
   modules or components with similar functionalities are organized into horizontal layers. As a result, each layer performs a 
-  specific role within the application.
+  specific role within the application. Allows for clearier boundries from an All-in-one.
   
   Typical layered structure:
   -> Web Layer
@@ -38,4 +38,24 @@
   Cons:
     * Layers are dependent
     * Still acts as one application (Monolith)
-    * Logic is sometimes scattered across layers
+    * Logic is sometimes scattered across layers, so you'd have to update multiple layers for one update potientially
+
+
+- Onion Architecture
+  Onion Architecture guides software engineers to model their business logic in a core collection with no coupling to the outer 
+  concerns, such as database choice or how the user interface operates. Onion architecture is a software architectural configuration 
+  to maintain libraries and dependencies on the extremities of a software system while sustaining a strong and cohesive system core. 
+
+  Developing a system core which is both stable and efficient is essential when basing a system’s architecture to that of an onion. 
+  By emphasizing the separation of concerns and dependencies in this layered fashion, this will increase the quantity of 
+  maintainable applications running simultaneously. If onion based architecture is set up properly, it is intended to provide 
+  insurance against the evolution of technology that can make products obsolete not long after they are developed.
+
+Pros:
+    * It provides better testability as unit tests can be created for seperate layers
+    * Easier to make changes in code base without directly affecting other modules
+    * Promotes loose coupling
+
+  Cons:
+    * Longer learning curve 
+    * Very time consuming
