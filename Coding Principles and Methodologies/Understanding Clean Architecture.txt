@@ -55,7 +55,12 @@
 Pros:
     * It provides better testability as unit tests can be created for seperate layers
     * Easier to make changes in code base without directly affecting other modules
-    * Promotes loose coupling
+    * Promotes loose coupling between layers
+    * Better sustainability over time with simplified indexing
+    * Reduce dependencies within your platform
+    * Flexible infrastructure enabling free range use of data
+    * Removes the need for common or shared documents/projects
+    * Data Access and UI layers are reduced in size and complexity
 
   Cons:
     * Longer learning curve 
