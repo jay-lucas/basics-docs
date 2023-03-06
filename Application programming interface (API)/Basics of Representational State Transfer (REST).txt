@@ -1,0 +1,3 @@
+- Representational State Transfer
+  Representational State Transfer (REST) is a software architecture that imposes conditions on how an API should work. 
+  REST was initially created as a guideline to manage communication on a complex network like the internet.
