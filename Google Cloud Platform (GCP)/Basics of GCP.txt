@@ -10,6 +10,23 @@ Why we need Regions and Zones
      * Challenge 1: Slow access for users from other parts of the world known as "High Latency"
      * Challenge 2: What if the data center in London Region crashes?
        - Answer: Application goes down which means this architecture has "low availablity"
+ 
+ Possible solution to Scenerio 1: Set up Multiple Data Centers
+ - Add one more data center in London Region
+   What would be the challenges?
+   * Challenge 1: Still slow access for users from other parts of the world known as "High Latency"
+   * Challenge 2: (Solved) What if the data center in London Region crashes?
+      - Answer: Appication is still available from other data center
+   * New Challenge: What if entire London Region goes down?
+      - Answer: Application will go down
    
-  
-  
+ Complete soultion to Scenerio 1: Set up Multiple Regions with Multiple Data Centers per region
+  - Add new Mumbai Region
+   What would be the challenges?
+   * Challenge 1: (Solved) Slow access for users from other parts of the world
+     ** Note: if there are an influx of users in other parts of the world, say New York, you would like add another Region in New York
+   * Challenge 2: (Solved) What if the data center in London Region crashes?
+      - Answer: Appication is still available from other data center
+   * Challenge 3: (Solved) What if entire London Region goes down?
+      - Answer: Application is served from Mumbai
+     
