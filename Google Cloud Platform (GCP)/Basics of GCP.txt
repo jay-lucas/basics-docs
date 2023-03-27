@@ -1,1 +1,15 @@
-What is
+What is Google Cloud Platform (GCP)
+- Is a cloud computing platform that provides infrastructure tools and services for users to 
+  build applications and services on top of. Provides (200+) on-demand services.
+  
+
+Why we need Regions and Zones
+-> Scenario 1: 
+   - Application is deployed in a data center in London Region.
+     What would be the challenges?
+     * Challenge 1: Slow access for users from other parts of the world known as "High Latency"
+     * Challenge 2: What if the data center in London Region crashes?
+       - Answer: Application goes down which means this architecture has "low availablity"
+   
+  
+  
