@@ -48,3 +48,6 @@ What is a Zone and it's needs?
      -> Region Code: us-east1 
         Regions: Moncks Corner, South Carolina, North America
         Zones: us-east1-a, us-east1-b, us-east1-c
+
+What is Google Compute Engine (GCE)?
+- 
