@@ -29,4 +29,22 @@ Why we need Regions and Zones
       - Answer: Appication is still available from other data center
    * Challenge 3: (Solved) What if entire London Region goes down?
       - Answer: Application is served from Mumbai
-     
+
+What is a Region:
+- A region is a specific geographical location to host your resources
+  ** Note: Google Cloud Platform (GCP) provides 20+ regions around the world. 
+           Advantages of Multiple regions:
+           * High Availability: If a region in one area is down you have can serve the application from another region.
+           * Low Latency: You can serve users from the nearest region to them
+           * Global Footprint: You can deploy an application, once a region is set up, to multiple parts of the world
+           * Adhere to government regulations: Different contries have different regulations. You can regulate data going to other regions.
+  
+What is a Zone and it's needs?
+- Each Region has at lease 3 Zones. This increases availability and fault tolerance within same the region
+- Each Zone has one or more discrete clusters and are connected through "Low-Latency" links.
+  * Cluster: distinct physical infrastructure that is housed in a data center
+** Note: If one zone fails within the region the next zone takes over. 
+   Example: 
+     -> Region Code: us-east1 
+        Regions: Moncks Corner, South Carolina, North America
+        Zones: us-east1-a, us-east1-b, us-east1-c
