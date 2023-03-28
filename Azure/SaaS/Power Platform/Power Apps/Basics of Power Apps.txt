@@ -1,0 +1,147 @@
+
+Creating apps
+** Note: Make sure your application is connected to your tables in the dataverse to Update
+Functions 
+- Patch()
+  Patch is used to insert and update records into a table
+
+  -> Create A New Record With Power Apps Patch Function
+     Syntax: Patch(Datasource, BaseRecord, NewRecord)
+     Example: 
+	  Patch(
+    			Employees,
+    			Defaults(Employees),
+    			{
+        			FullName: "Sarah Green",
+        			EmployeeNumber: 1002,
+        			HireDate: Date(2018,3,14),
+        			Active: true
+    			}
+		 )
+   
+  -> Update An Existing Record Using Power Apps Patch Function
+     Syntax: Patch(Datasource, BaseRecord, ChangeRecord)
+     Example: 
+	 Patch(
+    		Employees,
+    		LookUp(
+        		Employees,
+        		ID=4
+    		),
+    		{
+        		FullName: "Sarah Brown",
+        		EmployeeNumber: 1003
+    		}
+	 )
+
+  -> Get The Result Of The Patch Function
+     Syntax: Set(VariableName, Patch(Datasource, BaseRecord, ChangeRecord))
+     Example:
+        Set(
+    		varEmployeeCurrent,
+    		Patch(
+        		Employees,
+        		Default(Employees),
+        		{
+            		FullName: "Kelly Smith",
+            		EmployeeNumber: 1066
+        		}
+    		)
+	  )
+
+  -> Create Multiple New Records With Power Apps Patch Function
+     Syntax: Patch(Datasource, BaseRecordsTable, NewRecordsTable)
+     Example:
+        ClearCollect(
+    		colNewEmployees,
+    		Table(
+        		Employees@{
+            		FullName: "Mary Baker",
+            		EmployeeNumber: 0798,
+            		HireDate: Date(2022, 06, 06),
+            		Active: true
+        		},
+        		Employees@{
+            		FullName: "John Miller",
+            		EmployeeNumber: 1203,
+            		HireDate: Date(2022, 06, 11),
+            		Active: true
+        		},
+        		Employees@{
+            		FullName: "Susan Wright",
+            		EmployeeNumber: 0590,
+            		HireDate: Date(2022, 06, 23),
+            		Active: true
+        		}
+    		)
+	);
+	Patch(
+    		Employees,
+    		ForAll(
+        		Sequence(CountRows(colNewEmployees)),
+        		Defaults(Employees)
+    		),
+    		colNewEmployees
+	);
+
+ -> Edit Multiple Existing Records Using Power Apps Patch Function
+    Syntax: Patch(Datasource, BaseRecordsTable, UpdateRecordsTable)
+    Example:
+     		ClearCollect(
+    			colUpdateEmployees,
+    			Table(
+        			Employees@{
+            			ID: 2,
+            			FullName: "Alice Henderson",
+           			 	EmployeeNumber: 1001
+        			},
+        			Employees@{
+            			ID: 4,
+            			Active: false
+        			},
+        			Employees@{
+            			ID: 5,
+            			HireDate: Date(2022, 08, 01)
+        			}
+    			)
+		);
+		Patch(
+    			Employees,
+    			ShowColumns(
+        			colUpdateEmployees,
+        			"ID"
+    			),
+    			colUpdateEmployees
+		);
+
+  -> Upsert Multiple Records With Power Apps Patch Function
+     Syntax: Patch(Datasource, BaseRecordsTable, UpsertRecordsTable)
+     Example: 
+	  ClearCollect(
+    		colUpsertEmployees,
+    		Table(
+        		Employees@{
+            		ID: 2,
+            		FullName: "Alice Henderson",
+            		EmployeeNumber: 1001
+        		},
+       		Employees@{ 
+            		ID: Blank(),
+            		FullName: "Sarah Green",
+            		EmployeeNumber: 1002,
+            		HireDate: Date(2018, 03, 14),
+            		Active: false
+        		},
+        		Employees@{ 
+            		ID: Blank(),
+            		FullName: "Kelly Smith",
+            		EmployeeNumber: 1066,
+            		HireDate: Date(2022, 05, 20),
+            		Active: true
+        		}
+    		)
+	);
+	Patch(
+    		Employees,
+    		colUpsertEmployees
+	);
