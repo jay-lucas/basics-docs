@@ -145,3 +145,11 @@ Functions
     		Employees,
     		colUpsertEmployees
 	);
+
+ -> Change Values In A Record Variable Using Power Apps Patch Function
+    Syntax: Patch(Record1, Record2)
+    Example:
+    	Patch(
+    		gblEmployee,
+   		{EmployeeNumber: 1063}
+	);
