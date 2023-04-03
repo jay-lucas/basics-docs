@@ -144,7 +144,7 @@ echo $(hostname)
 The output displays the name of the VM your in
 
 echo $(hostname -i)
-This output displays the IP of the VM your in
+This output displays the internal IP of the VM your in
 
 15. wc
 The wc (word count) command is used to find out the number of new lines, word count,
