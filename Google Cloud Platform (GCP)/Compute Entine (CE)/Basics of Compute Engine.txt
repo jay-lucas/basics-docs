@@ -5,3 +5,15 @@ What is Compute Engine?
   * Load balancing and auto scaling for multiple VM instances
   * Attach storage (% network storage) to your VM Instances
   * Manage network connectivity and configuration for your VM instances
+
+- Creating an CE instance
+  Step 1: Name the instance
+  Step 2: Add Labels
+    ** Note: Add Environment, business Units, ect. Add information detailing more information about the vm
+  Step 3: Select Region and Zone 
+    ** Note: Pick a region closes to you or your customer
+  Step 4: Select the Hardware you want to run on the VM (Machine Configuration)
+  Step 5: Select the Operating System you want to run on the VM (Book Disk)
+  Step 6: Select Firewall
+    ** Note: Allow HTTP traffic allows someone from the outside to access your VM
+  Step 7: Create Instance
