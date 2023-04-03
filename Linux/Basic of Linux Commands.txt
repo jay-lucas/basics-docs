@@ -44,7 +44,6 @@ The su command changes the shell so that it is used as a super user. Until you u
 exit command, you can continue to be the super user.
 The sudo command is used when you just need to run something as a super user, you
 can use the sudo command. This will allow you to run the command in elevated rights
-
 and once the command is executed you will be back to your normal rights and
 permissions.
 An example is the shutdown command, which turns off the computer system.
@@ -72,7 +71,6 @@ $ passwd admin
 7. mv
 The mv command moves a file or renames it. Here the file name gets changed from
 first.txt to second.txt.
-
 $ mv first.txt second.txt
 
 Type ls to view the change.
