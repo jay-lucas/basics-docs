@@ -13,7 +13,7 @@ What is Compute Engine?
   Step 3: Select Region and Zone 
     ** Note: Pick a region closes to you or your customer
   Step 4: Select the Hardware you want to run on the VM (Machine Configuration)
-  Step 5: Select the Operating System you want to run on the VM (Book Disk)
+  Step 5: Select the Operating System (image) software you want to run on the VM (Book Disk)
   Step 6: Select Firewall
     ** Note: Allow HTTP traffic allows someone from the outside to access your VM
   Step 7: Create Instance
@@ -33,3 +33,7 @@ Important choices to make when creating a VM.
    ** Note: Once you choose the machine family you select a machine type. There are a variety of machine types 
             available for each machine family. memory, disk and networking capabilites increase along with vCPUs for machine types.
    
+2) What operating system and what software do you want on your VM instance?
+   - Types of Images:
+     -> Pulbic Images: Provided & maintained by Google or open source communities or thrid party vendors
+     -> Custom Images: Created by you for your projects
