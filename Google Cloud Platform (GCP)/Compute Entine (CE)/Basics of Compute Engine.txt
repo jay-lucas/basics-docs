@@ -17,3 +17,19 @@ What is Compute Engine?
   Step 6: Select Firewall
     ** Note: Allow HTTP traffic allows someone from the outside to access your VM
   Step 7: Create Instance
+
+Important choices to make when creating a VM.
+1) What is the hardware? Two important things:
+   - Machince Families for different Workloads:
+     -> General Purpose (E2, N2, N2D, N1): Best prince-performance ratio
+        > Used for Web and application servers, small-medium databases, dev environments
+     
+     -> Memory Optimized (M2, M1): Ultra high memory workloads
+        > Used for Large in-memory databases and In-memory analytics
+        
+     -> Compute Optimized (C2): Compute intensive workloads
+        > Used for Gaming Applications
+        
+   ** Note: Once you choose the machine family you select a machine type. There are a variety of machine types 
+            available for each machine family. memory, disk and networking capabilites increase along with vCPUs for machine types.
+   
