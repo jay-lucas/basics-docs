@@ -37,3 +37,27 @@ Important choices to make when creating a VM.
    - Types of Images:
      -> Pulbic Images: Provided & maintained by Google or open source communities or thrid party vendors
      -> Custom Images: Created by you for your projects
+
+- Simplify VM HTTP server setup
+How do we reduce the number of steps in creating an VM instance and setting up a HTTP Server?
+Options:
+-> Startup script
+-> Instance Template
+-> Custom Image
+
+- Startup script
+  The process of installing any software or installing OS patches when an VM instance is launched is called "Bootstrapping". In VM, 
+  you can configure Startup script to bootstrap.
+  Step 1) Go to Compute Engine in console and select 'Instance Template' and create a new instance.
+  Step 2) Configure similar to creating a new VM
+          **Note: Make sure Region is the same as other VMs
+  Step 3) Select the 'Advance Options' drop down and go to 'Automation' section
+  Step 4) Add start up script to text area
+          Example:
+          #!/bin/bash
+          apt update 
+          apt -y install apache2
+          echo "Hello world from $(hostname) $(hostname -I)" > /var/www/html/index.html
+  Step 5) Select create button
+  
+  
