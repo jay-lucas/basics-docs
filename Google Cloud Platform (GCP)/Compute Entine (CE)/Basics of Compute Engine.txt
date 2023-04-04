@@ -60,4 +60,14 @@ Options:
           echo "Hello world from $(hostname) $(hostname -I)" > /var/www/html/index.html
   Step 5) Select create button
   
+- Instance Template
+  -> Why do you need to specify all the VM instances details (image, instance type etc) every time you launch an instance?
+     * How about creating a 'Instance Template'
+     * Define machine type, image, labels, startup script and other properties
+  -> Used to create VM instances and managed instance groups
+     * Provides a convient way to create similar instances
+  -> CANNOT be updated
+     * To make a change, copy an existing template and modify it
+  -> (Optional) Image family can be specified (example - debian-9):
+     * Latest non-deprecated version of the family is used
   
