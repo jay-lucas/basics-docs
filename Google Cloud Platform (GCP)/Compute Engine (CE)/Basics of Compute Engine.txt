@@ -218,3 +218,22 @@ Options:
               Step 1) Go to Virtual Machines under Compute Engine
               Step 2) select 'VM Instances' and hit create 
               Step 3) Under 'Machine Configuration' you can select the 'Custom' option in the 'Machine type' field
+
+ - Grapic Processing Units (GPUs)
+   How do you accelerate math intensive and graphics-intensive workloads for Artificial Intelligence (AI) / Machine Learning (ML) ect?
+   -> Add a GPU to your virtual machine:
+      * High performance for math intensive and graphics-intensive workloads
+      * Higher Cost
+      * (Remember) Use images with GPU libraries (Deep Learning) installed, otherwise, GPU will not be used.
+      * Restrictions:
+        1) GPU NOT supported on all machine types (For example, not supported on Shared-core or Memory-optimized machine types)
+        2) On host maintenance can only have the value "Terminate VM Instance"
+   -> Recommended Availability Policy for GPUs
+      1) Automatic restart - on
+      ** Note: Where can you configure a GPUs?
+         2 ways to add GPUs, Opt for a GPU family or Opt for a General family and add a GPU if available
+         Step 1) Go to Virtual Machines under Compute Engine
+         Step 2) select 'VM Instances' and hit create 
+         Step 3) Under 'Machine Configuration' you can go to the 'Machine family' select tab 'GPU'
+         ** Note: You can add GPUs to even the General-Purpose machine families and you can add a GPU except for 
+                  Shared-core and Memory-optimized machine types.
