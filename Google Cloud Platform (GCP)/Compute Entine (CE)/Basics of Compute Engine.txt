@@ -32,10 +32,11 @@ Important choices to make when creating a VM.
         
    ** Note: Once you choose the machine family you select a machine type. There are a variety of machine types 
             available for each machine family. memory, disk and networking capabilites increase along with vCPUs for machine types.
-   
+            Example: e2-standard-2 = 2 vCPUs
+            
 2) What operating system and what software do you want on your VM instance?
    - Types of Images:
-     -> Pulbic Images: Provided & maintained by Google or open source communities or thrid party vendors
+     -> Public Images: Provided & maintained by Google or open source communities or thrid party vendors
      -> Custom Images: Created by you for your projects
 
 - Simplify VM HTTP server setup
@@ -59,6 +60,13 @@ Options:
           apt -y install apache2
           echo "Hello world from $(hostname) $(hostname -I)" > /var/www/html/index.html
   Step 5) Select create button
+  ** Note: When a VM is created it is given an Internal and External IP. 
+           Internal IP: Only accessible within the Google Cloud Platform environment
+           External IP: Accessible from the web and can be SSH into. 
+           ** Note: When the VM is stopped the External IP is overridden by another IP address. To ensure the External IP doesn't 
+           change you must give it an Static IP address. 
+           Static IP: An address that remains attached to the instance even when it's stopped. You are billed for Static IP addresses
+                      even when it's NOT used. Static IP addresses can be switched to another VM instance in the same project
   
 - Instance Template
   -> Why do you need to specify all the VM instances details (image, instance type etc) every time you launch an instance?
