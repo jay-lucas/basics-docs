@@ -82,5 +82,32 @@ Options:
   -> Can be shared across projects
   -> (recommendation) Deprecate old images (& specify replacement image)
   -> (Recommendation) Hardening an Image - Customize images to your corporate security standards
+   ** Note: Prefer using Custom Images to Startup script
 
-- Prefer using Custom Images to Startup script
+- How to create a Custom Image
+  Step 1) In Compute Engine section select 'Disks'
+          ** Note: this is the hard disk associated with your VM what the OS runs on.
+  Step 2) Go to 'Actions' at the end of the table with the VM Disk Image you want to create the image from select 'Create Image'
+  Step 3) Name the image and select 'Location' 
+          - Multi-regional: If you expect the image to be used in other regions
+          - Regional: If you expect the image to be used only in a specific region
+  ** Note: Never create an custom image from a running instance. You need to stop the instance first or select 'Keep instance running'
+           which is not recommended. 
+  ** Note: you can create a VM instance from the custom image OR create an instance template based on the custom image
+     Step 1) Go to instance Template
+     Step 2) Use a current template or create a new one but change the 'Boot Disk' option, select Custom Image tab, and pick custom image.
+   
+- Troubleshooting Launch of Apache on GCP Virtual Machines
+  Step 1) Ensure you can get to the External IP. Make sure your using the right URL
+  Step 2) Make sure you can SSH into the VM
+  Step 3) If you can SSH into VM, make sure your Apache web server is properly installed
+          Command: ls /var/www/html 
+          * Results -> index.html
+          Step 3a) See what content is in the html file
+          Command: cat /var/www/html/index.html
+          * Results -> Display the contents of the index.html file
+  Step 4) After you ensure step 3, make sure the Apache service is started
+          Command: sudo su
+                   service apache2 start
+          Check to see if URL is working after
+  Step 5) If you still can't see URL then click on the VM Instance name URL, go to 'Firewalls' setting and make sure 'HTTP Traffic' is enabled.
