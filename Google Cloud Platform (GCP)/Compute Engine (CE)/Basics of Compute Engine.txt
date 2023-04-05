@@ -148,6 +148,7 @@ Options:
       * Can be stopped by Google Cloud Platform (GCP) any time (preempted) within 24 hours
       * Maximum time to run is 24 hours
       * Instances get 30 second warning (to save anything they want to save)
+      * Dynamic Pricing 60 - 91% discount compared to on-demand VMs
    -> Use Preempt VM's if:
       1) Your applications are fault tolerant, meaning you can start and stop them at anytime
       2) You are very cost sensitive, meaning you want to run the workload with minimum cost
@@ -163,3 +164,21 @@ Options:
                Step 2) select 'VM Instances' and hit create 
                Step 3) Click on 'Advance Options' then 'Management' scroll down to 'Availability Policy' section
                Step 4) Select 'Spot' for a fault-tolerant VM
+               ** Note: Spot VMs: Latest version of preemptible VMs
+                                  Key Difference: Does nt have a maximum runtime
+                                  * Compared to traditional preemptible VMs which have a maximum runtime of 24 hours
+       
+       - Billing
+         -> You are billed by the second (after a minimum of 1 minute)
+         -> You are NOT billed for compute when a compute instance is stopped
+            * However, you will be billed for any storage attached with it!
+         -> (Recommendation) Always create 'Budget Alerts' and make use of the Budget exports to stay on top of billing!
+         ** Note: How to create budget alerts?
+                  Step 1) Go to Navigation menu in Google Cloud Platform and select 'Billing'
+                  Step 2) Click on 'Budget and alerts' in the left menu and 'Create Budget'
+         -> What are the ways you can save money?
+            * Choose the right machine type and image for your workload
+            * Be aware of the discounts available:
+              - Sustained use discounts
+              - Committed use discounts
+              - Discounts for preemptible VM instances
