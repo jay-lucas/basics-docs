@@ -1,0 +1,121 @@
+What is Compute Engine? 
+- Is the service of provisioning and managing virtual machines in the google platform cloud.
+  Features:
+  * Create and manage lifecycle of Virtual Machines (VM) instances
+  * Load balancing and auto scaling for multiple VM instances
+  * Attach storage (% network storage) to your VM Instances
+  * Manage network connectivity and configuration for your VM instances
+
+- Creating an CE instance
+  Step 1: Name the instance
+  Step 2: Add Labels
+    ** Note: Add Environment, business Units, ect. Add information detailing more information about the vm
+  Step 3: Select Region and Zone 
+    ** Note: Pick a region closes to you or your customer
+  Step 4: Select the Hardware you want to run on the VM (Machine Configuration)
+  Step 5: Select the Operating System (image) software you want to run on the VM (Book Disk)
+  Step 6: Select Firewall
+    ** Note: Allow HTTP traffic allows someone from the outside to access your VM
+  Step 7: Create Instance
+
+Important choices to make when creating a VM.
+1) What is the hardware? Two important things:
+   - Machince Families for different Workloads:
+     -> General Purpose (E2, N2, N2D, N1): Best prince-performance ratio
+        > Used for Web and application servers, small-medium databases, dev environments
+     
+     -> Memory Optimized (M2, M1): Ultra high memory workloads
+        > Used for Large in-memory databases and In-memory analytics
+        
+     -> Compute Optimized (C2): Compute intensive workloads
+        > Used for Gaming Applications
+        
+   ** Note: Once you choose the machine family you select a machine type. There are a variety of machine types 
+            available for each machine family. memory, disk and networking capabilites increase along with vCPUs for machine types.
+            Example: e2-standard-2 = 2 vCPUs
+            
+2) What operating system and what software do you want on your VM instance?
+   - Types of Images:
+     -> Public Images: Provided & maintained by Google or open source communities or thrid party vendors
+     -> Custom Images: Created by you for your projects
+
+- Simplify VM HTTP server setup
+How do we reduce the number of steps in creating an VM instance and setting up a HTTP Server?
+Options:
+-> Startup script
+-> Instance Template
+-> Custom Image
+
+- Startup script
+  The process of installing any software or installing OS patches when an VM instance is launched is called "Bootstrapping". In VM, 
+  you can configure Startup script to bootstrap.
+  Step 1) Go to Compute Engine in console and select 'Instance Template' and create a new instance.
+  Step 2) Configure similar to creating a new VM
+          **Note: Make sure Region is the same as other VMs
+  Step 3) Select the 'Advance Options' drop down and go to 'Automation' section
+  Step 4) Add start up script to text area
+          Example:
+          #!/bin/bash
+          apt update 
+          apt -y install apache2
+          echo "Hello world from $(hostname) $(hostname -I)" > /var/www/html/index.html
+  Step 5) Select create button
+  ** Note: When a VM is created it is given an Internal and External IP. 
+           Internal IP: Only accessible within the Google Cloud Platform environment
+           External IP: Accessible from the web and can be SSH into. 
+           ** Note: When the VM is stopped the External IP is overridden by another IP address. To ensure the External IP doesn't 
+           change you must give it an Static IP address. 
+           Static IP: An address that remains attached to the instance even when it's stopped. You are billed for Static IP addresses
+                      even when it's NOT used. Static IP addresses can be switched to another VM instance in the same project
+  
+- Instance Template
+  -> Why do you need to specify all the VM instances details (image, instance type etc) every time you launch an instance?
+     * How about creating a 'Instance Template'
+     * Define machine type, image, labels, startup script and other properties
+  -> Used to create VM instances and managed instance groups
+     * Provides a convient way to create similar instances
+  -> CANNOT be updated
+     * To make a change, copy an existing template and modify it
+  -> (Optional) Image family can be specified (example - debian-9):
+     * Latest non-deprecated version of the family is used
+  
+** Note: Installing OS patches and software at launch of VM instances increase boot up time. To avoid this use a Custom Image
+         with OS patches and software pre-installed.
+
+- Custom Images
+  -> Reduces Launch Time 
+  -> Can be created from an instance, a presistent disk, a snapshot, another image, or a file in Cloud Storage.
+     * Persistent Disk: When you attach a hard drive to an instance
+     * Snapshot: Copy of a persistent disk
+  -> Can be shared across projects
+  -> (recommendation) Deprecate old images (& specify replacement image)
+  -> (Recommendation) Hardening an Image - Customize images to your corporate security standards
+   ** Note: Prefer using Custom Images to Startup script
+
+- How to create a Custom Image
+  Step 1) In Compute Engine section select 'Disks'
+          ** Note: this is the hard disk associated with your VM what the OS runs on.
+  Step 2) Go to 'Actions' at the end of the table with the VM Disk Image you want to create the image from select 'Create Image'
+  Step 3) Name the image and select 'Location' 
+          - Multi-regional: If you expect the image to be used in other regions
+          - Regional: If you expect the image to be used only in a specific region
+  ** Note: Never create an custom image from a running instance. You need to stop the instance first or select 'Keep instance running'
+           which is not recommended. 
+  ** Note: you can create a VM instance from the custom image OR create an instance template based on the custom image
+     Step 1) Go to instance Template
+     Step 2) Use a current template or create a new one but change the 'Boot Disk' option, select Custom Image tab, and pick custom image.
+   
+- Troubleshooting Launch of Apache on GCP Virtual Machines
+  Step 1) Ensure you can get to the External IP. Make sure your using the right URL
+  Step 2) Make sure you can SSH into the VM
+  Step 3) If you can SSH into VM, make sure your Apache web server is properly installed
+          Command: ls /var/www/html 
+          * Results -> index.html
+          Step 3a) See what content is in the html file
+          Command: cat /var/www/html/index.html
+          * Results -> Display the contents of the index.html file
+  Step 4) After you ensure step 3, make sure the Apache service is started
+          Command: sudo su
+                   service apache2 start
+          Check to see if URL is working after
+  Step 5) If you still can't see URL then click on the VM Instance name URL, go to 'Firewalls' setting and make sure 'HTTP Traffic' is enabled.
