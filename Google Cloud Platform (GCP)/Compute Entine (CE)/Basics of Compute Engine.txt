@@ -71,3 +71,16 @@ Options:
   -> (Optional) Image family can be specified (example - debian-9):
      * Latest non-deprecated version of the family is used
   
+** Note: Installing OS patches and software at launch of VM instances increase boot up time. To avoid this use a Custom Image
+         with OS patches and software pre-installed.
+
+- Custom Images
+  -> Reduces Launch Time 
+  -> Can be created from an instance, a presistent disk, a snapshot, another image, or a file in Cloud Storage.
+     * Persistent Disk: When you attach a hard drive to an instance
+     * Snapshot: Copy of a persistent disk
+  -> Can be shared across projects
+  -> (recommendation) Deprecate old images (& specify replacement image)
+  -> (Recommendation) Hardening an Image - Customize images to your corporate security standards
+
+- Prefer using Custom Images to Startup script
