@@ -261,3 +261,30 @@ Options:
   * Use preemptible instances for fault-tolerant, NON time critical workloads
   * Use labels to indicate environment, team, buiness unit, etc
     
+- Compute Engine Scenarios
+  Scenario 1: What are the pre-requisites to be able to create a VM instance?
+  Solution: 
+       1) Have a Project 
+       2) Have a Billing Account
+       3) Compute Engine APIs should be enabled
+       
+  Scenario 2: You want dedicated hardware for your compliance, laicensing, and management needs
+  Solution:
+       1) Sole-tenante nodes
+  
+  Scenario 3: I have 1000s of VM and i want to automate OS patch management, OS inventory management and
+              OS configuration management (manage software installed)
+  Solution:
+       1) Use the VM Manager to do batch Management
+       
+  Scenario 4: You want to login to your VM instance to install software
+  Solution: 
+       1) SSH into the VM
+       
+  Scenario 5: You do not want to expose a VM to the internet
+  Solution:
+       1) Do NOT assign an external IP address
+       
+  Scenario 6: You want to allow HTTP traffic to your VM
+  Solution: 
+       1) Configure Firewall Rules to allow HTTP traffic
