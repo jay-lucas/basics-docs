@@ -143,3 +143,23 @@ Options:
                Step 3) Click tab 'Purchase a committment'
       ** Note: Once you've registured a committment if you create new instances of that type the discounts are applied     
    
+ - Preemptible VM
+   -> Short-lived cheaper (up to 80%) compute instances
+      * Can be stopped by Google Cloud Platform (GCP) any time (preempted) within 24 hours
+      * Maximum time to run is 24 hours
+      * Instances get 30 second warning (to save anything they want to save)
+   -> Use Preempt VM's if:
+      1) Your applications are fault tolerant, meaning you can start and stop them at anytime
+      2) You are very cost sensitive, meaning you want to run the workload with minimum cost
+      3) Your workload is NOT immediate 
+         Example: Non immediate batch processing jobs
+   -> Restrictions:
+      1) NOT always available
+      2) NO Service Level Agreement (SLA) and CANNOT be migrated to regular VMs
+      3) NO Automatic Restarts
+      4) Free Tier credits not applicable
+      ** Note: To launch a Preemptible VM
+               Step 1) Go to Virtual Machines under Compute Engine
+               Step 2) select 'VM Instances' and hit create 
+               Step 3) Click on 'Advance Options' then 'Management' scroll down to 'Availability Policy' section
+               Step 4) Select 'Spot' for a fault-tolerant VM
