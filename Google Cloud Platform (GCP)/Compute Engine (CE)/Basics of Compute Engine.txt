@@ -119,3 +119,27 @@ Options:
                    service apache2 start
           Check to see if URL is working after
   Step 5) If you still can't see URL then click on the VM Instance name URL, go to 'Firewalls' setting and make sure 'HTTP Traffic' is enabled.
+
+- How to keep cost low for Virtual Machines?
+   -> Sustained use discounts: An automatic discounts for running VM instances for significant portion of the billing month.
+      * Example: If you use N1, N2 machine types for more than 25% of a month, you get a 20% to 50% doscount on every incremental minute.
+      * Discount increases with usage
+      * No action required on your part, automatically applied by the platform
+      * Applicable for instances created by Google Kubernetes Engine and Compute Engin
+      * Restrictions:
+        1) Does not apply on certain types (example: E2 and A2)
+        2) Does not apply to VMs created by App Engine flexible and Dataflow
+      
+   -> Committed use discounts: 
+      * Used for workloads with predictable resource needed
+      * Commit for 1 year or 3 years. Best if your app is needed for a known period of time
+      * Up to 70% discount based on machine type and GPUs
+      * Applicable for instances created by Google Kubernetes Engine and Compute Engin
+      * Restrictions:
+        1) Does not apply to VMs created by App Engine flexible and Dataflow
+      ** Note: To request a Committed use discount VM
+               Step 1) Go to Virtual Machines under Compute Engine
+               Step 2) select 'Committed use discounts' 
+               Step 3) Click tab 'Purchase a committment'
+      ** Note: Once you've registured a committment if you create new instances of that type the discounts are applied     
+   
