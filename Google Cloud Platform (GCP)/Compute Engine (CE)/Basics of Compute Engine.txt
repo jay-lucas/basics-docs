@@ -182,3 +182,39 @@ Options:
               - Sustained use discounts
               - Committed use discounts
               - Discounts for preemptible VM instances
+
+- Live Migration & Availability Policy
+  How do you keep your VM instances running when a host system needs to be updated (a software or a hardware update needs to be performed)?
+  -> Live Migration:
+     * Your running instance is automatically migrated to another host in the same zone
+     * Does NOT change any attributes or properties of the VM
+     * SUPPORTED for instances with local SSDs
+     * NOT SUPPORTED for GPUs and preemptible instances
+     
+  How do you configure Live Migration?
+  -> Availability Policy: Where you configure the Live Migration configuration. 
+     2 important things to configure:
+     * On host maintenance: What should happen during periodic infrasture maintenance?
+       - Migrate (default): Migrate VM instance to other hardware
+       - Terminate: Stop the VM instance
+     * Automatic restart: Restart VM instances if they are terminated due to non-user-initiated reasons (maintenance event, hardwarefaulure etc.)
+     ** Note: To access Live Migration
+              Step 1) Go to Virtual Machines under Compute Engine
+              Step 2) select 'VM Instances' and hit create 
+              Step 3) Click on 'Advance Options' then 'Management' scroll down to 'Availability Policy' section
+              Step 4) Select 'On host maintenance' you can select 'Migrate VM Instance' or 'Terminate VM Instance', you can also configure automatic
+                      restart.
+                      
+  - Custom Machine Types
+    -> What do you do when existing predefined VM options are NOT appropriate for your workload?
+       * Create a machine type customized to your needs (a Custom Machine Type)
+    -> Custom Machine Type: You can adjust vCPUs, memory and GPUs to your workload needs.
+       * Restrictions: Applicable for certain types (E2, N2, or N1 machine types)
+       * Supports a wide variety of Operating Systems (OS): CentOS, CoreOS, Debian, Red Hat, Ubuntu, Windows, etc
+       * Billed per vCPUs, memory provisioned to each instance
+         Example: 
+         Hourly Price: $0.033174 / vCPU = $0.004446 /GB
+     ** Note: Where can you configure a Custom Machine Type?
+              Step 1) Go to Virtual Machines under Compute Engine
+              Step 2) select 'VM Instances' and hit create 
+              Step 3) Under 'Machine Configuration' you can select the 'Custom' option in the 'Machine type' field
