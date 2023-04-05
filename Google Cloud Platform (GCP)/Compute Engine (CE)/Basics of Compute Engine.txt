@@ -237,3 +237,27 @@ Options:
          Step 3) Under 'Machine Configuration' you can go to the 'Machine family' select tab 'GPU'
          ** Note: You can add GPUs to even the General-Purpose machine families and you can add a GPU except for 
                   Shared-core and Memory-optimized machine types.
+  
+  - Important things to remember about a Virtual Machine (VM)
+    * A Virtual Machine (VM) is associated to a project.
+    * Machine type availability can vary from reagion to regions
+    * You can only change the machine type (adjust the number of vCPUs and memory) of a stopped instance, can't change if its running.
+    * VM's can be filtered by various properties
+      -> Filter by: Name, Zone, Machine Type, Internal/External IP, Network, Labels, Status, etc.
+    * Instances are Zonal (Run in a specific zone (in a specific region))
+      -> Images are global (You can provide access to other projects - if needed)
+      -> Instance templates are global (unless you use zonal resources in your templates)
+    * Automatic basic monitoring is enabled
+      -> Default Metrics: CPU utilization, Network Bytes (in/out), Disk Throughput/IOPS
+      -> For Memory Utilization & Disk Space Utilization - Cloud Monitoring agent is needed
+      
+- Best Practices for Virtual Machines (VM)
+  * Choose Zone and Resion based on:
+    -> Cost, regulations, availability needs, latency and specific hardware needs
+    -> Distribute instances in multiple zones and regions for high availability
+  * Choose the right machine type for your needs:
+    -> Use GPUs for Math and Graphic intensive applications
+  * Reserve for "committed use discounts" for constant workloads (websites)
+  * Use preemptible instances for fault-tolerant, NON time critical workloads
+  * Use labels to indicate environment, team, buiness unit, etc
+    
