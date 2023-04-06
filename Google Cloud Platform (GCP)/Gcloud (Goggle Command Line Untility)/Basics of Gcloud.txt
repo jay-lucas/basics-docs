@@ -96,3 +96,32 @@ Gcloud command structure - Playing with services (Compute, Databases, Storage, e
   * gcloud compute zones list
   * gcloud compute regions list
   * gcloud compute machine-types list
+
+Gcloud compute instances create
+- Creating compute instances
+  * gcloud compute instances create [NAME]
+    -> Options:
+       --machine-type (default type in n1-standard-1 - gcloud compute machine-types list)
+       --custom-cpu --custom-memory --custom-vm-type(n1/n2) (Custom Machine)
+         Example: --custom-cpu6 --custom-memory 3072MB --custom-vm-type n2
+       --image
+       --image-family
+       --source-snapshot
+       --source-instance-template
+       --source-machine-image ** Note: beta
+       --service-account
+       --no-service-account
+       --zone=us-central1-b
+       --preemptible
+       --restart-on-failure ** Note: default
+       --no-restart-on-failure
+       --maintenance-policy(MIGRATE) ** Note: default
+       --maintenance-policy(TERMINATE)
+       --boot-disk-size
+       --boot-disk-type
+       --boot-disk-auto-delete **Note: default
+       --no-boot-disk-auto-delete
+       --deletion-protection
+       --no-deletion-protection **Note: default
+     ** And many more.... Google search 'gcloud compute instances create' to get a full list and definitions
+       
