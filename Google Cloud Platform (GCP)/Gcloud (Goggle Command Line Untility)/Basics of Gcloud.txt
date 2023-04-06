@@ -125,3 +125,6 @@ Gcloud compute instances create
        --no-deletion-protection **Note: default
      ** And many more.... Google search 'gcloud compute instances create' to get a full list and definitions
        
+Compute Instances - Default Region and Zone
+- 3 Options:
+  1) Centeralized Configuration: gcloud compute project-info add-metadata
