@@ -81,3 +81,18 @@ Gcloud - Managing Multiple Configurations
                ** Note: Creates a new configuration and activates it while deactivating the other configurations
             -> Activate specific configuration: gcloud config configurations activate [NAME OF CONFIGURATION]
             -> List configurations: gcloud config configurations list
+
+Gcloud command structure - Playing with services (Compute, Databases, Storage, etc)
+- Structure: gcloud GROUP SUBGROUP ACTION ...
+  * GROUP - config or compute or container or dataflow or functions or iam or...
+    -> Which service group are you playing with?
+  * SUBGROUP - instances or images or instance-templates or machine-types or regions or zones
+    -> Which sub group of the services do you want to play with?
+  * ACTION - create or list or start or stop or describe or...
+    -> What do you want to do?
+  
+  Examples:
+  * gcloud compute instances list
+  * gcloud compute zones list
+  * gcloud compute regions list
+  * gcloud compute machine-types list
