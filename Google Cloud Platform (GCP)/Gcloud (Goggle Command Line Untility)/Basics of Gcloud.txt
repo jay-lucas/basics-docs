@@ -72,3 +72,12 @@ Connection to GCP from Cloud Shell
    - Opposite: gcloud config unset 
      ** Note: If you want to remove the defaults under 'set'
      
+Gcloud - Managing Multiple Configurations
+- Scenario 1: You are working on multiple projects from the same machine. 
+  Solution: You would want to be able to execute commands different configurations.
+            How do you simplify this?
+            Command: gcloud config configurations create/delete/describe/activate/list
+            -> Create new configuration: gcloud config configurations create [NAME OF CONFIGURATION]
+               ** Note: Creates a new configuration and activates it while deactivating the other configurations
+            -> Activate specific configuration: gcloud config configurations activate [NAME OF CONFIGURATION]
+            -> List configurations: gcloud config configurations list
