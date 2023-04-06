@@ -23,4 +23,52 @@ Connection to GCP from Cloud Shell
   * Authorize gcloud to use your user account credentials
   * Setup configuration
     -> Includes current project, default zone etc
+    
 - gcloud config list - lists all properties of the active configuration
+** Note: In gcloud you need to access the section configuration first in order to get the values
+   Example: 
+   Command: gcloud config list
+   Returns: 
+     [accessibility]
+     screen_reader = True
+     [component_manager]
+     disable_update_check = True
+     [compute]
+     gce_metadata_read_timeout_sec = 30
+     region = us-east1
+     zone = us-east1-b
+     [core]
+     account = jayluke780@gmail.com
+     disable_usage_reporting = True
+     project = sandbox-project-382616
+     [metrics]
+     environment = devshell
+     
+     ** The default gcloud config is set to [core]
+        Command: gcloud config list account
+        Returns: account = jayluke780@gmail.com
+     But
+        Command: gcloud config list region
+        Returns: Error because [core] doesn't have a property of [region]
+     Therefor to access region
+        Command: gcloud config list compute/region
+        Returns: region = us-east1
+   
+   - Sets the specified property in your active configuration
+     * gcloud config set core/project VALUE 
+     * gcloud config set compute/region VALUE 
+     * gcloud config set compute/zone VALUE
+     * gcloud config set core/verbosity VALUE(debug) 
+     
+   - Syntax: gcloud config set [SECTION]/[PROPERTY] VALUE
+     * core, compute - sections
+     * project, region, zone - properties
+     * Specifying core is optional as it is the default section!
+       -> gcloud config set project VALUE
+       -> gcloud config set verbosity VALUE(debug)
+     * Get more details with gcloud config set --help
+       ** Note: :q gets you out of the 'help' section
+   
+   - Opposite: gcloud config unset 
+     ** Note: If you want to remove the defaults under 'set'
+     
