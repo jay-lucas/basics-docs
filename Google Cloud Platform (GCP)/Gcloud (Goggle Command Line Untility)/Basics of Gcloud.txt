@@ -1,0 +1,26 @@
+What is Gcloud
+- Command line interface to interact with Google Cloud Resources
+- Most GCP services can be managed from Common Language Interface (CLI)  using Gcloud:
+  * Compute Engine Virtual Machines
+  * Managed Instance Groups
+  * Databases
+  * and ...many more
+- You can create/read/update/delete (C.R.U.D) existing resources and perform actions like deployements as well
+- (Remember) Some GCP services have specific CLI tools:
+  * Cloud Storage - gsutil
+  * Cloud BigQuery - bq
+  * Cloud BigTable - cbt
+  * Kubernetes - kubectl (in addition to Gcloud which is used to manage clusters)
+  
+How do you install Gcloud?
+- Gcloud is part of Google Cloud SDK
+  * Cloud SDK requires Python
+  * Instructions to install Cloud SDK (and Gcloud) at https://cloud.google.com/sdk/docs/install
+- You can also use Gcloud on Cloud Shell
+
+Connection to GCP from Cloud Shell
+- gcloud init - initialize or reinitialize gcloud
+  * Authorize gcloud to use your user account credentials
+  * Setup configuration
+    -> Includes current project, default zone etc
+- gcloud config list - lists all properties of the active configuration
