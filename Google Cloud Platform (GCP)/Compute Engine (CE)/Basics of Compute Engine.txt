@@ -148,6 +148,7 @@ Options:
       * Can be stopped by Google Cloud Platform (GCP) any time (preempted) within 24 hours
       * Maximum time to run is 24 hours
       * Instances get 30 second warning (to save anything they want to save)
+      * Dynamic Pricing 60 - 91% discount compared to on-demand VMs
    -> Use Preempt VM's if:
       1) Your applications are fault tolerant, meaning you can start and stop them at anytime
       2) You are very cost sensitive, meaning you want to run the workload with minimum cost
@@ -163,3 +164,127 @@ Options:
                Step 2) select 'VM Instances' and hit create 
                Step 3) Click on 'Advance Options' then 'Management' scroll down to 'Availability Policy' section
                Step 4) Select 'Spot' for a fault-tolerant VM
+               ** Note: Spot VMs: Latest version of preemptible VMs
+                                  Key Difference: Does nt have a maximum runtime
+                                  * Compared to traditional preemptible VMs which have a maximum runtime of 24 hours
+       
+       - Billing
+         -> You are billed by the second (after a minimum of 1 minute)
+         -> You are NOT billed for compute when a compute instance is stopped
+            * However, you will be billed for any storage attached with it!
+         -> (Recommendation) Always create 'Budget Alerts' and make use of the Budget exports to stay on top of billing!
+         ** Note: How to create budget alerts?
+                  Step 1) Go to Navigation menu in Google Cloud Platform and select 'Billing'
+                  Step 2) Click on 'Budget and alerts' in the left menu and 'Create Budget'
+         -> What are the ways you can save money?
+            * Choose the right machine type and image for your workload
+            * Be aware of the discounts available:
+              - Sustained use discounts
+              - Committed use discounts
+              - Discounts for preemptible VM instances
+
+- Live Migration & Availability Policy
+  How do you keep your VM instances running when a host system needs to be updated (a software or a hardware update needs to be performed)?
+  -> Live Migration:
+     * Your running instance is automatically migrated to another host in the same zone
+     * Does NOT change any attributes or properties of the VM
+     * SUPPORTED for instances with local SSDs
+     * NOT SUPPORTED for GPUs and preemptible instances
+     
+  How do you configure Live Migration?
+  -> Availability Policy: Where you configure the Live Migration configuration. 
+     2 important things to configure:
+     * On host maintenance: What should happen during periodic infrasture maintenance?
+       - Migrate (default): Migrate VM instance to other hardware
+       - Terminate: Stop the VM instance
+     * Automatic restart: Restart VM instances if they are terminated due to non-user-initiated reasons (maintenance event, hardwarefaulure etc.)
+     ** Note: To access Live Migration
+              Step 1) Go to Virtual Machines under Compute Engine
+              Step 2) select 'VM Instances' and hit create 
+              Step 3) Click on 'Advance Options' then 'Management' scroll down to 'Availability Policy' section
+              Step 4) Select 'On host maintenance' you can select 'Migrate VM Instance' or 'Terminate VM Instance', you can also configure automatic
+                      restart.
+                      
+  - Custom Machine Types
+    -> What do you do when existing predefined VM options are NOT appropriate for your workload?
+       * Create a machine type customized to your needs (a Custom Machine Type)
+    -> Custom Machine Type: You can adjust vCPUs, memory and GPUs to your workload needs.
+       * Restrictions: Applicable for certain types (E2, N2, or N1 machine types)
+       * Supports a wide variety of Operating Systems (OS): CentOS, CoreOS, Debian, Red Hat, Ubuntu, Windows, etc
+       * Billed per vCPUs, memory provisioned to each instance
+         Example: 
+         Hourly Price: $0.033174 / vCPU = $0.004446 /GB
+     ** Note: Where can you configure a Custom Machine Type?
+              Step 1) Go to Virtual Machines under Compute Engine
+              Step 2) select 'VM Instances' and hit create 
+              Step 3) Under 'Machine Configuration' you can select the 'Custom' option in the 'Machine type' field
+
+ - Grapic Processing Units (GPUs)
+   How do you accelerate math intensive and graphics-intensive workloads for Artificial Intelligence (AI) / Machine Learning (ML) ect?
+   -> Add a GPU to your virtual machine:
+      * High performance for math intensive and graphics-intensive workloads
+      * Higher Cost
+      * (Remember) Use images with GPU libraries (Deep Learning) installed, otherwise, GPU will not be used.
+      * Restrictions:
+        1) GPU NOT supported on all machine types (For example, not supported on Shared-core or Memory-optimized machine types)
+        2) On host maintenance can only have the value "Terminate VM Instance"
+   -> Recommended Availability Policy for GPUs
+      1) Automatic restart - on
+      ** Note: Where can you configure a GPUs?
+         2 ways to add GPUs, Opt for a GPU family or Opt for a General family and add a GPU if available
+         Step 1) Go to Virtual Machines under Compute Engine
+         Step 2) select 'VM Instances' and hit create 
+         Step 3) Under 'Machine Configuration' you can go to the 'Machine family' select tab 'GPU'
+         ** Note: You can add GPUs to even the General-Purpose machine families and you can add a GPU except for 
+                  Shared-core and Memory-optimized machine types.
+  
+  - Important things to remember about a Virtual Machine (VM)
+    * A Virtual Machine (VM) is associated to a project.
+    * Machine type availability can vary from reagion to regions
+    * You can only change the machine type (adjust the number of vCPUs and memory) of a stopped instance, can't change if its running.
+    * VM's can be filtered by various properties
+      -> Filter by: Name, Zone, Machine Type, Internal/External IP, Network, Labels, Status, etc.
+    * Instances are Zonal (Run in a specific zone (in a specific region))
+      -> Images are global (You can provide access to other projects - if needed)
+      -> Instance templates are global (unless you use zonal resources in your templates)
+    * Automatic basic monitoring is enabled
+      -> Default Metrics: CPU utilization, Network Bytes (in/out), Disk Throughput/IOPS
+      -> For Memory Utilization & Disk Space Utilization - Cloud Monitoring agent is needed
+      
+- Best Practices for Virtual Machines (VM)
+  * Choose Zone and Resion based on:
+    -> Cost, regulations, availability needs, latency and specific hardware needs
+    -> Distribute instances in multiple zones and regions for high availability
+  * Choose the right machine type for your needs:
+    -> Use GPUs for Math and Graphic intensive applications
+  * Reserve for "committed use discounts" for constant workloads (websites)
+  * Use preemptible instances for fault-tolerant, NON time critical workloads
+  * Use labels to indicate environment, team, buiness unit, etc
+    
+- Compute Engine Scenarios
+  Scenario 1: What are the pre-requisites to be able to create a VM instance?
+  Solution: 
+       1) Have a Project 
+       2) Have a Billing Account
+       3) Compute Engine APIs should be enabled
+       
+  Scenario 2: You want dedicated hardware for your compliance, laicensing, and management needs
+  Solution:
+       1) Sole-tenante nodes
+  
+  Scenario 3: I have 1000s of VM and i want to automate OS patch management, OS inventory management and
+              OS configuration management (manage software installed)
+  Solution:
+       1) Use the VM Manager to do batch Management
+       
+  Scenario 4: You want to login to your VM instance to install software
+  Solution: 
+       1) SSH into the VM
+       
+  Scenario 5: You do not want to expose a VM to the internet
+  Solution:
+       1) Do NOT assign an external IP address
+       
+  Scenario 6: You want to allow HTTP traffic to your VM
+  Solution: 
+       1) Configure Firewall Rules to allow HTTP traffic
