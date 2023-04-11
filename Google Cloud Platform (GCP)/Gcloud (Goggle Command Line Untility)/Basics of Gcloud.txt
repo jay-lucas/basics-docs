@@ -128,3 +128,8 @@ Gcloud compute instances create
 Compute Instances - Default Region and Zone
 - 3 Options:
   1) Centeralized Configuration: gcloud compute project-info add-metadata
+     --metadata=[google-compute-default-region=REGION | google-compute-default-zone=ZONE]
+  2) Local gcloud configuration: gcloud config set computer/region REGION
+  3) Command Specific: --zone or --region in the command
+  
+- Priority: Option 3 (if exists) overrides Option 2 (if exists) overrides Option 1
