@@ -131,5 +131,65 @@ Compute Instances - Default Region and Zone
      --metadata=[google-compute-default-region=REGION | google-compute-default-zone=ZONE]
   2) Local gcloud configuration: gcloud config set computer/region REGION
   3) Command Specific: --zone or --region in the command
+** Note: Priority: Option 3 (if exists) overrides Option 2 (if exists) overrides Option 1
+
+List and Describe commands
+- Typically list commands are used to list a set of resources
+  * gcloud computer RESOURCES list
+    Example:
+    -> gcloud compute images list
+       gcloud compute regions list
+       gcloud compute zones list
+       gcloud compute disk-types list
+    -> gcloud compute instances
+       gcloud compute disk
+       gcloud compute snapshots list
+    
+  ** NOTE: Most list commands support a few common options 
+    1) Filter: --filter=zone:[VALUE]
+       Example:
+       -> gcloud compute zones list --filter=zone:us-east1
+ 
+    2) Sort: --sort-by=[NAME] --> A-Z sort
+             --sort-by=~[NAME] --> Z-A sort
+       Example: 
+       -> gcloud compute zones list --sort-by=region
+       -> gcloud compute zones list --sort-by=~region
+       
+    3) URI: --uri
+       Example:
+       -> gcloud compute regions list --uri
+ 
+ - Typically 'describe' commands are used to describe a specific resource
+   Example:
+   -> gcloud compute images describe unbuntu-1604-xenial-v20210203 --project ubuntu-os-cloud
+   -> gcloud computer regions describe us-east1
+   
+Instance Groups
+- Group of VM instances managed as a single entity
+  * Manage group of similar VMs having similar lifecycle as one unit
   
-- Priority: Option 3 (if exists) overrides Option 2 (if exists) overrides Option 1
+- Two types of instance groups:
+  * Managed (MIG): Identical VMs created using a template
+    -> Features: auto scaling, auto healing and managed releases
+  * Unmanaged: Different configuration (Images, hardware, etc) for VMs in same group:
+    -> Does NOT offer auto scaling, auto healing & other services
+    -> NOT recommended unless you need different kinds of VMs
+  - Location can be Zonal or Regional
+    * Regional gives you higher availability (Recommended)
+
+Managed Instance Groups (MIG)
+- Identical VMs created using an instance template
+- Important Features:
+  * Maintain certain number of instances
+    -> if an instance crashes, MIG launches another instance
+  * Detect application failures using health checks (Self Healing)
+  * Increase and decrease instances based on load (Auto Scaling)
+  * Add Load Balancer to distribute load
+  * Create instances in multiple zones (regional MIGs)
+    -> Regional MIGs provide higher availability compared to zonal MIGs
+  * Release new application versions without downtime
+    -> Rolling updates: Release new version step by step (gradually). Update a percentage of instances to the new version
+       at a time.
+    -> Canary Deployment: Test new version with a group of instances before releasing it across all instances
+  
