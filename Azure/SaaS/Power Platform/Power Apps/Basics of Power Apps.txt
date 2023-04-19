@@ -1,155 +1,26 @@
+Behavior vs Non-behavior formulas
 
-Creating apps
-** Note: Make sure your application is connected to your tables in the dataverse to Update
-Functions 
-- Patch()
-  Patch is used to insert and update records into a table
+- Behavior: 
+  * They change the app behavior
+  * You can have a sequence of actions with these formulas
+  * They usually don't have return values
+  * We use them with 'On..' properties 
+    Example: OnSelect, OnFocus,..
 
-  -> Create A New Record With Power Apps Patch Function
-     Syntax: Patch(Datasource, BaseRecord, NewRecord)
-     Example: 
-	  Patch(
-    			Employees,
-    			Defaults(Employees),
-    			{
-        			FullName: "Sarah Green",
-        			EmployeeNumber: 1002,
-        			HireDate: Date(2018,3,14),
-        			Active: true
-    			}
-		 )
-   
-  -> Update An Existing Record Using Power Apps Patch Function
-     Syntax: Patch(Datasource, BaseRecord, ChangeRecord)
-     Example: 
-	 Patch(
-    		Employees,
-    		LookUp(
-        		Employees,
-        		ID=4
-    		),
-    		{
-        		FullName: "Sarah Brown",
-        		EmployeeNumber: 1003
-    		}
-	 )
+- Non-behavior: 
+  * They work like excel formulas
+  * You can have only one formula per property
+  * They don't change the app behavior
+  * They return a value
+  * We use them with properties that don't have 'On..' in the begaining
+    Example: Fill, Text, ...
 
-  -> Get The Result Of The Patch Function
-     Syntax: Set(VariableName, Patch(Datasource, BaseRecord, ChangeRecord))
-     Example:
-        Set(
-    		varEmployeeCurrent,
-    		Patch(
-        		Employees,
-        		Default(Employees),
-        		{
-            		FullName: "Kelly Smith",
-            		EmployeeNumber: 1066
-        		}
-    		)
-	  )
+  ** Note: Typically when doing formulas in Power Apps you select a control, screen, 
+	     component or evern the App it's self then select the property on the left 
+           drop down that we want the formula to respond too. 
 
-  -> Create Multiple New Records With Power Apps Patch Function
-     Syntax: Patch(Datasource, BaseRecordsTable, NewRecordsTable)
-     Example:
-        ClearCollect(
-    		colNewEmployees,
-    		Table(
-        		Employees@{
-            		FullName: "Mary Baker",
-            		EmployeeNumber: 0798,
-            		HireDate: Date(2022, 06, 06),
-            		Active: true
-        		},
-        		Employees@{
-            		FullName: "John Miller",
-            		EmployeeNumber: 1203,
-            		HireDate: Date(2022, 06, 11),
-            		Active: true
-        		},
-        		Employees@{
-            		FullName: "Susan Wright",
-            		EmployeeNumber: 0590,
-            		HireDate: Date(2022, 06, 23),
-            		Active: true
-        		}
-    		)
-	);
-	Patch(
-    		Employees,
-    		ForAll(
-        		Sequence(CountRows(colNewEmployees)),
-        		Defaults(Employees)
-    		),
-    		colNewEmployees
-	);
 
- -> Edit Multiple Existing Records Using Power Apps Patch Function
-    Syntax: Patch(Datasource, BaseRecordsTable, UpdateRecordsTable)
-    Example:
-     		ClearCollect(
-    			colUpdateEmployees,
-    			Table(
-        			Employees@{
-            			ID: 2,
-            			FullName: "Alice Henderson",
-           			 	EmployeeNumber: 1001
-        			},
-        			Employees@{
-            			ID: 4,
-            			Active: false
-        			},
-        			Employees@{
-            			ID: 5,
-            			HireDate: Date(2022, 08, 01)
-        			}
-    			)
-		);
-		Patch(
-    			Employees,
-    			ShowColumns(
-        			colUpdateEmployees,
-        			"ID"
-    			),
-    			colUpdateEmployees
-		);
 
-  -> Upsert Multiple Records With Power Apps Patch Function
-     Syntax: Patch(Datasource, BaseRecordsTable, UpsertRecordsTable)
-     Example: 
-	  ClearCollect(
-    		colUpsertEmployees,
-    		Table(
-        		Employees@{
-            		ID: 2,
-            		FullName: "Alice Henderson",
-            		EmployeeNumber: 1001
-        		},
-       		Employees@{ 
-            		ID: Blank(),
-            		FullName: "Sarah Green",
-            		EmployeeNumber: 1002,
-            		HireDate: Date(2018, 03, 14),
-            		Active: false
-        		},
-        		Employees@{ 
-            		ID: Blank(),
-            		FullName: "Kelly Smith",
-            		EmployeeNumber: 1066,
-            		HireDate: Date(2022, 05, 20),
-            		Active: true
-        		}
-    		)
-	);
-	Patch(
-    		Employees,
-    		colUpsertEmployees
-	);
 
- -> Change Values In A Record Variable Using Power Apps Patch Function
-    Syntax: Patch(Record1, Record2)
-    Example:
-    	Patch(
-    		gblEmployee,
-   		{EmployeeNumber: 1063}
-	);
+ Power Apps Formula Appendix
+ - Reset(): Resets whatever the default values were for a control
