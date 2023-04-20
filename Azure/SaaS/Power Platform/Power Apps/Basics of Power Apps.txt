@@ -3,7 +3,7 @@ Behavior vs Non-behavior formulas
 - Behavior: 
   * They change the app behavior
   * You can have a sequence of actions with these formulas
-  * They usually don't have return values
+  * They 'usually' don't have return values
   * We use them with 'On..' properties 
     Example: OnSelect, OnFocus,..
 
@@ -20,7 +20,18 @@ Behavior vs Non-behavior formulas
            drop down that we want the formula to respond too. 
 
 
+- How to Bridge between behavior and non-behavior properties?
+  Answer: Use Variables!
+  
+  * Use Set to create varioables
+    - Set([variable name], [value]):
+      * Is a behavioral function
+      * Can create a variable fo all data types
+      * Variables are global
+
+- Understand and working with Records
 
 
- Power Apps Formula Appendix
- - Reset(): Resets whatever the default values were for a control
+
+-> Power Apps Formula Appendix
+   - Reset(): Resets whatever the default values were for a control
