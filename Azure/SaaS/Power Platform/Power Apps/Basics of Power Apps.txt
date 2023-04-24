@@ -23,12 +23,14 @@ Behavior vs Non-behavior formulas
 - How to Bridge between behavior and non-behavior properties?
   Answer: Use Variables!
   
-  * Use Set to create varioables
+  * Use Set to create variables
     - Set([variable name], [value]):
       * Is a behavioral function
       * Can create a variable fo all data types
       * Variables are global
-
+      ** Note: Replaces the entire record of the variable, can't use to update one parameter in a complex object. If other parameters
+        are not there they are set to null.
+ 
 - Understand and working with Records
 
 
