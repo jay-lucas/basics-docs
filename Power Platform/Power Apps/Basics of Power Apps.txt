@@ -44,6 +44,6 @@ Behavior vs Non-behavior formulas
        Context for that screen. Context are only usable with in the scope of the screen. 
        Function to create context: UpdateContext({[variable]:[value]});
        Example: UpdateContext({var_Name:"Jay"});
+       ** Note: UpdateContext() allows you to update one variable or parameter in an object, unlike Set() which overrides what you didn't put in. 
        
--> Power Apps Formula Appendix
-   - Reset(): Resets whatever the default values were for a control
+
