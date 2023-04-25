@@ -42,6 +42,8 @@ Behavior vs Non-behavior formulas
   -> Context: 
      - Is a record that is defined for every screen that you can easily add variables to it. Add variables to one
        Context for that screen. Context are only usable with in the scope of the screen. 
-
+       Function to create context: UpdateContext({[variable]:[value]});
+       Example: UpdateContext({var_Name:"Jay"});
+       
 -> Power Apps Formula Appendix
    - Reset(): Resets whatever the default values were for a control
