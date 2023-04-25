@@ -28,12 +28,20 @@ Behavior vs Non-behavior formulas
       * Is a behavioral function
       * Can create a variable fo all data types
       * Variables are global
-      ** Note: Replaces the entire record of the variable, can't use to update one parameter in a complex object. If other parameters
-        are not there they are set to null.
- 
+      ** Note: Replaces the entire record of the variable, can't use to update one parameter in a complex object. 
+               If other parameters are not there they are set to null.
+    - Problem with Set()
+      * Always there is a chance to overwrite variables by mistake
+	* Adds unnecessary items to your intellisense
+	* As your app grows it makes maintaining the app more difficult
+	* It is against a modular design. Set() makes dependancies between screens which is against modular design.
+      * More difficult to trace the values and debug.
+
+
 - Understand and working with Records
-
-
+  -> Context: 
+     - Is a record that is defined for every screen that you can easily add variables to it. Add variables to one
+       Context for that screen. Context are only usable with in the scope of the screen. 
 
 -> Power Apps Formula Appendix
    - Reset(): Resets whatever the default values were for a control
