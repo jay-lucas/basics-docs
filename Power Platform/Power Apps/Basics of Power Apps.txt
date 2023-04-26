@@ -37,7 +37,6 @@ Behavior vs Non-behavior formulas
 	* It is against a modular design. Set() makes dependancies between screens which is against modular design.
       * More difficult to trace the values and debug.
 
-
 - Understand and working with Records
   -> Context: 
      - Is a record that is defined for every screen that you can easily add variables to it. Add variables to one
@@ -46,4 +45,6 @@ Behavior vs Non-behavior formulas
        Example: UpdateContext({var_Name:"Jay"});
        ** Note: UpdateContext() allows you to update one variable or parameter in an object, unlike Set() which overrides what you didn't put in. 
        
-
+- Table and Arrays
+-> Table([record],[record],...)
+   
