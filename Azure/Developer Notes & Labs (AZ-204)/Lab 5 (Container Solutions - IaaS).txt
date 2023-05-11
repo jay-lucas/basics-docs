@@ -1,385 +1,330 @@
 Module 05 (CSS): Implement laaS solutions
-1 Hr 14 Min Remaining
-Required Lab Setup
-Sign in to the lab virtual machine
-Hello Jay, log on to AZ-204T00A-SEA-DEV click Ctrl+Alt+Delete to activate the Ctrl + Alt + Delete sequence and bring up the logon page.
-
-Sign in as Admin with the password Pa55w.rd
-
-Any links like the one above will send Ctrl+Alt+Delete to the selected machine. This can also be done the Commands menu (lightning bolt) in the upper-left hand corner of the screen.
-
-The Lightning Bolt in the upper left hand of the screen can also be used to Copy /Paste strings and sentences from the Instructions into the VM rather than typing them out.
-
-To accomplish this simply Highligh**t the sentence in the instructions you wish to type text. CTRL + C (Copy)
-Click the lightning bolt icon, in the Dropdown menu select Type Text > Type Clipboard Text
-Click into the Type Text window, CTRL + V (Paste) to Paste the sentence into the window
-Select OK
-more...
-This Lab supports Redirect Clipboard functionality in addition to TypeText.
-
-You can use Redirect Clipboard to quickly input code blocks and other strings from the Instructions and elsewhere into the virtual machine using standard copy and paste from your local machine's Clipboard directly into the VM. You may need to click Allow in your browser to allow access to your local Clipboard.
-
-Note that due to an issue within Azure Cloudshell, use your mouse: Right-click + Paste instead of CTRL+V when using Cloudshell inside the VM.
-
-At the end of this lab, you can skip the Clean Up exercise directing you to remove the resources from your Subscription or Resource Group(s). The clean up is handled automatically, after ending your lab.
-
-Lab Credentials:
-Username: LabUser-30908074@LODSPRODMSLEARNMCA.onmicrosoft.com
-Password: rRfS8a!2J+
-Sites used:
-https://portal.azure.com/#home
-https://shell.azure.com
-Lab 05: Deploy compute workloads by using images and containers
-Microsoft Azure user interface
-Given the dynamic nature of Microsoft cloud tools, you might experience Azure UI changes that occur after this training content's development. As a result, the lab instructions and lab steps might not align correctly.
-
-Microsoft updates this training course when the community alerts us to needed changes. However, cloud updates occur frequently, so you might encounter UI changes before this training content updates. If this occurs, adapt to the changes, and then work through them in the labs as needed.
-
-Instructions
-Before you start
-Sign in to the lab environment
-Sign in to your Windows 10 virtual machine (VM) by using the following credentials:
-
-Username: Admin
-Password: Pa55w.rd
-Note: Your instructor will provide instructions to connect to the virtual lab environment.
-
-Review the installed applications
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab, including:
-
-Microsoft Edge
-File Explorer
-Lab Scenario
-In this lab, you will explore how to create and deploy containers to the Azure Container Registry using a .NET application and docker files. And also deploy a containerized solution to Azure Container Apps.
-
-Architecture diagram
-Architecture diagram depicting the deployment of compute workloads by using images and containers
-
 Exercise 1: Create a Docker container image and deploy it to Azure Container Registry
 Task 1: Open the Azure portal
-On the taskbar, select the Microsoft Edge icon.
+    On the taskbar, select the Microsoft Edge icon.
 
-In the open browser window, navigate to the Azure portal at https://portal.azure.com, and then sign in with the account you'll be using for this lab.
+    In the open browser window, navigate to the Azure portal at https://portal.azure.com, and then sign in with the account you'll be using for this lab.
 
-Note: If this is your first time signing in to the Azure portal, you'll be offered a tour of the portal. If you prefer to skip the tour, select Get Started to begin using the portal.
+    Note: If this is your first time signing in to the Azure portal, you'll be offered a tour of the portal. If you prefer to skip the tour, select Get Started to begin using the portal.
 
 Task 2: Create a resource group
-You can skip this task as the resource group has already been created for you.
+    You can skip this task as the resource group has already been created for you.
 
-On the Azure portal's navigation pane, use the Search resources, services, and docs text box to search for Resource group, and then in the list of results, select Resource groups.
+    On the Azure portal's navigation pane, use the Search resources, services, and docs text box to search for Resource group, and then in the list of results, select Resource groups.
 
-On the Resource groups blade, select Create.
+    On the Resource groups blade, select Create.
 
-On the Create a resource group blade, on the Basics tab, perform the following actions, and then select Review + create:
+    On the Create a resource group blade, on the Basics tab, perform the following actions, and then select Review + create:
 
-Setting	Action
-Subscription drop-down list	Retain the default value
-Resource group text box	Enter ContainerCompute
-Region drop-down list	Select (US) East US
-The following screenshot displays the configured settings on the Create a resource group blade.
+    Setting	                            Action
+    Subscription drop-down list	        Retain the default value
+    Resource group text box	            Enter ContainerCompute
+    Region drop-down list	            Select (US) East US
 
-Create a resource group blade
+    The following screenshot displays the configured settings on the Create a resource group blade.
 
-On the Review + create tab, review the options that you selected during the previous steps.
+    Create a resource group blade
 
-Select Create to create the resource group by using your specified configuration.
+    On the Review + create tab, review the options that you selected during the previous steps.
 
-Note: Wait for the creation task to complete before moving forward with this lab.
+    Select Create to create the resource group by using your specified configuration.
+
+    Note: Wait for the creation task to complete before moving forward with this lab.
 
 Task 3: Open the Cloud Shell and editor
-In the Azure portal, select the Cloud Shell icon Cloud Shell icon to open a new PowerShell session. If Cloud Shell defaults to a PowerShell session, select PowerShell, and then in the drop-down menu, select Bash.
 
-Note: The Cloud Shell icon is represented by a greater than sign (>) and underscore character (_).
+    In the Azure portal, select the Cloud Shell icon Cloud Shell icon to open a new PowerShell session. If Cloud Shell defaults to a PowerShell session, select PowerShell, and then in the drop-down menu, select Bash.
 
-Note: If this is the first time you're starting Cloud Shell, when prompted to select either Bash or PowerShell, select Bash. When you're presented with the You have no storage mounted message, select the subscription you're using in this lab, and then select Create storage.
+    Note: The Cloud Shell icon is represented by a greater than sign (>) and underscore character (_).
 
-At the Cloud Shell command prompt in the portal, run the following command to move from the root directory to the ~/clouddrive directory:
+    Note: If this is the first time you're starting Cloud Shell, when prompted to select either Bash or PowerShell, select Bash. When you're presented with the You have no storage mounted message, select the subscription you're using in this lab, and then select Create storage.
 
-cd ~/clouddrive
-Run the following command to create a new directory named ipcheck in the ~/clouddrive directory:
+    At the Cloud Shell command prompt in the portal, run the following command to move from the root directory to the ~/clouddrive directory:
+        cd ~/clouddrive
+    
+    Run the following command to create a new directory named ipcheck in the ~/clouddrive directory:
+        mkdir ipcheck
 
-mkdir ipcheck
-Run the following command to change the active directory from ~/clouddrive to ~/clouddrive/ipcheck:
+    Run the following command to change the active directory from ~/clouddrive to ~/clouddrive/ipcheck:
+        cd ~/clouddrive/ipcheck
 
-cd ~/clouddrive/ipcheck
-Run the following command to create a new .NET console application in the current directory:
+    Run the following command to create a new .NET console application in the current directory:
+        dotnet new console --output . --name ipcheck --framework net6.0
 
-dotnet new console --output . --name ipcheck --framework net6.0
-Run the following command to create a new file in the ~/clouddrive/ipcheck directory named Dockerfile:
+    Run the following command to create a new file in the ~/clouddrive/ipcheck directory named Dockerfile:
+        touch Dockerfile
+    
+    Run the following command to open the embedded graphical editor in the context of the current directory:
+        code .
 
-touch Dockerfile
-Run the following command to open the embedded graphical editor in the context of the current directory:
-
-code .
 Task 4: Create and test a .NET application
-In the graphical editor, on the FILES pane, select the Program.cs file to open it in the editor.
+    In the graphical editor, on the FILES pane, select the Program.cs file to open it in the editor.
 
-Delete the entire contents of the Program.cs file.
+    Delete the entire contents of the Program.cs file.
 
-Copy and paste the following code into the Program.cs file:
-
-csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {        
-        // Check if network is available
-        if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+    Copy and paste the following code into the Program.cs file:
+      csharp
+        public class Program
         {
-            System.Console.WriteLine("Current IP Addresses:");
-            // Get host entry for current hostname
-            string hostname = System.Net.Dns.GetHostName();
-            System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry(hostname);               
-            // Iterate over each IP address and render their values
-            foreach(System.Net.IPAddress address in host.AddressList)
-            {
-                System.Console.WriteLine($"\t{address}");
+            public static void Main(string[] args)
+            {        
+                // Check if network is available
+                if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+                {
+                    System.Console.WriteLine("Current IP Addresses:");
+                    // Get host entry for current hostname
+                    string hostname = System.Net.Dns.GetHostName();
+                    System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry(hostname);               
+                    // Iterate over each IP address and render their values
+                    foreach(System.Net.IPAddress address in host.AddressList)
+                    {
+                        System.Console.WriteLine($"\t{address}");
+                    }
+                }
+                else
+                {
+                    System.Console.WriteLine("No Network Connection");
+                }
             }
         }
-        else
-        {
-            System.Console.WriteLine("No Network Connection");
-        }
-    }
-}
-Save the Program.cs file by using the menu in the graphical editor or the Ctrl+S keyboard shortcut. Don't close the graphical editor.
 
-Back at the command prompt, run the following command to run the application:
+    Save the Program.cs file by using the menu in the graphical editor or the Ctrl+S keyboard shortcut. Don't close the graphical editor.
 
-dotnet run
-Review the results of the run. At least one IP address should be listed for the Cloud Shell instance.
+    Back at the command prompt, run the following command to run the application:
+        dotnet run
+    
+    Review the results of the run. At least one IP address should be listed for the Cloud Shell instance.
 
-In the graphical editor, on the FILES pane of the editor, select the Dockerfile file to open it in the editor.
+    In the graphical editor, on the FILES pane of the editor, select the Dockerfile file to open it in the editor.
 
-Copy and paste the following code into the Dockerfile file:
+    Copy and paste the following code into the Dockerfile file:
+        # Start using the .NET 6 SDK container image
+        FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 
-# Start using the .NET 6 SDK container image
-FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
+        # Change current working directory
+        WORKDIR /app
 
-# Change current working directory
-WORKDIR /app
+        # Copy existing files from host machine
+        COPY . ./
 
-# Copy existing files from host machine
-COPY . ./
+        # Publish application to the "out" folder
+        RUN dotnet publish --configuration Release --output out
 
-# Publish application to the "out" folder
-RUN dotnet publish --configuration Release --output out
+        # Start container by running application DLL
+        ENTRYPOINT ["dotnet", "out/ipcheck.dll"]
+    
+    Save the Dockerfile file by using the menu in the graphical editor or by using the Ctrl+S keyboard shortcut.
 
-# Start container by running application DLL
-ENTRYPOINT ["dotnet", "out/ipcheck.dll"]
-Save the Dockerfile file by using the menu in the graphical editor or by using the Ctrl+S keyboard shortcut.
-
-Leave the Cloud Shell open for the next task.
+    Leave the Cloud Shell open for the next task.
 
 Task 5: Create a Container Registry resource
+
 At the Cloud Shell command prompt in the portal, run the following command to create a variable with a unique value for the Container Registry resource:
+  bash
+    registryName=conregistry$RANDOM
 
-bash
-registryName=conregistry$RANDOM
 At the Cloud Shell command prompt in the portal, run the following command to verify the name created in the previous step is available:
+  bash
+    az acr check-name --name $registryName
 
-bash
-az acr check-name --name $registryName
 If the results show the name is available, continue to the next step. If the name is not available then re-run the command in the previous step and verify availability again.
 
 At the Cloud Shell command prompt in the portal, run the following command to create a Container Registry resource:
-
-bash
-az acr create --resource-group ContainerCompute --name $registryName --sku Basic
-Note: Wait for the creation task to complete before you continue with this lab.
+  bash
+    az acr create --resource-group ContainerCompute --name $registryName --sku Basic
+  Note: Wait for the creation task to complete before you continue with this lab.
 
 Task 6: Store Container Registry metadata
-At the Cloud Shell command prompt in the portal, run the following command to get a list of all container registries in your subscription:
-
-az acr list
-Run the following command, ensuring you see the name of your registry as output. If you see no output other than '[]', wait a minute and try running the command again.
-
-az acr list --query "max_by([], &creationDate).name" --output tsv
-Run the following command:
-
-acrName=$(az acr list --query "max_by([], &creationDate).name" --output tsv)
-Run the following command:
-
-echo $acrName
+    
+    At the Cloud Shell command prompt in the portal, run the following command to get a list of all container registries in your subscription:
+      az acr list
+    
+    Run the following command, ensuring you see the name of your registry as output. If you see no output other than '[]', wait a minute and try running the command again.
+      az acr list --query "max_by([], &creationDate).name" --output tsv
+    
+    Run the following command:
+      acrName=$(az acr list --query "max_by([], &creationDate).name" --output tsv)
+    
+    Run the following command:
+      echo $acrName
+    
 Task 7: Deploy a Docker container image to Container Registry
-Run the following command to change the active directory from ~/ to ~/clouddrive/ipcheck:
+    
+    Run the following command to change the active directory from ~/ to ~/clouddrive/ipcheck:
+      cd ~/clouddrive/ipcheck
+    
+    Run the following command to get the contents of the current directory:
+      dir
 
-cd ~/clouddrive/ipcheck
-Run the following command to get the contents of the current directory:
+    Run the following command to upload the source code to your container registry and build the container image as a Container Registry task:
+      az acr build --registry $acrName --image ipcheck:latest .
+    Note: Wait for the build task to complete before moving forward with this lab.
 
-dir
-Run the following command to upload the source code to your container registry and build the container image as a Container Registry task:
-
-az acr build --registry $acrName --image ipcheck:latest .
-Note: Wait for the build task to complete before moving forward with this lab.
-
-Close the Cloud Shell pane in the portal.
+    Close the Cloud Shell pane in the portal.
 
 Task 8: Validate your container image in Container Registry
-On the Azure portal's navigation pane, select the Resource groups link.
+    On the Azure portal's navigation pane, select the Resource groups link.
 
-From the Resource groups blade, select the ContainerCompute resource group that you created previously in this lab.
+    From the Resource groups blade, select the ContainerCompute resource group that you created previously in this lab.
 
-From the ContainerCompute blade, select the container registry that you created previously in this lab.
+    From the ContainerCompute blade, select the container registry that you created previously in this lab.
 
-From the Container Registry blade, in the Services section, select the Repositories link.
+    From the Container Registry blade, in the Services section, select the Repositories link.
 
-In the Repositories section, select the ipcheck container image repository, and then select the latest tag.
+    In the Repositories section, select the ipcheck container image repository, and then select the latest tag.
 
-Review the metadata for the version of your container image with the latest tag.
+    Review the metadata for the version of your container image with the latest tag.
 
-Note: You can also select the Run ID link to find metadata about the build task.
+    Note: You can also select the Run ID link to find metadata about the build task.
 
 Review
 In this exercise, you created a .NET console application to display a machine’s current IP address. You then added the Dockerfile file to the application so that it could be converted into a Docker container image. Finally, you deployed the container image to Container Registry.
 
 Exercise 2: Deploy an Azure container instance
 Task 1: Enable the admin user in Container Registry
-On the Azure portal's navigation pane, select the Resource groups link.
+    On the Azure portal's navigation pane, select the Resource groups link.
 
-On the Resource groups blade, select the ContainerCompute resource group that you created previously in this lab.
+    On the Resource groups blade, select the ContainerCompute resource group that you created previously in this lab.
 
-On the ContainerCompute blade, select the container registry that you created previously in this lab, and then select Update.
+    On the ContainerCompute blade, select the container registry that you created previously in this lab, and then select Update.
 
-On the Update container registry blade, in the Admin user section, select Enable.
+    On the Update container registry blade, in the Admin user section, select Enable.
 
-Select Save, and then close the Update container registry blade.
+    Select Save, and then close the Update container registry blade.
 
 Task 2: Automatically deploy a container image to an Azure container instance
-On the Container Registry blade, in the Services section, select the Repositories link.
+    On the Container Registry blade, in the Services section, select the Repositories link.
 
-In the Repositories section, select the ipcheck container image repository.
+    In the Repositories section, select the ipcheck container image repository.
 
-On the Repository blade, select the ellipsis menu associated with the latest tag entry, and then select Run instance.
+    On the Repository blade, select the ellipsis menu associated with the latest tag entry, and then select Run instance.
 
-On the Create container instance blade, perform the following actions, and then select Create:
+    On the Create container instance blade, perform the following actions, and then select Create:
 
-Setting	Action
-Container name text box	Enter managedcompute
-Container image text box	Retain the default value
-OS type section	Select Linux
-Subscription text box	Retain the default value
-Resource group drop-down list	Select ContainerCompute
-Location drop-down list	Select East US
-Number of cores drop-down list	Select 2
-Memory (GB) text box	Enter 4
-Public IP address section	Select No
-The following screenshot displays the configured settings on the Create container instance blade.
+    Setting	                            Action
+    Container name text box	            Enter managedcompute
+    Container image text box	        Retain the default value
+    OS type section	                    Select Linux
+    Subscription text box	            Retain the default value
+    Resource group drop-down list	    Select ContainerCompute
+    Location drop-down list	            Select East US
+    Number of cores drop-down list	    Select 2
+    Memory (GB) text box	            Enter 4
+    Public IP address section	        Select No
 
-Create container instance blade
+    The following screenshot displays the configured settings on the Create container instance blade.
 
-Note: Wait for the container instance to be created before you continue with this lab.
+    Create container instance blade
+
+    Note: Wait for the container instance to be created before you continue with this lab.
 
 Task 3: Manually deploy a container image to Container Instances
-On the Azure portal's navigation pane, select the Create a resource link.
+    On the Azure portal's navigation pane, select the Create a resource link.
 
-On the Create a resource blade, in the Search services and marketplace text box, enter container instances, and then select Enter.
+    On the Create a resource blade, in the Search services and marketplace text box, enter container instances, and then select Enter.
 
-On the Marketplace search results blade, select the Container Instances result.
+    On the Marketplace search results blade, select the Container Instances result.
 
-On the Container Instances blade, select Create.
+    On the Container Instances blade, select Create.
 
-On the Create Container Instance blade, on the Basics tab, perform the following actions, and then select Review + create:
+    On the Create Container Instance blade, on the Basics tab, perform the following actions, and then select Review + create:
 
-Setting	Action
-Subscription drop-down list	Retain the default value
-Resource group drop-down list	Select ContainerCompute
-Container name text box	Enter manualcompute
-Region drop-down list	Select (US) East US
-Image source section	Select Azure Container Registry
-Registry drop-down list	Select the Azure Container Registry resource that you created previously in this lab
-Image drop-down list	Select ipcheck
-Image tag drop-down list	Select latest
-Size : cores	Enter 2
-Size : Memory (GiB)	Enter 4
-The following screenshot displays the configured settings on the Create container instance blade.
+    Setting	                                Action
+    Subscription drop-down list	            Retain the default value
+    Resource group drop-down list	        Select ContainerCompute
+    Container name text box	                Enter manualcompute
+    Region drop-down list	                Select (US) East US
+    Image source section	                Select Azure Container Registry
+    Registry drop-down list	                Select the Azure Container Registry resource that you created previously in this lab
+    Image drop-down list	                Select ipcheck
+    Image tag drop-down list	            Select latest
+    Size : cores	                        Enter 2
+    Size : Memory (GiB)	                    Enter 4
 
-Create container instance blade
+    From the Review + create tab, review the selected options.
 
-From the Review + create tab, review the selected options.
+    Select Create to create the container instance by using your specified configuration.
 
-Select Create to create the container instance by using your specified configuration.
-
-Note: Wait for the container instance to be created before you continue with this lab.
+    Note: Wait for the container instance to be created before you continue with this lab.
 
 Task 4: Validate that the container instance ran successfully
-On the Azure portal's navigation pane, select the Resource groups link.
+    On the Azure portal's navigation pane, select the Resource groups link.
 
-On the Resource groups blade, select the ContainerCompute resource group that you created previously in this lab.
+    On the Resource groups blade, select the ContainerCompute resource group that you created previously in this lab.
 
-On the ContainerCompute blade, select the manualcompute container instance that you created previously in this lab.
+    On the ContainerCompute blade, select the manualcompute container instance that you created previously in this lab.
 
-On the Container Instances blade, in the Settings section, select the Containers link.
+    On the Container Instances blade, in the Settings section, select the Containers link.
 
-In the Containers section, review the list of Events.
+    In the Containers section, review the list of Events.
 
-Select the Logs tab, and then review the text logs from the container instance.
+    Select the Logs tab, and then review the text logs from the container instance.
 
-Note: You can also optionally find the Events and Logs from the managedcompute container instance.
+    Note: You can also optionally find the Events and Logs from the managedcompute container instance.
 
-Note: It is possible that manualcompute and managedcompute will not contain any events at this point.
+    Note: It is possible that manualcompute and managedcompute will not contain any events at this point.
 
-Note: After the application finishes running, the container terminates because it has completed its work. For the manually created container instance, you indicated that a successful exit was acceptable, so the container ran once. The automatically created instance didn't offer this option, and it assumes the container should always be running, so you'll notice repeated restarts of the container.
+    Note: After the application finishes running, the container terminates because it has completed its work. For the manually created container instance, you indicated that a successful exit was acceptable, so the container ran once. The automatically created instance didn't offer this option, and it assumes the container should always be running, so you'll notice repeated restarts of the container.
 
 Review
 In this exercise, you used multiple methods to deploy a container image to an Azure container instance. By using the manual method, you were able to customize the deployment further and to run task-based applications as part of a container run.
 
 Exercise 3: Create a secure Container Apps environment and deploy container app.
 Task 1: Prepare your environment
-Sign in to the Azure portal.
+    
+    Sign in to the Azure portal.
 
-Select the Cloud Shell icon, select the Bash environment.
+    Select the Cloud Shell icon, select the Bash environment.
 
-In the Cloud Shell command prompt in the portal, run the following command to install the Azure Container Apps extension for the CLI:
+    In the Cloud Shell command prompt in the portal, run the following command to install the Azure Container Apps extension for the CLI:
+      bash
+        az extension add --name containerapp --upgrade
 
-bash
-az extension add --name containerapp --upgrade
-Run the following command to register the Microsoft.App namespace:
+    Run the following command to register the Microsoft.App namespace:
+      bash
+        az provider register --namespace Microsoft.App
+        Note: Azure Container Apps resources have migrated from the Microsoft.Web namespace to the Microsoft.App namespace.
 
-bash
-az provider register --namespace Microsoft.App
-Note: Azure Container Apps resources have migrated from the Microsoft.Web namespace to the Microsoft.App namespace.
+    Run the following command to Register the Microsoft.OperationalInsights provider for the Azure Monitor Log Analytics workspace if you haven't used it before:
+      bash
+        az provider register --namespace Microsoft.OperationalInsights
+        Note: Registering the Microsoft.App namespace and Microsoft.OperationalInsights can each take a few minutes to complete.
 
-Run the following command to Register the Microsoft.OperationalInsights provider for the Azure Monitor Log Analytics workspace if you haven't used it before:
+    Set environment variables used later in this exercise.
+      bash
+        myRG=ContainerCompute
+        myAppContEnv=az204-env-30908074
 
-bash
-az provider register --namespace Microsoft.OperationalInsights
-Note: Registering the Microsoft.App namespace and Microsoft.OperationalInsights can each take a few minutes to complete.
-
-Set environment variables used later in this exercise.
-
-bash
- myRG=ContainerCompute
- myAppContEnv=az204-env-30908074
-With the CLI upgraded and environment variables created, you can create a Container Apps environment and deploy your container app.
+    With the CLI upgraded and environment variables created, you can create a Container Apps environment and deploy your container app.
 
 Task 2: Create an environment
-An environment in Azure Container Apps creates a secure boundary around a group of container apps. Container Apps deployed to the same environment are deployed in the same virtual network and write logs to the same Log Analytics workspace.
+    An environment in Azure Container Apps creates a secure boundary around a group of container apps. Container Apps deployed to the same environment are deployed in the same virtual network and write logs to the same Log Analytics workspace.
 
-In the Cloud Shell command prompt in the portal, run the following command to create an environment by using the az containerapp env create command:
+    In the Cloud Shell command prompt in the portal, run the following command to create an environment by using the az containerapp env create command:
 
-bash
-az containerapp env create \
-    --name $myAppContEnv \
-    --resource-group $myRG \
-    --location eastus
+    bash
+    az containerapp env create \
+        --name $myAppContEnv \
+        --resource-group $myRG \
+        --location eastus
+
 Task 3: Create a container app
-After the container app environment finishes deployment, you deploy a container image to Azure Container Apps.
+    After the container app environment finishes deployment, you deploy a container image to Azure Container Apps.
 
-In the Cloud Shell command prompt in the portal, run the following command to deploy a sample app container image by using the az containerapp create command:
+    In the Cloud Shell command prompt in the portal, run the following command to deploy a sample app container image by using the az containerapp create command:
+      bash
+        az containerapp create \
+            --name my-container-app \
+            --resource-group $myRG \
+            --environment $myAppContEnv \
+            --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest \
+            --target-port 80 \
+            --ingress 'external' \
+            --query properties.configuration.ingress.fqdn
 
-bash
-az containerapp create \
-    --name my-container-app \
-    --resource-group $myRG \
-    --environment $myAppContEnv \
-    --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest \
-    --target-port 80 \
-    --ingress 'external' \
-    --query properties.configuration.ingress.fqdn
-By setting --ingress to external, you make the container app available to public requests. The command returns a link to access your app.
+    By setting --ingress to external, you make the container app available to public requests. The command returns a link to access your app.
 
-Select the link returned by the az containerapp create command to verify the container app is running.
+    Select the link returned by the az containerapp create command to verify the container app is running.
 
 Congratulations!
 You have successfully completed this Lab press End to end your lab.
