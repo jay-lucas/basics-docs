@@ -4,8 +4,6 @@ Task 1: Open the Azure portal
 
 	In the browser window, browse to the Azure portal at https://portal.azure.com, and then sign in with the account you'll be using for this lab.
 
-  Note: If this is your first time signing in to the Azure portal, you'll be offered a tour of the portal. If you prefer to skip the tour, select Maybe later to begin using the portal.
-
 Task 2: Create a Storage account
 	In the Azure portal, use the Search resources, services, and docs text box to search for Storage Accounts, and then in the list of results, select Storage Accounts.
 	On the Storage accounts blade, select + Create.
@@ -55,10 +53,10 @@ Task 3: Upload a sample blob
 
 	In the Upload blob window, perform the following actions:
 
-	Setting							Action
-	Files section						Select Browse for files or use the drag and drop feature
-	File Explorer window					Browse to Allfiles (F):\Allfiles\Labs\01\Starter\Images, select the grilledcheese.jpg file, and then select Open
-	Overwrite if files already exist check box	Ensure that the check box is selected, and then select Upload
+	Setting											Action
+	Files section									Select Browse for files or use the drag and drop feature
+	File Explorer window							Browse to Allfiles (F):\Allfiles\Labs\01\Starter\Images, select the grilledcheese.jpg file, and then select Open
+	Overwrite if files already exist check box		Ensure that the check box is selected, and then select Upload
 
 	Note: Wait for the blob to upload before you continue with this lab.
 
