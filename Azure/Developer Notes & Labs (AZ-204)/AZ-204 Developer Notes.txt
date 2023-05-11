@@ -1,0 +1,48 @@
+Developing Solutions for Microsoft Azure
+- Cloud Developer Role
+  Microsoft Azure Developers design, build, test, and maintain cloud solutions, such as applications and services, partnering 
+  with cloud solution architects, cloud DBAs, cloud administrators, and clients to implement these solutons.
+
+- Learning Path 1: Implement Azure App Service Web Apps
+
+  ARR affinity?
+  Managed pipeline version?	
+
+  Autoscale best practices
+  - Ensure the maximum and minimum values are different and have an adequate margin between them
+  - Choose the appropriate statistic for your diagnostic metric
+  - Choose the threshould carefully for all metric types
+  - Considerations for scaling when multiple rules are configured in a profile
+  - Always select a safe default instance count
+  - Configure autoscale notifications
+
+
+
+- Learning Path 2: Implement Azure Functions
+	Managed Identity allows for you to not have to provide connection strings to your function, you can use identity to gain access.
+
+- Learning Path 3: Develop solutions that use Blob Storage
+
+
+
+- Learning Path 4: Develop solutions that use Azure Cosmos Database
+
+- Learning Path 5: Implement Containerized Solutions
+
+- Learning Path 6: Implement User Authentication and Authorization
+
+
+
+- Learning Path 7: Implement Secure Cloud Solutions
+
+- Learning Path 8: Implement API Management
+
+- Learning Path 9: Develop Event-Based solutions
+
+
+
+- Learning Path 10: Develop Message-Based solutions
+
+- Learning Path 11: Troubleshoot solutions by using Application Insights
+
+- Learning Path 12: Implement Caching for solutions
