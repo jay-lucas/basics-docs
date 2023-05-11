@@ -8,8 +8,6 @@ Mount storage in Azure
 
 Sign in to the Azure Portal https://portal.azure.com using the below credentials:
 
-Username	LabUser-30890988@cloudslice.onmicrosoft.com
-Password	d!DkeBH90!
 In the toolbar at the top of the Azure portal, select the Cloud Shell icon.
 
 In the Welcome to Azure Cloud Shell dialog, select Bash.
@@ -18,396 +16,250 @@ On the you have no storage mounted screen select Show advanced settings.
 
 In the advanced settings screen, fill in the following fields, then click Create Storage:
 
-Resource Group	Use existing (StorageMedia-lod30890988)
-Cloud Shell Region	East US
-Storage account (Create new)	cloudshell30890988
-File share (create new)	shellstorage
+Resource Group	                    Use existing (StorageMedia-lod30890988)
+Cloud Shell Region	                East US
+Storage account (Create new)	    cloudshell30890988
+File share (create new)	            shellstorage
+
 After the cloud shell initializes and puts you at a text prompt, exit the shell.
-
-At the end of this lab, you can skip the Clean Up exercise directing you to remove the resources from your Subscription or Resource Group(s). The clean up is handled automatically, after ending your lab.
-
-Sign in to the lab virtual machine
-Hello Jay, log on to AZ-204T00A-SEA-DEV lick Ctrl+Alt+Delete to activate the Ctrl + Alt + Delete sequence and bring up the logon page.
-
-Sign in as Admin with the password Pa55w.rd
-
-Any links like the one above will send Ctrl+Alt+Delete to the selected machine. This can also be done the Commands menu (lightning bolt) in the upper-left hand corner of the screen.
-
-The Lightning Bolt in the upper left hand of the screen can also be used to Copy /Paste strings and sentences from the Instructions into the VM rather than typing them out.
-
-To accomplish this simply Highligh**t the sentence in the instructions you wish to type text. CTRL + C (Copy)
-Click the lightning bolt icon, in the Dropdown menu select Type Text > Type Clipboard Text
-Click into the Type Text window, CTRL + V (Paste) to Paste the sentence into the window
-Select OK
-more...
-This Lab supports Redirect Clipboard functionality in addition to TypeText.
-
-You can use Redirect Clipboard to quickly input code blocks and other strings from the Instructions and elsewhere into the virtual machine using standard copy and paste from your local machine's Clipboard directly into the VM. You may need to click Allow in your browser to allow access to your local Clipboard.
-
-Note that due to an issue within Azure Cloudshell, use your mouse: Right-click + Paste instead of CTRL+V when using Cloudshell inside the VM.
-
-Download the lab files
-Download Files
-This will copy the latest lab files from GitHub and configure the directories as needed for the remainder of the lab exercises. You will see a 'Success!' message above, once the process is complete.
-
-Lab Credentials:
-Username: LabUser-30890988@cloudslice.onmicrosoft.com
-Password: d!DkeBH90!
-Sites used:
-https://portal.azure.com/#home
-https://shell.azure.com
-All the resource groups you require in this lab have been created for you as part of the lab setup. You can safely ignore any steps that ask you to create a resource group. Please use or select a pre-existing resource group that has a similar name to the one you are asked to create. If no similarly named resource group exists, use any existing resource group.
-
-For access to Azure, use the following credentials:
-
-Username: LabUser-30890988@cloudslice.onmicrosoft.com
-Password: d!DkeBH90!
-You can see your available Resource Groups by checking the Resources tab above.
-
-Lab 03: Retrieve Azure Storage resources and metadata by using the Azure Storage SDK for .NET
-Microsoft Azure user interface
-Given the dynamic nature of Microsoft cloud tools, you might experience Azure user interface (UI) changes that occur after the development of this training content. As a result, the lab instructions and lab steps might not align correctly.
-
-Microsoft updates this training course when the community alerts us to needed changes. However, cloud updates occur frequently, so you might encounter UI changes before this training content updates. If this occurs, adapt to the changes, and then work through them in the labs as needed.
-
-Instructions
-Before you start
-Sign in to the lab environment
-Sign in to your Windows 10 virtual machine (VM) by using the following credentials:
-
-Username: Admin
-Password: Pa55w.rd
-Note: Your instructor will provide instructions to connect to the virtual lab environment.
-
-Review the installed applications
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab, including:
-
-Microsoft Edge
-File Explorer
-Lab Scenario
-In this lab, you will learn how to use the Azure Storage SDK to access Azure Storage containers within a C# application. You will also learn how to access metadata and expose URI information to gain access to the contents of the containers in the storage account.
-
-Finally, to ensure compliance with company regulations, you will implement secure access by generating shared access signatures and data lifecycle policies. You will test access to the content through a static website as well.
-
-Architecture diagram
-Architecture diagram depicting a user retrieving Azure Storage resources and metadata by using the Azure Storage SDK for .NET.
 
 Exercise 1: Create Azure resources
 Task 1: Open the Azure portal
-On the taskbar, select the Microsoft Edge icon.
+    On the taskbar, select the Microsoft Edge icon.
 
-In the browser window, browse to the Azure portal at https://portal.azure.com, and then sign in with the account you'll be using for this lab.
+    In the browser window, browse to the Azure portal at https://portal.azure.com, and then sign in with the account you'll be using for this lab.
 
-Note: If this is your first time signing in to the Azure portal, you'll be offered a tour of the portal. Select Get Started to skip the tour and begin using the portal.
+    Note: If this is your first time signing in to the Azure portal, you'll be offered a tour of the portal. Select Get Started to skip the tour and begin using the portal.
 
 Task 2: Create a Storage account
-In the Azure portal, use the Search resources, services, and docs text box to search for Storage Accounts, and then in the list of results, select Storage Accounts.
+    In the Azure portal, use the Search resources, services, and docs text box to search for Storage Accounts, and then in the list of results, select Storage Accounts.
 
-On the Storage accounts blade, select + Create.
+    On the Storage accounts blade, select + Create.
 
-On the Create a storage account blade, on the Basics tab, perform the following actions, and then select Review:
+    On the Create a storage account blade, on the Basics tab, perform the following actions, and then select Review:
 
-Setting	Action
-Subscription drop-down list	Retain the default value
-Resource group section	Use existing, and select StorageMedia-lod30890988
-Storage account name text box	Enter mediastor[yourname]
-Region drop-down list	Select (US) East US
-Performance section	Select the Standard option
-Redundancy drop-down list	select Locally-redundant storage (LRS)
-The following screenshot displays the configured settings on the Create a storage account blade.
+    Setting	                                    Action
+    Subscription drop-down list	                Retain the default value
+    Resource group section	                    Use existing, and select StorageMedia-lod30890988
+    Storage account name text box	            Enter mediastor[yourname]
+    Region drop-down list	                    Select (US) East US
+    Performance section	                        Select the Standard option
+    Redundancy drop-down list	                Select Locally-redundant storage (LRS)
+   
+    On the Review tab, review the options that you selected during the previous steps.
 
-Create a storage account blade
+    Select Create to create the storage account by using your specified configuration.
+    Note: Wait for the creation task to complete before you move forward with this lab.
 
-On the Review tab, review the options that you selected during the previous steps.
+    Select Go to resource.
 
-Select Create to create the storage account by using your specified configuration.
+    On the Storage account blade, in the Settings section, select the Endpoints link.
 
-Note: Wait for the creation task to complete before you move forward with this lab.
+    In the Endpoints section, copy the value of the Blob Service text box to the clipboard.
+    Note: You'll use this endpoint value later in the lab.
 
-Select Go to resource.
+    Open Notepad, and then paste the copied blob service value to Notepad.
 
-On the Storage account blade, in the Settings section, select the Endpoints link.
+    On the Storage account blade, in the Security + networking section, select Access keys.
 
-In the Endpoints section, copy the value of the Blob Service text box to the clipboard.
+    Copy the Storage account name value to the clipboard and then paste it into Notepad.
 
-Note: You'll use this endpoint value later in the lab.
+    On the Access keys blade, select Show keys.
 
-Open Notepad, and then paste the copied blob service value to Notepad.
-
-On the Storage account blade, in the Security + networking section, select Access keys.
-
-Copy the Storage account name value to the clipboard and then paste it into Notepad.
-
-On the Access keys blade, select Show keys.
-
-Review any one of the keys, and then copy the value of either of the Key boxes to the clipboard.
-
-Note: You'll use all these values later in this lab.
+    Review any one of the keys, and then copy the value of either of the Key boxes to the clipboard.
+    Note: You'll use all these values later in this lab.
 
 Review
 In this exercise, you created a new Storage account to use throughout the remainder of the lab.
 
 Exercise 2: Upload a blob into a container
 Task 1: Create storage account containers
-On the Storage account blade, select the Containers link in the Data storage section.
 
-In the Containers section, select + Container.
+    On the Storage account blade, select the Containers link in the Data storage section.
 
-In the New container pop-up window, perform the following actions, and then select Create:
+    In the Containers section, select + Container.
 
-Setting	Action
-Name text box	Enter raster-graphics
-Public access level drop-down list	Select Private (no anonymous access)
-In the Containers section, select + Container.
+    In the New container pop-up window, perform the following actions, and then select Create:
 
-In the New container pop-up window, perform the following actions and then select Create:
+    Setting	                                Action
+    Name text box	                        Enter raster-graphics
+    Public access level drop-down list	    Select Private (no anonymous access)
 
-Setting	Action
-Name text box	Enter compressed-audio
-Public access level drop-down list	Select Private (no anonymous access)
-In the Containers section, observe the updated list of containers.
+    In the Containers section, select + Container.
 
-The following screenshot displays the configured settings on the Create a storage account blade.
+    In the New container pop-up window, perform the following actions and then select Create:
 
-Create a storage account blade
+    Setting	                                Action
+    Name text box	                        Enter compressed-audio
+    Public access level drop-down list	    Select Private (no anonymous access)
+
+    In the Containers section, observe the updated list of containers.
+
+    The following screenshot displays the configured settings on the Create a storage account blade.
+
+    Create a storage account blade
 
 Task 2: Upload a storage account blob
-In the Containers section, select the recently created raster-graphics container.
 
-On the Container blade, select Upload.
+    In the Containers section, select the recently created raster-graphics container.
 
-In the Upload blob window, perform the following actions, and then select Upload:
+    On the Container blade, select Upload.
 
-Setting	Action
-Files section	Select Browse for files or use the drag and drop feature
-File Explorer window	Browse to Allfiles (F):\Allfiles\Labs\03\Starter\Images, select the graph.jpg file, and then select Open
-Overwrite if files already exist check box	Ensure that the check box is selected
-Note: Wait for the blob to upload before you continue with this lab.
+    In the Upload blob window, perform the following actions, and then select Upload:
+
+    Setting	                            Action
+    Files section	                    Select Browse for files or use the drag and drop feature
+    File Explorer window	            Browse to Allfiles (F):\Allfiles\Labs\03\Starter\Images, select the graph.jpg file, and then select Open
+
+    Overwrite if files already exist check box	Ensure that the check box is selected
+    Note: Wait for the blob to upload before you continue with this lab.
 
 Review
 In this exercise, you created placeholder containers in the Storage account, and then populated one of the containers with a blob.
 
 Exercise 3: Access containers by using the .NET SDK
 Task 1: Create .NET project
-On the Start screen, select the Visual Studio Code tile.
 
-On the File menu, select Open Folder, browse to Allfiles (F):\Allfiles\Labs\03\Starter\BlobManager, and then select Select Folder.
+    On the Start screen, select the Visual Studio Code tile.
 
-In the Visual Studio Code window, on the Menu Bar, select Terminal and then select New Terminal.
+    On the File menu, select Open Folder, browse to Allfiles (F):\Allfiles\Labs\03\Starter\BlobManager, and then select Select Folder.
 
-In the terminal, run the following command to create a new .NET project named BlobManager in the current folder:
+    In the Visual Studio Code window, on the Menu Bar, select Terminal and then select New Terminal.
 
-dotnet new console --framework net6.0 --name BlobManager --output .
-Note: The dotnet new command will create a new console project in a folder with the same name as the project.
+    In the terminal, run the following command to create a new .NET project named BlobManager in the current folder:
+        dotnet new console --framework net6.0 --name BlobManager --output .
+        Note: The dotnet new command will create a new console project in a folder with the same name as the project.
 
-In the terninal, run the following command to import version 12.12.0 of Azure.Storage.Blobs from NuGet:
+    In the terninal, run the following command to import version 12.12.0 of Azure.Storage.Blobs from NuGet:
+        dotnet add package Azure.Storage.Blobs --version 12.12.0
+        Note: The dotnet add package command will add the Azure.Storage.Blobs package from NuGet. For more information, refer to Azure.Storage.Blobs.
 
-dotnet add package Azure.Storage.Blobs --version 12.12.0
-Note: The dotnet add package command will add the Azure.Storage.Blobs package from NuGet. For more information, refer to Azure.Storage.Blobs.
-
-In the terminal, run the following command to build the .NET web application:
-
-dotnet build
-Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
+    In the terminal, run the following command to build the .NET web application:
+        dotnet build
+        Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
 
 Task 2: Modify the Program class to access Storage
-On the Explorer pane of the Visual Studio Code window, open the Program.cs file.
 
-On the code editor tab for the Program.cs file, delete all the code in the existing file.
+    On the Explorer pane of the Visual Studio Code window, open the Program.cs file.
 
-Add the following code:
+    On the code editor tab for the Program.cs file, delete all the code in the existing file.
 
-csharp
-using Azure.Storage;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using System;
-using System.Threading.Tasks;    
-public class Program
-{
-    //Update the blobServiceEndpoint value that you recorded previously in this lab.        
-    private const string blobServiceEndpoint = "<primary-blob-service-endpoint>";
-//Update the storageAccountName value that you recorded previously in this lab.
-private const string storageAccountName = "&lt;storage-account-name&gt;";
+    Add the following code:
+        csharp
+        using Azure.Storage;
+        using Azure.Storage.Blobs;
+        using Azure.Storage.Blobs.Models;
+        using System;
+        using System.Threading.Tasks;    
+        public class Program
+        {
+            //Update the blobServiceEndpoint value that you recorded previously in this lab.        
+            private const string blobServiceEndpoint = "<primary-blob-service-endpoint>";
 
-//Update the storageAccountKey value that you recorded previously in this lab.
-private const string storageAccountKey = "&lt;key&gt;";    
+            //Update the storageAccountName value that you recorded previously in this lab.
+            private const string storageAccountName = "&lt;storage-account-name&gt;";
+
+            //Update the storageAccountKey value that you recorded previously in this lab.
+            private const string storageAccountKey = "&lt;key&gt;";    
 
 
-//The following code to create a new asynchronous Main method
-public static async Task Main(string[] args)
-{ 
-}
-}
-Update the blobServiceEndpoint string constant by setting its value to the Primary Blob Service Endpoint of the storage account that you recorded previously in this lab.
+            //The following code to create a new asynchronous Main method
+            public static async Task Main(string[] args)
+            { 
+            }
+        }
 
-Update the storageAccountName string constant by setting its value to the Storage account name of the storage account that you recorded previously in this lab.
+    Update the blobServiceEndpoint string constant by setting its value to the Primary Blob Service Endpoint of the storage account that you recorded previously in this lab.
 
-Update the storageAccountKey string constant by setting its value to the Key of the storage account that you recorded previously in this lab.
+    Update the storageAccountName string constant by setting its value to the Storage account name of the storage account that you recorded previously in this lab.
+
+    Update the storageAccountKey string constant by setting its value to the Key of the storage account that you recorded previously in this lab.
 
 Task 3: Connect to the Azure Storage blob service endpoint
+
 In the Main method, add the following code:
+    csharp
+    public static async Task Main(string[] args)
+    {
+        //The following line of code to create a new instance of the StorageSharedKeyCredential class by using the storageAccountName and storageAccountKey constants as constructor parameters
+        StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
 
-csharp
- public static async Task Main(string[] args)
-{
-    //The following line of code to create a new instance of the StorageSharedKeyCredential class by using the storageAccountName and storageAccountKey constants as constructor parameters
-    StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
-//The following line of code to create a new instance of the BlobServiceClient class by using the blobServiceEndpoint constant and the accountCredentials variable as constructor parameters
-BlobServiceClient serviceClient = new BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
+        //The following line of code to create a new instance of the BlobServiceClient class by using the blobServiceEndpoint constant and the accountCredentials variable as constructor parameters
+        BlobServiceClient serviceClient = new BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
 
-//The following line of code to invoke the GetAccountInfoAsync method of the BlobServiceClient class to retrieve account metadata from the service
-AccountInfo info = await serviceClient.GetAccountInfoAsync();
+        //The following line of code to invoke the GetAccountInfoAsync method of the BlobServiceClient class to retrieve account metadata from the service
+        AccountInfo info = await serviceClient.GetAccountInfoAsync();
 
-//Render a welcome message
-await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
+        //Render a welcome message
+        await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
 
-//Render the storage account's name
-await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
+        //Render the storage account's name
+        await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
 
-//Render the type of storage account
-await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
+        //Render the type of storage account
+        await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
 
-//Render the currently selected stock keeping unit (SKU) for the storage account
-await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
-}
-Save the Program.cs file.
+        //Render the currently selected stock keeping unit (SKU) for the storage account
+        await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
+    }
 
-In the Visual Studio Code window, on the Menu Bar, select Terminal and then select New Terminal.
+    Save the Program.cs file.
 
-In the terminal, run the following command to run the .NET web application:
+    In the Visual Studio Code window, on the Menu Bar, select Terminal and then select New Terminal.
 
-dotnet run
-Note: If there are any build errors, review the Program.cs file in the Allfiles (F):\Allfiles\Labs\03\Solution\BlobManager folder.
+    In the terminal, run the following command to run the .NET web application:
+        dotnet run
+        Note: If there are any build errors, review the Program.cs file in the Allfiles (F):\Allfiles\Labs\03\Solution\BlobManager folder.
 
-Observe the output from the currently running console application. The output contains metadata for the storage account that was retrieved from the service.
+    Observe the output from the currently running console application. The output contains metadata for the storage account that was retrieved from the service.
 
-Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
+    Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
 
 Task 4: Enumerate the existing containers
-In the Program class, enter the following code to create a new private static method named EnumerateContainersAsync, that's asynchronous and has a single BlobServiceClient parameter type:
 
-csharp
-private static async Task EnumerateContainersAsync(BlobServiceClient client)
-{   
-    /*Create an asynchronous foreach loop that iterates over the results of 
-        an invocation of the GetBlobContainersAsync method of the BlobServiceClient class. */    
-    await foreach (BlobContainerItem container in client.GetBlobContainersAsync())
-    {   
-        //Print the name of each container
-        await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
-    }
-}
+    In the Program class, enter the following code to create a new private static method named EnumerateContainersAsync, that's asynchronous and has a single BlobServiceClient parameter type:
+        csharp
+        private static async Task EnumerateContainersAsync(BlobServiceClient client)
+        {   
+            /*Create an asynchronous foreach loop that iterates over the results of 
+                an invocation of the GetBlobContainersAsync method of the BlobServiceClient class. */    
+            await foreach (BlobContainerItem container in client.GetBlobContainersAsync())
+            {   
+                //Print the name of each container
+                await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
+            }
+        }
+
 In the Main method, enter the following code at the end of the method to invoke the EnumerateContainersAsync method, passing in the serviceClient variable as a parameter:
-
-csharp
-await EnumerateContainersAsync(serviceClient);
-Observe the Program.cs file, which should now include:
-
-csharp
-using Azure.Storage;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using System;
-using System.Threading.Tasks;
-
-public class Program
-{
-    private const string blobServiceEndpoint = "your blobServiceEndpoint";
-    private const string storageAccountName = "your storageAccountName";
-    private const string storageAccountKey = "your storageAccountKey";    
-    public static async Task Main(string[] args)
-    {
-        StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
-        BlobServiceClient serviceClient = new     BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
-        AccountInfo info = await serviceClient.GetAccountInfoAsync();
-        await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
-        await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
-        await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
-        await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
-    /* To invoke the EnumerateContainersAsync method, 
-    passing in the serviceClient variable as a parameter */
+    csharp
     await EnumerateContainersAsync(serviceClient);
-}        
-private static async Task EnumerateContainersAsync(BlobServiceClient client)
-{        
-    await foreach (BlobContainerItem container in client.GetBlobContainersAsync())
+
+    Observe the Program.cs file, which should now include:
+
+    csharp
+    using Azure.Storage;
+    using Azure.Storage.Blobs;
+    using Azure.Storage.Blobs.Models;
+    using System;
+    using System.Threading.Tasks;
+
+    public class Program
     {
-        await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
-    }
-}
-}
-Save the Program.cs file.
-
-In the Visual Studio Code window, on the Menu Bar, select Terminal and then select New Terminal.
-
-In the terminal, run the following command to run the .NET web application:
-
-dotnet run
-Note: If there are any build errors, review the Program.cs file in the Allfiles (F):\Allfiles\Labs\03\Solution\BlobManager folder.
-
-Observe the output from the currently running console application. The updated output includes a list of every existing container in the account.
-
-Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
-
-Review
-In this exercise, you accessed existing containers by using the Azure Storage SDK.
-
-Exercise 4: Retrieve blob Uniform Resource Identifiers (URIs) by using the .NET SDK
-Task 1: Enumerate the blobs in an existing container by using the SDK
-In the Program class, enter the following code to create a new private static method named EnumerateBlobsAsync that's asynchronous and has two parameter types, BlobServiceClient and string:
-
-csharp
-private static async Task EnumerateBlobsAsync(BlobServiceClient client, string containerName)
-{   
-    /* Get a new instance of the BlobContainerClient class by using the
-       GetBlobContainerClient method of the BlobServiceClient class, 
-       passing in the containerName parameter */   
-    BlobContainerClient container = client.GetBlobContainerClient(containerName);
-/* Render the name of the container that will be enumerated */
-await Console.Out.WriteLineAsync($"Searching:\t{container.Name}");
-
-/* Create an asynchronous foreach loop that iterates over the results of
-    an invocation of the GetBlobsAsync method of the BlobContainerClient class */
-await foreach (BlobItem blob in container.GetBlobsAsync())
-{     
-    //Print the name of each blob    
-    await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
-}
-}
-In the Main method, enter the following code at the end of the method to create a variable named existingContainerName with a value of raster-graphics:
-
-csharp
-string existingContainerName = "raster-graphics";
-In the Main method, enter the following code at the end of the method to invoke the EnumerateBlobsAsync method, passing in the serviceClient and existingContainerName variables as parameters:
-
-csharp
-await EnumerateBlobsAsync(serviceClient, existingContainerName);
-Observe the Program.cs file, which should now include:
-
-csharp
-using Azure.Storage;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using System;
-using System.Threading.Tasks;    
-public class Program
-{
-    private const string blobServiceEndpoint = "your blobServiceEndpoint";
-    private const string storageAccountName = "your storageAccountName";
-    private const string storageAccountKey = "your storageAccountKey";    
-    public static async Task Main(string[] args)
-    {
-        StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
-        BlobServiceClient serviceClient = new   BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
-        AccountInfo info = await serviceClient.GetAccountInfoAsync();
-        await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
-        await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
-        await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
-        await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
+        private const string blobServiceEndpoint = "your blobServiceEndpoint";
+        private const string storageAccountName = "your storageAccountName";
+        private const string storageAccountKey = "your storageAccountKey";    
+        public static async Task Main(string[] args)
+        {
+            StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
+            BlobServiceClient serviceClient = new     BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
+            AccountInfo info = await serviceClient.GetAccountInfoAsync();
+            await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
+            await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
+            await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
+            await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
+        /* To invoke the EnumerateContainersAsync method, 
+        passing in the serviceClient variable as a parameter */
         await EnumerateContainersAsync(serviceClient);
-        string existingContainerName = "raster-graphics";
-        await EnumerateBlobsAsync(serviceClient, existingContainerName);
     }        
     private static async Task EnumerateContainersAsync(BlobServiceClient client)
     {        
@@ -415,255 +267,347 @@ public class Program
         {
             await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
         }
-    }        
-    private static async Task EnumerateBlobsAsync(BlobServiceClient client, string containerName)
-    {      
-        BlobContainerClient container = client.GetBlobContainerClient(containerName);
-        await Console.Out.WriteLineAsync($"Searching:\t{container.Name}");
-        await foreach (BlobItem blob in container.GetBlobsAsync())
-        {        
-            await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
-        }
     }
-}
-Save the Program.cs file.
+    }
+    Save the Program.cs file.
 
-In the Visual Studio Code window, on the Menu Bar, select Terminal and then select New Terminal.
+    In the Visual Studio Code window, on the Menu Bar, select Terminal and then select New Terminal.
 
-In the terminal, run the following command to run the .NET web application:
+    In the terminal, run the following command to run the .NET web application:
 
-dotnet run
-Note: If there are any build errors, review the Program.cs file in the Allfiles (F):\Allfiles\Labs\03\Solution\BlobManager folder.
+    dotnet run
+    Note: If there are any build errors, review the Program.cs file in the Allfiles (F):\Allfiles\Labs\03\Solution\BlobManager folder.
 
-Review the output from the currently running console application. The updated output includes metadata about the existing container and blobs.
+    Observe the output from the currently running console application. The updated output includes a list of every existing container in the account.
 
-Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
+    Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
+
+    Review
+    In this exercise, you accessed existing containers by using the Azure Storage SDK.
+
+    Exercise 4: Retrieve blob Uniform Resource Identifiers (URIs) by using the .NET SDK
+    Task 1: Enumerate the blobs in an existing container by using the SDK
+    In the Program class, enter the following code to create a new private static method named EnumerateBlobsAsync that's asynchronous and has two parameter types, BlobServiceClient and string:
+
+    csharp
+    private static async Task EnumerateBlobsAsync(BlobServiceClient client, string containerName)
+    {   
+        /* Get a new instance of the BlobContainerClient class by using the
+        GetBlobContainerClient method of the BlobServiceClient class, 
+        passing in the containerName parameter */   
+
+            BlobContainerClient container = client.GetBlobContainerClient(containerName);
+
+        /* Render the name of the container that will be enumerated */
+
+        await Console.Out.WriteLineAsync($"Searching:\t{container.Name}");
+
+        /* Create an asynchronous foreach loop that iterates over the results of
+            an invocation of the GetBlobsAsync method of the BlobContainerClient class */
+
+            await foreach (BlobItem blob in container.GetBlobsAsync())
+            {     
+                //Print the name of each blob    
+                await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
+            }
+    }
+
+    In the Main method, enter the following code at the end of the method to create a variable named existingContainerName with a value of raster-graphics:
+      csharp
+        string existingContainerName = "raster-graphics";
+
+    In the Main method, enter the following code at the end of the method to invoke the EnumerateBlobsAsync method, passing in the serviceClient and existingContainerName variables as parameters:
+      csharp
+        await EnumerateBlobsAsync(serviceClient, existingContainerName);
+
+    Observe the Program.cs file, which should now include:
+      csharp
+        using Azure.Storage;
+        using Azure.Storage.Blobs;
+        using Azure.Storage.Blobs.Models;
+        using System;
+        using System.Threading.Tasks;    
+        public class Program
+        {
+            private const string blobServiceEndpoint = "your blobServiceEndpoint";
+            private const string storageAccountName = "your storageAccountName";
+            private const string storageAccountKey = "your storageAccountKey";    
+            public static async Task Main(string[] args)
+            {
+                StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
+                BlobServiceClient serviceClient = new   BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
+                AccountInfo info = await serviceClient.GetAccountInfoAsync();
+                await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
+                await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
+                await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
+                await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
+                await EnumerateContainersAsync(serviceClient);
+                string existingContainerName = "raster-graphics";
+                await EnumerateBlobsAsync(serviceClient, existingContainerName);
+            }        
+            private static async Task EnumerateContainersAsync(BlobServiceClient client)
+            {        
+                await foreach (BlobContainerItem container in client.GetBlobContainersAsync())
+                {
+                    await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
+                }
+            }        
+            private static async Task EnumerateBlobsAsync(BlobServiceClient client, string containerName)
+            {      
+                BlobContainerClient container = client.GetBlobContainerClient(containerName);
+                await Console.Out.WriteLineAsync($"Searching:\t{container.Name}");
+                await foreach (BlobItem blob in container.GetBlobsAsync())
+                {        
+                    await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
+                }
+            }
+        }
+
+    Save the Program.cs file.
+
+    In the Visual Studio Code window, on the Menu Bar, select Terminal and then select New Terminal.
+
+    In the terminal, run the following command to run the .NET web application:
+
+    dotnet run
+    Note: If there are any build errors, review the Program.cs file in the Allfiles (F):\Allfiles\Labs\03\Solution\BlobManager folder.
+
+    Review the output from the currently running console application. The updated output includes metadata about the existing container and blobs.
+
+    Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
 
 Task 2: Create a new container by using the SDK
-In the Program class, enter the following code to create a new private static method named GetContainerAsync that's asynchronous and has two parameter types, BlobServiceClient and string:
+    In the Program class, enter the following code to create a new private static method named GetContainerAsync that's asynchronous and has two parameter types, BlobServiceClient and string:
 
-csharp
-private static async Task<BlobContainerClient> GetContainerAsync(BlobServiceClient client, string containerName)
-{   
-    /* Get a new instance of the BlobContainerClient class by using the
-        GetBlobContainerClient method of the BlobServiceClient class,
-        passing in the containerName parameter */   
-    BlobContainerClient container = client.GetBlobContainerClient(containerName);
-/* Invoke the CreateIfNotExistsAsync method of the BlobContainerClient class */
-await container.CreateIfNotExistsAsync(PublicAccessType.Blob);
-
-/* Render the name of the container that was potentially created */
-await Console.Out.WriteLineAsync($"New Container:\t{container.Name}");
-
-/* Return the container as the result of the GetContainerAsync */        
-return container;
-}
-In the Main method, enter the following code at the end of the method to create a variable named newContainerName with a value of vector-graphics:
-
-csharp
-string newContainerName = "vector-graphics";
-In the Main method, enter the following code at the end of the method to invoke the GetContainerAsync method, to pass the serviceClient and newContainerName variables as parameters, and to store the result in a variable named containerClient of type BlobContainerClient:
-
-csharp
-BlobContainerClient containerClient = await GetContainerAsync(serviceClient, newContainerName);
-Review the Program.cs file, which should now include:
-
-csharp
-using Azure.Storage;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using System;
-using System.Threading.Tasks;    
-public class Program
-{
-    private const string blobServiceEndpoint = "your blobServiceEndpoint";
-    private const string storageAccountName = "your storageAccountName";
-    private const string storageAccountKey = "your storageAccountKey";
-    public static async Task Main(string[] args)
-    {
-        StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
-        BlobServiceClient serviceClient = new BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
-        AccountInfo info = await serviceClient.GetAccountInfoAsync();
-        await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
-        await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
-        await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
-        await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
-        await EnumerateContainersAsync(serviceClient);
-        string existingContainerName = "raster-graphics";
-        await EnumerateBlobsAsync(serviceClient, existingContainerName);
-        string newContainerName = "vector-graphics";
-        BlobContainerClient containerClient = await GetContainerAsync(serviceClient, newContainerName);
-    }        
-    private static async Task EnumerateContainersAsync(BlobServiceClient client)
-    {        
-        await foreach (BlobContainerItem container in client.GetBlobContainersAsync())
-        {
-            await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
-        }
-    }        
-    private static async Task EnumerateBlobsAsync(BlobServiceClient client, string containerName)
-    {      
-        BlobContainerClient container = client.GetBlobContainerClient(containerName);
-        await Console.Out.WriteLineAsync($"Searching:\t{container.Name}");
-        await foreach (BlobItem blob in container.GetBlobsAsync())
-        {        
-            await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
-        }
-    }        
+    csharp
     private static async Task<BlobContainerClient> GetContainerAsync(BlobServiceClient client, string containerName)
-    {      
-        BlobContainerClient container = client.GetBlobContainerClient(containerName);
-        await container.CreateIfNotExistsAsync(PublicAccessType.Blob);
-        await Console.Out.WriteLineAsync($"New Container:\t{container.Name}");
-        return container;
-    }
-}
-Save the Program.cs file.
+    {   
+        /* Get a new instance of the BlobContainerClient class by using the
+            GetBlobContainerClient method of the BlobServiceClient class,
+            passing in the containerName parameter */   
 
-In the Visual Studio Code window, on the Menu Bar, select Terminal and then select New Terminal.
+            BlobContainerClient container = client.GetBlobContainerClient(containerName);
 
-In the terminal, run the following command to run the .NET web application:
+        /* Invoke the CreateIfNotExistsAsync method of the BlobContainerClient class */
 
-dotnet run
-Note: If there are any build errors, review the Program.cs file in the Allfiles (F):\Allfiles\Labs\03\Solution\BlobManager folder.
+            await container.CreateIfNotExistsAsync(PublicAccessType.Blob);
 
-Observe the output from the currently running console application. The updated output includes metadata about the existing container and blobs.
+        /* Render the name of the container that was potentially created */
 
-Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
+            await Console.Out.WriteLineAsync($"New Container:\t{container.Name}");
+
+        /* Return the container as the result of the GetContainerAsync */  
+
+                return container;
+        }
+
+        In the Main method, enter the following code at the end of the method to create a variable named newContainerName with a value of vector-graphics:
+        csharp
+            string newContainerName = "vector-graphics";
+        
+        In the Main method, enter the following code at the end of the method to invoke the GetContainerAsync method, to pass the serviceClient and newContainerName variables as parameters, and to store the result in a variable named containerClient of type BlobContainerClient:
+        csharp
+            BlobContainerClient containerClient = await GetContainerAsync(serviceClient, newContainerName);
+        
+        Review the Program.cs file, which should now include:
+        csharp
+            using Azure.Storage;
+            using Azure.Storage.Blobs;
+            using Azure.Storage.Blobs.Models;
+            using System;
+            using System.Threading.Tasks;    
+            public class Program
+            {
+                private const string blobServiceEndpoint = "your blobServiceEndpoint";
+                private const string storageAccountName = "your storageAccountName";
+                private const string storageAccountKey = "your storageAccountKey";
+                public static async Task Main(string[] args)
+                {
+                    StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
+                    BlobServiceClient serviceClient = new BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
+                    AccountInfo info = await serviceClient.GetAccountInfoAsync();
+                    await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
+                    await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
+                    await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
+                    await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
+                    await EnumerateContainersAsync(serviceClient);
+                    string existingContainerName = "raster-graphics";
+                    await EnumerateBlobsAsync(serviceClient, existingContainerName);
+                    string newContainerName = "vector-graphics";
+                    BlobContainerClient containerClient = await GetContainerAsync(serviceClient, newContainerName);
+                }        
+                private static async Task EnumerateContainersAsync(BlobServiceClient client)
+                {        
+                    await foreach (BlobContainerItem container in client.GetBlobContainersAsync())
+                    {
+                        await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
+                    }
+                }        
+                private static async Task EnumerateBlobsAsync(BlobServiceClient client, string containerName)
+                {      
+                    BlobContainerClient container = client.GetBlobContainerClient(containerName);
+                    await Console.Out.WriteLineAsync($"Searching:\t{container.Name}");
+                    await foreach (BlobItem blob in container.GetBlobsAsync())
+                    {        
+                        await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
+                    }
+                }        
+                private static async Task<BlobContainerClient> GetContainerAsync(BlobServiceClient client, string containerName)
+                {      
+                    BlobContainerClient container = client.GetBlobContainerClient(containerName);
+                    await container.CreateIfNotExistsAsync(PublicAccessType.Blob);
+                    await Console.Out.WriteLineAsync($"New Container:\t{container.Name}");
+                    return container;
+                }
+            }
+
+        Save the Program.cs file.
+
+        In the Visual Studio Code window, on the Menu Bar, select Terminal and then select New Terminal.
+
+        In the terminal, run the following command to run the .NET web application:
+            dotnet run
+            Note: If there are any build errors, review the Program.cs file in the Allfiles (F):\Allfiles\Labs\03\Solution\BlobManager folder.
+
+        Observe the output from the currently running console application. The updated output includes metadata about the existing container and blobs.
+
+        Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
 
 Task 3: Upload a new blob by using the portal
-On the Azure portal's navigation pane, select the Resource groups link.
 
-On the Resource groups blade, select the StorageMedia-lod30890988 resource group that you created previously in this lab.
+    On the Azure portal's navigation pane, select the Resource groups link.
 
-On the StorageMedia-lod30890988 blade, select the mediastor[yourname] storage account that you created previously in this lab.
+    On the Resource groups blade, select the StorageMedia-lod30890988 resource group that you created previously in this lab.
 
-On the Storage account blade, select the Containers link in the Data storage section.
+    On the StorageMedia-lod30890988 blade, select the mediastor[yourname] storage account that you created previously in this lab.
 
-In the Containers section, select the newly created vector-graphics container. You might need to refresh the page to observe the new container.
+    On the Storage account blade, select the Containers link in the Data storage section.
 
-On the Container blade, select Upload.
+    In the Containers section, select the newly created vector-graphics container. You might need to refresh the page to observe the new container.
 
-In the Upload blob window, perform the following actions, and then select Upload:
+    On the Container blade, select Upload.
 
-Setting	Action
-Files section	Select Browse for files or use the drag and drop feature
-File Explorer window	Allfiles (F):\Allfiles\Labs\03\Starter\Images, select the graph.svg file, and then select Open
-Overwrite if files already exist check box	Ensure that the check box is selected
-Note: Wait for the blob to upload before you continue with this lab.
+    In the Upload blob window, perform the following actions, and then select Upload:
+
+    Setting	                        Action
+    Files section	                Select Browse for files or use the drag and drop feature
+    File Explorer window	        Allfiles (F):\Allfiles\Labs\03\Starter\Images, select the graph.svg file, and then select Open
+    
+    Overwrite if files already exist check box	Ensure that the check box is selected
+    Note: Wait for the blob to upload before you continue with this lab.
 
 Task 4: Access blob URI by using the SDK
-Switch to the Visual Studio Code window.
+    Switch to the Visual Studio Code window.
 
-In the Program class, enter the following code to create a new private static method named GetBlobAsync that's asynchronous and has two parameter types, BlobContainerClient and string:
+    In the Program class, enter the following code to create a new private static method named GetBlobAsync that's asynchronous and has two parameter types, BlobContainerClient and string:
+      csharp
+        private static async Task<BlobClient> GetBlobAsync(BlobContainerClient client, string blobName)
+        {   
+            /* Get a new instance of the BlobClient class by using the GetBlobClient method
+                of the BlobContainerClient class, and to pass in the blobName parameter */  
 
-csharp
-private static async Task<BlobClient> GetBlobAsync(BlobContainerClient client, string blobName)
-{   
-    /* Get a new instance of the BlobClient class by using the GetBlobClient method
-        of the BlobContainerClient class, and to pass in the blobName parameter */   
-    BlobClient blob = client.GetBlobClient(blobName);
-/* Render the name of the blob that was referenced */
-await Console.Out.WriteLineAsync($"Blob Found:\t{blob.Name}");
+                BlobClient blob = client.GetBlobClient(blobName);
+            /* Render the name of the blob that was referenced */
+        
+            await Console.Out.WriteLineAsync($"Blob Found:\t{blob.Name}");
 
-/* Return blob as the result of the GetBlobAsync method */
-return blob;
-}
-In the Main method, enter the following code at the end of the method to create a variable named uploadedBlobName with a value of graph.svg:
+            /* Return blob as the result of the GetBlobAsync method */
+            return blob;
+        }
 
-csharp
-string uploadedBlobName = "graph.svg";
-In the Main method, enter the following code at the end of the method to invoke the GetBlobAsync method, passing in the containerClient and uploadedBlobName variables as parameters, and to store the result in a variable named blobClient of type BlobClient:
-
-csharp
-BlobClient blobClient = await GetBlobAsync(containerClient, uploadedBlobName);
-In the Main method, enter the following code at the end of the method to render the Uri property of the blobClient variable:
-
-csharp
-await Console.Out.WriteLineAsync($"Blob Url:\t{blobClient.Uri}");
-Observe the Program.cs file, which should now include:
-
-csharp
-using Azure.Storage;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using System;
-using System.Threading.Tasks;    
-public class Program
-{
-    private const string blobServiceEndpoint = "your blobServiceEndpoint";
-    private const string storageAccountName = "your storageAccountName";
-    private const string storageAccountKey = "your storageAccountKey";    
-    public static async Task Main(string[] args)
-    {
-        StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
-        BlobServiceClient serviceClient = new BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
-        AccountInfo info = await serviceClient.GetAccountInfoAsync();
-        await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
-        await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
-        await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
-        await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
-        await EnumerateContainersAsync(serviceClient);
-        string existingContainerName = "raster-graphics";
-        await EnumerateBlobsAsync(serviceClient, existingContainerName);
-        string newContainerName = "vector-graphics";
-        BlobContainerClient containerClient = await GetContainerAsync(serviceClient, newContainerName);
+    In the Main method, enter the following code at the end of the method to create a variable named uploadedBlobName with a value of graph.svg:
+    csharp
         string uploadedBlobName = "graph.svg";
+    
+    In the Main method, enter the following code at the end of the method to invoke the GetBlobAsync method, passing in the containerClient and uploadedBlobName variables as parameters, and to store the result in a variable named blobClient of type BlobClient:
+    csharp
         BlobClient blobClient = await GetBlobAsync(containerClient, uploadedBlobName);
+    
+    In the Main method, enter the following code at the end of the method to render the Uri property of the blobClient variable:
+    csharp
         await Console.Out.WriteLineAsync($"Blob Url:\t{blobClient.Uri}");
-    }        
-    private static async Task EnumerateContainersAsync(BlobServiceClient client)
-    {        
-        await foreach (BlobContainerItem container in client.GetBlobContainersAsync())
+
+    Observe the Program.cs file, which should now include:
+      csharp
+        using Azure.Storage;
+        using Azure.Storage.Blobs;
+        using Azure.Storage.Blobs.Models;
+        using System;
+        using System.Threading.Tasks;    
+        public class Program
         {
-            await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
+            private const string blobServiceEndpoint = "your blobServiceEndpoint";
+            private const string storageAccountName = "your storageAccountName";
+            private const string storageAccountKey = "your storageAccountKey";    
+            public static async Task Main(string[] args)
+            {
+                StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
+                BlobServiceClient serviceClient = new BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
+                AccountInfo info = await serviceClient.GetAccountInfoAsync();
+                await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
+                await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
+                await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
+                await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
+                await EnumerateContainersAsync(serviceClient);
+                string existingContainerName = "raster-graphics";
+                await EnumerateBlobsAsync(serviceClient, existingContainerName);
+                string newContainerName = "vector-graphics";
+                BlobContainerClient containerClient = await GetContainerAsync(serviceClient, newContainerName);
+                string uploadedBlobName = "graph.svg";
+                BlobClient blobClient = await GetBlobAsync(containerClient, uploadedBlobName);
+                await Console.Out.WriteLineAsync($"Blob Url:\t{blobClient.Uri}");
+            }        
+            private static async Task EnumerateContainersAsync(BlobServiceClient client)
+            {        
+                await foreach (BlobContainerItem container in client.GetBlobContainersAsync())
+                {
+                    await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
+                }
+            }        
+            private static async Task EnumerateBlobsAsync(BlobServiceClient client, string containerName)
+            {      
+                BlobContainerClient container = client.GetBlobContainerClient(containerName);
+                await Console.Out.WriteLineAsync($"Searching:\t{container.Name}");
+                await foreach (BlobItem blob in container.GetBlobsAsync())
+                {        
+                    await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
+                }
+            }        
+            private static async Task<BlobContainerClient> GetContainerAsync(BlobServiceClient client, string containerName)
+            {      
+                BlobContainerClient container = client.GetBlobContainerClient(containerName);
+
+                await container.CreateIfNotExistsAsync(PublicAccessType.Blob);
+                await Console.Out.WriteLineAsync($"New Container:\t{container.Name}");
+                return container;
+            }        
+            private static async Task<BlobClient> GetBlobAsync(BlobContainerClient client, string blobName)
+            {      
+                BlobClient blob = client.GetBlobClient(blobName);
+                await Console.Out.WriteLineAsync($"Blob Found:\t{blob.Name}");
+                return blob;
+            }
         }
-    }        
-    private static async Task EnumerateBlobsAsync(BlobServiceClient client, string containerName)
-    {      
-        BlobContainerClient container = client.GetBlobContainerClient(containerName);
-        await Console.Out.WriteLineAsync($"Searching:\t{container.Name}");
-        await foreach (BlobItem blob in container.GetBlobsAsync())
-        {        
-            await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
-        }
-    }        
-    private static async Task<BlobContainerClient> GetContainerAsync(BlobServiceClient client, string containerName)
-    {      
-        BlobContainerClient container = client.GetBlobContainerClient(containerName);
 
-        await container.CreateIfNotExistsAsync(PublicAccessType.Blob);
-        await Console.Out.WriteLineAsync($"New Container:\t{container.Name}");
-        return container;
-    }        
-    private static async Task<BlobClient> GetBlobAsync(BlobContainerClient client, string blobName)
-    {      
-        BlobClient blob = client.GetBlobClient(blobName);
-        await Console.Out.WriteLineAsync($"Blob Found:\t{blob.Name}");
-        return blob;
-    }
-}
-Save the Program.cs file.
+    Save the Program.cs file.
 
-In the Visual Studio Code window, activate the shortcut menu for the Explorer pane, and then select Open in Integrated Terminal.
+    In the Visual Studio Code window, activate the shortcut menu for the Explorer pane, and then select Open in Integrated Terminal.
 
-At the open command prompt, run the following command to run the .NET web application:
+    At the open command prompt, run the following command to run the .NET web application:
+        dotnet run
+        Note: If there are any build errors, review the Program.cs file in the Allfiles (F):\Allfiles\Labs\03\Solution\BlobManager folder.
 
-dotnet run
-Note: If there are any build errors, review the Program.cs file in the Allfiles (F):\Allfiles\Labs\03\Solution\BlobManager folder.
+    Observe the output from the currently running console application. The updated output includes the final URL to access the blob online. Record the value of this URL to use later in the lab.
+    Note: The URL will likely be similar to the following string: https://mediastor*[yourname]*.blob.core.windows.net/vector-graphics/graph.svg
 
-Observe the output from the currently running console application. The updated output includes the final URL to access the blob online. Record the value of this URL to use later in the lab.
+    Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
 
-Note: The URL will likely be similar to the following string: https://mediastor*[yourname]*.blob.core.windows.net/vector-graphics/graph.svg
+Task 5: Test the URI by using a browser    On the taskbar, activate the shortcut menu for the Microsoft Edge icon, and then select New window.
 
-Select Kill Terminal or the Recycle Bin icon to close the currently open terminal and any associated processes.
+    In the new browser window, refer to the URL that you previously copied in this lab for the blob.
 
-Task 5: Test the URI by using a browser
-On the taskbar, activate the shortcut menu for the Microsoft Edge icon, and then select New window.
+    You should now notice the Scalable Vector Graphics (SVG) file in your browser window.
 
-In the new browser window, refer to the URL that you previously copied in this lab for the blob.
-
-You should now notice the Scalable Vector Graphics (SVG) file in your browser window.
 
 Review
 In this exercise, you created containers and managed blobs by using the Storage SDK.
