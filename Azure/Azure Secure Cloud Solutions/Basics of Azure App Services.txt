@@ -1,0 +1,12 @@
+What is Azure App Service
+- An Http-based service for hosting: 
+  * Web applications
+  * REST APIs
+  * Mobile Back ends
+
+- Azure App services can be developed in Windows and Linux based environments
+- Azure App services has the ability to scale up/down or scale out/in.
+  -> Scaling out/in: is the ability to increase or decrease the number of machine instances that are running
+     your web application.
+  -> Scaling up/down: is the ability to increase or decrease the number of resources of the underlying machine.
+
