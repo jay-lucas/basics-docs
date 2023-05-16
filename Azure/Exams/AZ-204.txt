@@ -1,0 +1,26 @@
+
+App Service has 2 main deployment types:
+    1. Multi-Tenant public service host
+       Service Plans: Free, Shared, Basic, Standard, Premium, PremiumV2, and PremiumV3 
+    2. Single-Tenant App Service Environment (ASE) host
+       Service Plans: Isolated 
+
+Zone Redundancy
+- An App service plan can be deployed as a zone redundant service in the regions that support it. On
+  available to a Premium service plan. 
+
+App Service Plan that provides the maximum scale-out capabilities
+- Isolated
+
+Networking feature that can be used to control outbound network traffic in a App Service
+- Hybrid Connections
+
+Outbound network feature
+* Hybrid Connections
+* Gateway-required virtual network integration
+
+Inbound network feature
+* App-assigned address
+* Access Restrictions
+* Service endpoints 
+* Private endpoints

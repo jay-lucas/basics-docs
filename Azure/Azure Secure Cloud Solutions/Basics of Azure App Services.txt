@@ -10,3 +10,4 @@ What is Azure App Service
      your web application.
   -> Scaling up/down: is the ability to increase or decrease the number of resources of the underlying machine.
 
+
