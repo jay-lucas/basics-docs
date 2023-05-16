@@ -5,11 +5,14 @@ App Service has 2 main deployment types:
     2. Single-Tenant App Service Environment (ASE) host
        Service Plans: Isolated 
 
+The number of applications you can deploy to a single App service plan depends on the limit of the
+app service plan you've chosen, which is 10 free, 100 shared, and unlimited for basic and up.
+
 App Service is a distributed system. 
 Roles that handle incoming HTTP or HTTPS request are called "Front Ends".
 Roles that hos the customer workload are called "Workers"
 
-Free and Shared plans host customer workloads on multitenant Workers
+Free and Shared plans host customer workloads on multi-tenant Workers
 Basic and higher plans host customer workloads that are dedicated to only one app service plan.
 
 If you have a Standard App Service plan, all the apps in that plan run on the same worker. if you scale
@@ -32,6 +35,8 @@ Zone Redundancy
 
 App Service Plan that provides the maximum scale-out capabilities
 - Isolated
+
+background scripts in the platform as a service model via web jobs attached to a web app
 
 Networking feature that can be used to control outbound network traffic in a App Service
 - Hybrid Connections
