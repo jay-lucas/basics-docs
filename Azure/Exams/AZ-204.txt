@@ -5,6 +5,27 @@ App Service has 2 main deployment types:
     2. Single-Tenant App Service Environment (ASE) host
        Service Plans: Isolated 
 
+App Service is a distributed system. 
+Roles that handle incoming HTTP or HTTPS request are called "Front Ends".
+Roles that hos the customer workload are called "Workers"
+
+Free and Shared plans host customer workloads on multitenant Workers
+Basic and higher plans host customer workloads that are dedicated to only one app service plan.
+
+If you have a Standard App Service plan, all the apps in that plan run on the same worker. if you scale
+out the worker, all the apps in that plan are replicated on a new worker for each instance.
+
+General settings is used to configure stack, platform, debugging, and incoming client certificate 
+settings.
+
+Application settings is used to configure settings that are passed to your app at runtime.
+
+Path Mappings is use to configure handler mappings, and virtual directory to directory mappings
+
+Web server logging and Failed request tracing are only supported by Windows
+
+Deployment Logging is supported on Linux.
+
 Zone Redundancy
 - An App service plan can be deployed as a zone redundant service in the regions that support it. On
   available to a Premium service plan. 
