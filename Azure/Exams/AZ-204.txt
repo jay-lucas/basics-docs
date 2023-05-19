@@ -1,4 +1,10 @@
 
+2 main components for a web app:
+   1. App service plan (Server Farm)
+      ** Note: You can deploy multiple sites in a single app service plan
+
+   2. App service (Site)
+
 App Service has 2 main deployment types:
     1. Multi-Tenant public service host
        Service Plans: Free, Shared, Basic, Standard, Premium, PremiumV2, and PremiumV3 
@@ -29,6 +35,7 @@ Web server logging and Failed request tracing are only supported by Windows
 
 Deployment Logging is supported on Linux.
 
+2 
 Zone Redundancy
 - An App service plan can be deployed as a zone redundant service in the regions that support it. On
   available to a Premium service plan. 
@@ -50,3 +57,18 @@ Inbound network feature
 * Access Restrictions
 * Service endpoints 
 * Private endpoints
+
+Basic App Service plan has a scale out maximum of 3. You get charged for each instance you scale out.
+if you have web sites apps in a app service plan adjusting the scaling will be multiplied for each 
+web app.
+Basic App Service plan only allows for you to manually scale out, if you want autoscaling you'll 
+have to use a standard or higher plan. 
+
+AAR Affinity is used for autoscaling. In a autoscaling situation when you have to instances of an app
+the load balancer will randomly pick which instance a user goes too. With AAR Affinity, it will ensure
+the user doesn't get randomly assigned but goes to the same instance of your app they have been on prior.
+
+WebApp Console:
+Kudu, under Advance tools in the web app blade, allows your app to integrate with Git. Can Access
+command line of either CMD or PowerShell in which you can access the files on the web app. Good for 
+diagnosing and debugging problems with your application.  
