@@ -1,0 +1,35 @@
+Container Instances
+- Simplest way to deploy containers, not recommended for production uses but good for a quick and 
+  dirty ramp up. Mostly used for development, testing, and demoing. 
+
+Container Registries
+- Is like a directory for your private container images. You can create one for your company and your developers
+  and team can push there completed and built code and from there it becomes simple to deploy that
+  code into development, staging, and production into those container hosting services.
+
+Implement Containerized Solutions
+- Azure Container Registry (ACR): 
+  -> ACR Task: is a suite of features within Azure Container Registry. It provides cloud-based
+     container images building for platforms including Linux, Windows, and ARM, and can automate
+     OS and framework patching for your Docker containers. ACR Task supports several scenarios
+     to build and maintain container images and other artifacts.
+   
+    ACR Tasks:
+      - Quick Task: Simple commands, Build & Push, a single container image to a container Registry
+                    on demand within Azure without needed a local Docker instance installation
+
+      - Automatically 
+          triggered Task: 
+            Examples:
+            1) Trigger task on source code update. Which would trigger container image build or 
+              multi-step task when source code is updated in a repository.
+            2) Trigger on base image update: Set up ACR task to track a dependency on a base image
+              when it builds an application image and then if the base image is updated the ACR Task
+              can automatically build any application images built from that base image 
+            3) Schedule Task: Schedule task by setting up one or more timer triggers
+
+      - Multi-step Task: Extends the single image build and push capabilities of ACR task with 
+                         multi step multi container based workflows. This is where you configure
+                         the YAML file to define the task. 
+
+                         

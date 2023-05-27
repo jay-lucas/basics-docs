@@ -1,74 +1,76 @@
+App Services
+   2 main components for a web app:
+      1. App service plan (Server Farm)
+         ** Note: You can deploy multiple sites in a single app service plan
 
-2 main components for a web app:
-   1. App service plan (Server Farm)
-      ** Note: You can deploy multiple sites in a single app service plan
+      2. App service (Site)
 
-   2. App service (Site)
+   App Service has 2 main deployment types:
+      1. Multi-Tenant public service host
+         Service Plans: Free, Shared, Basic, Standard, Premium, PremiumV2, and PremiumV3 
+      2. Single-Tenant App Service Environment (ASE) host
+         Service Plans: Isolated 
 
-App Service has 2 main deployment types:
-    1. Multi-Tenant public service host
-       Service Plans: Free, Shared, Basic, Standard, Premium, PremiumV2, and PremiumV3 
-    2. Single-Tenant App Service Environment (ASE) host
-       Service Plans: Isolated 
+   The number of applications you can deploy to a single App service plan depends on the limit of the
+   app service plan you've chosen, which is 10 free, 100 shared, and unlimited for basic and up.
 
-The number of applications you can deploy to a single App service plan depends on the limit of the
-app service plan you've chosen, which is 10 free, 100 shared, and unlimited for basic and up.
+   App Service is a distributed system. 
+   Roles that handle incoming HTTP or HTTPS request are called "Front Ends".
+   Roles that hos the customer workload are called "Workers"
 
-App Service is a distributed system. 
-Roles that handle incoming HTTP or HTTPS request are called "Front Ends".
-Roles that hos the customer workload are called "Workers"
+   Free and Shared plans host customer workloads on multi-tenant Workers
+   Basic and higher plans host customer workloads that are dedicated to only one app service plan.
 
-Free and Shared plans host customer workloads on multi-tenant Workers
-Basic and higher plans host customer workloads that are dedicated to only one app service plan.
+   If you have a Standard App Service plan, all the apps in that plan run on the same worker. if you scale
+   out the worker, all the apps in that plan are replicated on a new worker for each instance.
 
-If you have a Standard App Service plan, all the apps in that plan run on the same worker. if you scale
-out the worker, all the apps in that plan are replicated on a new worker for each instance.
+   General settings is used to configure stack, platform, debugging, and incoming client certificate 
+   settings.
 
-General settings is used to configure stack, platform, debugging, and incoming client certificate 
-settings.
+   Application settings is used to configure settings that are passed to your app at runtime.
 
-Application settings is used to configure settings that are passed to your app at runtime.
+   Path Mappings is use to configure handler mappings, and virtual directory to directory mappings
 
-Path Mappings is use to configure handler mappings, and virtual directory to directory mappings
+   Web server logging and Failed request tracing are only supported by Windows
 
-Web server logging and Failed request tracing are only supported by Windows
+   Deployment Logging is supported on Linux.
 
-Deployment Logging is supported on Linux.
+   2 
+   Zone Redundancy
+   - An App service plan can be deployed as a zone redundant service in the regions that support it. On
+   available to a Premium service plan. 
 
-2 
-Zone Redundancy
-- An App service plan can be deployed as a zone redundant service in the regions that support it. On
-  available to a Premium service plan. 
+   App Service Plan that provides the maximum scale-out capabilities
+   - Isolated
 
-App Service Plan that provides the maximum scale-out capabilities
-- Isolated
+   background scripts in the platform as a service model via web jobs attached to a web app
 
-background scripts in the platform as a service model via web jobs attached to a web app
+   Networking feature that can be used to control outbound network traffic in a App Service
+   - Hybrid Connections
 
-Networking feature that can be used to control outbound network traffic in a App Service
-- Hybrid Connections
+   Outbound network feature
+   * Hybrid Connections
+   * Gateway-required virtual network integration
 
-Outbound network feature
-* Hybrid Connections
-* Gateway-required virtual network integration
+   Inbound network feature
+   * App-assigned address
+   * Access Restrictions
+   * Service endpoints 
+   * Private endpoints
 
-Inbound network feature
-* App-assigned address
-* Access Restrictions
-* Service endpoints 
-* Private endpoints
+   Basic App Service plan has a scale out maximum of 3. You get charged for each instance you scale out.
+   if you have web sites apps in a app service plan adjusting the scaling will be multiplied for each 
+   web app.
+   Basic App Service plan only allows for you to manually scale out, if you want autoscaling you'll 
+   have to use a standard or higher plan. 
 
-Basic App Service plan has a scale out maximum of 3. You get charged for each instance you scale out.
-if you have web sites apps in a app service plan adjusting the scaling will be multiplied for each 
-web app.
-Basic App Service plan only allows for you to manually scale out, if you want autoscaling you'll 
-have to use a standard or higher plan. 
+   AAR Affinity is used for autoscaling. In a autoscaling situation when you have to instances of an app
+   the load balancer will randomly pick which instance a user goes too. With AAR Affinity, it will ensure
+   the user doesn't get randomly assigned but goes to the same instance of your app they have been on prior.
 
-AAR Affinity is used for autoscaling. In a autoscaling situation when you have to instances of an app
-the load balancer will randomly pick which instance a user goes too. With AAR Affinity, it will ensure
-the user doesn't get randomly assigned but goes to the same instance of your app they have been on prior.
+   WebApp Console:
+   Kudu, under Advance tools in the web app blade, allows your app to integrate with Git. Can Access
+   command line of either CMD or PowerShell in which you can access the files on the web app. Good for 
+   diagnosing and debugging problems with your application.  
 
-WebApp Console:
-Kudu, under Advance tools in the web app blade, allows your app to integrate with Git. Can Access
-command line of either CMD or PowerShell in which you can access the files on the web app. Good for 
-diagnosing and debugging problems with your application.  
+   
