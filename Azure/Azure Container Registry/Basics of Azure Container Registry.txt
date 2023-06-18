@@ -8,7 +8,7 @@ Azure Container Registry (ACR)
   Authenticate with ACR
     -> Individual AD Identity (Recommended):
        * How to authenticate:
-         - Azure CLI: az acr login
+         - Azure CLI: az acr login -- name <acrName>
          - Azure PowerShell: Connect-AzContainerRegistry
        * Scenarios:
          - Interactive push/pull by developers & testers
@@ -31,5 +31,67 @@ Azure Container Registry (ACR)
          - Yes
        ** Limitations:
          - SP password default expiry is 1 year
-         
-   
+
+   -> Managed identity for Azure Resources:
+       * How to authenticate:
+         - Docker: docker login
+         - Azure CLI: az acr login
+         - Azure PowerShell: Connect-AzContainerRegistry
+         - Registry login settings in APIs or tooling
+         - Kubernetes pull secret via kubectl command-line tool
+       * Scenarios:
+         - Unattended push from CI/CD pipeline
+         - Unattended pull to Azure services
+       * Azure RBAC?
+         - Yes
+       ** Limitations:
+         - Use only from select Azure services that support managed identities for Azure resources
+
+    -> Repository-scoped access token 
+       * How to authenticate:
+         - Docker: docker login
+         - Azure CLI: az acr login
+         - Azure PowerShell: Connect-AzContainerRegistry
+         - Registry login settings in APIs or tooling
+         - Kubernetes pull secret via kubectl command-line tool 
+       * Scenarios:
+         - Interactive push/pull to repository by individual developer or tester
+         - Unattended pull from repository by individual system or external device 
+       * Azure RBAC?
+         - Yes 
+       ** Limitations:
+         - Not currently integrated with AD identity  
+
+   -> AKS cluster managed identity 
+       * How to authenticate:
+         - Attach registry when AKS cluster created or updated 
+       * Scenarios:
+         - Unattended pull to AKS cluster in the same or a different subscription
+       * Azure RBAC?
+         - No, pull access only 
+       ** Limitations:
+         - Only available with AKS cluster
+         - Can't be used for cross-tenant authentication 
+
+    -> AKS cluster service principal 
+       * How to authenticate:
+         - Enable when AKS cluster created or updated  
+       * Scenarios:
+         - Unattended pull to AKS cluster from registry in another AD tenant 
+       * Azure RBAC?
+         - No, pull access only 
+       ** Limitations:
+         - Only available with AKS cluster
+
+    -> Admin user 
+       * How to authenticate:
+         - Docker: docker login
+       * Scenarios:
+         - Interactive push/pull by individual developer or tester
+         - Portal deployment of image from registry to Azure App Service or Azure Container Instances
+       * Azure RBAC?
+         - No, always pull and push access  
+       ** Limitations:
+         - Single account per registry, not recommended for multiple users 
+
+             
