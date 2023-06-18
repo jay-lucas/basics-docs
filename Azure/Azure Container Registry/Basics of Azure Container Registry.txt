@@ -1,0 +1,35 @@
+
+Azure Container Registry (ACR)
+    - Is a managed registry service based on Docker. Create and maintain Azure Container registries to store and managed
+    container images and related artifacts. ACR can be used with existing container development and deployment pipelines
+    or use Azure Container Registry Task to build on demand, or fully automate builds with triggers with container images 
+    in Azure.
+
+  Authenticate with ACR
+    -> Individual AD Identity (Recommended):
+       * How to authenticate:
+         - Azure CLI: az acr login
+         - Azure PowerShell: Connect-AzContainerRegistry
+       * Scenarios:
+         - Interactive push/pull by developers & testers
+       * Azure RBAC?
+         - Yes
+       ** Limitations:
+         - AD token must be renewed every 3 hours
+
+    -> AD Service Principal (Recommended):
+       * How to authenticate:
+         - Docker: docker login
+         - Azure CLI: az acr login
+         - Azure PowerShell: Connect-AzContainerRegistry
+         - Registry login settings in APIs or tooling
+         - Kubernetes pull secret via kubectl command-line tool
+       * Scenarios:
+         - Unattended push from CI/CD pipeline
+         - Unattended pull to Azure or external services
+       * Azure RBAC?
+         - Yes
+       ** Limitations:
+         - SP password default expiry is 1 year
+         
+   
