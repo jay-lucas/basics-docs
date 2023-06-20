@@ -1,0 +1,3 @@
+What is Azure Event Hub?
+
+Maximum data retention is 90 days.

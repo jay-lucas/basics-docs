@@ -1,0 +1,42 @@
+What is Azure Cosmos DB?
+    - TBD
+
+Azure Cosmos DB Consistency Models:
+- Eventually Consistent:
+- Consistent Prefix:
+- Session:
+- Bounded Staleness:
+- Strong Consistency:
+
+Azure Cosmos DB change feed
+- Enables efficient processing of large datasets with a high volume of writes. Change feed also offers
+  an alternative to querying and entire dataset to identify what has changed.   
+
+* A common design pattern for Azure cosmos DB is to use changes to the data to trigger other actions.
+  -> Triggering a notification or a call to an API when an item is inserted, updated, or deleted.
+  -> Real-time stream processing for IoT or real-time analytics processing on operational data.
+  -> Data movement such as synchronizing with a cache, a search engine, a data warehouse, 
+     or cold storage.
+
+** Note: You can use the Change Feed processor to automatically poll your container for changes and 
+         call external API each time there's a write, update or delete.
+
+- Advantages of Azure Cosmos DB change feed over a message queue:
+  * Data Persistence: Data written to Azure Cosmos DB shows up in the change feed and is retrained
+                      until deleted when reading with latest version mode. Message queues typically 
+                      have a maximum retention period. For example, Azure Event Hubs offers a maximum 
+                      data retention of 90 days.
+   
+  * Querying Ability: You can run SQL queries on the data store. the change feed isn't a duplication
+                      of data already in the container but rather just a different way (mechanism)
+                      of reading the data. Therefore, if you read data from the change feed, it's 
+                      always consistent wth queries of the same container.
+
+  * High Availability: Azure cosmos DB offers up to 99.999% read and write availability. Unlike
+                       many message queues, Azure Cosmos DB data can be easily globally distributed 
+                       and configured with an Recovery time Objective (RTO) of zero.
+
+  * Data movement: You can also read from the change feed for real-time data movement.    
+
+  * Event Sourcing: The event sourcing pattern involves using an append-only store to record 
+                    the full series of actions on that data.             
