@@ -1,0 +1,2 @@
+What are Azure Functions:
+- Allows you to host your functional code within Azure.
