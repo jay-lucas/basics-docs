@@ -1,3 +1,16 @@
+Instance Groups
+- How do you create a group of VM instances?
+  * Instance Group - Group of VM instances managed as a single entity
+    -> Manage group of similiar VMs having similar lifecycle as ONE UNIT
+- Two Types of Instance Groups:
+  * Managed: Identical VMs created using a template that's either stateful or stateless:
+    -> Features: Auto scaling, auto healing and managed releases
+  * Unmanaged: Different configuration ofr VMs in same group:
+    -> Does NOT offer auto scaling, auto healing & other services
+    -> NOT Recommended unless you need different kinds of VMs
+- Location can be Zonal or Regional
+    * Regiinal gives you higher availability (Recommended)
+
 Managed Instance Group (MIG)
 
 Creating a Managed Instance Group
@@ -9,10 +22,8 @@ Creating a Managed Instance Group
     -> Autoscaling metrics: CPU utilization target or Load Balancer Utilization target or any other metric from Stack Driver
        ** Note: Stack Driver: Monitoring tool
        - Cool-down period: How log to wait before looking at auto scaling metrics again?
-       - Scale in Controles: Prevent a sudden drop in number of VM instances
+       - Scale in Controls: Prevent a sudden drop in number of VM instances
          Example: Don't scale in by more than 10% of 3 instances in 5 minutes
     -> Autohealing: Configure a health check with initial delay (How log sould you wait for your app to initialize before running a health check?
 
-** Note: 2 types of instance groups you can create
-   - Managed instance group (stateless and stateful)
-   - Unmanaged instance group 
+ 
