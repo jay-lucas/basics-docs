@@ -1,0 +1,18 @@
+Managed Instance Group (MIG)
+
+Creating a Managed Instance Group
+- What is need to create a managed instance group?
+  * Instance template (mandatory)
+  * Configure auto-scaling to automatically adjust number of instances based on load:
+    -> Minimum number of instances
+    -> Maximum number of instances
+    -> Autoscaling metrics: CPU utilization target or Load Balancer Utilization target or any other metric from Stack Driver
+       ** Note: Stack Driver: Monitoring tool
+       - Cool-down period: How log to wait before looking at auto scaling metrics again?
+       - Scale in Controles: Prevent a sudden drop in number of VM instances
+         Example: Don't scale in by more than 10% of 3 instances in 5 minutes
+    -> Autohealing: Configure a health check with initial delay (How log sould you wait for your app to initialize before running a health check?
+
+** Note: 2 types of instance groups you can create
+   - Managed instance group (stateless and stateful)
+   - Unmanaged instance group 
