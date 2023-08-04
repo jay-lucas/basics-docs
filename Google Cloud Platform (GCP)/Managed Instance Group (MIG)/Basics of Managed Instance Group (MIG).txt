@@ -9,7 +9,7 @@ Instance Groups
     -> Does NOT offer auto scaling, auto healing & other services
     -> NOT Recommended unless you need different kinds of VMs
 - Location can be Zonal or Regional
-    * Regiinal gives you higher availability (Recommended)
+    * Regional gives you higher availability (Recommended)
 
 Managed Instance Group (MIG)
 
@@ -26,4 +26,16 @@ Creating a Managed Instance Group
          Example: Don't scale in by more than 10% of 3 instances in 5 minutes
     -> Autohealing: Configure a health check with initial delay (How log sould you wait for your app to initialize before running a health check?
 
- 
+Updating a Managed Instance Group 
+- Rolling update: Gradual update of instances in an instance group to the new instance template
+  * Specify new template:
+    -> Speficy a template for canary testing (Optional)
+  * Specify how you want the update to be done:
+    -> When should the update happen?
+       - Start the update immediately (proactive) or when instance group is rezied later (Opportunistic)
+    -> How should the update happen?
+       - Maximum surge: How many instances are added at any point in time?
+       - Maximum unavailable: How many instances can be offline during the update?
+- Rolling Restart/Replace: Gradual restart or replace of all instances in the group
+  * No change in template BUT replace / restart existing VMs
+  * configure Maximum surge, maximum unavailable and what you want to do? (restart/replace)
