@@ -1,0 +1,8 @@
+
+
+Steps to move a storage account to another region
+1) Export the storage template
+2) Modify the template by changing the target region and the storage account name
+3) Create a new template deployment
+4) Deploy the template to the target region
+5) Use the AzCopy tool to copy the data 
