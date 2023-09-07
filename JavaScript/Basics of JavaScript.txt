@@ -1,86 +1,162 @@
-JavaScripts functions can also be created via "Arrow Functions" syntax. A syntax that's popular if your dealing with anonymous functions
-functions that don't need a name. 
-Examples: 
-    - Regular Function Key word: 
-      export default function testFun(age) {
-        console.log(age);
-      }
 
-    - Anonymous Function: Functions that don't need a name
-      export default function (age){
-        console.log(age);
-      }
+-Assigning variables:
+    var name = "Jay";
+    const name = "Jay";
+    let name = "Jay";
 
-    - Arrow Function syntax
-      export default (age) => {
-        console.log(age);
-      }
+  ** Notes: var and let create variables that can be reassigned another value. const creates "constant" variables 
+            that cannot be reassigned another value. let is the preferred for variable declaration.
+            
+            -> var: a globally scoped var can be redefined within another scope. While this is not a problem if you 
+                    knowingly want greeter to be redefined, it becomes a problem when you do not realize that a variable 
+                    greeter has already been defined before.
+                Example:
+                    var greeter = "hey hi";
+                    var times = 4;
 
-When working with Arrow Functions, you have a couple of "syntax shortcuts" available.
-Most importantly, you should know about the following alternatives:
+                    if (times > 3) {
+                        var greeter = "say Hello instead"; 
+                    }
+                    
+                    console.log(greeter) // "say Hello instead"
 
-    1) Omitting parameter list parentheses
-       If your arrow functions takes exactly one parameter, you may omit the wrapping parentheses.
+            -> let: let is block scoped. A block is a chunk of code bounded by {}. A block lives in curly braces. 
+                    Anything within curly braces is a block. We see that using hello outside its 
+                    block (the curly braces where it was defined) returns an error. This is because let variables 
+                    are block scoped. let can be updated but not re-declared.
+                Example:
+                    let greeting = "say Hi";
+                    let times = 4;
 
-        Instead of 
-            (userName) => { ... }
+                    if (times > 3) {
+                            let hello = "say Hello instead";
+                            console.log(hello);// "say Hello instead"
+                        }
+                    console.log(hello) // hello is not defined
 
-        you could write
-            userName => { ... }
-         
-        ** Note: If your function takes no parameters, parentheses must not be omitted - () => { ... } is the only correct form in 
-                 that case. If your function takes more than one parameter, you also must not 
-                 omit parentheses - userName, userAge => { ... } would be invalid ((userName, userAge) => { ... } is correct)!
+            -> const: const declarations can only be accessed within the block they were declared.
+                      const cannot be updated or re-declared, which means that the value of a variable
+                      declared with const remains the same within its scope. It cannot be updated or re-declared. 
+                      So if we declare a variable with const, we can neither do this:
+                 Example:
+                    const greeting = "say Hi";
+                    greeting = "say Hello instead";// error: Assignment to constant variable. 
 
-    2) Omitting function body curly braces
-       If your arrow function contains no other logic but a return statement, you may omit the curly braces and the return keyword.
+So a variable declared in a block with let  is only available for use within that block.
+    
+-Functions
+    JavaScripts functions can also be created via "Arrow Functions" syntax. A syntax that's popular if your dealing with anonymous functions
+    functions that don't need a name. 
+    Examples: 
+        - Regular Function Key word: 
+        export default function testFun(age) {
+            console.log(age);
+        }
 
-        Instead of
-            number => { 
-                return number * 3;
+        - Anonymous Function: Functions that don't need a name
+        export default function (age){
+            console.log(age);
+        }
+
+        - Arrow Function syntax
+        export default (age) => {
+            console.log(age);
+        }
+
+    When working with Arrow Functions, you have a couple of "syntax shortcuts" available.
+    Most importantly, you should know about the following alternatives:
+
+        1) Omitting parameter list parentheses
+        If your arrow functions takes exactly one parameter, you may omit the wrapping parentheses.
+
+            Instead of 
+                (userName) => { ... }
+
+            you could write
+                userName => { ... }
+            
+            ** Note: If your function takes no parameters, parentheses must not be omitted - () => { ... } is the only correct form in 
+                    that case. If your function takes more than one parameter, you also must not 
+                    omit parentheses - userName, userAge => { ... } would be invalid ((userName, userAge) => { ... } is correct)!
+
+        2) Omitting function body curly braces
+        If your arrow function contains no other logic but a return statement, you may omit the curly braces and the return keyword.
+
+            Instead of
+                number => { 
+                    return number * 3;
+                }
+
+            you could write
+                number => number * 3;
+
+            The following code would be invalid:
+                number => return number * 3; // invalid because return keyword must also be omitted!
+                number => if (number === 2) { return 5 }; // invalid because if statements can't be returned
+
+        3) Special case: Just returning an object
+        If you go for the shorter alternative explained in 2) and you're trying to return a JavaScript object, you may end up with the 
+        following, invalid code:
+                number => { age: number }; // trying to return an object
+
+        This code would be invalid because JavaScript treats the curly braces as function body wrappers (not as code that creates a JS 
+        object).
+
+        To "tell" JavaScript that an object should be created (and returned) instead, the code would need to be 
+        adjusted like this:
+                number => ({ age: number }); // wrapping the object in extra parentheses
+
+            By wrapping the object and its curly braces with an extra pair of parentheses, JavaScript understands that the curly 
+            braces are not there to define a function body but instead to create an object. Hence that object then gets returned.      
+    
+        **Note: To call an anonymous function you have to assign it to a variable
+        Example:
+            let myAgePlusTwo = (age) => age + 2;
+            myAgePlusTwo(30);
+
+- Object in JavaScript
+    Example:
+        const user1 = {
+            name: 'Max',
+            age: 24
+        }        
+        console.log(user1);
+
+        class User {
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
             }
+            greet() {
+                console.log('Hi')
+            }
+        }
 
-        you could write
-            number => number * 3;
-
-        The following code would be invalid:
-            number => return number * 3; // invalid because return keyword must also be omitted!
-            number => if (number === 2) { return 5 }; // invalid because if statements can't be returned
-
-    3) Special case: Just returning an object
-       If you go for the shorter alternative explained in 2) and you're trying to return a JavaScript object, you may end up with the 
-       following, invalid code:
-            number => { age: number }; // trying to return an object
-
-       This code would be invalid because JavaScript treats the curly braces as function body wrappers (not as code that creates a JS 
-       object).
-
-       To "tell" JavaScript that an object should be created (and returned) instead, the code would need to be 
-       adjusted like this:
-            number => ({ age: number }); // wrapping the object in extra parentheses
-
-        By wrapping the object and its curly braces with an extra pair of parentheses, JavaScript understands that the curly 
-        braces are not there to define a function body but instead to create an object. Hence that object then gets returned.      
+- Searching adding within a array
+  Example:
+    -> Creating array
+        const hobbies = ["Piano", "Boxing", "Cooking"];
+    -> Adding to array
+        hobbies.push("Coding");
+    -> Searching array
+        const index = hobbies.findIndex((item) => {
+            return item === "Piano";
+        });
+        ** Short version
+        const index = hobbies.findIndex((item) => item === "Piano");
  
-    **Note: To call an anonymous function you have to assign it to a variable
-       Example:
-          let myAgePlusTwo = (age) => age + 2;
-          myAgePlusTwo(30);
+- How to use map
+  map creates a new collection and adds to an array of items. To transform any item to another kind of item.
 
-Creating a object in JavaScript
-Example:
-    const user1 = {
-        name: 'Max',
-        age: 24
-    }        
-    console.log(user1);
-
-    class User {
-        constructor(name, age){
-            this.name = name;
-            this.age = age;
-        }
-        greet() {
-            console.log('Hi')
-        }
-    }
+  - Adding
+  Example:
+    const editedHobbies = hobbies.map((item) => item + "!"); // ["Piano!", "Boxing!", "Cooking!"] 
+  - Transforming to an object
+  Example:
+    const editedHobbies = hobbies.map((item) => ({text: item})); // [Object, Object, Object] 
+                                                                 // 0: Object
+                                                                 // text: "Piano"
+                                                                 // 1: Object
+                                                                 // text: "Boxing"     
+                                                                 
+                                                                                                                             

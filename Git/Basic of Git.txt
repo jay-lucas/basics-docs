@@ -1,0 +1,11 @@
+- To configure Git to recognize your identity
+    git config --global user.name "YOUR_USERNAME"
+    git config --global user.email "im_hova@ndeverstech.com"
+    git config --global --list # To check the info you just provided
+
+- To check git version
+    git --version
+
+- How to connect to a GitHub repository
+
+- How to connect to a Azure DevOps repository
