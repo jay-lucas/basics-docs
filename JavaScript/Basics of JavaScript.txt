@@ -158,5 +158,81 @@ So a variable declared in a block with let  is only available for use within tha
                                                                  // text: "Piano"
                                                                  // 1: Object
                                                                  // text: "Boxing"     
-                                                                 
-                                                                                                                             
+
+- Destructuring syntax
+  Example 1:
+    // Breaking up the first and last name array
+        const userNameData = ["Jay","Lucas"];
+        const firstName = userNameData[0];
+        const lastName = userNameData[1];
+
+    // shorten version thats using the 'Destructuring' syntax
+        const [firstName, lastName] = ["Jay","Lucas"];
+
+  Example 2:
+    //  How to get the parameter of an object
+        const user = {
+            name: "Jay",
+            age: 45
+        };
+        
+        const name = user.name;
+        const age = user.age;
+
+    // shorten version thats using the 'Destructuring' syntax
+        const {name, age} = {
+            name: "Jay",
+            age: 45
+        }
+        console.log(name);
+        console.log(age);
+
+    ** Note: You must use the same property name in the object unless you alias it like so:
+            const {name: firstName, age} = {
+            name: "Jay",
+            age: 45
+        }
+        console.log(firstName);
+        console.log(age);
+
+  Example 3: 
+    // standard pulling in an object into a function
+        function storeOrder(order) {
+            localStorage.setItem('id', order.id);
+            localStorage.setItem('currency', order.currency);
+        }
+
+        storeOrder({id: 5, currency: 'USD', amount: 15.99}); // one argument / value!
+
+    // shorten version thats using the 'Destructuring' syntax
+        function storeOrder({id, currency}) { // destructuring
+            localStorage.setItem('id', id);
+            localStorage.setItem('currency', currency);
+        }
+
+        storeOrder({id: 5, currency: 'USD', amount: 15.99}); // one argument / value!
+
+- Spread Operator
+  Allows you to merge arrays to other arrays. The '...' pulls values of an array or object and adds them
+  to a new arrays value.
+  -> Array
+        Example:
+            const hobbies = ["Piano","Boxing"];
+            const newHobbies = ["Reading]       
+            const mergeHobbies = [...hobbies, ...newHobbies] 
+            // Results would be mergeHobbies has both arrays in one array object
+        
+        ** Note: If you did the following example this way:
+                const mergeHobbies = [hobbies, newHobbies] 
+                // the results would be an array with 2 nested arrays inside
+  -> Object
+        Example:
+            const user = {
+                name: "Jay",
+                age: 45
+            };
+            const extendUser = {
+                isAdmin: true,
+                ...user
+            }
+        ** Note: the spread Operator will add the properties of the 'user' object to the 'extendUser' object.
