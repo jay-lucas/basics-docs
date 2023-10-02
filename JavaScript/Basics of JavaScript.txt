@@ -49,19 +49,22 @@ So a variable declared in a block with let  is only available for use within tha
     functions that don't need a name. 
     Examples: 
         - Regular Function Key word: 
-        export default function testFun(age) {
+        function testFun(age) {
             console.log(age);
         }
 
         - Anonymous Function: Functions that don't need a name
-        export default function (age){
+        function (age){
             console.log(age);
         }
 
         - Arrow Function syntax
-        export default (age) => {
+        (age) => {
             console.log(age);
         }
+
+    ** Note: Arrow functions never accept a name in front of them, they are always created in an
+             anonymous way. Unless you set the arrow function to a const, let, or var.
 
     When working with Arrow Functions, you have a couple of "syntax shortcuts" available.
     Most importantly, you should know about the following alternatives:
@@ -77,7 +80,10 @@ So a variable declared in a block with let  is only available for use within tha
             
             ** Note: If your function takes no parameters, parentheses must not be omitted - () => { ... } is the only correct form in 
                     that case. If your function takes more than one parameter, you also must not 
-                    omit parentheses - userName, userAge => { ... } would be invalid ((userName, userAge) => { ... } is correct)!
+                    omit parentheses.
+                    Example:
+                        userName, userAge => { ... } would be invalid 
+                        ((userName, userAge) => { ... } is correct)!
 
         2) Omitting function body curly braces
         If your arrow function contains no other logic but a return statement, you may omit the curly braces and the return keyword.
@@ -114,6 +120,34 @@ So a variable declared in a block with let  is only available for use within tha
             let myAgePlusTwo = (age) => age + 2;
             myAgePlusTwo(30);
 
+- Using functions as values
+  When passing a function as a value, you must just use the name and remove the (), the () executes the function
+  right away. To stop this you just use the name and the parent function will execute the function later when called.
+  Example:
+  function handleTimeout() {
+    console.log("timed out");
+  }
+
+  const handleTimeout2 = () => {
+    console.log("timed out again!");
+  }
+  // this is a function provided by the browser, takes 2 argument setTimeout(<function>, <time in milliseconds>)
+  setTimeout(handleTimeout, 2000);
+  setTimeout(handleTimeout2, 3000);
+  // example of creating a function in the 
+  setTimeout(() => {
+    console.log('more timing out');
+  }, 4000);
+
+- Creating a custom function that expects a function as a parameter
+  Example:
+  const greeter = (greetFn) => {
+    greetFn();
+  }
+  greeter(() => console.log("hi"));
+ 
+- Defining functions inside fo functions
+ 
 - Object in JavaScript
     Example:
         const user1 = {
@@ -131,6 +165,13 @@ So a variable declared in a block with let  is only available for use within tha
                 console.log('Hi')
             }
         }
+        
+        class Person {
+            name = 'Max';
+        }
+        
+        const person = new Person();
+        console.log(person.name); // prints 'Max'     
 
 - Searching adding within a array
   Example:
@@ -236,3 +277,28 @@ So a variable declared in a block with let  is only available for use within tha
                 ...user
             }
         ** Note: the spread Operator will add the properties of the 'user' object to the 'extendUser' object.
+
+- Exports & Imports
+    In JavaScript projects, you split your code across multiple JavaScript files - so-called modules. 
+    You do this, to keep each file/ module focused and manageable.
+    To still access functionality in another file, you need export  (to make it available) and 
+    import  (to get access) statements.
+
+    You got two different types of exports: default (unnamed) and named exports:
+        default => export default ...; 
+        named => export const someData = ...; 
+
+    You can import default exports like this:
+        import someNameOfYourChoice from './path/to/file.js'; 
+
+    Surprisingly, someNameOfYourChoice  is totally up to you. Named exports have to be imported by their name:
+        import { someData } from './path/to/file.js'; 
+
+    A file can only contain one default and an unlimited amount of named exports. You can also mix the one default 
+    with any amount of named exports in one and the same file.
+    When importing named exports, you can also import all named exports at once with the following syntax:
+        import * as upToYou from './path/to/file.js'; 
+
+    upToYou  is - well - up to you and simply bundles all exported variables/functions in one JavaScript object. 
+    For example, if you export const someData = ...  (/path/to/file.js ) you can access it on upToYou like this: 
+        upToYou.someData 
