@@ -55,3 +55,36 @@ Array
           </div>
       );
   }
+
+alternative for components
+1)  
+  Page:
+
+  Component:
+  function ExpenseItem(props) {
+
+      return (
+          <div className='expense-item'>
+              <div>{props.expenses.date.toDateString()}</div>
+              <div className='expense-item__description'>
+                  <h2>{props.expenses.title}</h2>
+                  <div className='expense-item__price'>${props.expenses.amount}</div>
+              </div>
+          </div>
+      );
+  }
+
+  OR Object Destructuring
+  Component:
+  function ExpenseItem({date, title, amount}) {
+
+      return (
+          <div className='expense-item'>
+              <div>{date.toDateString()}</div>
+              <div className='expense-item__description'>
+                  <h2>{title}</h2>
+                  <div className='expense-item__price'>${amount}</div>
+              </div>
+          </div>
+      );
+  }
