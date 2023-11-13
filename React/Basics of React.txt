@@ -58,8 +58,6 @@ Array
 
 alternative for components
 1)  
-  Page:
-
   Component:
   function ExpenseItem(props) {
 
@@ -74,7 +72,8 @@ alternative for components
       );
   }
 
-  OR Object Destructuring
+  2) Object Destructuring
+
   Component:
   function ExpenseItem({date, title, amount}) {
 
