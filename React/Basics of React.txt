@@ -104,3 +104,28 @@ alternative for components
         React.createElement('h2', {}, "Let's get started!"),
         React.createElement(Expenses, {items: expenses;})
     );
+
+  Arrow function syntax
+  - Original
+    function App() {
+        return ("...")
+    }
+
+    function Card(props) {
+        const classes = 'card ' + props.className;
+        return (
+            <div className={classes}>{props.children}</div>
+        );
+    }
+
+  - Arrow function syntax
+    const App = () => {
+        return ("...")
+    }
+
+    const Card = (props) => {
+        const classes = 'card ' + props.className;
+        return (
+            <div className={classes}>{props.children}</div>
+        );
+    }
