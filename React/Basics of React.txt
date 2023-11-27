@@ -87,3 +87,20 @@ alternative for components
           </div>
       );
   }
+
+  Creating Elements in react 
+  - Original JSX code
+    return (
+        <div>
+            <h2>Let's get started!</h2>
+            <Expenses item={expenses}
+        </div>
+    );
+
+  - Alternative: Let react create the Elements instead of JSX
+    return React.createElement(
+        'div',
+        {},
+        React.createElement('h2', {}, "Let's get started!"),
+        React.createElement(Expenses, {items: expenses;})
+    );
