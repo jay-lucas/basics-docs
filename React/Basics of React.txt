@@ -129,3 +129,21 @@ alternative for components
             <div className={classes}>{props.children}</div>
         );
     }
+
+- User Interaction and States
+  **Note: When using an event attribute to call a function, you don't add the (). If you add ()
+          the code will actually execute the function when the function name is evaluated. Without
+          the () the clickHandler will execute only when onClick occurs. 
+    
+    Example:     
+    const clickHandler = () => {
+        console.log('Clicked!');
+    };
+    or 
+    function clickHandler() {
+        console.log('Clicked!'); 
+    }
+    <button onClick={clickHandler}>Change Title</button>
+
+    **Note: Best practice is to append function name that are triggered with by events end with
+            *Handler. Example: xyzHandler, hoverHandler, clickHandler
