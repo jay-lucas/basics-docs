@@ -13,6 +13,20 @@ Create a new React project
       Terminal: npx create-react-app <Name of project>
 
 
+Declaring variables in State
+        const [firstName, setFirstName] = useState(''); // No value set
+        const [lastName, setLastName] = useState('Lucas'); // Value set Lucas
+        
+        console.log(firstName)
+
+  Or with a object
+        const [Person, setPerson] = useState({
+            firstName: '',
+            lastName: ''
+        });
+        
+        console.log(Person.firstName)
+
 Two alternative ways of setting props
 Array
   const expenses = [
