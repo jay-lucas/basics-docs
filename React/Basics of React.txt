@@ -161,3 +161,20 @@ alternative for components
 
     **Note: Best practice is to append function name that are triggered with by events end with
             *Handler. Example: xyzHandler, hoverHandler, clickHandler
+
+Example of counter
+    import { useState } from 'react';
+    export default function App() {
+        const [counter, setCounter] = React.useState(0);
+        
+        function incrementCounterHandler() {
+            setCounter(prevCounter => prevCounter + 1);
+        }
+        
+        return (
+        <div>
+            <p id="counter">{counter}</p>
+            <button onClick={incrementCounterHandler}>Increment</button>
+        </div>
+        );
+    }            
