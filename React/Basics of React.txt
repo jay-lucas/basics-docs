@@ -178,3 +178,30 @@ Example of counter
         </div>
         );
     }            
+
+    "Lifting State Up": Moving data from child component to a parent component to either use it in the 
+                        parent or to another child component.
+
+- Derived / Computed State: When your using a already established state function to update a component
+                            without creating another state: 
+    Example:
+    function Expenses() {
+    const [filteredYear, setFilteredYear] = useState('2019');
+
+    let filterText = 'This is: ' + filteredYear;
+
+    const filterChangeHandler = selectedYear => {
+        setFilteredYear(selectedYear);
+    };
+
+        return (
+        <div>
+            <Card className='expenses'>
+                <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
+                <div>{filterText}</div>
+            </Card>
+        );
+    };          
+
+    ** Note: When the filteredYear is changed, the filterText that's used in the return can be updated
+             as well without creating another state variable                                           
