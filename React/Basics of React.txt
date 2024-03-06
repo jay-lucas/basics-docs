@@ -204,4 +204,10 @@ Example of counter
     };          
 
     ** Note: When the filteredYear is changed, the filterText that's used in the return can be updated
-             as well without creating another state variable                                           
+             as well without creating another state variable
+             
+Controlled vs Uncontrolled components: 
+- Controlled: When the values of a component are not controlled by itself but by a parent.    
+
+Stateless vs Stateful Components:
+- Stateless: Components that don't manage any kind of state variables
