@@ -27,6 +27,11 @@ Declaring variables in State
         
         console.log(Person.firstName)
 
+** Note: useState returns an array with exactly two elements - the second element is always 
+         a function which you can call to set a new value for your state. Calling that function 
+         will then also trigger React to re-evaluate the component.
+
+         
 Two alternative ways of setting props
 Array
   const expenses = [
