@@ -1,0 +1,12 @@
+Creating a react app
+npm create vite@latest
+*Note: this is the new way of creating react apps from the original "npm create-react-app <prjname>"
+
+When running app
+npm run dev
+*Note: this is the new way of running the react application
+
+
+Managing State
+    What Is 'State' in ReactJS? The state is a built-in React object that is used to contain data or information about the component. 
+    A component's state can change over time; whenever it changes, the component re-renders.
