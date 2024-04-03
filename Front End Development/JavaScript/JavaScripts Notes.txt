@@ -1,3 +1,19 @@
 
 - Call a URL in JavaScript
     Ex:const res = await fetch("https://api.adviceslip.com/advice");
+
+- Using .json() on a response (of data)
+  The method of the response interface take a response stream and reads it to completion.
+  It returns a promise which resolves with the result of parsing the body text as json. 
+
+  document object
+   - The Document interface represents any web page loaded in the browser and serves as an 
+     entry point into the web page's content, which is the DOM tree.
+     The DOM tree includes elements such as <body> and <table>, among many others. It provides 
+     functionality globally to the document, like how to obtain the page's URL and create new 
+     elements in the document.
+  
+  document Functions
+  - .querySelector()
+    document.querySelector  returns the first Element within the document that 
+    matches the specified selector, or group of selectors. If no matches are found, null is returned.

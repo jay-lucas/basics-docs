@@ -6,7 +6,26 @@ When running app
 npm run dev
 *Note: this is the new way of running the react application
 
+About React
+- Based on Components which are the building blocks of user interfaces. Components are made to be 
+  reusable
+- We describe how components look like based on the current state and how they work using a declarative 
+  syntax called JSX. Declarative is telling react what a component should look like based on current
+  state. JSX is an abstraction away from the DOM, the dom is never touched. JSX a syntax that combines
+  HTML, CSS, & JavaScript as well as referencing other components
+- What Is 'State' in ReactJS? The state is a built-in React object that is used to contain data or information about the component. 
+  A component's state can change over time; whenever it changes, the component re-renders.
+  *Note: Piece of data is referred as Piece of state, this is also called managing state.
 
-Managing State
-    What Is 'State' in ReactJS? The state is a built-in React object that is used to contain data or information about the component. 
-    A component's state can change over time; whenever it changes, the component re-renders.
+2 VS code extensions
+- ESLint: this will help find errors in your JavaScript code and show you best practices
+- Prettier: this will help you format code correctly
+
+useEffect()
+    A react function that takes two argument, first argument is the function that we want to execute,
+    the second is the Dependency Array
+
+React naming conventions
+rfc = React Functional Component
+cl = console log
+
