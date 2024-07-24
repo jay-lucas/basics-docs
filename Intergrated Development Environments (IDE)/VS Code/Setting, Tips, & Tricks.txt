@@ -53,3 +53,13 @@
           "description": "React styled component"
       }
   }
+
+  Extensions:
+  - typescript & javascript
+    * Quokka.js
+
+  - Git Repository
+    * Git Graph
+
+  Errors:
+  - NaN = Not a Number

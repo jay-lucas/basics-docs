@@ -1,6 +1,29 @@
+-  Destructuring Objects  
+   When you need to get data out of an object
+   Example:
+   const data = [...] // json 
+   function getBook(id) {
+        return data.find((d) => d.id === id);
+   }
+   const book = getBook(2);
+   const { title, author, pages, publicationDate, genres, hasMovieAdaptation } = book;
+  
+  * Spread Operator
+    - It allows new properties and update existing ones for objects/arrays. This operator destructure
+      an object and allows you to modify it into a new object
+      **Note: Make sure the spread (...) at the beginning.
+
+    Example: 
+    const updatedBook = {...book,
+    // Adding a new property
+    moviePublicationDate: "2001-12-19",
+
+    // Overwriting an existing property
+    pages: 1210,
+    };
 
 -Assigning variables:
-    var name = "Jay";
+    var name = "Jay";   
     const name = "Jay";
     let name = "Jay";
 
