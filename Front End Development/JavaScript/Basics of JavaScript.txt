@@ -325,3 +325,16 @@ So a variable declared in a block with let  is only available for use within tha
     upToYou  is - well - up to you and simply bundles all exported variables/functions in one JavaScript object. 
     For example, if you export const someData = ...  (/path/to/file.js ) you can access it on upToYou like this: 
         upToYou.someData 
+
+
+Template Literals
+- An ES6 feature that allows us to create strings that let us contain some JavaScript variables / expressions. It 
+  constructs strings with the backtick `` .
+
+Using Ternary Operator (Ternaries) instead of if/else statements
+- Ternary Operator has 3 parts 
+  Part 1: condition with ? 
+  part 2: if condition is correct
+  part 3: else condition
+  Example: 
+    pages > 1000 : 'That's big' : 'It's small';
