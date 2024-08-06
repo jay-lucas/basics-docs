@@ -1,6 +1,6 @@
 Creating a react app
 npm create vite@latest
-*Note: this is the new way of creating react apps from the original "npm create-react-app <prjname>"
+*Note: this is the new way of creating react apps from the original "npm create-react-app <project name>"
 
 When running app
 npm run dev
@@ -29,3 +29,15 @@ React naming conventions
 rfc = React Functional Component
 cl = console log
 
+To Run react
+  cd pizza-menu
+  npm install
+  npm run dev
+
+
+<React.StrictMode>
+- During development it will render all components twice in order to find certain bugs and check if there are outdated
+  parts of the React API.  
+
+Each Component has it's own Data, Logic, and Appearance. Component trees show the relationships
+between components. 
