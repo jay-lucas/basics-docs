@@ -5,6 +5,12 @@ Machine Learning (ML)
 - The process of using mathematical models of data to help a computer learn without supervision
 
 Generative AI (GenAI)
-- Type of AI that broadly describes machine learning systems capable of generating text, images, code, or other types of content
+- Type of AI that broadly describes machine learning systems capable of generating text, images, code, or other types of content.
+  A category of articial intelligence that uses neutral language inputs to produce human augmented data or content through trained patterns and structure recognition models. 
+  The results is a combination of content output/artifact based on the criteria requested.
+
+  Commerical GenAi use a machine learning algorithm to learn the patters and structure of training data inputs to generate new data that has similiar characteristics
+  Can be used for a veriety of tasks: speech recognition, machine translation, natural language generation, optical character recognition, handwriting recognition, 
+  information retrieval, and others
 
 ** Note: AI is the discipline; Machine learning is a subset of AI and GenAI is a subset of ML
