@@ -1,0 +1,14 @@
+What is power Pages
+- Low code solution for creating websites for external users and internal
+- User any commercial or enterprise login providers like Azure AD B2C, MS account,
+  LinkedIn, ect, anonymus
+- WYSIWYG designer to create website content
+
+URL: //make.powerpages.microsoft.com/
+
+Power pages portal sites are built on top of Dataverse
+Key Capabilities
+- Content
+- functionality: no code, quick build secure functional websites
+- extensibility: All Power platform capabilities
+- security: Users the dataverse security model

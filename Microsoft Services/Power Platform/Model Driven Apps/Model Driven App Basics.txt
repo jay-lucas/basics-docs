@@ -1,0 +1,19 @@
+Model Driven Apps
+Unlike canvas apps, where you build out an app screen by screen by adding 
+logic and code as you go, model driven apps can be created within a few steps
+- Risch component focused, no code design environments
+- an ability to create 
+
+Approach to Model driven apps making
+4 areas of focus
+- Modeling business data
+- defining business processes
+- configuraing components
+- composing the app
+
+Steps
+- Build the data model
+- define forms, views, and dashboards
+- build business rules
+- build process flows
+- compose the app

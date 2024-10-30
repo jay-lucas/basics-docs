@@ -1,0 +1,34 @@
+What are Canvas Apps?
+A suite of apps, services, connectors, and a data platform that proides you with an opportunity to build 
+custom apps for your business
+1) Power apps maker portal: Apps start here, wheather you build them from data, a sample app, or blank screen
+2) Power apps Studio: Create and edit canvas apps
+3) Power apps Mobile: Run your apps on MS windows, Apple, android
+4) Power Platform Admin center: Manage PP environments
+
+Power Fx
+Set values
+format output 
+perform calculations
+control visibility and
+
+Global Variables
+- App wide scope
+- Primary function: Set(currentNname, "jay")
+
+Context Variables
+- Local screen scope
+- Pass values to a screen
+- Primiary Function: Navigate, UpdateContext
+                     UpdateContext({CurrentTotal: CurrentToal+ThisItem.Price})
+
+Collections
+- App wide scope
+- Tables only
+- Primiary function: Collect, Clear, ClearCollect, Remove
+- Can be saved to the local device with SaveData, LoadData
+
+Error Handling
+- Dectecting and handling error: IFError, IsError, IsErrorOrBlank
+Reporting error: App.OnError handler
+Creating and rethrowing an Error: Error

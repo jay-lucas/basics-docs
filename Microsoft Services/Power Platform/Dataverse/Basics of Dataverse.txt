@@ -1,0 +1,87 @@
+Dataverse: MS DV is a cloud-based, Software as a service, low-code data service and app platform, that easily structures a veriety of data and 
+business logic to support interconnected applications and processes in a secure and compliant manner. DV based of the definitions and schema of Common Data Model 
+
+Out the box:
+- security
+- logic
+- data
+- stroage
+- integration
+
+Data Model Overview
+- Data modeling: A process used to define and analyze data requirements needed to support the business processes
+- Definitions
+  * Table: Containner for data
+  * Column: Containner for a piece of data in a table
+  * Relationship: Construct defining an association between two tables
+  * Metadata: Definitions for tables, columns, and relationships
+
+benifits
+- Simple to manage: Both the metadata and data are stored in the cloud. 
+- Helps to secure data; data is tored so that users can see it only if you grant them access. Role based
+  security allows you to control access to tables for different suers within your org
+- Access your D365 data: data from your D365 app is also stored within DV, which allows you to quickly build 
+  apps that use your D365 and extend your apps by using Power Apps
+- Rich metadata : Data ytpes and relationsophs are used directly in PA
+- Logic and validation: Define caluclations columns, business rules, workflows, and business process flows to 
+  ensure data quality and drive business process
+- productivity tools: talbes avalable within the add in for micorsoft excel
+
+Logic and validation
+- Tables within Dataverse can leverage rich server-side logic and validation to ensure data quality
+  * Business rules: Biz rules validate data across multiple cloumns in a table, and provide warning 
+    error messages, aregardlesss of the app that's used to createthe data
+  * Business process flows: business process flows guide users to ensure they enter data consistently and follow
+    the same steps every time. Business process flows are currently supported only for model-driven apps
+  * Workflow: Dataverse classic workflows automate business processes without requiring user interaction
+  * Business logic with code: Business logic supports advance developer scenarios that extend the application
+    directly through code
+
+Type of tables
+- Standard: create and edit rows
+- Activity: used to track interactions on standard tables
+- Virtual: connect to tables in an external data source. emable the intergation of data residing in 
+           external systems by seamlessly representing that data as tables in MS DV without replication of 
+ 	   data and often without custom coding
+- Elastic: handle large volumes of data
+**Note: Create a custom table:
+   - User or team owned: actions that can be performed on these rows can be controlled at the user level
+   - Organization-owned: Access to the data is controlled by org
+
+Calculated and rollup columns
+simple column: 
+- contains data not based on formula
+  ex: first name, bday, email
+calculated column:
+- contains calculation that use columns from current table or related parent table
+  ex: full name (first name + last name)
+Rollup column
+- contains an aggregate value computed the rows related to a row in a one to many relationship
+  ex: potiential revenu (Sum of revenues of all open oppertunities for a given account)
+
+Power Effects (Fx) Formula columns
+- display a calculated value
+- values are read-only
+- Use power fx formulas
+- supported data types
+   * text
+   * decimal
+   * yes/no
+   * date time
+
+Security Roles in Microsoft Dataverse
+- Security Model building blocks
+	- Teams
+	- Business units
+	- Security roles
+	- column-level security
+	- access teams
+	- Hierachy security
+
+Security roles are group s of permissions that you can assig to a user to grant them
+access and various capabilities and functionality like read,
+- Sys Admin
+- Sys Customizer
+- Environment maker
+- basic user
+- app opener

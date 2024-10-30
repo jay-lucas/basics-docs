@@ -1,0 +1,201 @@
+Describe the business value of PP
+
+PP makes it easy for orgs to address challenges:
+- High app demand vs limited resources
+- hanging workforce expectations 
+- increase cost for custom app dev
+- need to be agile
+- need to scale dev efficiently
+
+Adv of PP
+- Cost saving 
+- increase performance and efficiency
+- help orgs build slutions that meet their changing needs
+
+Connectors
+with pp, data connectors make sorking with different data sources easier. they act as the bridge between data sources and your app or workflow
+
+MS dataverse
+MS dataverse allows orgs to securely store and manage data uses by you business apps
+
+Benifits of Dataverse
+- easy to manage
+- easy to securire
+- rich metadata 
+- logic and validation
+- productivity tools
+
+All PP components can be used with MS Teams
+
+- Power BI for Teams: Share reports, create templates, and bring Bpower BI into Teams
+- Power APp for teams: Build, edit, and shrae apps directly within Teams
+- Power automate for teams: Automate tasks within the teams environments
+- Dataverse for teams: low code data platform for app, bot, and flow dev
+- Copiloit for Teams: 
+
+Describe how PP work with MS Dynamics 365 apps
+
+Model-driven applications:
+All dynamic customers engagement app are what are referred to as model-driven apps. MDA are built using Power apps. They are based on a data model strore withing DV
+
+PP components use by D365 engagement app can include:
+- power BI: connects to D365 offers business analytic and insight
+- Power auto: Business process flows guild work in D365
+- Power Pages: create self-support portals for customer engagements
+
+Azure services can be used with PP to help modernize legacy systems, automate processes, and create advanced analytical solutions
+- the example demos how you can deploy portals to automate manual or paper based processes and surface a richer user experience. 
+  Employ Azure API management and azure functions to connect customes apis, whicht tap into your legacy systems
+  by using azure- managed databases and low code approcach to automate tasks, you can lower the over all solution costs
+  you can quickly build apps that are real-time, resilient and scalable
+
+Explore how microsoft PP apps work together
+- PP can add value to any business by heloing you analytize, act, and automate
+- Act by building custom apps in power apps, automate processes based on the data you collect in Power automate, 
+  and analyze the data you have collected in power BI
+
+Example: Equipment check-out system
+- Power apps: Build an app with equipment listings, status, and instructions
+  Employees can check out equipment via the app
+- power Automate: Sends reminders for equipment return. Tracks equipment bookings
+- Power BI: Analyzes data to optimize equipment usage and procurement
+
+MS Copilot uses AI. Copilot can be used throughout the MS PP. 
+- Simplify app createion: The mist basic way copolit assist orgs is with app building
+- Use Copilot in power apps: by embedding the copilot control inside canvas and model-driven app, 
+  you can provide your users with an AI-powered expreience
+
+PP security and governance
+Data loss prevention and prevention policies: Safeguard orgs data to prevent unintentioanl exposure
+- Connectors can be classified:
+ * business (ex: PII, Sensitive numbers)
+ * Non-business (ex: catalogs, surveys)
+ * blocked (ex: social media)
+
+Compliance and data privacy
+- MS is committed to the hightest level of trust, transparency, standard conformance, and regulatory compliance
+
+Accessibility in Microsoft PP
+One of the things MS values the most is making sure that PP is accessible and inclusive to all Kinds of users all over the world.
+
+Explore MS Dataverse
+- Dataverse incorporates security, logic, data, and storage into a central point
+  - Scalability: a Dataverse database supports large data sets and complex data models
+  - MS DV structure and benifits: The structure of a MS DV database is based upon the definitions and schema in the common data model. 
+    It simplifies the integration of solutions that use a Common data model schema.
+  - Describe tables, columns, and relationships:
+    * Talbes: a table is a logical strucutre containing rolws and columns that represents a set of data. The 3 types of tables are
+	      standard, managed, and custom
+    * Columns: columns store a discrete piece of info within a row in a table
+    * Relationships: Efficiently split data into different containers (tables)
+
+Types of Connectors: Tabular data and Function-based data
+Connectors:
+-  are the bridges from your data source to your app, workflow, or dashboard
+- can provide input and output between the data source and PP which can accelerate the delivery of MS PP business solutins
+- are devided into standard and premium
+
+After the data source is established and the connectors is confg, two type of operations can be used
+- triggers aare only used in Power Automate and prompt a flow to begin
+- Actions are used in Power Automate and Power Apps
+
+Environments
+- Default: Each tenant has a default environment that's created automatically - All licensed users have access
+- Production: For permanent work, requires 1GB of available database capacity - Full Control
+- Sandbox: Non-production used for development and testing. Requires 1gb of database cap. Can be resent and converted to prod - Full Control
+- Trial: for short term testing and proof of concepts, deletes after 30 days - Full Control
+- Developer: Special environments intended only for use by owner - Limited control, security groups can't be assigned to developer environments
+- Dataverse for Teams: Automatically created for the selected team when you create an app in Teams - Limited control for members of the team
+
+** Exam Tips: Recover an environment within 7 days of deletion
+         You can backup all environments except Trial
+
+Calculated and rollup column data types
+Calculated columns
+- single line of text
+- choice
+- yes/no
+- whole number
+- decimal
+- currency
+- date time
+
+Rollup columns
+- whole number
+- decimal 
+- currency 
+- date time
+
+Limitations
+Calculated
+- Calculated on retrieve
+- Can use columns on table and columns in many to many relationships
+
+Role up
+- Max 100 per environment
+- Max 10 per table
+- Recalculated every hour
+- requires a one to many relationship
+
+Values are read only
+- values not audited
+- do not trigger workflow, code, or power auto cloud flows
+- calculated columns cannot contain a calculated column from another table that also contain
+  another column from a different table
+
+Administration Options in MS DV
+Analytics
+- The PP admin center provides various tools that administrators can use for managing their power platform tenants
+  * Dataverse: Provides analysis on important details related to your different dataverse instances deployed in 
+               your environment such as active users, API calls, mailbox usage and more
+  * Power Apps: Provides analysis related to power apps performance information such as app locations, connectors
+		details, and more
+  * Power Automate: provide
+
+Tenant storage capacity
+- Monitors how much storage
+  * Database: referes to data being stored in tables. Includes item like out of box tables, custom tables, ect
+  * Log: referens to log files and that are being used to capture information such as audit logs, or plugin trace logs
+  * File: referens to images or files that are being stored in your DV environment such as customer picture stored on 
+	  their contact record
+
+- DV search
+	* Replaces categorized search
+	* better matching
+	* Searches data and documents
+	* uses AI
+	* Display the first 4 columns in quick find views
+
+Long team data retention
+- MS DV support custom retention policies to securely retain unlimited data log term cost efficently
+* Configuration
+  - Enable table for long term data retention on the table options
+  - Set up retention policy
+
+Model Driven App
+- Only Main forms can be assigned to security roles
+- Controlling user access to forms is not necessarily a secure means of prevent access to data
+
+Canvas app:
+- You can connect to multiple data sources, but main sources are:
+  * Dataverse
+  * Sharepoint
+  * Excel
+  * Azure SQL Server
+
+Screen Navigation on test
+KNow about Variables
+- Global, Context, Collections. Know the primary functions and Patch
+
+Power Apps Cards
+- Micro-apps: lightweight UI, used as content in other apps, expands upon adaptive cards but use low-code
+- Share share cards quickly & efficiently
+- Use in MS teams and Outlook
+
+* Card designer
+  - create and edit cards
+  - low-code using power fx for business logic
+  - leverage connectors
+
+* Lightweight runtim
+  - Send cards to a microsoft teams chat or channel
