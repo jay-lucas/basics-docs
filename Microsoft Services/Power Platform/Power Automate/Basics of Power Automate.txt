@@ -1,0 +1,13 @@
+Flows
+- Automated Flows (cloud)
+- Instant Flows (cloud)
+- Scheduled Flow (cloud)
+- Desktop flow 
+
+Important expressions
+- outputs(stepName)
+- body(stepName)
+- triggerBody()
+- item() - used to reference the current item in a apply to each
+- variables(variableName) - reference a variable
+- parameters(parameterName) - Environment variable

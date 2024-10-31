@@ -199,3 +199,9 @@ Power Apps Cards
 
 * Lightweight runtim
   - Send cards to a microsoft teams chat or channel
+
+
+Types of low code plug in
+- instant
+
+- automated
