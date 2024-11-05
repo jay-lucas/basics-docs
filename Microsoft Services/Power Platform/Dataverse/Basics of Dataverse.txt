@@ -85,3 +85,37 @@ access and various capabilities and functionality like read,
 - Environment maker
 - basic user
 - app opener
+
+Max Length of a sigle line of text is 4k with a default of 100 characters. 
+Max Length of multiple lines of text is 1 mil with a default of 2k
+
+File Length between 1KB and 131k DB
+Image length 1KB and 30k KB with default 10240 KB
+
+When creating a new column for a table the "Searchable" option allows for that column to be available in "Advance Find" feature.
+Uncheck searchable reduces the number of options that are shown to people using "Advance Find"
+
+Primary Column is nto the same as Unique Identifier key column. The Unique identifier column bears the same name as the table.
+ie. Person table the primary key column will have the name "Person" and is a GUID. You can only update the schema name and display
+name of the Primiary column until you create the table, after that you can't update the schema name. 
+
+Restrictions that apply to columns in a table.
+- No upper limit, depends on how much data stored in a single record.
+- Have less than a few hundred columns in a table
+* Rollup column limitations
+  -  Max of 10 for each table
+  - Max of 100 for each organization
+  - Can't trigger workflows of flows
+  - Can't reference another rollup column, complex calculated / formula column. Must be a simple column
+  - ModifiedBy and ModifiedOn columns are not updated when rollup column is updated
+  - Can't include records in N:N (many to many) relationships, only 1:N (one to many)
+  - Can't use 1:N relationships with the ActivityPointer or ActivityParty table
+ 
+Auto Number Columns
+  - String prefixed number (Fat-100, Fat-101,...)
+  - Date prefixed number (2019-26-02-1000, 2019-27-02-1000,...)
+  - Custom: Allows for for a combination of string constants, auto incrementing numbers, formatted dates, random alphanumeric sequences.
+* You can also set the seed value to start at a particular number
+
+Alternate Key: You can use this when your org has a unique value for each record already. This key is added to the already created 
+		   primary Key that's standard and a GUID. DV automatically makes the alternate Key unique so no dups can be entered. 

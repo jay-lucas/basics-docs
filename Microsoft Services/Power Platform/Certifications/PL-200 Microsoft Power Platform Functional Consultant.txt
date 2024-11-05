@@ -203,5 +203,29 @@ Power Apps Cards
 
 Types of low code plug in
 - instant
-
 - automated
+
+Solutions
+- Unmanaged
+   * Used during development
+   * used to transport to other dev environments
+
+- Managed
+  * Used to distrubute to no-dev environments
+
+Default solutions
+ - Common data service default solution
+ - Default solution
+
+Solution components
+- solution components are categorized to track the individual items associated with the solution
+- component types include tables, apps (model & canvas) , PA flows, security components as well as dev assets
+- some components are sub-components, for example forms, views, charts, and columns are all assets of tables
+- reference data is not included as a solution component
+
+Configuration migration Tool
+
+3rd party tools and utilities
+- AppSource
+- XrmToolBox
+- Browser Extensions

@@ -1,0 +1,72 @@
+MS Power bi si a collection of software services, apps, and connectors that work together to turn your unrealted sources of data into
+coherent, visually immersive, and interactive insights.
+
+Model Driven app reporting options
+Options
+- Views
+- dashboards
+- charts
+- excel
+- Report wizard
+- Sql reporting is an advance feature
+
+Advantages
+- Easy access from within app
+- standard skills required
+- data is always current
+- security model enforced
+- included in solution
+
+Disadvantages
+- simple visualizations
+- only standard filtering
+- no historical data
+- Must be app users
+
+Basic build blocks
+- Semantic models (datasets)
+- Visualizations
+- Reports
+- Dashboards
+- Titles
+
+Additional power BIO data options
+- Create relationships between your data sources
+- Create a new field with calculated columns
+- Optimize data by hiding fields and sorting visualizations data
+- Create a measure to perfrom calculations on your data
+- Use a calculated table to create a relationship between two tables
+- format time-based data so that you can drill down for more details
+
+Share and collaborate
+- Publish your reports from Power bi desktop to the Power bi service
+- create power bi apps that package a dashboard, report, and dataset to send to colleagues to use 
+- create groups, which you can use as a security model to identify a subset of users who have access
+  to dashboards, reports, and datasets that you create.
+- publish to the web si that live reports can be embedded in a webpage
+
+Power BI has 2 conenctors for DV
+- DV
+- Common Data services (Legacy)
+
+DV connector has two connection modes
+- Import
+- Direct Query
+
+Power BI in canvas apps
+- Tiles only
+- Must also share Power BI dashboard with users
+- Consider the users experience when adding multiple tiles
+
+Power BI in model-driven app
+- Have to go into Environment > Settings > Featueres > select Embedded content (to add power bi visualizations)
+- Must also share Power BI dashboard with users
+
+Power BI connector for power automate
+- Trigger
+  * When a data driven alert is triggered
+  * Power BI button clicked
+- Actions
+  * add row to a dataset
+  * refresh data
+  
