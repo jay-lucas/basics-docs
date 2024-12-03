@@ -8,14 +8,32 @@ Microsoft Power Platform consists of the following components:
   -> Power Apps
   -> Power Automate
   -> Power BI
-  -> Power Virtual Agents.
+  -> Power Pages
+  -> Copilot Studio
 
 
 - Power App
   Provides a a rapid low code development environment for building custom apps for business needs. It has
   services, connectors, and a scalable data service and app platform, known as the "Microsoft Dataverse",
-  to allow simple intergration and interaction with existing data. Power Apps enables the creation of web 
+  to allow simple integration and interaction with existing data. Power Apps enables the creation of web 
   and mobile applications that run on all devices.
+  * Canvas Apps
+    Canvas apps are ideal for creating custom interfaces and user experiences. They are highly flexible and can be designed from scratch to 
+    fit the exact requirements of a business. With canvas apps, users can drag and drop different elements onto the canvas, such as data tables, 
+    forms, charts, and multimedia. This allows businesses to create apps tailored to their unique needs and workflows.
+    ** Note: Canvas apps are ideal for companies that must create custom interfaces and user experiences
+
+    Another advantage of canvas apps is that they are highly visual and interactive, making them ideal for customer-facing apps. They can be accessed 
+    via a web browser or mobile device, providing users a seamless experience across different platforms.
+
+  * Model-Driven Apps
+    Model-driven apps are best suited for businesses that manage complex data models and processes. They are built on the Dataverse fka Common Data Service, which 
+    provides a centralized data storage and management repository. This allows businesses to create tightly integrated apps with their data and processes, 
+    making them highly efficient and scalable.
+    ** Note: model-driven apps are best suited for managing complex data models and processes
+
+    Model-driven apps also come with various pre-built components and templates, such as forms, views, and dashboards. This makes it easy for businesses to 
+    start with app development, as they can start from scratch.
 
 - Power Automate
   Lets users create automated workflows between applications and services. It helps automate repetitive 
@@ -27,7 +45,14 @@ Microsoft Power Platform consists of the following components:
   Power BI scales across an organization, and it has built-in governance and security allowing businesses
   to focus on using data more than managing it.
   
-- Power Virtual Agents
+- Power Pages
+  Power Pages are a hybrid of canvas and model-driven apps, combining the flexibility of canvas apps with the data management capabilities 
+  of model-driven apps. They are canvas apps with added data integration and management features.
+  Power Pages are ideal for businesses that need to build highly visual and data-driven apps. They are handy for creating custom portals, 
+  intranet sites, and dashboards that provide users with a unified view of their data and processes.  
+  ** Note: Power Pages are a good option for businesses that need the best of both worlds of Canvas App and Model Driven App.
+  
+- Copilot Studio
   Enagles anyone to create powerful chatbots using a guided, no-code graphical interface, without the need
   for data scientists or developers. It minimizes the IT effort required to deploy and maintain a custom
   solution by empowering subject matter experts (SME) to build and maintain their own conversational 

@@ -1,0 +1,31 @@
+Project Specifications and Goals: These are the details of the project and what the inputs and outputs.
+Example: Northwind Traders basketball club needs a solution to track the player recruiting process. Office staff needs to 
+         be able enter in prospects and quickly find the players they're scouting and tracking information in a report.
+         Reports need to be sent on-demand. 
+
+Microsoft Dataverse Requirements
+- Create tables and columns for player and scouting Reports
+- Create relationshps for contacts, players, scouts (users), and scouting report
+- Create needed forms and views
+- Add new column to the contact table (prebuilt table within Dataverse)
+
+Model-Driven Application (Power Apps) Requirements
+- Compose a model-driven app that is appropriate for office staff to use to complete their needed tasks. Include tables, forms, views, and all needed components.
+- Users should be able to create/edit new player records, create/edit contacts, and create/edit scout reports.
+
+Canvas Application (Power Pages) Requirements
+- Compose a canvas app that is appropriate for scouting to use in the field.
+- Show players.
+- Allow to create or edit existing players.
+- Allow to create new scouting reports and edit reports they created.
+- Allow to add or edit contacts that are related to the player.
+- Scouts shouldn't be able to edit a player record of a player who failed the drug test.
+
+Power Automate Cloud Flow Requirements
+- Create a cloud flow that is triggered from a button on the canvas application.
+- When the flow is triggered, it should get the player record, and then send an email that includes some information about the player to someone (You may use your own user’s email).
+- Add a button to the edit player form of the canvas application that triggers this flow.
+- This button shouldn't be visible when creating a new player.
+
+Power BI requirements
+- Create dashboard that shows hot prospects and number of recruits.
