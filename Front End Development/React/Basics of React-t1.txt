@@ -31,7 +31,12 @@ Declaring variables in State
          a function which you can call to set a new value for your state. Calling that function 
          will then also trigger React to re-evaluate the component.
 
-         
+What are props?
+Props are READ-ONLY! Props is data coming from the outside, and can only be updated by the parent component
+
+What is state?
+State is internal data that can be updated by the component's logic. You manage state within the component. 
+
 Two alternative ways of setting props
 Array
   const expenses = [
