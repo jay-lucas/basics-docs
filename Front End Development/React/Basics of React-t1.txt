@@ -32,10 +32,15 @@ Declaring variables in State
          will then also trigger React to re-evaluate the component.
 
 What are props?
-Props are READ-ONLY! Props is data coming from the outside, and can only be updated by the parent component
+Props are READ-ONLY! Props is data coming from the outside, and can only be updated by the parent component. 
+Props are immutable (can't be changed). 
 
 What is state?
 State is internal data that can be updated by the component's logic. You manage state within the component. 
+
+**Note: if you need to mutate props, you actually need state. Mutating props would affect parent, creating 
+        side effects (not pure). Components have to be pure functions in terms of props and stateThis allows 
+        React to optimize apps, avoid bugs, make apps predictable.
 
 Two alternative ways of setting props
 Array
