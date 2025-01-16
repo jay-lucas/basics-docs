@@ -1,3 +1,68 @@
 In SQL, a Common Table Expression (CTE) is an essential tool for simplifying complex queries and making them more readable. 
 By defining temporary result sets that can be referenced multiple times, a CTE in SQL allows developers to break down complicated logic into manageable parts. 
 CTEs help with hierarchical data representation, improve code reusability, and simplify maintenance.
+
+Example: Calculate Average Salary by Department
+In this example, we will use a Common Table Expression (CTE) to calculate the average salary for each department in the Employees table. 
+The CTE simplifies the query by breaking it into a manageable part that can be referenced in the main query.
+
+Query:
+
+WITH AvgSalaryByDept AS (
+    SELECT Department, AVG(Salary) AS AvgSalary
+    FROM Employees
+    GROUP BY Department
+)
+SELECT *
+FROM AvgSalaryByDept;
+
+Explanation:
+
+The WITH clause defines a CTE named AvgSalaryByDept.
+The main query references this CTE to retrieve the average salary for each department.
+
+Recursive Common Table Expression 
+A recursive CTE is one that references itself within that CTE. The recursive CTE is useful when working with hierarchical data as the CTE continues to execute until the query returns the entire hierarchy. 
+
+A typical example of hierarchical data is a table that includes a list of employees. For every employee, the table provides a reference to that person’s manager. That reference is itself an employee ID within the same table. We can use a recursive CTE to display the hierarchy of employee data. 
+If a CTE is created incorrectly it can enter an infinite loop. To prevent this, the MAXRECURSION hint can be added in the OPTION clause of the primary SELECT, INSERT, UPDATE, DELETE, or MERGE statement.
+
+Example: Hierarchical Employee Data
+WITH
+  cteReports (EmpID, FirstName, LastName, MgrID, EmpLevel)
+  AS
+  (
+    SELECT EmployeeID, FirstName, LastName, ManagerID, 1
+    FROM Employees
+    WHERE ManagerID IS NULL
+    UNION ALL
+    SELECT e.EmployeeID, e.FirstName, e.LastName, e.ManagerID, 
+      r.EmpLevel + 1
+    FROM Employees e
+      INNER JOIN cteReports r
+        ON e.ManagerID = r.EmpID
+  )
+
+SELECT
+  FirstName + ' ' + LastName AS FullName, 
+  EmpLevel,
+  (SELECT FirstName + ' ' + LastName FROM Employees 
+    WHERE EmployeeID = cteReports.MgrID) AS Manager
+FROM cteReports 
+ORDER BY EmpLevel, MgrID 
+
+Explanation:
+
+The anchor member selects employees with no manager (ManagerID IS NULL), establishing the base level.
+The recursive member joins the CTE to the table, incrementing the level for each subordinate employee.
+
+Benefits of Using CTEs in SQL
+Improved Readability: CTEs help break down complex queries into modular, reusable components, improving code readability and maintainability.
+Reusability: Once defined, a CTE can be referenced multiple times within the same query, reducing the need for repetitive code.
+Simplifies Complex Queries: By using CTEs, especially recursive CTEs, complex operations like hierarchical data queries become much easier to manage.
+Query Optimization: SQL engines can optimize queries that use CTEs more efficiently, improving performance, especially when the same result set needs to be accessed multiple times.
+
+Limitations of CTEs in SQL
+Temporary Scope: A CTE exists only during the execution of the query. Once the query completes, the CTE is discarded.
+Performance Issues: For very large datasets, CTEs can sometimes lead to performance degradation due to multiple references to the same CTE.
+Not Allowed in All Database Operations: Some operations, such as INSERT and UPDATE, may have restrictions when using CTEs in certain databases.
