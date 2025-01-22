@@ -1,7 +1,7 @@
 What are Canvas Apps?
-A suite of apps, services, connectors, and a data platform that proides you with an opportunity to build 
+A suite of apps, services, connectors, and a data platform that provides you with an opportunity to build 
 custom apps for your business
-1) Power apps maker portal: Apps start here, wheather you build them from data, a sample app, or blank screen
+1) Power apps maker portal: Apps start here, weather you build them from data, a sample app, or blank screen
 2) Power apps Studio: Create and edit canvas apps
 3) Power apps Mobile: Run your apps on MS windows, Apple, android
 4) Power Platform Admin center: Manage PP environments
@@ -14,21 +14,35 @@ control visibility and
 
 Global Variables
 - App wide scope
-- Primary function: Set(currentNname, "jay")
+- Primary function: Set(currentName, "jay")
 
 Context Variables
 - Local screen scope
 - Pass values to a screen
-- Primiary Function: Navigate, UpdateContext
-                     UpdateContext({CurrentTotal: CurrentToal+ThisItem.Price})
+- Primary Function: Navigate, UpdateContext
+                     UpdateContext({CurrentTotal: CurrentTotal + ThisItem.Price})
 
 Collections
 - App wide scope
 - Tables only
-- Primiary function: Collect, Clear, ClearCollect, Remove
+- Primary function: Collect, Clear, ClearCollect, Remove
 - Can be saved to the local device with SaveData, LoadData
 
 Error Handling
-- Dectecting and handling error: IFError, IsError, IsErrorOrBlank
+- Detecting and handling error: IFError, IsError, IsErrorOrBlank
 Reporting error: App.OnError handler
-Creating and rethrowing an Error: Error
+Creating and rethrown an Error: ErrorFor 
+
+Creating a component
+- In creating a new container the properties has an "Access app scope" this allow you to pass variables to app from component
+
+IFError()
+
+Notify()
+Overload examples: 
+Button action: OnSelect
+Notify( "Hello, World" ) -> Pops up just a information notification (grey) with text
+Notify( "Hello, World", NotificationType.Error ) -> pops up a error notification (red) with text
+Notify( "Hello, World", NotificationType.Warning, 4000 ) -> pops up a warning notification (yellow) with text that is dismissed after 4 seconds
+Notify( "Hello, World", NotificationType.Success, 0 ) -> pops up a success notification with a 0 timeout, the notification will only be dismissed by the user
+                                                         or pressing the button again
