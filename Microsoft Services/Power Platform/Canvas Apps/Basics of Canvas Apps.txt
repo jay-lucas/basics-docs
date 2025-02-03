@@ -14,7 +14,7 @@ control visibility and
 
 Global Variables
 - App wide scope
-- Primary function: Set(currentName, "jay")
+- Primary function: Set(varFirstName, "jay")
 
 Context Variables
 - Local screen scope
@@ -32,6 +32,7 @@ Error Handling
 - Detecting and handling error: IFError, IsError, IsErrorOrBlank
 Reporting error: App.OnError handler
 Creating and rethrown an Error: ErrorFor 
+Reference: https://learn.microsoft.com/en-us/power-platform/power-fx/reference/function-iferror
 
 Creating a component
 - In creating a new container the properties has an "Access app scope" this allow you to pass variables to app from component
@@ -46,3 +47,9 @@ Notify( "Hello, World", NotificationType.Error ) -> pops up a error notification
 Notify( "Hello, World", NotificationType.Warning, 4000 ) -> pops up a warning notification (yellow) with text that is dismissed after 4 seconds
 Notify( "Hello, World", NotificationType.Success, 0 ) -> pops up a success notification with a 0 timeout, the notification will only be dismissed by the user
                                                          or pressing the button again
+
+App.Formulas (aka named formulas)
+Formulas is used when you want Power Apps to manage immutable objects, functions & variables. You can't change it and is only
+called when needed else it doesn't load. Naming conventions for variables created in formulas start with 'nf' + name.
+App.OnStart
+OnStart, everything must load before the app opens and values can be changed. OnStart is a performance hit.
