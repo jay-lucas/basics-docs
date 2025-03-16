@@ -5,3 +5,23 @@ To automatically open browser when running app in vite
 1) Go to vite.config file
 2) Update defineConfig(), add
    server: { open: true, }
+
+
+Install Dev dependencies. These dependencies will be used when developing and running "npm start dev" but will not be included
+when running production. 
+
+If you want types across your app, put them in the vite-env.d.ts file.
+
+Setting up vite config for eazier path navigation for components and an absolute path when we use "@". This makes it so you don't have to go "../../../components/xyzcomponent.ts". 
+@ resolves the dots (..) to its direct path.
+1) Go to vite.config file
+2) import path from 'path' 
+3) Update defineConfig(), add
+   resolve: {
+    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+   }
+
+4) Go to tsconfig.app.json and add to "compilerOptions":
+   "paths": {
+      "@/*": ["./src/*"]
+   },
