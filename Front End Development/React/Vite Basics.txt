@@ -1,0 +1,7 @@
+Start a vite application
+Command: npm run dev
+
+To automatically open browser when running app in vite
+1) Go to vite.config file
+2) Update defineConfig(), add
+   server: { open: true, }
