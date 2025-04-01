@@ -18,7 +18,7 @@ Enable static website hosting on the S3 bucket
 Test access to the webpage hosted on Amazon S3
 
 
-Amazon Cloud Computing Resources are hosted in multiple world wide locations called AWS Regions. Each reagion is a seperate geographic area that has multiple isolated locations called Availablity zones (AZ). Each region has atleast 2 AZ.
+Amazon Cloud Computing Resources are hosted in multiple world wide locations called AWS Regions. Each region is a separate geographic area that has multiple isolated locations called Availablity zones (AZ). Each region has atleast 2 AZ.
 Availability Zones are completely isolated for complete redundancy. Each AZ is comprised of 1 or more discrete data centers, typically 3.
 
 Points of Presence (PoP)
@@ -42,70 +42,7 @@ AWS Well-Architected includes,
 - Aws well architected tool
    -> evaluate, identify, record
 
-Amazon Simple Storage Service (S3) overview
-S3 is an Object Storage Service, objects consist of data and metadata. The metadata is a set of name-value pairs that describe the object. Objects are stored in a container called S3 Bucket. Objects are uniquely identified in a S3 Bucket by a key. 
-Example:
-a photo: photos/puppy.jpg is stored in a johnsmith s3 bucket. This is addressable using: johnsmith.s3.amazonaws.com/photos/puppy.jpg
-S3 can be used to store and protect various use cases like websites, mobile apps, enterprise apps, backups/restore archives, IoT devices, and big data analytics.
-S3 can autoscale storage resources caused by fluctuating demands. Data durability 11 9's (99.999999999%) and automatically creates and stores copies of all S3 objects. 
-S3 secure from unathorized access using encryption features and Access Management Tools.
-S3 Block Public Access can block public assess at the object in bucket or acount level. 
-S3 maintains compliance programs just as:
-- PCI-DSS
-- FedRAMP
-- HIPAA/HITECH
-- FISMA
-- EUData Protection Directive
-to meet regulartory requirements.
-S3 has auditing capabilities to monitor access requests to S3 resources. 
-S3 has a wide range of storage classes
-- S3 Standard: Frequently Accessed data
-- S3 Intelligent-Tiering: Unknown or changing data access patterns, moves data from frequent access and infrequent access tier based on the patterns without performance impact or operational overhead 
-- S3 Standard-IA,
-- S3 one zone-IA: infrequently accessed data, stores data in one availablity zone, best for data that needs to be recreated
 
-All about storage classes time to access in msec (milliseconds)
-
-- S3 Glacier Instant Retrieval,  time to access in msec (milliseconds)
-- S3 Glacier Flexible Retrieval,  time to access in mins, free bulk retrievals 5-12 hours
-- S3 Glacier Deep Archive: Long term data archive digital preservation,
-   lowest cost storage, data retrieval 12-48 hours
-
-S3 Storage Class analysis discover data based on access patterns should move to a lower-cost stoage class. from the analysis a S3 Lifecycle policy can be configured to make the data transfer to the new storage class. 
-S3 Lifecycle Policy defines when transistions to another storage class and when the objects expires.
-s3 Cross-region replication (CRR) replicates data into other aws regions
-s3 same region replication replicates data into the same region 
-
-S3 object lock is when objects are locked within a retention period that is defined. You can enforce write-once-read-many (WORM) policies 
-
-S3 Inventory report list all stored object, metadata, and encryption status.
-S3 batch Operations to change object properities and perform storage management tasks. Copy objects, replace object tag sets, modify access controls, and restore objects from amazon s3 glacier. 
-
-S3 works with AWS Lambda to log activities, create alerts, and automate workflows without additional infrastructure. 
-
-Query-in-place services for analytics, you can run big data analytics across s3 objects and other datasets. 
-
-Amazon Athena allows you to query s3 data with standard SQL expressions. 
-Amazon Redshift Spectrum run SQL queries in S3 directly against data at rest for complex queries for large data up exabytes(EB) or 1 Million GB
-
-S3 Select allows you to retrieve subsets of data instead of the entire object which can be up to 5 teribytes (TB) in size
-
-S3 Buckets has versioning feature; Bucket states can be Unversioned (default), Versioning-enabled, Version-suspended.
-Once a bucket is versioned it can never return to an unversioned state.
-Suspending a version suspends the creation of version Id for new objects. 
-Once versioning is enabled the bucket is identified by a version ID.
-
-S3 Access Mangement.
-by default all buckets and objects are private, which only the creator can access. An access policy must be granted to others for them to gain access.
-Access Policies can be categorized into 2 groups:
-- Resource-based Policies (attached to buckets, objects)
-  -> Bucket Policies (written in JSON)
-  -> Access Control List (ACLs) (written in XML)
-  -> Query string authentication (time-limited URLs, Temporary access)
-- User Policies (attached to users)(written in JSON)
-  -> granted using Identity and access management (IAM) policies. IAM controls entities are Users, groups, Roles.
-
-ACLs are a legacy policy feature, recommend you use Bucket and IAM policies
 
 Amazon Elastic Compute Cloud (EC2) is a web service that provides reliable, scalable, compute capacity in the cloud so that you can launch virtual servers in mins. 
 
