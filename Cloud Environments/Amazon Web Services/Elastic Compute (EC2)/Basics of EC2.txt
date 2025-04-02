@@ -1,3 +1,56 @@
 Lesson: Create amazon ec2 instances to run the computational modules for an island's stabilization system, placing each instance in a different availability zone of the same AWS region.
 
 EC2 is a web service that provides secure resizable compute capacity in the cloud. EC2 eliminates the need to invest in upfront hardware investments so you can develop and deploy applications faster. You can launch as many or few virtual servers as needed allowing you to scale up and down within minutes allowing you to handle changes or spikes in requirements reducing your need to forecast traffic. EC2 provides you with complete control of your resources running on AWS proven reliable scalable computing environment. AWS EC2 is hosted on multiple locations worldwide comprised of AWS regions consist of at least 3 availability zones. EC2 provides high availability with service level agreement (SLA) of 99.99% or each EC2 region. EC2 is built to meets the requirements of the most security-sensitive organizations.
+
+An instance is a virtual server in the cloud. AWS provides multiple instant types that allow you to configure the following:
+- CPU 
+- Memory
+- Storage
+- Network
+- GPU 
+
+Instant Type Categories:
+- General Purpose: provide balance of CPU, Memory, and Network.
+  Use Case: Web Servers
+
+- Compute Optimized: Optimized for Compute intensive workloads.
+  Use Case: Game Server
+
+- Memory Optimized: Memory intensive workloads that process large datasets in 
+  Use Case: Big Data analytics
+
+- Storage Optimized: Designed for workloads that require sequential read & write access to very large datasets on local storage
+  Use Case: Data warehousing
+
+- Accelerated computing: GPU instances that use hardware accelerators
+  Use Case: Machine/Deep Learning
+
+- HPC Optimized: Used for High Performance Computing (HPC) workloads
+  Use Case: Complex Simulations
+
+Each instance type includes one or more instance sizes allowing you to scale your resources to the requirement of the target workload.
+
+Amazon Machine Image (AMI) provides the information needed to launch an instance. It is a template that contains the software configuration such as a operation system (OS), Applications, and an application server. You must specify an AMI when launching a instance. You can launch one or more instances from an AMI. 
+
+EC2 Storage and Networking.
+EC2 provide data storage options for instances. Instances can access storage that are physically attached to disk to the host computer referred to Instance store. Instance store provides temporary block level storage. EC2 instances can also attach Elastic Block Storage (EBS) volume for persistence block level storage. EBS acts like a raw, unformatted external block device. 
+
+EBS data can be stored using EBS snapshots and stored in S3. EC2 also uses S3 for storing Amazon Machine Images (AMI).
+You can also create a file system within a EC2 using Amazon Elastic File System (EFS) which provides scalable file storage. Applications running on EC2 instances can access your files from EFS at the same time. 
+
+Networking is defined for access to EC2 instances. virtual Private Cloud (VPC) lets you provision a logically isolated area within the AWS cloud where EC2 instances can be launched in a virtual network that is defined. 
+
+An AWS account comes with a pre-configured VPC in a aws region that you can launch EC2 instances immediately. VPC can span multiple availability zones (AZ) in a region. Subnets can be added to different AZ and EC2 instances can be launched into those Subnets to improve fault tolerance in your applications. You can use multiple levels of security to control access to EC2 instances within a subnet. Example, a security group can be configured that acts like a virtual firewall that controls traffic for your instances. 
+
+To launch an EC2 instance:
+1) Determine if you want to launch EC2 instances in a single location or multiple locations region and AZs. 
+2) Select an AMI 
+3) Determine instance type and sizes
+4) Specify and configure network access and specify any preferred subnets on the EC2 instance
+5) Add Storage
+6) Add tagging
+7) Configure security groups
+8) Secure login information using key pairs of Public and Private keys
+9) launch EC2 instance
+
+A default root storage is used to boot up the EC2 instance. the root volume can be edited to add additional storage or tagging. Tagging is used to categorize resources that helps in searching and managing resources.

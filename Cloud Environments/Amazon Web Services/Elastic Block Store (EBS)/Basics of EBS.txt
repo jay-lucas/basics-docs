@@ -1,0 +1,1 @@
+Elastic Block Store (EBS) is a service that allows for block level storage volumes to be used with EC2 instances.
