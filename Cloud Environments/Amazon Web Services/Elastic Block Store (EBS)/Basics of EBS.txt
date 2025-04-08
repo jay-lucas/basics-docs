@@ -1,1 +1,43 @@
-Elastic Block Store (EBS) is a service that allows for block level storage volumes to be used with EC2 instances.
+Elastic Block Store (EBS) is a service that allows for block level storage volumes to be used with EC2 instances. EBS volumes act like raw, unformatted external block devices (hard drives).
+
+Each EBS volume can only be attached on one instance at a time (One EBS to EC2), but multiple EBS volumes can be attached to one EC2 instance (One EC2 to EBS1, EBS2, EBS3). EBS volume are mounted to EC2 instances allowing for single-digit millisecond latency between where the data is stored and where it can be used on the EC2 instance.
+
+EBS volumes are designed for throughput and transaction intensive workloads at any scale. EBS volumes allow for data persistence even after you stop/terminate using the EC2 instant it's attached too. 
+
+EBS volume storage types:
+- Solid-State Drive / SSD-backed Storage: Optimized for transaction based workloads with frequent Read/Write (R/W) operations with small Input/Output (I/O) size. Ex> Databases, Boot volume. This includes: 
+* Provisioned IOPS SSD
+  -> io2 Block express
+  -> io2
+  -> io1
+  **Note: These are used for latency-sensitive transaction workloads.
+
+* General Purpose SSD
+  -> General Purpose SSD (gp2 + gp3): balance price and performance for a wide variety of transactional data. 
+     -> gp3: Enables for provision of performance independent of storage capacity
+     -> gp2: 
+
+Dominate performance depends on Input/Output operations per second (IOPS)
+
+- HDD-backed storage is used for throughput intensive workloads (ex. MapReduce, data warehouse, log processing). This also includes:
+* Throughput optimized HDD 
+   -> st1: for frequently accessed throughput intensive workloads. 
+* Cold HDD 
+   -> sc1: is the lowest cost used for less frequently accessed data. 
+
+Dominate performance depends on Throughput in megabytes (MB)
+
+Feature of EBS
+- EBS allows you to dynamically increase EBS size tune performance and change volume types with no downtime or performance impact. You can create a ebs volume with a capacity and performance knowing you can reconfigure in the future saving hours of planning cycles. Using Cloudwatch and Lambda you can automate volume changes based on the changing needs of an application. 
+
+- EBS-Optimized Instances, you can launch EC2 with EBS-Optimized instances. EBS-Optimized gives a dedicated throughput between 500-19,000 Mbps. The dedicated throughput minimizes contention between EBS I/O and other traffic from your EC2 instance providing the best performance for the EBS volume.
+
+Amazon EBS Snapshots allow you to backup data from EBS volume to S3 by taking point in time snapshots to enable disaster recovery. Snapshots are incremental backups which means only the blocks on the device that has changed are saved. You can create on or more ebs volumes based on a snapshot and resize the EBS volumes. 
+
+With Direct read Access you can use EBS direct API to read data off snapshot and track incremental changes without needed to create the EBS volumes and the EC2 instances to read them. You can create ebs snapshots from any block storage regardless of where it resides including data on premises. 
+
+Enabling Fast Snapshot Restore (FSR) instantly receive the full performance. EBS snapshots can be shared across AWS accounts and shared across AWS regions. 
+
+Data lifecycle Manager (DLM) for EBS Snapshots provides a simple automate way to backup data stored on EBS volumes are created and deleted on a custom schedule. Snapshots are cleaned up regularly to keep cost under control. You can create lifecycle policies that tag EBS volumes and manage the creation and management of backups. You can also use Cloudwatch to monitor you polices and ensure that your backups are created successfully. 
+
+EBS Multi-Attach, with no additional fee, allows you to provision a single IOPS SSD (io1) to up to 16 Nitro-based EC2 instances within the same Availability Zone. Each attached has full read and write permissions to the shared volume. 
