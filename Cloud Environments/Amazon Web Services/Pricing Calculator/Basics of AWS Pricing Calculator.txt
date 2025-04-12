@@ -1,0 +1,17 @@
+AWS Pricing Calculator URL: https://calculator.aws/
+
+# Pricing Models
+
+- On-Demand Instances: Pay for compute and database by the hour or second without long-term commitments or upfront payments
+
+- Reservations: receive greater discount up to 75% by paying ahead of time
+
+- Savings Plans: Offers lower prices on EC2, SageMaker, Lambda, Fargate in exchange for a term commitment of consistent usage measured in dollars per hour for 1 to 3 year terms
+
+- Spot Instances: EC2 use spot instances pricing mechanism to request spare computing capacity with no upfront commitment at a discounted hourly rate up to 90% off. 
+
+Recommendations
+
+Have a plan for how you want to use AWS before starting an estimate. For example, decide whether you want to break out your estimate by cost center, by products to run on AWS, or by regional stacks. Then you can use the group feature to organize your estimates. 
+
+Create Group: A group can reflect how your company is organized, such as providing estimates for each cost center, product stacks, architectures, or other organizational methods. 

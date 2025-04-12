@@ -61,3 +61,21 @@ Option 1) Connected to using Session manager. Session manager provides secure no
 Option 2) Connect through Secure Shell (SSH) clients by using terminal software on the user's local device. To access the instance, SSH requires a key pair, which must be managed and shared.  
 
 Option 3) Connect through EC2 Instance Connect in which AWS identity and Access management (IAM) policies and principles are used to control SSH access to the instances, removing the need to share and manage SSH Keys. 
+
+When creating an EC2.
+- Baseline usage refers to the minimum amount of servers during nonpeak time. 
+- Peak usage represents the amount of servers required at peak periods.
+
+- Payment options: 
+  * Standard Reserved Instance: Offers a hight discount, but allows modifications only within the same instance family, for example, t3.medium to t2.large. 
+
+  * Convertible Reserved Instance: provides a lower discount, but allows modification across different instance families, operating systems, and tenancy configurations. 1 to 3 year commitment
+
+  Elastic Block Store setup:
+  Input/output per second (IOPS) is a unit of measurement that represents the number of IO operations that can be performed per second on an EBS volume
+
+Snapshot Frequency: you can backup the data on amazon EBS volumes by making point-in-time copies known as EBS snapshots. Snapshots are incremental backups, which only save the blocks on the volume that has changed wince the last snapshot. this minimizes the time required to create the snapshot and saves on storage costs by not duplicating data.  
+
+Data Transfer: When transferring data from AWS to the internet, the costs vary based on the region where AWS resources are located, with region-specific pricing structures. Data transfer between AWS regions follow a specific cost structure in which inbound transfer to a region is generally free and outbound transfer from one region to another incurs charges that depend on the originating region. 
+
+Optional: Add Support helps with technical issues and additional guidance to operate infrastructures in the AWS Cloud. You pay for assistance from AWS. 

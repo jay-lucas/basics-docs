@@ -1,0 +1,14 @@
+Virtual Private Cloud (VPC) by default are configured with the internet gateways and routing to the internet. When you create a new VPC, you can choose whether all or part of the VPC should be exposed to the internet. This way, you can customize your own network security configuration to meet your specific requirements.
+
+Getting started:
+When creating a VPC you must assign it with a range of private IP addresses (IPv4/IPV6). 
+
+Networking Concepts:
+A NAT gateway is a network address translation service (NAT). With a NAT gateway, instances in a private subnet can connect to a services outside your VPC. External services, however, cannot initiate a connection with those instances. 
+
+An internet gateway (igw) serves 2 purposes:
+- Provide a target in your VPC route tables for internet-routable traffic.
+- Perform network address translation (NAT) for instances that have been assigned public IPv4 addresses. 
+
+VPC Peering
+Once peering connections have been set up, you can route traffic between VPCs using private IP addresses. VPC peering supports peering between multiple accounts as well. 
