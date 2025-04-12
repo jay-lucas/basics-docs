@@ -54,3 +54,10 @@ To launch an EC2 instance:
 9) launch EC2 instance
 
 A default root storage is used to boot up the EC2 instance. the root volume can be edited to add additional storage or tagging. Tagging is used to categorize resources that helps in searching and managing resources.
+
+Connections to EC2
+Option 1) Connected to using Session manager. Session manager provides secure node management without the need to open inbound ports, maintain bastion hosts, or manage SSH keys
+
+Option 2) Connect through Secure Shell (SSH) clients by using terminal software on the user's local device. To access the instance, SSH requires a key pair, which must be managed and shared.  
+
+Option 3) Connect through EC2 Instance Connect in which AWS identity and Access management (IAM) policies and principles are used to control SSH access to the instances, removing the need to share and manage SSH Keys. 

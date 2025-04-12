@@ -1,0 +1,2 @@
+Quit any command line process: Ctrl+C
+tail -lf <file name>: Opens up the file in command prompt
