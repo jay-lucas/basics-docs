@@ -1,0 +1,27 @@
+System manager is a collection of features that help you manage IT infrastructure running in AWS cloud or On-premise data centers. Systems manager simplifies management of web applications dn IT inventory, thereby, reduces the time it takes to detect and resolve problems. System Manager helps you manage resources securely and at scale. 
+
+System Manager is broken up into 4 core feature groups that help implement operations management and best practices. 
+
+* Operations Management
+  - System Manager OpsCenter: provides a central location for Ops Engineers to view, investigate, and resolve issues affecting AWS resources. 
+
+* Change Management
+  - System Manager Documents: to automate common and repetitive maintenance & deployment task. You can automate password resets, OS patches, and compliance issues. 
+
+* Application Management
+  - System Manager Application Manager: can define application components based on imported service metadata from AWS services like Cloudformation stacks, Elastic Container Service, Elastic Kubernetes Service, & AWS Launch Wizard. Works hand in hand with Operations and Change management. 
+
+* Node Management
+  - System Manager Fleet Manager: streamlines management process of servers running in the cloud or on premises. Fleet manager remote management allows for troubleshooting and configuration at scale saving time and money. 
+
+- Use cases
+
+ -> Centralize Operations: Aggregate operational data and view in a single console to gain actionable insights on AWS Services such as Cloudwatch, CloudTrail, AWS Config, 3rd-Party tools. 
+
+ -> Implement Best practices: Automation of:
+    - Proactive process at scale such as patching and maintenance, 
+    - Reactive process to quickly diagnose and remediate operational issues before it affects users
+
+ -> Remediate Security Issues: Enhance security and compliance profile and analyze security incidents after the fact to prevent future reoccurring issues.
+
+ -> Auto-resolve Issues: Automation resolve application issues by using operations data to easily mange applications and identify issues quickly across associated aws resource groups (tagkey = value).
