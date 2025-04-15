@@ -1,0 +1,3 @@
+With DynamoDB you can create a NoSQL database, so you don't have to worry about a well defined schema. The database automatically scales and has a sing;e-digit millisecond. DyanamoDB supports petabytes of data and to support metadata needs, you can add records with unique IDs that have varying attributes. 
+
+DynamoDB tables support two types of primary keys: a primary key that uses only the partition key, or a composite key that combines a partition key with a sort key. 
