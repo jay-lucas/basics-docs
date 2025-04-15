@@ -11,4 +11,13 @@ An internet gateway (igw) serves 2 purposes:
 - Perform network address translation (NAT) for instances that have been assigned public IPv4 addresses. 
 
 VPC Peering
-Once peering connections have been set up, you can route traffic between VPCs using private IP addresses. VPC peering supports peering between multiple accounts as well. 
+Once peering connections have been set up, you can route traffic between VPCs using private IP addresses. VPC peering supports peering between multiple accounts as well. You can route traffic between private IPv4 & IPv6 addresses. With VPC peering instances can communicate with each other as if they are in the same network. 
+
+Note: VPC Peering doesn't accept all configurations. A Requestor VPC cannot have Overlapping CIDR blocks with the Accepter CIDR blocks. In the context of AWS, a CIDR block (Classless Inter-Domain Routing) is a method of allocating IP address ranges to networks, specifically for Virtual Private Clouds (VPCs) and their subnets. It's a notation that specifies a range of IP addresses, enabling you to manage and route traffic within your AWS infrastructure. VPC Peering doesn't support transitive properties, meaning it a VPC can't connect to another vpc through a proxy. (A can't connect to B through C). VPC Peering doesn't allow for edge to edge routing, meaning A VPC and connect to B VPC S3 bucket. 
+
+Establishing VPC Peering connections:
+One VPC will be Requester and another will be Accepter. 
+1) Owner of Requester VPC will send a peering request to the Owner of the Accepter VPC. 
+2) Accepter VPC will allow connection with Requester
+3) Each VPC, in a peering connection, must manually add routes in their root tables, in which the IP must point to the IP address range of the connected VPCs. 
+4) Update security group rules so that traffic is not restricted between the connected VPCs. 

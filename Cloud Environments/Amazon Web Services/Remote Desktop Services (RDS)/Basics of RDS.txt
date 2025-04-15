@@ -1,0 +1,1 @@
+For read-intensive workloads, you can deploy read replica. Read replicas have the same data as your primary database, but they allow only read operations. You can direct queries to a read replica so that your primary database is free to do more write operations.

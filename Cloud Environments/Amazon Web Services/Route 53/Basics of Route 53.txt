@@ -1,0 +1,12 @@
+Amazon Route 53 is a globally distributed service translates human readable domain names (www.example.com) into numeric IP addresses. 
+
+How DNS Queries work?
+1) The host sends a DNS request (query)  to the DNS servers
+2) The DNS server is pre-configured with a list of Root nameservers randomly selects one root nameserver called a 'A record' (www.example.com) to an IP address
+3) The root nameserver responds with a list of authoritative name servers for the 
+.com zone along with a list of the IP addresses.
+4) The DNS Server randomly selects one of the authoritative name servers and sends another DNS Query to the A record to the Top Level Domain (TLD) Authoritative Nameservers.
+5) The TLD Auth Nameserver responds to the DNS servers query with a list of name servers that are authoritative to the example.com domain
+6) DNS Server randomly selects one of that authoritative nameservers from the TLD auth nameserver list and sends another query to the A record example.com
+7) Since the domain server is an authoritative nameserver for example.com the Nameserver sends the IP value of the A record back to the DNS Server
+8) The DNS server sends the IP address for example.com back to the host which enables the host computer to connect to example.com
