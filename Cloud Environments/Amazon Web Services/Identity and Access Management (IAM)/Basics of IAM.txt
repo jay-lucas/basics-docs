@@ -1,0 +1,1 @@
+AWS Identity and Access Management (IAM) allows you to create policies that manage AWS users and groups, and you can use permissions to allow and deny access to AWS resources. With IAM you can manage security requirements at scale.
