@@ -1,0 +1,17 @@
+JSX works like HTML but can enter JavaScript mode by using {} (for text or attributes)
+
+We can place JavaScript expressions inside {}.
+
+Statements are not allows 9if/else, for, switch
+JSX produces a javaScript expressions
+example:
+- const el = <h2>Hello React</h2>
+from
+- const el = React.createElement("h2", null, "Hello React")
+
+We can place other pieces of JSX inside {}, we can also write JSX anywhere inside a component (in if/else, assign to variables, pass it into functions, etc.)
+
+A piece of JSX can only have one root element. If you need more, use <React.Fragment> or <> for short
+
+Notes: 
+CSS inline style are written like this: {{ color: white}} or {{ color: props.color}}
