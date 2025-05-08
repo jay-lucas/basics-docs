@@ -1,0 +1,115 @@
+What is MongoDB?
+- Modern database relating data contained in a single, rich document which allows for flexible schemas. MongoDB is a popular open-source NoSQL database that uses a document-oriented data model instead of traditional relational tables. It's designed for storing and retrieving data efficiently, especially in applications where data is flexible and can vary in structure. MongoDB stores data in JSON-like documents called BSON, which are organized into collections. BSON is Binary JSON, which mongo stores it's data as. This allows for more options in data types that Json doesn't support (ex. dates);
+
+
+Schema Validation / Schema Governance: Allows you the ability of maintaining structure of data. Use schema validation to set required fields.
+Mongo documents are universal
+- JSON Document
+- Tabular
+- Key-Value
+- Text
+- Geospatial
+- Graph 
+- Time Series
+- Events (triggers)
+
+Limit 16 bytes for a document. 
+MongoDB has patterns that can be used.
+- Buckets
+- Document versioning
+- Schema versioning
+- Computed
+- Time Series/ intoContent management
+- Real-time analytics
+
+Core Features
+- MongoDB Shell (command line interface)
+- MongoDB Compass (graphical tool to navigate data)
+
+MongoDB has egomaniac drivers that use the programming language to interact with the database, it supports
+C, C++, C#, Go, Java, Node.js,, Python, Ruby, Rust
+
+MongoDB uses MQL instead of SQL. 
+Aggregation pipelining for advance data processing pipeline for transformations and analytics. MQL Pipeline, Match > Group > Sort. The output of one stage feeds the input of another
+
+Fully indexable with different options:
+- primary and secondary: Up to 64 indexes per collection
+- Compound Index against multiple fields
+- Wildcard Auto-index all matching fields, sub docs, arrays
+- ClusteredPre sorted by timestamp for time series collection 
+- Text: basic text search
+- MultiKey: Arrays
+- Unique: 
+- Partial & Sparse
+- GeoSpatial
+
+MongoDB has ACID transaction Support: Multi-Statement, Multi-Documents transactions. ACID (atomicity, consistency, isolation, durability) is a set of properties of database transactions intended to guarantee data validity despite errors. Used to update multiple document in a single collection, multiple collections, 
+Example: 
+    clientSession.startTransaction();
+    ...
+    clientSession.commitTransaction();
+
+CRUD
+CREATE
+    db.collection.insertOne()
+    db.collection.insertMany()
+READ
+    db.collection.find()
+UPDATE
+    db.collection.updateOne()
+    db.collection.updateMany()
+    db.collection.replaceOne()
+DELETE
+    db.collection.deleteOne()
+    db.collection.deleteMany()
+
+Change Streams: Change Streams API, enables developers to build reactive, real-time services. Allows for real-time event notifications. Change Streams are monitor CRUD outside the database.
+
+Native Time Series Support: Transparently implements a bucket design pattern for optimized storage and time based analysis. Transparent to applications, collocate time series data alongside application data.
+Time analysis Functions:
+- Window
+- Temporal expressions
+- Secondary indexes
+- sharding support
+- densification
+- gap filling
+- optimized sorting
+- TopN / BottomN
+
+Adds to aggregation framework
+
+MongoDB deployment options
+- Standalone instances: Not for prod use, local host on desktop
+
+- Replica stores: High Availability, resiliency, auto failover
+
+  Replica Sets are good for managing failures, maintenance, data placement, workload isolation. Is a group of mongodb processes that maintain the same data set. Need a Replica set to perform a rolling upgrade of the software.
+  - All writes go to the primary, only 1 primary per replica set
+  - By default all reads go to Primary, MongoDB is strongly consistent by default
+  - Secondaries can serve read request: clients must set their Read Preference. Such reads are eventually consistent
+  - Clients can also set a write concern. when should MongodB acknowledge a write?
+  - Clients can also set a Read Concern. What data should a client return?
+  If Primary fails, surviving members twill hold a election to select the new Primary. Elections require a majority, no majority equals no primary and system is read-only. 3 members is standard for a replica set survives 1 failures. For greater resiliency use 5 or 7 members (survives 2 or 3 failure). Replica sets are not for scalability, but is used for Availability. With setting up a replica set, lets say 5 host, 3 for transactions and 2 for analytics, you can force reads from a secondary with a certain tag.
+
+
+- Sharded Clusters: Typical as data volumes surpass 1-2 Terabytes: Horizontal Scaling & global R.W clusters. Shard Key allows you to select which data shard to query from. shared clusters has a partition of database in each shared. 3 kinds of sharding:
+- Range Sharding: Shared based on data range like 1 - 50 then 51-100
+- Zone Sharding: assigning zones to shards
+- Hashed Sharding
+
+Cluster-to-Cluster Sync:
+- Continuous Syn
+- Resumability
+- Hybrid Environments
+- Unlike topology 
+- support high resiliency
+- reverse directional 
+
+MongoDB self managed Environments.
+Where?: On-Premises, Private/Public cloud
+What?: Security, monitoring, Deployments, backups (must be done by developer)
+How?: Scripting & command-line tools, Ops Manager, kubernetes
+
+Enterprise Kubernetes Operator available. 
+
+
