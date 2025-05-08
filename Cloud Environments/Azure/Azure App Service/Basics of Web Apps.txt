@@ -1,0 +1,1 @@
+App Services are platform as a Service (PaaS), lots of benefits in scaling, Continuous integration (CI), deployment slots, integrates with Visual Studio

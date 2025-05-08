@@ -1,0 +1,8 @@
+Virtual Machines (VM) must be on a Virtual Network. 
+
+Virtual Machine abstractions:
+Compute services that uses VMs
+- Azure Batch
+- Virtual Machine Scale Sets
+- Azure Kubernetes Services (AKS)
+- Service Fabric

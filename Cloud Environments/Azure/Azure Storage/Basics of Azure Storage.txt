@@ -1,4 +1,9 @@
-
+What can you do with Azure Storage?
+- Create storage accounts up to 5 PB each
+- Blobs, queues, tables, files
+- various levels of replication included from local to global
+- Storage tiers (hot, cool, archive   
+- Manged (for VMs) or unmanaged)
 
 Steps to move a storage account to another region
 1) Export the storage template
