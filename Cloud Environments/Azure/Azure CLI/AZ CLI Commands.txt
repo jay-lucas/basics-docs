@@ -1,0 +1,7 @@
+To Connect to Azure account from PowerShell: Connect-AzAccount
+
+To install new AZ Module on Desktop
+Update-Module -Name Az -AllowClobber -Repository PSGallery
+
+Using a | you can select specific values similar to Sql Commands 
+Example: Get-AzWebApp | Select-Object Name, location

@@ -1,0 +1,26 @@
+What is Entra?
+- Azure Active Directory is now Microsoft Entra ID. 
+
+Managing more than one Tenant
+- Account: 
+  * Person: User name, password, email, MFA to log in 
+  * Application: Managed Identity: Represents a program or service. Kind of like user identity for applications.
+
+- Tenant: Represents an organization, usually represented by a public domain (example.com) and will be assigned a domain if not specified (example.onmicrosoft.com). It's also a dedicated instance of Azure Active Directory. Every Azure account is part of at least one Tenant.
+
+- Subscription: billing arrangement that can be assigned to tenants.
+* Free Subscription
+* Pay as you Group
+* Enterprise agreements
+
+** Note: Not every tenant need to have a subscription. Tenants can have more than one subscription. More than one account can be the owner in a tenant.
+
+Creating a tenant in Entra
+- Microsoft Entra ID: Must have a paid account to create a Entra Tenant
+- Azure AD B2C: Business to Consumer, uses 3rd party services (linkdin, microsoft, facebook, et) to do authentication to apps. 
+
+To add a Domain 
+- Go to Entra ID link
+- select Custom Domain names and enter in your domain
+- Once verified, go to Domain provider (GoDaddy) and select domain, DNS, add record
+- Select Type TXT, value is Destimation or points to address, Name is @, TTL is whenever
