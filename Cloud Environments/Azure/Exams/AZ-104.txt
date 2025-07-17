@@ -7,6 +7,12 @@ What is Entra?
   * For monitoring:
      Microsoft Entra ID provides functions like usage and insights, sign-in logs, audit logs, and provisioning logs, log analytics, and workbooks. Microsoft Entra ID provides an integrated IAM, Identity and Access Management solution. It helps you manage and secure identities for employees, suppliers, and clients, and it enables seamless access to internal and external applications and data.
 
+Microsoft Entra ID Licenses
+* Free:
+* P1:
+* P2:
+* Governance:
+
 Filter results: in this videoIn this video
 
 Managing more than one Tenant
