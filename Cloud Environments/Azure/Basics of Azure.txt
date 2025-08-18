@@ -1,0 +1,7 @@
+Azure Policy Best Practices
+
+- Start with an audit effect instead of a deny effect: 
+  Why: If you have any automation a deny effect may stop the process when an audit effect allows us to see what would happen while still allowing the process to continue before enforcing deny actions. 
+- Consider organizational hierarchies
+- Try creating and assigning initiative definitions even for a single policy definition
+- When an initiative assignment is evaluated, all policies within the initiative are also evaluated

@@ -1,5 +1,19 @@
 What is Entra?
-- Azure Active Directory is now Microsoft Entra ID. 
+- Azure Active Directory is now Microsoft Entra ID. It provides identities for users, devices, and applications, and it connects services like Azure, Microsoft 365, and the numerous apps in the cloud or on-premises.  
+  * For management:
+     Microsoft Entra ID helps you manage users and groups, register devices and applications, manage external identities, enable hybrid identities through Microsoft Entra Connect, assign roles and administrators, create administrative units, manage product licenses, and configure company branding. 
+  * For security:
+     Microsoft Entra ID provides a rich set of features like password reset, authentication methods, multifactor authentication, conditional access, identity protection, identity secure score, risk activities, and a security center. For governance, Microsoft Entra ID enables functions like entitlement management, privileged identity management, access reviews, and the lifecycle workflows. 
+  * For monitoring:
+     Microsoft Entra ID provides functions like usage and insights, sign-in logs, audit logs, and provisioning logs, log analytics, and workbooks. Microsoft Entra ID provides an integrated IAM, Identity and Access Management solution. It helps you manage and secure identities for employees, suppliers, and clients, and it enables seamless access to internal and external applications and data.
+
+Microsoft Entra ID Licenses
+* Free:
+* P1:
+* P2:
+* Governance:
+
+Filter results: in this videoIn this video
 
 Managing more than one Tenant
 - Account: 
