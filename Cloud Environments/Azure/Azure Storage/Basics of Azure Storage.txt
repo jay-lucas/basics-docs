@@ -11,3 +11,18 @@ Steps to move a storage account to another region
 3) Create a new template deployment
 4) Deploy the template to the target region
 5) Use the AzCopy tool to copy the data 
+
+Data Storage
+- Containers: Blob files 
+- File shares: traditional mounted storage that can be shared across CPU or servers
+- Queues
+- Tables
+
+
+Redundancy:
+- Locally-redundant storage (LRS): Cheapest, most basic options
+- Geo-redundant storage (GRS)
+- Zone-redundant storage (ZRS)
+- Geo-zone-redundant storage (GZRS)
+
+**Note: All storage accounts have 3 copies automatically created for disaster recovery.

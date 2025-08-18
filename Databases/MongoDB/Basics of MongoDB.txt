@@ -1,5 +1,5 @@
 What is MongoDB?
-- Modern database relating data contained in a single, rich document which allows for flexible schemas. MongoDB is a popular open-source NoSQL database that uses a document-oriented data model instead of traditional relational tables. It's designed for storing and retrieving data efficiently, especially in applications where data is flexible and can vary in structure. MongoDB stores data in JSON-like documents called BSON, which are organized into collections. BSON is Binary JSON, which mongo stores it's data as. This allows for more options in data types that Json doesn't support (ex. dates);
+- Modern database relating data contained in a single, rich document which allows for flexible schemas. MongoDB is a popular open-source NoSQL database that uses a document-oriented data model instead of traditional relational tables. It's designed for storing and retrieving data efficiently, especially in applications where data is flexible and can vary in structure. MongoDB stores data in JSON-like documents called BSON, which are organized into collections. BSON is Binary JSON, which mongo stores it's data as. This allows for more options in data types that Json doesn't support (ex. dates); Avoid complex joins, data that accessed together is stored together.
 
 
 Schema Validation / Schema Governance: Allows you the ability of maintaining structure of data. Use schema validation to set required fields.
@@ -99,7 +99,7 @@ MongoDB deployment options
 
 Cluster-to-Cluster Sync:
 - Continuous Syn
-- Resumability
+- Reusability
 - Hybrid Environments
 - Unlike topology 
 - support high resiliency
@@ -112,4 +112,56 @@ How?: Scripting & command-line tools, Ops Manager, kubernetes
 
 Enterprise Kubernetes Operator available. 
 
+
+MongoDB Change Streams allows for triggers to be set off when data changes.
+
+Maximum size for MongoDB document 16 MB 
+
+MongoDB GridFS store binary data directly in MongoDB (BSON data type)
+API for file storage and retrieval overcomes the 16mb doc size Limit 
+Uses 2 collections for file metadata and data chunks
+
+Indexing Review: Indexes takes resources to maintain so make them count.
+Types of Indexing:
+* Standard: Up to 63 secondary indexes per collection. Compound, multikey, geospatial, wildcard, etc. 
+            Transparent to queries - the optimizer will automatically pick the best one Use explain() to see which.
+  Example: db.movies.createIndex({ genres : "Action"})
+
+* Search: Highlights, Fuzzy matching, Facets, autocomplete, scoring / weighting, synonyms
+  Examples: db.movies.createSearchIndex("example-index", { mappings: {dynamic: true}})
+            use it: db.movies.aggregate ([
+                $search: {
+                    "index": "example-index",
+                    "path" : "plot",
+                    "query": "AI"}
+            ])
+
+* Vector Search and GenAI: Semantic search
+- Atlas Vector Search
+
+*MongoDB for content management
+- MongoDB flexible data model is well suited for dynamic content metadata
+- Object stores can be more cost effective for - Raw data fields
+- MongoDB ability to scale is more cited
+
+Storing Vectors in MongoDB: Vectors are numerical values for data stored in an JSON array of decimals
+Example: 
+moves.updateOne(
+    { 
+        _id: <docID> 
+    },
+    {
+        $set: { plot_embedding: response.plot_embedding }
+    }
+)
+
+use it: db.movies.aggregate ([
+    $vectorSearch: {
+        "index": "vector_index",
+        "path" : "plot_embedding",
+        "queryVector": myQueryVecotor,
+        "numCandidates: 130
+        "limit": 10
+        ...}
+])
 

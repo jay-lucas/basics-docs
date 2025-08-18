@@ -1,0 +1,40 @@
+Use Cases
+
+- Single View System: Known as 360 degree view, is the practice of aggregating data from multiple disparate sources to gain a holistic view of an entity, such as a customer or a product. Basically multiple datasources in one format using MongoDB.
+
+
+
+- Sensors and time series: built in optimizations for time series data. Reduced storage. Faster & more powerful queries. (ie. Rocket data). 
+No
+- MongoDB time series collections: Automatically consolidates multiple readings into larger "bucket" documents. Transparent to developers and applications. Minimizes storage footprint and enhances queryability.
+
+** Note: Storingthank you readings individually can be inefficient
+         Redundant data, large indexes, inefficient queries
+
+- In-app analytics: 
+    Aggregation framework for server-side processing. 
+    Interactive analysis, batch reporting, real-time application use
+    * Integrating with reporting and analytic platforms
+        * Pull 
+            BI connector 
+            spark connector
+        * Push 
+            Change streams 
+            kafka connector
+
+- Product catalog
+
+- Content management
+
+- Mainframe modernization
+
+- Vector Search and GenAI
+
+Common Migration Challenges
+
+How do i get started? 
+- a 
+
+Relational Migrator (In Atlas): a free tool to migrate your relational database to MongoDB.
+
+Queryable encryption for MongoDB.

@@ -5,3 +5,19 @@ Update-Module -Name Az -AllowClobber -Repository PSGallery
 
 Using a | you can select specific values similar to Sql Commands 
 Example: Get-AzWebApp | Select-Object Name, location
+
+Create new Resource Group
+New-AzResourceGroup -Name 'rg-test-apps' -Location 'East US'
+
+// $xx sets a variable in PowerShell
+$rg = Get-AzResourceGroup -Name 'rg-test-apps' -Location 'East US'
+$rg.ResourceGroupName displays the name of the resource group (rg-test-apps)
+
+// Gets definition of a policy
+// id is provided when you view a policy definition and see the "Definition ID"
+$definition = Get-AzPolicyDefinition -id '/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a'
+
+// Assigns a new policy definition to a resource group
+New-AzPolicyAssignment -Scope $rg.ResourceId  -PolicyDefinition $definition -Name 'RGLocationMatch' -DisplayName 'resource group matches resource location'
+
+// You can create Management groups that have subscription nested inside of it. A management group can have more than one subscription. Management groups and subscription are ways of organization of your billing

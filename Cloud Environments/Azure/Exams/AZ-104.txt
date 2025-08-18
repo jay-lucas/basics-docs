@@ -13,7 +13,7 @@ Managing more than one Tenant
 * Pay as you Group
 * Enterprise agreements
 
-** Note: Not every tenant need to have a subscription. Tenants can have more than one subscription. More than one account can be the owner in a tenant.
+** Note: Not every tenant need to have a subscription. Tenants can have more than one subscription. More than one user account can be the owner in a tenant.
 
 Creating a tenant in Entra
 - Microsoft Entra ID: Must have a paid account to create a Entra Tenant
@@ -23,4 +23,90 @@ To add a Domain
 - Go to Entra ID link
 - select Custom Domain names and enter in your domain
 - Once verified, go to Domain provider (GoDaddy) and select domain, DNS, add record
-- Select Type TXT, value is Destimation or points to address, Name is @, TTL is whenever
+- Select Type TXT, value is Destination or points to address, Name is @, TTL is whenever
+
+To manage multiple users use Groups
+- A group is a selection of users that have been given specific access to resources
+When creating a New Group, if you select Dynamic User you can then default user parameters to automatically assign a group to them. 
+Example. When selecting "dynamic user" and setting up the membership rules, you can have
+
+You can assign Microsoft Licenses to users and groups. You purchase Licenses within the tenant then assign them. Licenses are assigned per account bases. 
+
+Setting up and administrative unit in a tenant is a way of segregating permissions into a type of logical separation. Can limit administrators within the tenant, which admins can work with certain users or groups. 
+
+Security
+Role Based Access Control (RBAC)
+- Principle of Least Privilege
+
+Benefits of RBAC
+- A level of abstraction that simplifies management
+- Simpler management means fewer errors
+- You just need to confirm users are in the right Role
+- All users are treated "the same" for the role, nobody has secret extra permissions
+- Easier for new users added to the systems to be assigned the correct permissions
+
+Storage accounts are secure by access keys, this is called "Claimed Base Access Control(CBAC)"
+
+3 major Access Control (IAM)
+- Owner
+- Contributor
+- Reader
+
+You can set up custom roles within Access Control (IAM), you can clone a system role and remove the detailed permissions (CRUD) associated with that role. You can only create 5k custom roles.
+
+You can set usage restrictions under a subscription in the Usage + quotas menu item under subscription section
+
+Resource locks allow you to have restrictions on modifying, reading, or deleting resources. You can create locks on both resources, resource groups, and subscriptions. 
+
+Azure Policy
+- Allows for you to set policies for resources through out the subscription. You can apply policies to a subscription and/or resource groups. You can also exclude resources and/or resource groups from global policies. 
+* Policy is a single Policy
+* Initiative is a collection of policies
+
+Custom Azure Policy
+{
+  "properties": {
+    "displayName": "Deny unencrypted HTTPS storage accounts",
+    "description": "Deny unencrypted HTTPS storage accounts",
+    "mode": "all",
+    "parameters": {
+      "effectType": {
+        "type": "string",
+        "defaultValue": "Deny",
+        "allowedValues": ["Deny", "Disabled"],
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly",
+            "notEquals": "true"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effectType')]"
+      }
+    }
+  }
+}
+
+Implement and Manage Storage 
+- Configure access to storage
+  * Azure storage firewalls and virtual networks
+  * create and use shared access signatures (SAS) tokens
+  * configure stored access policies
+  * Mange access keys
+  * Configure identity-based access for Azure files
+
+  - Configure and manage storage accounts
+  
