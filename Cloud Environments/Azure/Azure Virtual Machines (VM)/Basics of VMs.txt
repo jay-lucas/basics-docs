@@ -1,5 +1,22 @@
 Virtual Machines (VM) must be on a Virtual Network. 
 
+When creating a VM
+Availability Options:
+- No infrastructure redundancy required: if it's a standalone VM, no other VM to work with. 
+- Availability Zone: Allows you to choose data centers to put your VMs for higher level of Availability.
+- Virtual Machine scale Sets
+- Availability Sets: groups all VMs in a single place
+
+Security type: 
+- Standard
+- Trusted launch virtual Machine
+- Confidential virtual machines
+
+Enable Hibernation: Allows for you to pause a VM in its memory and system state saving to disk. 
+
+**Note!: Enable system assigned managed identity is useful if your running processes inside VM instead of storing passwords the identity can give it permissions to another resource. Fixes having to store cert and keys. Best when running resources that interact with other resources. 
+
+
 Virtual Machine abstractions:
 Compute services that uses VMs
 - Azure Batch

@@ -20,9 +20,40 @@ Data Storage
 
 
 Redundancy:
-- Locally-redundant storage (LRS): Cheapest, most basic options
-- Geo-redundant storage (GRS)
-- Zone-redundant storage (ZRS)
-- Geo-zone-redundant storage (GZRS)
+- Locally-redundant storage (LRS): Cheapest, most basic options. Copies of the data  is only in one region in One data center. the least safe of the 4
+
+- Geo-redundant storage (GRS): Copies of the data is only in one region in 3 data centers in a regions in one data center as well as 3 copies in another region. (2nd safest)
+
+- Zone-redundant storage (ZRS): Copies of the data  is only in one region in 3 regions in one data center. Safer than LRS
+
+- Geo-zone-redundant storage (GZRS): (Safest choice) most expensive. It's gonna keep three copies of your files in three different data centers in a region and three additional copies of your files in three data centers in the other region.
 
 **Note: All storage accounts have 3 copies automatically created for disaster recovery.
+
+Data Lake Storage Gen2: 
+Is an actual hierarchical namespace where you can have files and folders. In a default storage account with blobs and containers, it's a container model, and basically, everything goes into the container. Data Lake Storage Gen2 is more of a files and folders model specifically for big data analytics, and it has different limits in terms of the amount of data you can store, and it has different access control policies. 
+
+Each storage account can store 4 types of data:
+- Containers: Blob files. You can have multiple container in a storage account. 
+- File shares: traditional mounted storage that can be shared across CPU or servers.
+  Access Tiers: traditional, hot, cool
+- Queues: 
+- Tables: 
+
+Access Keys
+- Regular keys: 2 keys to access the storage account
+- SAS stands for shared access signature, and it's a more secure way of granting limited access to your blob or your container. Allows for you to have time periods for access to files in your blob. If key is invalid you have to regenerate the keys.
+**Note: once a SAS token is created you can't revoke it ever unless you invalidate the key
+
+Stored Access Policy is the only way around SAS key issues. You can create a policy on a container where the file is held. Best used with long lived policies
+
+Lifecycle management: is the ability to move data from a more expensive tier to a less expensive tier.
+
+Object replication: When object replication is enabled, blobs are copied asynchronously from a source storage account to a destination account. Cross-tenant policies will appear under "Other accounts", along with policies on accounts not in an active subscription or on deleted accounts. The storage accounts may be in different Azure regions
+
+File Share: Great for lift and shift. 
+Types of protocols
+- SMB: Server Message Block
+- NFS: Network File System (for linux based workloads)
+
+Snapshots for File Share: You can manually create a snapshot or create a snapshot from Backup section under Operations. 
