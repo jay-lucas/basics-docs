@@ -2,6 +2,13 @@ Lesson: Create amazon ec2 instances to run the computational modules for an isla
 
 EC2 is a web service that provides secure resizable compute capacity in the cloud. EC2 eliminates the need to invest in upfront hardware investments so you can develop and deploy applications faster. You can launch as many or few virtual servers as needed allowing you to scale up and down within minutes allowing you to handle changes or spikes in requirements reducing your need to forecast traffic. EC2 provides you with complete control of your resources running on AWS proven reliable scalable computing environment. AWS EC2 is hosted on multiple locations worldwide comprised of AWS regions consist of at least 3 availability zones. EC2 provides high availability with service level agreement (SLA) of 99.99% or each EC2 region. EC2 is built to meets the requirements of the most security-sensitive organizations.
 
+EC2 Features:
+- Create and manage lifecycle of EC2 instances
+- Load balancing and auto scaling for multiple EC2 instances
+- Attach storage (& network storage) to your EC2 instances
+- Manage network connectivity for an EC2 instance
+
+
 An instance is a virtual server in the cloud. AWS provides multiple instant types that allow you to configure the following:
 - CPU 
 - Memory
@@ -30,7 +37,7 @@ Instant Type Categories:
 
 Each instance type includes one or more instance sizes allowing you to scale your resources to the requirement of the target workload.
 
-Amazon Machine Image (AMI) provides the information needed to launch an instance. It is a template that contains the software configuration such as a operation system (OS), Applications, and an application server. You must specify an AMI when launching a instance. You can launch one or more instances from an AMI. 
+Amazon Machine Image (AMI) provides the information needed to launch an preconfigured instance. It is a template that contains the software configuration such as a operation system (OS), Applications, and an application server. You must specify an AMI when launching a instance. You can launch one or more instances from an AMI. 
 
 EC2 Storage and Networking.
 EC2 provide data storage options for instances. Instances can access storage that are physically attached to disk to the host computer referred to Instance store. Instance store provides temporary block level storage. EC2 instances can also attach Elastic Block Storage (EBS) volume for persistence block level storage. EBS acts like a raw, unformatted external block device. 
