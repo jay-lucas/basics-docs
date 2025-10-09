@@ -1,0 +1,1 @@
+Docker Compose is a tools for creating multi-container applications where services can talk easily to each other. 
