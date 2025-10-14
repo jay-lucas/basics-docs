@@ -1,0 +1,10 @@
+What is Azure Container Apps (ACA)?
+- Microsoft's managed container hosting for microservices.
+- Simplifies running containers in a serverless fashion
+- Perfect for .NET Aspire solutions needing easy scale & integrated logs
+
+Key Benefits of Azure Container Apps
+- Automatic scaling and revision Management
+- Dapr integration (optional) for sidecar patterns
+- KEDA for event-based scaling
+- Simple container-based deployment from the command line

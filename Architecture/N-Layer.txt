@@ -1,0 +1,13 @@
+N-Layer (Layered) Architecture
+
+- Domain Layer
+  Stores and Handles domain entities and domain events
+
+- Data Access Layer
+  Manages interactions with the database or other store systems
+
+- Business Logic Layer
+  Processes the application's core business logic and rules
+
+- Presentation Layer
+  Displaying data to users and capturing user input

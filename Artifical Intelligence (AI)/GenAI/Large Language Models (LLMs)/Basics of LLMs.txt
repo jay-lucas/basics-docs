@@ -1,0 +1,16 @@
+What are Large Language Models (LLMs)?
+- LLMs are advanced AI models trained on large datasets - massive amounts of text data from books, websites, research papers, etc. They can understand, generate, and process natural language that mimics natural human communication. Heart of AI chatbots, content creation tools, translation services, and more.
+
+LLMs are machine learning models specialized in natural language. They operate on a vast number of parameters, billions or even trillions. Trained to perform tasks such as text generation, summarization, Q&A, and language translation, etc. Building intelligent language applications.
+
+Why are LLMs considered Large?
+- 'Large; in LLM refers to both the size of the model: the number of parameters and the training data. 
+- LLMs contain billions of parameters (GPT-3 has 175 billion). 
+- Training data trained on diverse text datasets (books, articles, web pages)
+- Larger models provide better accuracy and context understanding
+
+Some LLMs are: 
+- GPT-3: 175,000,000,000 parameters, trained on 
+- GPT-4: 100,000,000,000,000 parameters, trained on
+
+**Note: More parameters = better performance but higher computational costs

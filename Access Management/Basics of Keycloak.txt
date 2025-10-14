@@ -1,0 +1,39 @@
+Keycloak Identity and Access Management
+
+- Open-source Identity and Access Management solution aimed at modern applications and services.
+- Provides comprehensive support for authentication and authorization, offering features such as Single Sign-on (SSO), Identity Brokering, and Social Login.
+- Simplifies the process of securing apps and services with minimal coding effort
+- Single Sign-On (SSO): Users can log in once and access multiple apps.
+- Identity Brokering and Social Login: Integrate with external identity providers like Google, Facebook, etc.
+- User Federation: Connect to existing user Databases
+- Centralized Management: Manage all user identities and permissions in one place
+= Standard protocols: Supports OAuth2, OpenID Connect, SAML 2.0
+
+How Keycloak authentication works
+    - User login: Instead of logging into each application individually, users log in through Keycloak. 
+    - Token issuance: After successful authentication, Keycloak issues an access token and an ID token, which are digitally signed. 
+    - Application access: The user's browser or client application then uses these tokens to make requests to backend services. 
+    - Service validation: Backend services validate the token by checking its signature with Keycloak. If the token is valid, the service grants access. 
+    - Single logout: When a user logs out of Keycloak, they are logged out of all applications that rely on it for authentication.
+
+Key features
+    - Single sign-on (SSO): Users log in once to access multiple applications. 
+    - Single sign-out: Logging out of one application logs the user out of all associated applications. 
+    - Protocol support: Supports standard protocols like OpenID Connect and SAML. 
+    - User management: Provides a central place to manage users, roles, and groups. 
+    - Identity brokering: Can act as an intermediary to authenticate users through other identity providers like Google or Microsoft. 
+    - Fine-grained authorization: Supports advanced authorization policies like Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC). 
+    - Client and service authentication: Supports authentication for both users and clients that need to access the Keycloak server. 
+
+Why Use Keycloak?
+- Significantly reduce the complexities of managing user identities and access controls in your apps
+- Security: Robust security features that adhere to industry standards
+- Scalability: Capable of handling millions of users and requests
+- Flexibility: Easy to integrate with various applications and services
+- User Experience: Enhances user experience with Single sign-on (SSO) and Social Login. 
+
+Token endpoint structure:
+Structure: https://<your-keycloak-server>/realms/<your-realm-name>/protocol/openid-connect/token
+    Example: http://localhost:8080/realms/eshop/protocol/openid-connect/token
+
+

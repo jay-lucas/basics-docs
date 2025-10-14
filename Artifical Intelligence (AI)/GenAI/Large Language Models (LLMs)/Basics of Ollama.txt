@@ -1,0 +1,22 @@
+Ollama - Run LLMs locally
+- Ollama is a platform to run large language models (LLMs) or small language models (SLMs) locally
+- Offers private, secure AI solutions without requiring the cloud
+- Ideal for developers and businesses seeking offline AI capabilities w/privacy, low latency, and control over AI models
+- Excellent choice for those looking to integrate AI without depending on a constant internet access
+
+Key features of Ollama
+- Local Execution: Run LLMs and Small Language Models (SLMs) directly on your device.
+- Pre-built Models: Includes optimized models for coding, chat, creative task, and more
+- Privacy-First: All data remains on your machine, protecting sensitive information
+- Customization: Allows model fine-tuning and adaptation for specific needs
+- Low Latency: Responses are quick without network dependency
+
+Available Models on Ollama
+- Variety of Models: llama (Meta), gemma (google), qwen, phi, mistral
+- Code Generation Models: codegemma & codellama -> AI assistants specialized in code generation
+- Creative Models: llava ->Text-to-image, story generation, and poetry models
+- Domain-Specific Models: medllama -> Finance, healthcare, and other industry-specific LLMs
+
+Benefits and Use cases for Ollama
+- Benefits: Offline capability, data privacy, cost savings, low latency
+- Use Cases: Software Development, Customer Support, Education and Creative work

@@ -1,0 +1,254 @@
+Plan: EShop-Distribution Application
+
+1) Setting Up Core Microservices
+Example: Catalog and Basket Microservices Development w/ Backing Services
+
+2) Microservice Communications with .NET Aspire
+Example: Synchronous and Asynchronous messaging between catalog & basket using RabbitMQ Message Broker
+
+3) Authentication & Security
+Example: Secure Basket Endpoints w/ Keycloak using OpenID Connect Jwt Tokens
+
+4) Frontend Development
+Example: Blazor WebApp Products page development
+
+5) Deployment to Azure Container Apps
+Example: .NET Aspire project to deploy Azure Container Apps (ACA) using azd up/down
+
+6) Adding GenAI Features 
+Integrate Ollama LLMs and Vector Store for Semantic Searching
+
+
+1 - Catalog Microservice with PostgreSQL
+* Domain Analysis of Catalog Microservices: Models, Use Cases, Rest Apis, Databases
+* Technical Analysis of Catalog Microservices: Architectures, Patterns, Libraries, Folders
+* Develop Product Domain Entity Models
+* Hosting Integration (Backing Services)
+* Client Integration (Entity Framework Core Connection)
+* Catalog Application Use Case Development
+* Develop Catalog API Endpoints exposing Minimal Api Endpoints
+
+Domain Analysis of Catalog Microservices    
+1) Domain Models
+  - Primary domain model is 'Product'
+  - Consider Domain event for ProductPriceChanges, leading to integration events
+
+2) Application Use Cases
+  - CRUD Operations:
+    * Listing Products
+    * Get Product with Product Id 
+    * Create new Product
+    * Update Product
+    * Delete Product
+    * If the price has changed, raise a ProductPriceChange event that will lead to an integration event
+    * Along with this design our APIs according to a REST perspective
+3) Rest API Endpoints
+   - Method: GET
+     Request URI: /products
+     Use Case: List all Products
+   - Method: GET
+     Request URI: /products/{id}
+     Use Case: Fetch a specific product
+   - Method: POST
+     Request URI: /products
+     Use Case: Create a new product
+   - Method: PUT
+     Request URI: /products/{id}
+     Use Case: Update a product
+   - Method: GET
+     Request URI: /products/{id}
+     Use Case: Remove a product
+     
+4) Underlying Data Structures
+   - Catalog Microservice will be stored in a PostgreSQL relational Databases
+   - Use Entity Framework Core's Code-First approach for database migrations and entity configurations
+   - Configure our entities and their relationship using EF Core
+
+Technical Analysis of Catalog Microservices
+1) Application Architecture Style
+  - Application Architecture Style of Catalog Microservice
+    Classical N-Layer Architecture: Organizes our code into layer folders, each feature encapsulated in a folder
+    Application (User Interface -> Business Logic -> Data Access) -> RDBMS
+
+2) Patterns & Principles
+  - KISS principles and use less patterns in our Microservices
+  - Focus on integrations and orchestrations with .NET Aspire
+  - Dependency Injection (DI) in ASP.NET Core: Dependency Injection is a core feature, allowing us to inject dependencies.
+  - Minimal APIs and Routing in ASP.NET 8: ASP.NET Minimal APOs simplify endpoint definitions, providiing lightweight syntax for routing and handling HTTP requests.
+  - Object Relational Mapping (ORM) Pattern: Object-relational Mapping abstracts database interactions, work with database objects using high-level codes
+
+3) Libraries Nuget Packages
+  - Aspire Hosting Packages for Orchestration: Aspire.Hosting.PostgreSQL
+  - Aspire EF Core for PostgreSQL Interaction (Client Integration): Aspire.Npgsql.EntityFrameworkCore.PostgreSQL
+  - Entity Framework (EF) Core provides a robust ORM for interacting with PostgreSQL, enabling us to manage database operations with ease
+
+4) Project Folder Structure
+  - Organized into Models, Data, Services and Endpoints
+  - Models holds our domain entities (e.g., Product)
+  - Data includes DbContext classes for data access Logic
+  - Services contain business logic
+  - Endpoints minimal API that call into the services layer
+
+Basket Microservice with Redis
+ 
+ 1) Domain Analysis of Basket Microservices: Models, Use Cases, Rest Apis, Databases
+ 2) Technical Analysis of Basket Microservices: Architectures, Patterns, Libraries, Folders 
+ 3) Develop Product Domain Entity Models
+ 4) Hosting Integration (Backing Services)
+ 5) Client Integration (Entity Framework Core Connection)
+ 6) Basket Application Use Case Development
+ 7) Develop Basket API Endpoints exposing Minimal Api Endpoints
+
+Domain Analysis of Basket Microservices 
+1) Domain Models
+  - Primary domain model is 'ShopingCart' and 'ShoppingCartItem'
+
+2) Application Use Cases
+  - CRUD Operations:
+    * GetBasket
+    * UpdateBasket - whole basket
+    * DeleteBasket
+    * UpdateBasketItemProductPrices
+   
+   - Use Case
+    * Before update shopping cart, we should call Catalog Microservice GetProductByID endpoint Synchronous
+    * Get latest product information and set Price and ProductName when adding
+
+3) Rest API Endpoints
+   - Method: GET
+     Request URI: /basket/{userName}
+     Use Case: Fetch a specific basket
+   - Method: POST
+     Request URI: /basket
+     Use Case: Create or update basket
+   - Method: DELETE
+     Request URI: /basket/{id}
+     Use Case: Remove a basket
+     
+4) Underlying Data Structures of Basket Microservices
+   - Basket Microservice will be stored in a Redis Distributed Cache
+   - Use Aspire.StackExchange.Redis.DistributedCaching
+   - IDistributedCache cache
+
+ Libraries Nuget Packages of Basket Microservices
+   - Aspire Hosting Packages for Orchestration: Aspire.Hosting.Redis
+   - Aspire EF Core for Redis Interaction (Client Integration): Aspire.StackExchange.Redis.DistributedCaching
+
+   - builder.AddRedisDistributedCache(connectionName: "cache");
+   - public class ExampleService(IDistributedCache cache)
+
+  Project Folder Structure
+  - Organized into Models, Data, Service, ApiClients, and Endpoints
+  - Models holds our domain entities (e.g., ShoppingCart)
+  - Data includes DbContext classes for data access Logic
+  - Services contain business logic
+  - Endpoints minimal API that call into the services layer
+  - ApiClients include HTTP Client for calling Catalog
+
+  Sync Communications between Catalog and Basket Microservices
+  - Adding .WithReference(catalog) to builder
+  - Creating a Typed HttpClient consume Catalog from Basket
+
+  When Update Basket, Get Latest Product Prices
+  - .WithReference(catalog) for Basket -> Catalog
+  - AddHttpClient<CatalogClient> referencing "catalog"
+  - Synchronous calls via strongly type methods: await catalogClient.GetProduct(id)
+
+  Steps for Async Communications between Catalog and Basket Microservices
+  Hosting Integration .AddRabbitMq("messagebroker")
+  Client Integration
+  Shared Messaging events
+  MassTransit Integration
+
+    1) Event Models of ProductPriceChangedEvent
+    - Primary event model is 'ProductPriceChangedEvent'
+    - Consider Domain event for ProductPriceChanged, leading to integration events
+
+    2) Application Use Cases between Catalog and Basket Microservices
+    Async Cases for Catalog:
+    - Update Product Price: publish domain event that lead to an integration that contains the updated product information.
+
+    Async Cases for Basket:
+    - Basket Update Price: Consume ProductPriceChangedEvent integration even from RabbitMQ using MassTransit.
+      * Get existing basket with changed ProductPriceChanged
+      * Set ProductName and Price from incoming integration event
+      * Update all basket shopping carts according to changed product information
+
+    3) Rest API Endpoints of Catalog Module
+      - Method: POST
+        Request URI: /products
+        Use Case: Update product price
+
+        RabbitMQ Advanced Message Queuing Protocol (AMQP)
+        - AMQP: Consume ProductPriceChangedEvent Event from RabbitMQ using MassTransit
+    
+    4) Underlying Data Structures of Async Communications
+      - For Async Communications between Modules has 1 Backing Services:
+        1) RabbitMQ Distributed Message Broker
+        2) Client Integrations w/ MassTransit Library
+
+  Class Library Architecture of Async Communications
+   - Catalog: referenced Shared and Shared.Messaging
+   - Basket: referenced Shared and Shared.Messaging
+   - Identity
+   - Ordering: referenced Shared and Shared.Messaging
+
+   Secure Basket with Keycloak Authentication
+   - Keycloak Identity and Access Management
+   - OAuth2 + OpenID Connect Flows with Keycloak
+   - Keycloak as a Backing Services into .NET Aspire
+   - Setup Keycloak into .NET Aspire for Identity providers
+
+   Definitions:
+   * Create Realm, User and Client for OpenID Connect with Keycloak Identity
+   * JwtBearer token for OpenID Connect with Keycloak Identity
+   * Get Current User from Token with ClaimsPrincipal in Aspnet Authentication
+
+Secure Basket with Keycloak Authentication
+Create Realm, User and Client for OpenID Connect w/ Keycloak Identity Provider
+
+Develop Client Blazor Web Application
+- Blazor Web App and include .NET Aspire
+- Products razor page and populate Products from Catalog Microservice
+- Output DistributedCaching
+
+What is Output Caching?
+- HTML output is cached, so repeated requests return the same content without re-running logic
+- If data changes frequently, cache duration or invalidation must be considered
+- .NET Aspire integrates with Redis for distributed output caching
+
+Deploy EShop Aspire Project to Azure
+- Azure Container Apps
+- Deploy a .NET Aspire project to Azure Container Apps
+- Deploy .NET Aspire projects with azd (Azure Developer CLI)
+
+Steps to Deploy EShop Aspire Project to Azure
+1) Provision an Azure resource group and container registry
+2) Publish the .NET Aspire projects as container images in Azure Container registry
+3) Provision a backing containers (postgres,redis) in Azure
+4) Deploy the apps to an Azure Container Apps environment
+5) View application console logs to troubleshoot application issues
+
+Deploying a .NET Aspire project to Azure Container Apps
+- Containerize each microservice automatically with .NET Aspire
+- azd init to set up environment files
+- azd up to provision Azure resources
+- azd down to tear them down
+
+Detailed azd commands
+- azd init: Creates .azure folder or config files for naming & region choices. Optionally picks an existing subscription. Typically done once per solution
+- azd up: Builds containers, pushes to Azure Container Registry. Provisions Container Apps environment, secrets, and logs. Deploys each microservice in your .NET aspire solution.
+- azd down: Frees up resources usage in your subscription. Removes container apps, registry, logs, secrets: This stops and removes the environment, including all container apps, resource groups and dependencies. This saves money and keeps your azure subscription tidy. Great for short living dev or test environments or prototypes. 
+
+*** Data volumes don't work on Azure Container Apps (ACA)
+- ACA has Azure Storage limitations for container volumes
+- Some Linux containers (Postgres,etc.) can't mount volumes properly
+- NET Aspire approach: conditionally add volumes or switch to cloud services
+
+.NET GenAI with Microsoft.Extensions.AI for Chat AI and Semantic Search
+- Ollama for Local LLM Integrate, Integrate models like LLama3 or Phi3
+- Develop Customer Support Q&A chatbot
+- Vector Database (in-memory), Store embeddings for semantic search
+- Blazor Frontend for AI: Build pages that let users interact with the Q&A or advanced semantic product searches
+
+The New Era of Cloud-Native Backing Services

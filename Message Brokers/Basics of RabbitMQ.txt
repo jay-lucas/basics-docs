@@ -1,0 +1,28 @@
+MassTransit with RabbitMQ refers to using the open-source MassTransit library in a .NET application, specifically configured to utilize RabbitMQ as its message transport.
+
+MassTransit is a distributed application framework for .NET that simplifies the creation of message-based, loosely-coupled, and asynchronous communication between services. It provides a consistent abstraction layer over various message brokers, allowing developers to focus on business logic rather than low-level messaging complexities.
+
+RabbitMQ is a widely-used open-source message broker that implements the Advanced Message Queuing Protocol (AMQP). It acts as a central hub where applications can publish messages to queues and consume messages from them, facilitating asynchronous and decoupled communication. 
+
+When MassTransit integrates with RabbitMQ:
+    Abstraction: MassTransit provides a high-level API for sending and receiving messages, abstracting away the specifics of interacting directly with RabbitMQ's AMQP protocol.
+
+    Configuration: Developers configure MassTransit to use RabbitMQ as the message transport, providing connection details like the RabbitMQ instance URI, username, and password.
+
+    Automatic Topology Management: MassTransit automatically creates and manages the necessary RabbitMQ exchanges and queues based on the defined messaging patterns (e.g., publish-subscribe, request-response) and registered consumers.
+
+    Messaging Patterns: It enables the implementation of various messaging patterns, such as:
+        Publish/Subscribe: Messages published to an exchange are routed to multiple queues and consumed by different subscribers.
+        Request/Response: A service sends a request message and expects a response message back.
+        Event-Driven Architectures: Services communicate by publishing and consuming events.
+    Features: MassTransit adds valuable features on top of basic RabbitMQ functionality, including:
+        Optimized, asynchronous, concurrent consumer management.
+        Message serialization and versioning.
+        Automatic exchange bindings and publish conventions.
+        Saga state machines for managing long-running processes.
+        Built-in metrics and observability support (e.g., Open Telemetry).
+        Robust fault handling, message retry, and redelivery mechanisms.
+
+In essence, MassTransit simplifies and enhances the use of RabbitMQ in .NET applications, providing a powerful and developer-friendly framework for building robust, scalable, and distributed systems.
+
+Secure Basket with Keycloak Authentication

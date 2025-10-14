@@ -1,0 +1,29 @@
+"Cross-cutting concerns" are functionalities or requirements that affect multiple parts of a software application, such as security, logging, and error handling. These are not core to the main business logic but are essential for the overall system's operation and must be implemented across different modules or layers. Without a proper structure, these concerns can lead to duplicated code, making the application difficult to maintain and update. 
+
+Examples of cross-cutting concerns
+
+- Security: Authentication and authorization checks need to be applied to many parts of the system, such as before every business method. 
+- Logging: The need to log events or errors exists throughout the application, from handling user requests to processing data. 
+Error Handling: A consistent way to handle and report errors should be implemented across all modules. 
+- Transaction Management: Ensuring that a series of operations either all succeed or all fail together is a concern that spans multiple components, like a money transfer in an e-commerce app. 
+- Data Validation: Checking data for correctness is a process that is required for all incoming data, regardless of the specific business function. 
+
+Why they are important
+
+- Avoids code duplication: Instead of writing the same code in many places,  cross-cutting concerns can be handled in a centralized way, improving efficiency. 
+- Increases maintainability: Changes to a cross-cutting concern, like an update to the logging format, only need to be made in one place. 
+- Improves separation of concerns: It keeps the core business logic clean and focused, making it easier to read, understand, and modify
+
+
+The HTTP request pipeline (also called middleware pipeline) is a sequence of middleware components that process incoming HTTP requests and outgoing HTTP responses. Think of it like an assembly line where each piece of middleware:
+1.	Receives an HTTP request
+2.	Can inspect and modify the request
+3.	Can pass the request to the next middleware
+4.	Can handle the response on its way back
+
+The order of middleware is important because it determines the sequence in which requests are processed. Each middleware can:
+•	Pass control to the next middleware
+•	Short-circuit the pipeline (handle the request itself)
+•	Perform work before and after the next middleware
+
+"Semantic search" is an information retrieval technique that uses artificial intelligence to understand the meaning and intent behind a user's query, rather than just matching keywords. It achieves this by analyzing the context, relationships between words, user history, and other factors to deliver more relevant results. This approach goes beyond traditional, keyword-based search to understand the "why" behind a search, not just the "what". 
