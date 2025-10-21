@@ -1,0 +1,29 @@
+Why do you need docker? 
+ocker primarily solves the problem of inconsistent environments and application deployments, often referred to as "it works on my machine". By packaging applications and their dependencies into containers, Docker ensures that an application runs the same way across different development, testing, and production environments. This consistency simplifies deployment, reduces conflicts between applications, and improves collaboration within teams. 
+
+What can docker do?
+- Containerize Applications
+- Run each service separately (Web Server, Database, Messaging, Orchestration, etc).
+**Note: an Orchestrator is used for automating the deployment of CI/CD pipelines like Jenkins, Ansible, CloudFormation, Terraform, Gitlab/GitHub. 
+
+What are containers?
+Containers are completely isolated environments, similar to a VM. 
+
+The main purpose of docker is to package and containerize applications and to ship them and run them any time any where. 
+
+Containers vs Virtual Machines (VM)?
+Containers use the same underline Operating systems (OS) while VMs each have their own OS. This mean higher cost, higher utilization, larger disk space in GB when using a VM opposed to a Container. Containers are light weight, only uses megabytes (MB) and require less utilization.
+
+Docker containers boot up faster than VMs in seconds where VMs need to boot up the OS. Docker has less isolation from each other where VM have complete isolation from each other. 
+
+Usually Containers and VMs are used together. A VM/EC2 can house multiple docker containers getting the benefits of both.
+
+
+Docker Desktop
+- Docker Desktop is a one-click-install application for your Mac, Linux, or Windows environment that 
+  enables you to build and share containerized applications and microservices.
+
+- It provides a straightforward GUI (Graphical User Interface) that lets you manage your containers, 
+  applications, and images directly from your machine. Docker Desktop can be used either on it’s 
+  own or as a complementary tool to the CLI.
+ 

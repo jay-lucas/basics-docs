@@ -1,0 +1,103 @@
+Amazon Bedrock
+
+Fine-Tune a Model
+- Adapt a copy of a foundation model with your own data.
+= Fine-tuning will change the weights of the base foundation model
+- Training data must:
+  * Adhere to a specific format
+  * Be stored in Amazon S3
+- You must use "Provisioned Throughput" to use a fine-tuned model 
+** Note: not all models can be fine-tuned
+
+How can we fine-tune a model?
+- Instruction-based Fine Tuning: 
+  * Improves the performance of a pre-trained Foundational Model (FM) on domain-specific task is basically further trained on a particular field or area of knowledge
+  * Instruction-based fine-tuning uses labeled examples that are prompt-response pairs
+
+- Continued Pre-Training
+  * Provide unlabeled data to continue the training of an FM
+  * Also called domain-adaption fine-tuning, to make a model expert in a specific domain
+    Example: Feeding the entire AWS documentation to a model to make it an expert on AWS
+  * Good to feed industry-specific terminology into a model (acronyms, etc...)
+  * Can continue to train the model as more data becomes available
+
+- Single-Turn Messaging: fine-tuning how a chat bot should be replying
+  * Part of instruction-based fine-tuning
+  * system (optional) : context for the conversation.
+  * messages: An array of message objects, each containing
+    role: either user or assistant
+
+- Multi-Turn Messaging
+  * To provide instructions-based fine tuning for a conversation (vs Single-Turn Messaging)
+  * Chatbots = multi-turn environment
+  * You must alternate between "user" and "assistant" roles
+
+Fine-Tuning: Good To Know!!
+- Re-training an FM requires a higher budget
+- Instruction-based fine-tuning is usually cheaper as computations are less intense and the amount of data required usually less
+- It also requires experienced Machine Learning (ML) engineers to perform the task
+- You must prepare the data, do the fine-tuning, evaluate the model
+- Running a fine-tuned model is also more expensive (provisioned throughput)
+
+Machine Learning Concept!
+** Note: Transfer Learning: the broader concept of re-using a pre-trained model to adapt it to a new related task
+         * Widely used for image classification
+         * And for Natural Language Processing (models like BERT and GPT)
+
+Fine-Tuning - Use Cases
+- A chatbot designed with a particular persona or tone, or geared towards a specific purpose (e.g., assisting customers, crafting advertisements)
+- Training using more up-to-date information than what the language model preciously accessed
+- Training with exclusive data (e.g., your historical emails or messages, records from customer service interactions)
+- Targeted use cases (categorization, assessing accuracy)
+
+Evaluating a Model
+
+Automatic Evaluation
+- Evaluate a model for quality control
+- Built-in task types:
+  * Text summarization
+  * question and answer
+  * text classification
+  * open-ended text generation...
+- Bring your own prompt dataset or use built=in curated prompt datasets
+- Scores are calculated automatically
+- Model scores are calculated using various statistical methods (e.g. BERTScore, F1...)
+
+** Note: Benchmark dataset
+         - Curated collections of data designed specifically at evaluating the performance of language models
+         - Wide range of topics, complexities, linguistic phenomena
+         - Helpful to measure: accuracy, speed and efficiency, scalability
+         - Some benchmarks datasets allow you to very quickly detect any kind of bias and potential discrimination against a group of people
+         - You can also create your own benchmark dataset that is specific to your business
+
+Human Evaluation
+- Choose a work team to evaluate
+  * Employees of your company
+  * Subject-Matter Experts (SMEs)
+- Define Metrics and how to evaluate
+  * Thumbs up/down, ranking...
+
+Automated Metrics to Evaluate an Foundational Model (FM)
+- ROUGE: Recall-Oriented Understudy for Fisting Evaluation
+    * Evaluating automatic summarization and machine translation systems
+    * ROUGE-N -> measure the number of matching n-grams between reference and generated text (e.g., 1-gram would mean only one word matched, more than that it's combinations of words in order that gives it a gram score)
+    * ROUGE-L -> measure the longest matching sequence between reference and generated text (e.g., longest sequence of words shared between two text)
+
+- BLEU: BiLingual Evaluation Understudy
+    * Evaluate the quality of generated text, especially for translations
+    * Considers both precision and penalizes too much brevity
+    * Loos at a combination of n-grams (1,2,3,4)
+
+- BERTScore: Bidirectional Encoder Representations from Transformers
+    * Semantic similarity between generated text (e.g., does the actual meaning of the text mean the same 'you are stupid' and 'you lack intelligence')
+    * Uses pre-trained BERT models to compare the contextualized embeddings of both texts and computes the cosine similarity between them.
+    * Capable of capturing more nuance between the text
+
+- Perplexity: how well the model predicts the next token (lower is better)
+
+Business Metrics to Evaluate a Model On
+- User Satisfaction: gather users' feedbacks and assess their satisfaction with the model responses (e.g., user satisfaction for an ecommerce platform)
+- Average Revenue Per user (ARPU): average revenue per user attributed to the Gen-AI app (e.g., monitor ecommerce user base revenue)
+- Cross-Domain Performance: measure the model's ability to perform across different domain tasks (e.g., monitor multi-domain ecommerce platform)
+- Conversion Rate: generate recommended desire outcomes such as purchases (e.g., optimizing ecommerce platform for higher conversion rate)
+- Efficiency: evaluate the model's efficiency in computation, resource utilization.. (e.g., improve production ine efficiency)

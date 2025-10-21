@@ -1,0 +1,2 @@
+PuTTY Gen
+- If you didn't download your file in the .ppk format use this to convert 

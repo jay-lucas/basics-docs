@@ -41,3 +41,20 @@ To Run react
 
 Each Component has it's own Data, Logic, and Appearance. Component trees show the relationships
 between components. 
+
+Class Components
+- Functional Components: These are used for presentational purposes
+  Ex:
+   function Greeting(props) {
+    return <h1>Hello {props.name}</h1>;
+   }
+   <Greeting name="Bob" />
+
+- Class Components: These are used when you have to mange internal data to component known as 'state' 
+  Ex:
+  class Welcome extends Component {
+    render() {
+      return <h1>Hello {this.props.name}</h1>;
+    }
+  }
+  <Welcome name="Sara" />

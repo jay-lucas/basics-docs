@@ -1,0 +1,21 @@
+Security Groups
+- Used for managing the firewall of what goes in and out. 
+- Security groups can allow other security groups inbound 
+
+
+Classic Ports to know
+- 22 = SSH (Secure Shell) - log into a Linux instance
+- 21 = FTP (File Transfer Protocol) - upload files into a file share
+- 22 = SFTP (Secure File Transfer Protocol) - upload files using SSH
+- 80 = HTTP - access unsecured websites
+- 443 = HTTPS - access secure websites
+- 3389 = RDP (Remote Desktop Protocol) - log into a Windows instance
+
+**Pro Tip: Any time a timeout happens when trying to have any kind of connection to an EC2 it's 100% because of the security group in the inbound rules. 
+
+
+SSH Summary 
+- Mac: SSH, EC2 Instance Connect
+- Linux: SSH, EC2 Instance Connect
+- Windows < 10: Putty, EC2 Instance Connect
+- Windows >= 10: SSH, Putty, EC2 Instance Connect

@@ -252,3 +252,15 @@ Detailed azd commands
 - Blazor Frontend for AI: Build pages that let users interact with the Q&A or advanced semantic product searches
 
 The New Era of Cloud-Native Backing Services
+* Why use LLMs and VectorDBs as a Backing Services?
+  - LLMs provide features like summarization, classification, sentiment analysis and chat-based Q&a
+  - VectorDBs enable similarity-based search and knowledge retrieval to support complex queries
+  - Leverage pre-trained models and semantic search engines to integrate powerful AI capabilities with minimal effort
+  - Automate customer support, real-time recommendations, semantic search for enterprise knowledge Management
+  - LLMs and VectorDBs as the brain and memory of your architecture
+
+Microsoft.Extensions.AI Structure
+Work with Abstractions for Common AI services
+- Chat: Conversational AI or CHatGPT-like interactions
+- Embeddings: Vector search & semantic understanding
+- Tool calling: Orchestrate AI requests with external services
