@@ -1,0 +1,59 @@
+Retrieval-Augmented Generation
+- Allows a Foundation Model to reference a data source outside of its training data, like a database, or storage blob.
+- Bedrock takes care of creating "Vector Embeddings" in the database of your choice based on your data
+- Use where real-time data is needed to bbe fed into the Foundation Model
+
+RAG Vector Databases (Amazon Bedrock)
+- OpenSearch (AWS)
+- Aurora (AWS)
+- Neptune Analytics (AWS)
+- S3 Vectors (AWS)
+- MongoDB
+- Redis
+- Pinecone (Free up to 2GB per month, 2M write units per month, 1M read units per month)
+  **Pro Tip: Use Pinecone to stay free
+
+RAG Vector Databases by AWS
+- Amazon Kendra: A hybrid search service that can be integrated into RAG workflows for enhanced retrieval. 
+
+- Amazon OpenSearch Service (serverless & Managed Cluster): search & analytics database real time similarity queries, store millions of vector embeddings scalable index management, and fast nearest-neighbor (kNN) search capability
+
+- Amazon Aurora PostgreSQL: relational database, proprietary on AWS
+
+- Amazon Neptune Analytics: graph database that enables high performance graph analytics and graph-based RAG (GraphRAG) solutions
+
+- Amazon S3 Vectors: cost-effective and durable storage with sub-second query performance
+
+RAG Data sources
+- Amazon S3
+- Confluence
+- Microsoft SharePoint
+- Salesforce
+- Web page (your website, your social media feed, etc...)
+
+Use Cases
+- Customer Service Chatbots
+  * Knowledge Base: products, features, specifications, troubleshooting guides, and FAQs
+  * RAG application: chatbot that can answer customer queries
+
+- Legal Research and analysis
+  * Knowledge Base: laws, regulations, case precedents, legal opinions, and expert analysis
+  * RAG application: chatbot that can provide relevant information for specific legal queries
+
+- Healthcare Question-Answering
+  * Knowledge Base: diseases, treatments, clinical guidelines, research papers, patients..
+  * RAG application: chatbot that can answer complex and general medical healthcare-related questions
+
+Builder Tools:
+- Knowledge bases
+  1) Create a Knowledge Base with:
+    * Vector store: Build a fully customizable Knowledge Base with maximum flexibility. Specify the location of your data, select an embedding model, and configure a vector store. Bedrock stores and updates your embeddings.
+
+    * Structured data store: Use for structured data (e.g., databases, tables) to enable semantic search within existing systems via the Knowledge Base.
+
+    * Kendra GenAI Index Use for document understanding powered by Kendra GenAI Index.
+
+  2) Test the knowledge base: 
+    * Query your Knowledge Base in the test window. You can get source text chunks, or you can use the chunks to get responses from a foundation model.
+  
+  3) Use the Knowledge Base : Integrate your Knowledge Base into your application as is or add it to agents

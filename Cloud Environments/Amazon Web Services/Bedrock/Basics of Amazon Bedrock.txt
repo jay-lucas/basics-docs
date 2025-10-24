@@ -1,3 +1,41 @@
+Explore use cases for Generative AI:
+- Organizational processes
+- Text summaries
+- New content generation
+- Personalization
+- Innovation and research
+
+Use Cases for Machine learning (ML)
+- High accuracy
+- High reliability
+- Pattern recognition
+- Complex mapping
+
+Key considerations for AI solutions selection
+- Data availability
+- Use case complexity
+- Ethical implications
+- Cost-benifit analysis
+- Integration and deployment
+
+Key criteria for generative AI use cases
+- Large volumes of data unstructured data
+- Need for human like text or image generation
+- Repetitive content creation
+
+Alternative approach to generative AI and ML
+- Consider alternative approaches to AI and ML when:
+  * The task can be solved properly using simple means
+
+When Gen IA is not appropriate solution
+- High accuracy and reliability are crucial
+- The problem is ill-defined or constantly changing
+- There;s insufficient quality data
+- Explainability and transparency are essential
+- Cost of implementation outweighs the benefits (cost overruns are very common)
+- Ethical considerations prohibit AI use
+
+
 Amazon Bedrock
 
 Fine-Tune a Model
@@ -101,3 +139,217 @@ Business Metrics to Evaluate a Model On
 - Cross-Domain Performance: measure the model's ability to perform across different domain tasks (e.g., monitor multi-domain ecommerce platform)
 - Conversion Rate: generate recommended desire outcomes such as purchases (e.g., optimizing ecommerce platform for higher conversion rate)
 - Efficiency: evaluate the model's efficiency in computation, resource utilization.. (e.g., improve production ine efficiency)
+
+
+LLM Prompt techniques
+- Zero-shot and few-shot examples
+- Knowledge bases
+- Chain-of-thought (CoT)
+  Tree of thoughts (ToT)
+- Retrieval augmented generation (RAG)
+- Tool-use prompting and action-oriented prompting
+- Constraint techniques: Negative prompting
+
+Generative AI model parameters
+- Temperature (0-1): Low Setting -> More focused, less creative
+                     High Setting -> More diverse, more creative
+- Top P (0-1): Low Setting -> Limited word choices
+               High Setting -> Wide range of words.
+- Top K (0-100): 
+
+Basic Slogan generation
+Prompt: Generate 5 advertising slogans for a coffee shop.
+Output: 
+    Here are 5 advertising slogans for a coffee shop:
+
+    1. Wake Up and Smell the Greatness.
+    2. Brewed to Perfection, One Cup at a Time.
+    3. Fuel Your Day with Flavorful Happiness.
+    4. Where Every Sip Is a Moment of Bliss.
+    5. Crafting Smiles, One Coffee at a Time.
+
+Adjusting the LLM persona to influence the Output
+Prompt: 
+  You are a marketing executive 
+  Generate 5 advertising slogans for a coffee shop
+
+Adding more context to the prompts
+Prompt: Generate 5 advertising slogans for a high-end, eco-friendly coffee shop that sources its beans directly from small farms. The shop prides itself on its sustainable practices and artisanal brewing methods.
+Output:
+    Here are 5 advertising slogans for a high-end, eco-friendly coffee shop that sources its beans directly from small farms and prides itself on sustainable practices and artisanal brewing methods:
+
+    1. Consciously Crafted, Ethically Energized.
+    2. Small Farm, Big Flavor: Taste the Sustainable Difference.
+    3. Artisanal Alchemy: Where Beans Meet Ethics.
+    4. Responsibly Roasted, Remarkably Rewarding.
+    5. Ethical Extraction, Exceptional Experience.
+
+Specifying Tone and Style
+Prompt: Generate 5 advertising slogans for a high-end, eco-friendly coffee shop that sources its beans directly from small farms. The shop prides itself on its sustainable practices and artisanal brewing methods. The slogans should be sophisticated, witty, and appeal to environmentally conscious millennials.
+Output:
+    1. "Farm-to-Cup Euphoria: Sustainably Crafted Bliss."
+    2. "Ethically Exquisite: Where Eco-Luxury Meets Artisanal Perfection."
+    3. "Sip the Sustainable Symphony: Harmonizing Taste and Responsibility."
+    4. "Consciously Crafted Indulgence: Guilt-Free Luxury in Every Drop."
+    5. "Savor the Earth's Bounty: Artisanal Coffee with an Eco-Conscious Soul."
+
+Using the Few-Shot techniques
+Prompt: 
+    Generate 5 advertising slogans for a high-end, eco-friendly coffee shop that sources its beans directly from small farms. The shop prides itself on its sustainable practices and artisanal brewing methods. The slogans should be sophisticated, witty, and appeal to environmentally conscious millennials.
+
+    Here are some example slogans in the desired style:1. "Tech Savvy, Earth Happy" (for an eco-friendly electronics store)2. "Wear the Change You Want to See" (for a sustainable fashion brand)3. "Clean Energy, Clear Conscience" (for a renewable energy company)
+
+    Now, generate 5 slogans for our coffee shop:
+Output:
+    1. "Where Every Bean Tells a Story of Sustainability."
+    2. "Artisanal Craft, Ethical Craft: Coffee with a Conscience."
+    3. "From Farm to Cup, a Journey of Responsible Indulgence."
+    4. "Savor the Flavor, Embrace the Future: Eco-Conscious Coffee."
+    5. "The Perfect Brew for a Greener Tomorrow."
+
+Optimizing with Specific instructions
+Prompt:
+    Generate 5 advertising slogans for a high-end, eco-friendly coffee shop that sources its beans directly from small farms. The shop prides itself on its sustainable practices and artisanal brewing methods. The slogans should be sophisticated, witty, and appeal to environmentally conscious millennials.
+
+    Requirements:- Each slogan should be no more than 6 words- Include at least one of these keywords in each slogan: artisanal, sustainable, ethical, or eco-friendly- Use alliteration or wordplay where possible
+
+    Here are some example slogans in the desired style:1. "Tech Savvy, Earth Happy" (for an eco-friendly electronics store)2. "Wear the Change You Want to See" (for a sustainable fashion brand)3. "Clean Energy, Clear Conscience" (for a renewable energy company)
+
+    Now, generate 5 slogans for our coffee shop:
+Output:
+    1. Artisanal Aroma, Ethically Energizing Elixir.
+    2. Sustainably Sourced, Sip Supreme Satisfaction.
+    3. Eco-Friendly Roasts, Elevating Every Cup.
+    4. Consciously Crafted, Coffee Connoisseurs' Choice.
+    5. Ethical Espresso, Energizing Earth's Embrace.
+
+Creating an Advertising Pitch Document
+Prompt: 
+    Generate an advertising pitch document for a high-end, eco-friendly coffee shop that sources beans directly from small farms. The document should contain the following sections:
+
+    1. An introductory paragraph explaining the coffee shop's commitment to sustainability and artisanal coffee-making methods.
+
+    2. Five slogan sections, each containing:
+    - A witty, sophisticated slogan (5-6 words) that incorporates keywords like "artisanal", "sustainable", "eco-friendly", or "ethical". Use wordplay, alliteration or rhymes where possible.
+    - A 2-3 sentence explanation of how the slogan captures the coffee shop's values and appeals to environmentally conscious millennial customers.
+
+    3. A closing paragraph summarizing how the slogans collectively position the brand as eco-conscious while celebrating high-quality coffee.
+
+    The tone should be polished, creative, and engaging throughout. Focus on highlighting the cafe's unique selling points to the target millennial demographic.
+
+    Add text formatting markdown following the example below: 
+
+    # Eco-Friendly Coffee Shop: Advertising Pitch
+    ## Slogan 1: "sample slogan 1"
+    This slogan ...
+    ... 
+    ## Closing Paragraph
+    Through these slogans ...
+
+
+Responsible AI
+- Guardrails can filter the data, on violence, insults, sexual, denied topics, word filters, handle PII, mask data, etc. The ability to address safety mechanisms.
+
+OWASP Top 10 vulnerabilities for LLMs
+Defense in depth for AI on AWS
+- Use multiple redundant defenses
+- Apply to generative AI workloads, data, and infrastructure
+
+Secure your data with AWS Key Management Service (KMS)
+Use AWS encryption for data at rest and in translation
+Implement VPCs for 
+
+GuardDuty: Threat detection 
+
+Questions to ask
+- Do you need to audit this workload?
+- Do you need to archive this data for a period of time?
+- Will this predictions created by my model constitute a record of other special data items?
+- Do any of the systems you get the data from contain data classifications that are restricted by your organization's governance but not a regulatory frameworks
+
+Panning compliance for generative AI
+- The adherence of AI systems to established guidelines, regulations, and best practices to ensure ethical, safe, and responsible development and deployment of generative AI technologies. Note: "EUAI Act"
+
+Regulated Workloads:
+- Security
+- Financial services
+- Healthcare
+
+Generative AI compliance considerations
+- Complexity and opacity
+
+Things to think about
+- Where should we add security measure?
+
+Evaluations allows for you to evaluate two models at a time in 2 ways: 
+  * Automatic: 
+    Option 1: Programmatic: Use to evaluate performances using just the model and metrics you select. 
+    Option 2: Model as a judge: Use a pre-trained model evaluates your model's responses using metrics you've selected. 
+
+  * Human:  
+    Option 1: AWS managed work team: Uses an AWS curated work team to evaluate responses from up to 2 models. You can define evaluation metrics specific to your job. 
+    Option 2: Bring your own work team: Evaluate responses from up to 2 models using your own work team. You can define evaluation metrics specific to your job.
+
+  Embedding Model: This translate data into a Vector Databases
+  - Amazon Titan
+  - cohere
+
+Guardrails
+ - Control the interaction between users and Foundation Models (FMs)
+ - Filter undesirable and harmful content
+ - Remove personally identifiable information (PII)
+ - Enhanced Privacy
+ - Reduce hallucinations
+ - Ability to create multiple Guardrails and monitor and analyze user inputs that can violate the Guardrails
+
+Agents 
+ - Manage and carry out various multi-step tasks related to infrastructure provisioning, application deployment, and operational activities
+ - Task coordination: perform tasks in the correct order and ensure information is passed correctly between tasks
+ - Agents are configured to perform specific pre-defined action groups
+ - Integrate with other systems, services, databases and API to exchange data or initiate applications
+ - Leverage RAG to retrieve information when necessary
+
+ # Integration with CloudWatch
+
+ - Model invocation logging
+   * Send logs of all invocations to Amazon CloudWatch and S3
+   * Can include text, images and embeddings
+   * Analyze further and build alerting thanks to CloudWatch Logs insights
+
+ - CloudWatch Metrics
+   * Published metrics from Bedrock to CloudWatch
+     -> Including ContentFilteredCount, which helps to see if Guardrails are functioning
+   * Can build CloudWatch Alarms on top of Metrics
+
+ - On-demand
+  * Pay as you go
+  * Text models: charged for every input/output token processed
+  * Embedding Models: charged for every input token processed
+  * Image Models: charged for every image generated
+  * Works with Base Models only
+
+ - Batch
+  * Multiple predictions at a time (output is a single file in Amazon S3)
+  * Can provide discounts of up to 50%
+
+ - Provisioned Through
+  * Purchase Model units for a certain time (1 month, 6 months...)
+  * Thoughput: max number of input/output tokens processed per minute
+  * Works with Base, fine-tuned, and custom models
+
+# Model Improvement Techniques Cost order
+1. Prompt Engineering: No model training needed (no additional computation or fine-tuning) - $
+2. Retrieval Augmented Generation (RAG): Uses external knowledge (FM doesn't need to "know everything", less complex) - $$
+3. Instruction-based Fine-tuning: FM is fine-tuned with specific instructions (requires additional computation) - $$$
+4. Domain Adaption Fine-tuning: Model is trained on a domain-specific dataset (requires intensive computation)- $$$$
+
+Cost Savings
+- On-Demand: great for unpredictable workloads, no long-term commitment
+- Batch: provides up to 50% discounts
+- Provisioned Throughput: Usually not a cost-savings measure, great to "reserve" capacity
+- Temperature, Top K, Top P: No impact on Pricing
+- Model size: usually a smaller model will be cheaper (varies based on providers)
+- Number of Input and Output tokens: main driver of cost
+
+
+

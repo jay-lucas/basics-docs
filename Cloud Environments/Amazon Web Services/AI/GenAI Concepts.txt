@@ -1,0 +1,17 @@
+GenAI Concepts 
+- Tokenization: converting raw text into a sequence of tokens
+    * Word-based tokenization: text is split into individual words
+    * Character-based tokenization: text is split into individual characters
+    * Subword-based tokenization: some words can be split too (helpful for log words...)
+
+- Context window    
+    * The number of tokens an LLM can consider when generating text
+    * The larger the context window, the more information and coherence
+    * Large context windows require more memory and processing power
+
+    ** Note: First factor to look at when considering a model, making sure it fits your use case!
+
+- Embeddings
+    * Create vectors (array of numerical values) out of text, images or audio
+    * Vectors have a high dimensionality to capture many features for one input token, such as semantic meaning, syntactic role, sentiment
+    * Embedding models can power search applications

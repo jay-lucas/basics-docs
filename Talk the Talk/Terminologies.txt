@@ -27,3 +27,18 @@ The order of middleware is important because it determines the sequence in which
 •	Perform work before and after the next middleware
 
 "Semantic search" is an information retrieval technique that uses artificial intelligence to understand the meaning and intent behind a user's query, rather than just matching keywords. It achieves this by analyzing the context, relationships between words, user history, and other factors to deliver more relevant results. This approach goes beyond traditional, keyword-based search to understand the "why" behind a search, not just the "what". 
+
+-------------------------
+The difference between Serverless and Managed Clusters.
+
+The main difference is the level of control versus automation. Serverless abstracts away all infrastructure management, automatically scaling resources and charging only for usage, which is ideal for rapid development. In contrast, a managed cluster gives you more control over cluster configurations and node types, but you are still responsible for capacity planning and scaling, though the cloud provider handles the underlying hardware. 
+Serverless
+    Abstraction: The cloud provider fully manages all infrastructure, so you don't see or manage servers. 
+    Scaling: Automatic and elastic scaling based on demand. 
+    Pricing: Typically a pay-as-you-go model, where you only pay for the resources consumed when your application runs. 
+    Use case: Ideal for teams that want to focus on coding and want to minimize operational overhead. 
+Managed Clusters
+    Abstraction: The cloud provider manages the underlying hardware, but you have visibility into and control over the cluster's configuration, nodes, and settings. 
+    Scaling: You are responsible for manually scaling capacity up and down based on your workload assessment. 
+    Pricing: You pay for the provisioned resources (like nodes), even when they are idle. 
+    Use case: Suitable for organizations that need greater control over resource configurations, performance tuning, and have specific requirements. 
