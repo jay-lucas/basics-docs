@@ -1,8 +1,13 @@
 What can you do with Azure Storage?
 - Create storage accounts up to 5 PB each
-- Blobs, queues, tables, files
+- Blobs: Object storage for unstructured data
+- File: SMB-based file shares
+- Table: NoSQL Key value storage
+- Disk: Persistent storage for VMs
+
+
 - various levels of replication included from local to global
-- Storage tiers (hot, cool, archive   
+- Storage tiers (hot, cool, archive) 
 - Manged (for VMs) or unmanaged)
 
 Steps to move a storage account to another region

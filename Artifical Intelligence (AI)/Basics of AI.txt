@@ -1,0 +1,26 @@
+What is Artificial Intelligence (AI)?
+- AI is a broad field for the development of intelligent systems capable of performing tasks that typically require human intelligence:
+    * Perception
+    * Reasoning
+    * Learning
+    * Problem solving
+    * Decision-making
+
+- An umbrella-term for various techniques
+* In order of parent to child:
+   > Inside Artificial Intelligence is 
+     > Machine Learning inside ML is
+       > Deep Learning inside DL is 
+         > Generative AI
+
+Use Cases
+- Computer Vision for self driving cars
+- Facial Recognition
+- Fraud Detection
+- Intelligence Document Processing (IDP)
+
+AI Components
+- Data Layer: collect vast amount of data (Data Engineer + Data)
+- Machine Learning (ML) and Algorithm Layer: data scientist and engineer work together to understand use cases, requirements, and frameworks that can solve them
+- Model Layer: implement a model and train it, we have the structure, the parameters and functions, optimizer function.
+- Application Layer: how to serve the model, and its capabilities for your users

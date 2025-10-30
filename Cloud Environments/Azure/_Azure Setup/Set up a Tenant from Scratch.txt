@@ -1,0 +1,207 @@
+Step 1: Setting up Resource Groups 
+Step 2: Create Virtual machines
+- Set up Bastion for access to VMs from within Azure, much more secure than RDP or remoting in from outside the network. Bastion is a very good idea because it gives you security going forward.
+
+  Other options is just to set the RDP to:
+    - IP Addresses: Set a range of IPs that can access the VMs
+    - My IP address: Sets the VM to user the IP your currently in Azure with
+    - Tags: Not sure...yet
+    - Application Security Group: Uses those who are within the security group, be it other resources or users, that can only access the VM. 
+
+    ** Note: The best practice for filtering the source of network traffic for VMs in Azure involves a multi-layered, Zero Trust approach, using Network Security Groups (NSGs) with Application Security Groups (ASGs), and for more complex scenarios, Azure Firewall. The core principle is to follow a "deny by default" policy and only allow the minimum necessary access. 
+
+Setting up an Azure Tenant environment from scratch involves multiple steps, including creating the tenant, configuring resource groups, virtual networks, subnets, DNS, and DHCP settings, and implementing security best practices. Below is a step-by-step guide:
+
+
+### **Step 1: Create an Azure Tenant**
+
+1. **Sign Up for Azure**:
+
+   - Go to the Azure portal (https://portal.azure.com).
+
+   - Create an account if you don’t already have one.
+
+ 
+
+2. **Create an Azure Active Directory Tenant**:
+
+   - In the Azure portal, navigate to **Azure Active Directory**.
+
+   - Select **Create a tenant**.
+
+   - Choose the tenant type (e.g., Azure AD or Azure AD B2C).
+
+   - Provide a name and domain for your tenant.
+
+   - Complete the creation process.
+
+
+### **Step 2: Configure Resource Groups**
+
+Resource groups are logical containers for Azure resources. Create separate resource groups for development, staging, and production environments.
+
+1. **Create Resource Groups**:
+
+   - Navigate to **Resource Groups** in the Azure portal.
+
+   - Click **+ Create**.
+
+   - Provide a name for the resource group (e.g., `Dev-RG`, `Staging-RG`, `Prod-RG`).
+
+   - Select the appropriate **Region** (choose regions close to your users for better performance).
+
+   - Repeat this process for each environment (development, staging, production).
+
+ 
+
+2. **Organize Resources**:
+
+   - Assign resources (e.g., virtual machines, databases, storage accounts) to the appropriate resource group based on their environment.
+
+
+
+### **Step 3: Configure Virtual Networks and Subnets**
+
+Virtual networks (VNets) allow Azure resources to communicate securely. Subnets segment the VNet into smaller networks.
+
+ 
+
+1. **Create Virtual Networks**:
+
+   - Navigate to **Virtual Networks** in the Azure portal.
+
+   - Click **+ Create**.
+
+   - Provide a name for the VNet (e.g., `Dev-VNet`, `Staging-VNet`, `Prod-VNet`).
+
+   - Choose an address space (e.g., `10.0.0.0/16` for development, `10.1.0.0/16` for staging, `10.2.0.0/16` for production).
+
+   - Select the appropriate region.
+
+ 
+
+2. **Create Subnets**:
+
+   - Within each VNet, create subnets for different tiers (e.g., web, application, database).
+
+   - Example subnet configuration:
+
+     - Web subnet: `10.0.1.0/24`
+
+     - Application subnet: `10.0.2.0/24`
+
+     - Database subnet: `10.0.3.0/24`
+
+   - Assign Network Security Groups (NSGs) to subnets to control inbound and outbound traffic.
+
+### **Step 4: Configure DNS**
+
+Azure provides DNS services for name resolution.
+
+
+1. **Use Azure DNS**:
+
+   - Navigate to **DNS Zones** in the Azure portal.
+
+   - Click **+ Create**.
+
+   - Provide a name for the DNS zone (e.g., `example.com`).
+
+   - Configure records (e.g., A, CNAME, MX) as needed.
+
+ 
+
+2. **Custom DNS Servers**:
+
+   - If using custom DNS servers, configure them in the VNet settings.
+
+   - Navigate to the VNet, select **DNS Servers**, and add the IP addresses of your DNS servers.
+
+
+### **Step 5: Configure DHCP**
+
+Azure automatically handles DHCP for VNets, assigning IP addresses to resources within the VNet.
+
+1. **Dynamic IP Allocation**:
+
+   - By default, Azure assigns dynamic private IP addresses to resources.
+
+   - If static IPs are needed, configure them in the resource settings (e.g., for virtual machines).
+
+
+### **Step 6: Implement Security Best Practices**
+
+Security is critical when setting up Azure environments.
+
+ 
+
+1. **Network Security Groups (NSGs)**:
+
+   - Create NSGs and associate them with subnets or individual resources.
+
+   - Define inbound and outbound rules to restrict traffic (e.g., allow HTTP/HTTPS traffic only to the web subnet).
+
+ 
+
+2. **Azure Firewall**:
+
+   - Deploy Azure Firewall for centralized network security.
+
+   - Configure rules to filter traffic between subnets and external networks.
+
+ 
+
+3. **Private Endpoints**:
+
+   - Use private endpoints to securely connect Azure resources to your VNet.
+
+ 
+
+4. **Role-Based Access Control (RBAC)**:
+
+   - Assign roles to users and groups using RBAC to control access to resources.
+
+   - Follow the principle of least privilege.
+
+ 
+
+5. **Enable Azure Security Center**:
+
+   - Use Azure Security Center to monitor and secure your environment.
+
+   - Enable advanced threat protection for resources like virtual machines and databases.
+
+ 
+
+6. **Use Azure Key Vault**:
+
+   - Store sensitive information (e.g., connection strings, certificates) in Azure Key Vault.
+
+   - Restrict access using RBAC and managed identities.
+
+ 
+
+7. **Enable Logging and Monitoring**:
+
+   - Use Azure Monitor and Azure Log Analytics to track resource usage and detect anomalies.
+
+   - Enable diagnostic logs for resources.
+
+
+### **Step 7: Test and Validate**
+
+1. **Connectivity**:
+
+   - Test connectivity between subnets and resources.
+
+   - Verify DNS resolution and IP address allocation.
+
+ 
+
+2. **Security**:
+
+   - Perform penetration testing and vulnerability assessments.
+
+   - Ensure NSG rules and firewall configurations are effective.
+
+ 

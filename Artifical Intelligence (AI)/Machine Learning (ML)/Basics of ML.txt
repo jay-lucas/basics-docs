@@ -1,0 +1,179 @@
+What is Machine Learning (ML)?
+- ML is a type of AI for building methods that allow machines to learn from data
+- Data is leveraged to improve computer performance on a set of task
+- Make predictions based on data used to train the model
+- No explicit programming of rules
+
+What is Deep Learning (DL)
+- Uses neurons and synapses (like our brain) to train a model
+- Process more complex patterns in the data that traditional ML
+- Deep Learning because there's more than one layer of learning
+- Requires a large amount of input data
+- Requires GPU (Graphical Processing Unit)
+
+Examples of DL: 
+    Computer Vision: image classification, object detection, image segmentation
+    Natural Language Processing (NLP): text classification, sentiment analysis, machine translation, language generation
+
+Neural Networks: 
+
+What is Generative AI (Gen-AI)
+- Subset of Deep Learning
+- Multi-purpose foundation models backed by neural networks
+- They can be fine-tuned if necessary to better fit our use-cases
+
+What is the Transformer Model? (LLM)
+- Able to process a sentence as a whole instead of word by word
+- Faster and more efficient text processing (less training time)
+- It gives relative importance to specific words in a sentence (more coherent sentences)
+- Transformer-based LLMs
+  * Powerful models that can understand and generate human-like text
+  * Trained on vast amounts of text data from the internet, books, and other sources, and learn patterns and relationships between words and phrases
+  Examples: Google BERT, OpenAI ChatGPT (Chat Generative Pre-trained Transformer)
+
+Multi-modal Models (ex: GPT-4o)
+- Does NOT rely on a single  type of input (text, or images, or audio only)
+- Does NOT create a single type of output
+  Example: a multi-modal can take a mix of audio, image and text and output a mix of video, text for example
+
+Exam ML Models to Know:
+
+For Languages:
+- GPT (Generative Pre-trained Transformer): generate human text or computer code based on input prompts.
+- BERT (Bidirectional Encoder Representations from Transformers): similar intent to GPT, but reads the text in two directions
+
+For Audio:
+- WaveNet: model to generate raw audio waveform, used in Speech Synthesis
+
+For Data augmentation
+- GAN (Generative Adversarial Network): models used to generate synthetic data such as images, videos or sounds that resemble the training data. Helpful for data augmentation
+
+For Images:
+- ResNet (Residual Network): Deep Convolutional Neural Network (CNN) used for image recognition tasks, object detection, facial recognition
+
+Others:
+- RNN (Recurrent Neural Network): meant for sequential data such as time-series or text, useful in speech recognition, time-series predictions
+- SVM (Support Vector Machine): ML algorithm for classification and regression
+- XGBoost (Extreme Gradient Boosting): an implementation of gradient boosting
+
+Labeled vs. Unlabeled Data
+
+- Labeled Data
+    * Data includes both input features and corresponding output labels
+      
+      Example: dataset with images of animals where each image is labeled with the corresponding animal type (e.g., cat, dog)
+      
+      Use Case: Supervised Learning, where the model is trained to map inputs to known outputs
+
+- Unlabeled Data
+    * Data only includes input features without corresponding output labels
+      
+      Example: a collection of images without any associated labels
+      
+      Use Case: Unsupervised learning, where the model tries to find patterns or structures in the data
+
+Supervised Learning
+- Learn a mapping function that can predict the output for new unseen input data
+- Needs labeled data: very powerful, but difficult to perform on millions of data points
+
+  * Regression
+    - Used to predict a numeric value based on input data
+    - The output variable is continuous, meaning it can take any value within a range
+      
+      Use cases: Used when the goal is to predict a quantity or a real value. 
+      
+      Examples:
+      > Predicting House Prices: based on features like size, location, and number of rooms
+      > Stock Price Prediction: predicting the future price of a stock based on historical data and other features
+      > Weather Forecasting: predicting temperatures based on historical weather data
+
+  * Classification
+    - Used to predict the categorical label of input data
+    - The output variable is discrete, which means it falls into a specific category or class
+      
+      Use cases: Scenarios where decisions or predictions need to be made between distinct categories (fraud, image classification, customer retention, diagnostics)
+
+      Examples:
+      > Binary Classification: classify emails as "span" or "not spam"
+      > Multi-label Classification: assign multiple labels to a movie, like "action" and "comedy"
+
+      Key algorithm: K-nearest neighbors (k-NN) model
+
+# When you split a dataset for training an ML algorithm 
+
+Training vs Validation vs Test set
+- Training set
+  * Used to train the model (60-80% of the dataset)
+    Example: 800 labeled images from a dataset of 1000 images
+
+- Validation set
+  * Used to tune model parameters and validate performance (10-20% of the dataset)
+    Example: 100 labeled images for hyperparameter tuning (tune the settings of the algorithm to make it more efficient)
+
+- Test set
+  * Used to evaluate the final model performance on unseen data (10-20% of the dataset)
+    Example: 100 labeled images to test the model's accuracy
+
+Feature Engineering
+- Used to create new input labels so we can have our ML perform better. 
+- The process of using domain knowledge to select and transform raw data into meaningful features
+
+- Helps enhancing the performance of machine learning models
+
+- Techniques  
+    * Feature Extraction: extracting useful information from raw data, such as deriving age from date of birth
+    * Feature Selection: selecting a subset of relevant features, like choosing important predictors in a regression model 
+    * Feature Transformation: transforming data for better model performance, such as normalizing numerical data
+
+Feature Engineering on Structured Data
+    - Structured Data (Tabular Data)
+    Example: predicting house process based on features like size, location, and number of rooms
+
+    * Feature Engineering Task
+        - Feature Creation: deriving new features like "price per square foot"
+        - Feature Selection: identifying and retaining important features such as location or number of bedrooms
+        - Feature Transformation: normalizing features to ensure they are on a similiar scale, which helps algorithms like gradients descent converge faster
+
+  Feature Engineering on Unstructured Data
+    - Unstructured data (Text, Images)
+      Example; sentiment analysis of customer reviews
+     
+     * Feature Engineering tasks
+        - Text Data: converting text into numerical features using techniques like TF-IDF or word embeddings
+        - Image Data: extracting features such as edge or textures using techniques like convolutional neural networks (CNNs)
+
+ML Algorithms - Unsupervised Learning
+
+- The goal is to discover inherent patterns, structures, or relationships within the input data
+- The machine must uncover and create the groups itself, but humans still put labels on the output groups
+- Common techniques include Clustering, Association Rule Learning, and Anomaly detection
+- Clustering use cases: customer segmentation, targeted marketing, recommender systems
+- Feature Engineering can help improve the quality of the training
+
+* Clustering Techniques
+- Used to group similar data points together into clusters based on their features
+  Example: Customer segmentation
+  > Scenario: e-commerce company wants to segment its customers to understand different purchasing behaviors
+  > Data: A dataset containing customer purchase history (e.g., purchase frequency, average order value)
+  > Goal: Identify distinct groups of customers based on their purchasing behavior
+
+* Association Rule Learning Techniques
+  Example: Market Basket analysis
+  > Scenario: supermarket wants to understand which products are frequently bought together
+  > Data: transaction records from customer purchases
+  > Goal:   identify associations between products to optimize product placement and promotions
+  > Technique: Apriori algorithm
+
+  Outcome: the supermarket can place associated products together to boost sales
+
+* Anomaly Detection Techniques
+  Example: Fraud detection
+  > Scenario: detect fraudulent credit card transactions
+  > Data: transaction data, including amount, location, and time
+  > Goal: identify transactions that deviate significantly from typical behavior
+  > Technique: Isolation Forest
+  
+  Outcome: the system flags potentially fraudulent transactions for further investigation
+
+* Semi-supervised Learning
+  > Use a small amount of labeled data and a large amount of unlabeled data to train systems 

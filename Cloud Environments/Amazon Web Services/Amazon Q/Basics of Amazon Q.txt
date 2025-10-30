@@ -1,0 +1,77 @@
+Amazon Q Business
+- Fully managed Gen-AI assistant for your employees
+- Based on your company's knowledge and data
+  * Answer questions, provide summaries, generate content, automate tasks
+  * Perform routine actions (e.g., submit time-off requests, send meeting invites)
+-Built on Amazon Bedrock (but you can't choose the underlying Foundational Model (FM))
+
+Data Connectors (fully managed RAG): Connects to 40+ popular enterprise data sources
+    - Amazon S3, RDS, Aurora, WorkDocs..
+    - Microsoft 365, Salesforce, GDrive, Gmail, Slack, Sharepoint...
+
+Plugins: allows you to interact with 3rd party services
+    - Jira, ServiceNow, Zendesk, Salesforce...
+    - Custom Plugins: connects to any 3rd party application using APIs
+
+How do we access Amazon Q Business?
+- Users can be authenticated through IAM Identity Center
+- Users receive responses generated only from the documents they have access to
+- IAM Identity Center can be configured with external Identity Providers
+  * External Identity Providers (idP): Google login, Microsoft Active Directory...
+
+Admin Controls
+- Controls and customize responses to your organizational needs
+- Admin controls == Guardrails, like the LLM can have a guardrail to control in/out just like Amazon Q has Admin Controls. 
+- Block specific words or topics
+- Respond only with internal information (vs using external knowledge)
+- Global controls & topic-level controls (more granular rules)
+
+Amazon Q Apps (Q Business): To create apps with out developersy
+- Create Gen AI-powered apps without coding by using natural language
+- Leverages your company's internal data
+- Possibility to leverage plugins (Jira, etc...)
+
+Amazon Q Developer
+- Answer questions about the AWS documentation and AWS service selection
+- Answer questions about resources in your AWS account
+- Suggest CLI (command Line Interface) to run to make changes to your account
+- Helps you do bill analysis, resolve errors, troubleshoot...
+- AI code companion to help you code new applications (similar to GitHub Copilot)
+- Supports many languages: Java, javascript, python, typescript, C#...
+
+* Integrated Developer Environment (IDE) Extensions 
+  - Integrates wit IDE to help with your software development needs
+    -> Answer questions about AWS development
+    -> Code completions and code generation
+    -> Scan your code for security vulnerabilities
+    -> Debugging, optimizations, improvements
+
+Amazon Q for QuickSight
+- Amazon QuickSight: us used to visualize your data and create dashboards about them
+- Amazon Q understands natural language that you use to ask questions about your data
+- Create executive summaries of your data
+- Ask and answer questions of data
+- Generate and edit visuals for your dashboards
+
+Amazon Q for EC2
+- EC2 instances are the virtual servers you can start in AWS
+- AMazon Q for EC2 provides guidance and suggestions for EC2 instance types that are best suited to your new workload
+- Can provide requirements using natural language to get even more suggestions or ask for advice by providing other workload requirements
+
+Amazon Q for AWS Chatbot
+- AWS Chatbot is a way for you to deploy an AWS chatbot in a Slack or Microsoft Teams channel that know about your AWS account
+- troubleshoot issues, receive notifications for alarms, security finding, billing alerts, create support requests
+- You can access Amazon Q directly in AWS Chatbot to accelerate understanding of the AWS services, troubleshoot issues, and identify remediation paths.
+
+Amazon Q for Glue
+- AWS Glue is an Extract Transform and Load (ETL) service used to move data across places.  
+- Amazon Q for Glue can help with..
+  * Chat:
+    > Answer general questions about Glue
+    > Provide links to the documentation
+  * Data integration code generation:
+    > answer questions about AWS Glue ETL scripts
+    > generate new code
+  * troubleshoot:
+    > understand errors in AWS Glue jobs
+    > provide step-by-step instructions, to root cause and resolve your issues. 

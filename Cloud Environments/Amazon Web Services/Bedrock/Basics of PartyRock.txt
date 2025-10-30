@@ -1,0 +1,4 @@
+PartyRock
+- GenAI app-building playground (powered by Amazon Bedrock)
+- Allows you to experiment creating GenAI apps with various Foundational Models (FM), no coding or AWS account required)
+- UI is similar to Amazon Q Apps (with less setup and no AWS account required) 
